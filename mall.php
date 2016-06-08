@@ -1,18 +1,28 @@
-<?php 
-	//Load header
-	include header.php
-?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Mottagningen 2016</title>
+		<link rel="stylesheet" href="main.css" type="text/css">
+	</head>
 
-<div class="content-wrapper">
+	<body>
 
-	<!-- Content -->
+		<?php 
+			//Load header
+			include header.php
+		?>
 
-</div>
+		<div class="content-wrapper">
+			<!-- Content -->
+		</div>
 
-<?php
-	//Load footer
-	include footer.php
-?>
+		<?php
+			//Load footer
+			include footer.php
+		?>
 
-</body>
+	</body>
+
 </html>
