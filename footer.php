@@ -5,6 +5,9 @@
 <div class="footer-wrapper">
 
 	<!-- Footer content -->
+
+	<!-- Medieteknik logo -->
+	<img class="media-logo" src="medieteknik.png"/>
 	<!-- Links -->
 	<div class="links-wrapper">
 		<!-- Instagram links -->
@@ -16,7 +19,7 @@
 		</ul>
 
 		<!-- Snapchat links -->
-		<p class="links-title">Snapchat</p>
+		<img class="instagram-logo" src="instagram.png"/>
 		<ul class="links-snapchat">
 			<li class="links-element">
 				<!-- Content -->
@@ -24,7 +27,7 @@
 		</ul>
 
 		<!-- Email links -->
-		<p class="links-title">Email</p>
+		<img class="snapchat-logo" src="snapchat.png"/>
 		<ul class="links-instagram">
 			<li class="links-element">
 				<!-- Content -->
