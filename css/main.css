@@ -13,12 +13,13 @@ ul {
     padding: 0;
 }
 
-a:link {
+a {
     font-size: 14px;
     letter-spacing: 0.5;
 
     /*color: #02A0C7;*/
-    color: black;
+    color: #000;
+    text-decoration: none;
 }
 
 a:hover {
@@ -45,6 +46,8 @@ footer {
 .medieteknik-wrapper {
     float:left;
     width: 25%;
+
+    text-align: center;
 }
 
 .instagram-wrapper, .snapchat-wrapper, .email-wrapper, .credits-wrapper {
@@ -53,7 +56,8 @@ footer {
 }
 
 .medieteknik-logo {
-    height: 50%;
+    /*height: 50%;*/
+    height: 120px;
 }
 
 .medieteknik-title {

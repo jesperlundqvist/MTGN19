@@ -15,13 +15,13 @@ function connectToDB() {
     $db
   );
 
-
   if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
   }
 
   $link->set_charset('utf8'); //Fixar åäö
+
 
   return $link;
 }
@@ -34,5 +34,6 @@ function execQuery($link, $query) {
 
   return $result;
 }
+
 
 ?>

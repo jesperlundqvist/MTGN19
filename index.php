@@ -1,6 +1,6 @@
    <?php
     //Load header
-    include ('inc_header.php');
+    include_once ('inc_header.php');
   ?>
     <title>Mottagningen 2016</title>
   </head>
@@ -9,17 +9,25 @@
 
     <?php
       //Load top content
-      // include ('inc_top_content.php');
+      // include_once ('inc_top_content.php');
     ?>
 
     <div class="content-wrapper">
       <!-- Content -->
+      <?php
+
+      ?>
     </div>
 
     <?php
       //Load footer
-      include ('inc_footer.php');
+      include_once ('inc_footer.php');
     ?>
+
+    <script type="text/javascript">
+
+
+    </script>
 
   </body>
 </html>
