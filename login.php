@@ -23,11 +23,6 @@
       </div>
     </div>
 
-    <?php
-      //Load footer
-      include_once ('inc_footer.php');
-    ?>
-
   <script type="text/javascript">
   $( document).ready(function() {
   //       // Om man trycker på enter

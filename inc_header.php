@@ -10,24 +10,23 @@
 
   // Only redirect if we are not already on the login page
   if ($_SERVER['PHP_SELF'] !== '/login.php'){
-    // Om användaren inte är inloggad så skickas hen vidare till login.
-    // if (login_check($link) == false) {
-    //   //redirecta användaren till login-sidan relativt från vart användaren befinner sig nu.
-    //   $host = $_SERVER['HTTP_HOST'];
-    //   $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    //   header("Location: http://$host$uri/login.php");
-    //   //exit();
-    // }
+    // If not logged in, redirect to login page
+    if (login_check($link) == false) {
+      $host = $_SERVER['HTTP_HOST'];
+      $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+      header("Location: http://$host$uri/login.php");
+    }
   }
 ?>
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- All the shared stuff here, specific things in each viewfile -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/responsive.css" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Pirata+One' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="js/main.js"></script>
-     <script type="text/javascript" src="js/sha512.js"></script>
+    <script type="text/javascript" src="js/sha512.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>

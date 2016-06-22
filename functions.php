@@ -2,20 +2,14 @@
 function sec_session_start() { //Starta den här funktionen innan varje session av php
   session_start();
 }
-
 function login($username, $password, $link) {
-
-
-
   // Prepare är säkrast tydliden.
   if ($stmt = $link->prepare("SELECT username, password, salt, admin FROM users WHERE username = ? LIMIT 1")) {
     $stmt->bind_param('s', $username);
     $stmt->execute();
-    $stmt->store_result();
-
     $stmt->bind_result($username, $db_password, $salt, $admin);
+    $stmt->store_result();
     $stmt->fetch();
-
 
     // hash the password with the unique salt.
     $password = hash('sha512', $password . $salt);
