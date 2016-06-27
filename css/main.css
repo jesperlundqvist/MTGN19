@@ -52,6 +52,20 @@ a:hover {
     color: #fff;
 }
 
+
+/*
+    News
+*/
+
+.news {
+    max-width: 400px;
+}
+
+.news p.long {
+    overflow: hidden;
+}
+
+
 /*
     Footer
 */
