@@ -9,7 +9,7 @@
 
     <?php
       //Load top content
-      // include_once ('inc_top_content.php');
+      include_once ('inc_top_content.php');
 
     if (session_status() == PHP_SESSION_NONE) {
         sec_session_start();
@@ -23,7 +23,7 @@
             </div>
 
             <div id="news_input_container" class="news-top">
-              <form id="news_input_form" action="post.php?action=news" method="post">
+              <form id="news_input_form" action="newspage_handler.php?action=add" method="post">
                 <h2 id="new_post_trigger">Skapa nytt inlägg <span class="ion-ios-plus-outline" id="new_post_icon"></span></h2>
                 <div id="new_post_container">
                   <div class="news_instructions">
@@ -51,8 +51,6 @@
                 </div>
               </form>
             </div>
-          <br><br>
-          <a href="/">startsida </a>
       </div>
       <?php
     }
@@ -66,6 +64,7 @@
       //Load footer
       include_once ('inc_footer.php');
     ?>
+
 
   </body>
 </html>

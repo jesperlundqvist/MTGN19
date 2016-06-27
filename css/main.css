@@ -24,16 +24,33 @@ a {
 
 a:hover {
     color: #02A0C7;
+    opacity: 0.5;
 }
 
 /*
     Layout
 */
  .content-wrapper {
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
  }
 
+/*
+    Header
+*/
 
+.header {
+    padding: 15px;
+    margin-bottom: 15px;
+
+    background: rgba(0,0,0,0.5);
+}
+
+.header a {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #fff;
+}
 
 /*
     Footer

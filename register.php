@@ -11,7 +11,7 @@
 
     <?php
       //Load top content
-      // include_once ('inc_top_content.php');
+      include_once ('inc_top_content.php');
     ?>
 
     <div class="content-wrapper">

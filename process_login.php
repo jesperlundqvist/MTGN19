@@ -9,7 +9,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 // session_start();
 
-
 if (isset($_POST['username'], $_POST['password'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
