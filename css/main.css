@@ -10,7 +10,7 @@ html, body {
 
 body {
     background: #025c77 url('/design/body_bg.jpg');
-    
+
     color: #f7ecd6;
     font-size: 14px;
 }
@@ -40,7 +40,7 @@ a:hover {
  .content-wrapper {
     padding-bottom: 25px;
     margin: 0 auto;
-    width: 1000px;
+    max-width: 1000px;
 
     position: relative;
     overflow: hidden;
@@ -48,7 +48,7 @@ a:hover {
 
  .constrainer {
     margin: 0 auto;
-    width: 1000px;
+    max-width: 1000px;
 
     position: relative;
     overflow: hidden;
@@ -58,7 +58,7 @@ a:hover {
     Header
 */
 
-.header {  
+.header {
     position: relative;
     background: #f6f9fb;
 
