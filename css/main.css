@@ -5,7 +5,14 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: Open Sans;
+    font-family: Open Sans, sans-serif;
+}
+
+body {
+    background: #025c77 url('/design/body_bg.jpg');
+    
+    color: #f7ecd6;
+    font-size: 14px;
 }
 
 ul {
@@ -18,40 +25,140 @@ a {
     letter-spacing: 0.5;
 
     /*color: #02A0C7;*/
-    color: #000;
+    color:#f7ecd6;
     text-decoration: none;
 }
 
 a:hover {
-    color: #02A0C7;
-    opacity: 0.5;
+    color: auto;
+    opacity: 0.8;
 }
 
 /*
     Layout
 */
  .content-wrapper {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-bottom: 25px;
+    margin: 0 auto;
+    width: 1000px;
+
+    position: relative;
+    overflow: hidden;
+ }
+
+ .constrainer {
+    margin: 0 auto;
+    width: 1000px;
+
+    position: relative;
+    overflow: hidden;
  }
 
 /*
     Header
 */
 
-.header {
-    padding: 15px;
-    margin-bottom: 15px;
+.header {  
+    position: relative;
+    background: #f6f9fb;
 
-    background: rgba(0,0,0,0.5);
+    height: 200px;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.header a {
-    margin-left: 10px;
-    margin-right: 10px;
-    color: #fff;
+.header .constrainer {
+    min-height: 200px;
 }
 
+.header-wave {
+    position: absolute;
+    bottom: -23px;
+    background: url('/design/wave_first.png') repeat-x;
+
+    height: 59px;
+    width: 100%;
+
+    z-index: 2;
+}
+
+.header-wave-back {
+    position: absolute;
+    bottom: 0;
+    background: url('/design/wave_second.png') repeat-x;
+
+    height: 59px;
+    width: 100%;
+    z-index: 1;
+}
+
+.header-ship {
+    position: absolute;
+    top: 37px;
+    left: 0;
+    background: url('/design/ship.png');
+
+    width: 206px;
+    height: 150px;
+
+    z-index: 2;
+}
+
+.header-logo {
+    position: absolute;
+    top: 37px;
+    left: 317px;
+    background: url('/design/logo.png');
+
+    width: 365px;
+    height: 72px;
+}
+
+.header-sun {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url('/design/sun.png');
+
+    width: 212px;
+    height: 149px;
+
+    z-index: 0;
+}
+
+.menubar {
+    margin-top: -5px;
+
+    min-height: 78px;
+    width: 100%;
+    background: url('/design/menubar_bg.png');
+
+    position: relative;
+    z-index: 2;
+}
+
+.sitenav {
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+}
+
+.sitenav li {
+    display: inline-block;
+}
+
+.sitenav > li > a{
+    display: block;
+    padding: 0 15px;
+
+
+    color: #4b2b02;
+    font-weight: 600;
+    line-height: 72px;
+    font-size: 24px;
+    font-family: Pirata One;
+}
 
 /*
     News
@@ -74,6 +181,10 @@ footer {
     background: #F7ECD6;
 
     padding: 1% 0 1% 0;
+}
+
+footer a {
+    color: #000;
 }
 
 .footer-wrapper {
@@ -135,4 +246,14 @@ footer {
 .divider-line {
     stroke: black;
     stroke-width: 1px;
+}
+
+
+
+
+/* temp style for login */
+
+.login-wrap {
+    text-align: center;
+    margin-top: 150px;
 }
