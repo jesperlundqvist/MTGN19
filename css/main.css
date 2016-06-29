@@ -161,8 +161,8 @@ a:hover {
 }
 
 /*
-    News
-*/
+ *  News
+ */
 
 .news {
     max-width: 400px;
@@ -172,6 +172,15 @@ a:hover {
     overflow: hidden;
 }
 
+/*
+ *  All profiles
+ */
+.profile_preview_img {
+    width: 100px;
+    height: 100px;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
 
 /*
     Footer
@@ -181,6 +190,7 @@ footer {
     background: #F7ECD6;
 
     padding: 1% 0 1% 0;
+    color: #000;
 }
 
 footer a {

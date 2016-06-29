@@ -1,5 +1,5 @@
 <?php
-include_once("functions.php");
+include_once("functions_common.php");
 if (session_status() == PHP_SESSION_NONE) {
     sec_session_start();
 }

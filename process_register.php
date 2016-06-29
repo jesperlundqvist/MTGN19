@@ -1,6 +1,5 @@
 <?php
-include_once 'database.php';
-include_once 'functions.php';
+include_once 'functions_common.php';
 
 $link = connectToDB();
 
@@ -81,7 +80,7 @@ if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['
 
     move_uploaded_file($_FILES['files']['tmp_name'][0], $upload_dir . $imagename);
   } else {
-    $imagename = null;
+    $imagename = 'default.png';
   }
 
   if (isset($_FILES['files']['tmp_name'][1])) {

@@ -16,13 +16,15 @@ $admin = $_SESSION['admin'];
 	<div class="constrainer">
 		<ul class="sitenav">
 			<li><a href="/">Startsida </a></li>
-			<?php      
+			<?php
 			if ($admin) {
-			echo'<li><a href="adminpanel.php">Adminpanel</a></li>';
-	      	}
+				?>
+				<li><a href="adminpanel.php">Adminpanel</a></li>
+				<?php
+	    }
 	      	?>
-	      	<li><a href="logout.php">Logga ut </a></li>
-
+    	<li><a href="allprofiles.php">Profiler</a></li>
+    	<li><a href="functions_logout.php">Logga ut </a></li>
 		</ul>
 	</div>
 </nav>

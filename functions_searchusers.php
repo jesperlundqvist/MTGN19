@@ -1,0 +1,130 @@
+<?php
+include_once("functions_common.php");
+
+$link = connectToDB();
+
+if (isset($_POST['search'])) {
+  $search = filter_input(INPUT_POST, 'search', FILTER_SANITIZE_STRING);
+
+  // --------- nØllan -----------
+
+  $query = "SELECT username, name, imagename, usergroup, n0llegroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND usergroup = 'nØllan') ORDER BY n0llegroup, name";
+  $result = execQuery($link, $query);
+
+  $output = "";
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>nØllan</h2></div>";
+  }
+
+  $currgroup = null;
+  while ($r = $result->fetch_object()) {
+    if ($n0llegroup !== $r->n0llegroup) {
+      $n0llegroup = $r->n0llegroup;
+      $output = $output . "<div class='n0llegroup_title'><h3>$n0llegroup</h3></div>";
+    }
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+    // --------- ÖPH -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND usergroup = 'ÖPH') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>ÖPH</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  // --------- KPH -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND usergroup = 'KPH') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>KPH</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  // --------- INPHO -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND usergroup = 'INPHO') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>INPHO</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  // --------- ARR -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND usergroup = 'ARR') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>ARR</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  // --------- LEK -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND usergroup = 'LEK') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>LEK</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  // --------- RSA -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND usergroup = 'RSA') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>RSA</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  // --------- VRAQUE -----------
+
+  $search = $_POST['search'];
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND usergroup = 'VRAQUE') ORDER BY name";
+  $result = execQuery($link, $query);
+
+  if ($result->num_rows != 0) {
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>VRAQUE</h2></div>";
+  }
+
+  while ($r = $result->fetch_object()) {
+    $output = $output . "<a class='profile_link' href='/profile.php?user=$r->username'><div class='profile_preview'><div class='profile_preview_img' style='background-image:url(\"images/uploads/profile_pictures/$r->imagename\")'></div><p>$r->name</p></div></a>";
+  }
+
+  echo $output;
+}
+
+?>
