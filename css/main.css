@@ -175,13 +175,33 @@ a:hover {
 /*
  *  All profiles
  */
+
+/* PLACEHOLDER STYLES JUST TO BE ALBE TO SEE THE PICTURES*/
+
 .profile_preview_img {
     width: 100px;
     height: 100px;
     -webkit-background-size: contain;
     background-size: contain;
+    background-repeat: no-repeat;
 }
 
+#profilepicture {
+    width: 100px;
+    height: 100px;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#profilepic-wrapper {
+    width: 100px;
+    height: 100px;
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
 /*
     Footer
 */

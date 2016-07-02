@@ -3,7 +3,6 @@
     include_once ('inc_header.php');
   ?>
     <title>Mottagningen 2016</title>
-    <script src="js/sha512.js"></script>
     <script src="js/register.js"></script>
   </head>
 
