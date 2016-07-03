@@ -1,5 +1,5 @@
 <?php
-function sec_session_start() { //Starta den här funktionen innan varje session av php
+function sec_session_start() { //Start this function before each session of php
   session_start();
 }
 function login($username, $password, $link) {
