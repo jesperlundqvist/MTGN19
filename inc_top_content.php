@@ -17,13 +17,12 @@ $admin = $_SESSION['admin'];
 		<ul class="sitenav">
 			<li><a href="/">Startsida </a></li>
 			<?php
-			if ($admin) {
-				?>
-				<li><a href="adminpanel.php">Adminpanel</a></li>
-				<?php
+			if ($admin) { ?>
+				<li><a href="adminpanel.php">Adminpanel</a></li> <?php
 	    }
-	      	?>
+	     ?>
     	<li><a href="allprofiles.php">Profiler</a></li>
+      <li><a href="gallery.php">Galleri</a></li>
     	<li><a href="functions_logout.php">Logga ut </a></li>
 		</ul>
 	</div>

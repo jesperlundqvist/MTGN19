@@ -20,6 +20,7 @@
       <div class="content-wrapper">
             <div class="admin-controls">
               <a href="register.php">Lägg till användare</a>
+              <a href="gallery_upload_images.php">Ladda upp bilder</a>
             </div>
 
             <div id="news_input_container" class="news-top">
