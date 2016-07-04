@@ -58,25 +58,29 @@
           $newsid = $news->id;
 
           echo "<div class='news'>";
-          echo "<h2><a href=\"newspage.php?id=$newsid\">$news->title</a></h2>";
+          echo "<h2><a class='news-title' href=\"newspage.php?id=$newsid\">$news->title</a></h2>";
           if (strlen($body) > 700) {
             echo "<p><p class=\"long\">$body</p></p>";
           } else {
             echo "<p>$body</p>";
           }
+          echo "<img class='news-symbol' src='/images/testfish.png'>";
           echo "<span class='post-footer'>";
-          echo "<h5><span class='hide-on-mobile2'><span class='ion-ios-person news-icon news-icon-author'></span> </span>$name</h5>";
-          echo "<h5><span class='hide-on-mobile2'><span class='ion-android-bookmark news-icon news-icon-tag'></span> </span><a href=\"/index.php?category=$news->category\">$news->category</a></h5>";
+          echo "<h5><span class='hide-on-mobile2'><span class='ion-ios-person news-icon news-icon-author'></span></span><span>Skrivet av: </span>$name</h5>";
+          echo "<h5><span class='hide-on-mobile2'><span class='ion-android-bookmark news-icon news-icon-tag'></span></span><a class='news-category' href=\"/index.php?category=$news->category\">$news->category</a></h5>";
           if ($username === $currusername || $admin) {
-            echo "<a href=\"newspage_edit.php?id=$newsid\"><h5>Redigera inlägg</h5></a>";
+            echo "<a class='news-edit' href=\"newspage_edit.php?id=$newsid\"><h5>Redigera inlägg</h5></a>";
           }
-          echo "</span>"; //post-footer
-          echo "<div class='white'></div>";
           echo "<div class='newsdate-wrapper'>";
           echo "<div class='right-banner'>";
-          echo "<h6>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($news->newsdate))) . "</h6>";
+          echo "<h6 class='news-timestamp'>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($news->newsdate))) . "</h6>";
           echo "</div>";
           echo "</div>"; //newsdate-wrapper
+          echo "</span>"; //post-footer
+          //echo "<div class='white'></div>";
+          echo "<svg class="news-divider-line">";
+          echo "<line x1="0" y1="0" x2="100%" y2="0"/>";
+          echo "</svg>";
           echo "</div>"; //news
         }
 
