@@ -78,8 +78,8 @@
           echo "</div>"; //newsdate-wrapper
           echo "</span>"; //post-footer
           //echo "<div class='white'></div>";
-          echo "<svg class="news-divider-line">";
-          echo "<line x1="0" y1="0" x2="100%" y2="0"/>";
+          echo "<svg class='news-divider-line'>";
+          echo "<line x1='0' y1='0' x2='100%'' y2='0'/>";
           echo "</svg>";
           echo "</div>"; //news
         }
