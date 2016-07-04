@@ -60,7 +60,7 @@
           echo "<div class='news'>";
           echo "<h2><a class='news-title' href=\"newspage.php?id=$newsid\">$news->title</a></h2>";
           if (strlen($body) > 700) {
-            echo "<p><p class=\"long\">$body</p></p>";
+            echo "<p class=\"long\">$body</p>";
           } else {
             echo "<p>$body</p>";
           }

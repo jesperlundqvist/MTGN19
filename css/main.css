@@ -173,11 +173,13 @@ a:hover {
     font-family: Open Sans;
 }
 
-.news p.long {
-    overflow: hidden;
-
+.news p {
     width: 80%;
     float: left;
+}
+
+.news p.long {
+    overflow: hidden;
     }
 
 .news a {
