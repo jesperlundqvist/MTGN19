@@ -425,3 +425,39 @@ footer a {
     text-align: center;
     margin-top: 150px;
 }
+
+.login-title {
+    font-family: Pirata One;
+    font-size: 60px;
+    line-height: 0.5;
+}
+
+#username, #password {
+    width: 20%;
+    height: 20px;
+
+    margin: 10px 0;
+    padding: 5px;
+
+    font-size: 14px;
+
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+#submit_btn {
+    width: 10%;
+    height: 20px;
+
+    margin: 10px 0;
+    padding: 16px;
+
+    background: none;
+    border: 1px solid white;
+    border-radius: 4px;
+
+
+    font-size: 16px;
+    color: white;
+    line-height: 0;
+}
