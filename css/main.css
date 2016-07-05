@@ -266,6 +266,8 @@ a:hover {
 
 .profile-wrapper {
     text-align: center;
+
+    margin-top: 100px;
     }
 
 #profilepic-wrapper {
@@ -276,8 +278,8 @@ a:hover {
     border-radius: 50%;
     border: 2px solid white;
 
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     background-size: 250px;
 
     -webkit-background-size: contain;
