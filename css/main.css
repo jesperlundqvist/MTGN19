@@ -279,18 +279,17 @@ a:hover {
 
     width: 120px;
     height: 120px;
-    background-size: 120px;
 
-    -webkit-background-size: contain;
-    background-size: contain;
+    -webkit-background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 #profilepicture {
     width: 100px;
     height: 100px;
-    -webkit-background-size: contain;
-    background-size: contain;
+    -webkit-background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -310,10 +309,9 @@ a:hover {
 
     width: 200px;
     height: 200px;
-    background-size: 250px;
 
-    -webkit-background-size: contain;
-    background-size: contain;
+    -webkit-background-size: cover;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
