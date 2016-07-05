@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Registrera ny användare</title>
+    <title>Redigera profil</title>
     <script src="js/profile_edit.js"></script>
   </head>
 
