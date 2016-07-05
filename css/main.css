@@ -264,13 +264,51 @@ a:hover {
     background-repeat: no-repeat;
 }
 
+.profile-wrapper {
+    text-align: center;
+    }
+
 #profilepic-wrapper {
-    width: 100px;
-    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-position: 50%;
+    border-radius: 50%;
+    border: 2px solid white;
+
+    width: 250px;
+    height: 250px;
+    background-size: 250px;
+
     -webkit-background-size: contain;
     background-size: contain;
     background-repeat: no-repeat;
+}
 
+.ribbon-content {
+    font-family: Pirata One;
+    font-size: 48px;
+}
+
+.n0llegroup {
+    font-size: 20px;
+    line-height: 0.5;
+}
+
+.profile-divider-line {
+    width: 33%;
+    height: 1px;
+    }
+
+.profile-divider-line line {
+    stroke: #f7ecd6;
+    stroke-width: 1px;
+}
+
+.description {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40%;
 }
 /*
     Footer

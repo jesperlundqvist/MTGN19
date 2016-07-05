@@ -99,6 +99,9 @@
     <div class="content-wrapper">
 
         <?php
+
+        //Wrapper
+        echo "<div class='profile-wrapper'>";
         //Länkar
         echo "<div class='prevProfileLink'><a class='no-link' href='profile.php?user=$prevUser'><span class='ion-ios-arrow-thin-left'></span></a></div>";
         echo "<div class='nextProfileLink'><a class='no-link' href='profile.php?user=$nextUser'><span class='ion-ios-arrow-thin-right'></span></a></div>";
@@ -113,9 +116,15 @@
         // namn
         if ($name != null) {
           echo "<div class='non-semantic-protector'> ";
-          echo "<h2 class='bottom-ribbon'><span class='ribbon-content'>$name</span></h2>";
+          echo "<p class='bottom-ribbon'><span class='ribbon-content'>$name</span></p>";
+          echo "<p class='n0llegroup'>$n0llegroup</p>";
           echo "</div>";
         }
+
+        // brytstreck
+        echo "<svg class='profile-divider-line'>";
+        echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
+        echo "</svg>";
 
         // beskrivning
 
@@ -133,13 +142,14 @@
             </p>";
         echo "</div>";
 
+        // Kommenterar bort detta så länge - diskutera om hur n0llegruppsnamnet ska visas /Kalle
 
-        if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
-          echo "<p>
-              <span class='question'>nØllegrupp</span>
-              <span class='answer'>$n0llegroup</span>
-            </p>";
-        }
+        // if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
+        //   echo "<p>
+        //       <span class='question'>nØllegrupp</span>
+        //       <span class='answer'>$n0llegroup</span>
+        //     </p>";
+        // }
 
         // if ($gandalf != null) {
         //   echo "<p>
@@ -166,6 +176,8 @@
         if ($admin || $ownProfile) {
           echo "<div class=\"edit_profile_link\"><a id=\"edit_profile\" class=\"no-link button\" href=\"profile_edit.php?user=$username\">Redigera profil</a></div>";
         }
+
+        echo "</div>"; //Wrapper
       ?>
     </div>
 
