@@ -429,6 +429,7 @@ footer a {
 .login-title {
     font-family: Pirata One;
     font-size: 5em;
+    font-weight: normal;
     line-height: 0.5;
 }
 
@@ -442,6 +443,7 @@ footer a {
 
     font-size: 14px;
 
+    background-color: white;
     border: 1px solid white;
     border-radius: 4px;
 }
