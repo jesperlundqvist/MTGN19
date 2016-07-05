@@ -14,7 +14,7 @@
 
     <div class="content-wrapper">
       <div class="login-wrap">
-        <h1 class="login-title">Mottagningen 2016</h1>
+        <h1 class="login-title">Mottagningen</h1>
           <input type="text" id="username" placeholder="Användarnamn"/>
           <br/>
           <input type="password" id="password" placeholder="Lösenord"/>

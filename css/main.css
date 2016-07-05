@@ -428,13 +428,14 @@ footer a {
 
 .login-title {
     font-family: Pirata One;
-    font-size: 60px;
+    font-size: 5em;
     line-height: 0.5;
 }
 
 #username, #password {
     width: 20%;
     height: 20px;
+    min-width: 250px;
 
     margin: 10px 0;
     padding: 5px;
@@ -448,6 +449,7 @@ footer a {
 #submit_btn {
     width: 10%;
     height: 20px;
+    min-width: 120px;
 
     margin: 10px 0;
     padding: 16px;
