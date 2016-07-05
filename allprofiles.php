@@ -20,6 +20,7 @@
         </div>
 
         <br/>
+        <!-- Profiles are rendered in file functions_searchusers.php -->
         <div id="profiles"></div>
     </div>
 

@@ -248,9 +248,39 @@ a:hover {
 
 /* PLACEHOLDER STYLES JUST TO BE ALBE TO SEE THE PICTURES*/
 
+.usergroup_banner {
+    font-family: Pirata One;
+    font-size: 40px;
+    font-weight: normal;
+
+    text-align: center;
+}
+
+.n0llegroup_title {
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.profile_link {
+    display: inline-block;
+    text-align: center;
+
+    margin: 20px;
+
+    font-weight: bold;
+}
+
 .profile_preview_img {
-    width: 100px;
-    height: 100px;
+    background-position: 50%;
+    border-radius: 50%;
+    border: 2px solid white;
+
+    width: 120px;
+    height: 120px;
+    background-size: 120px;
+
     -webkit-background-size: contain;
     background-size: contain;
     background-repeat: no-repeat;
