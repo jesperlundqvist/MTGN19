@@ -484,7 +484,7 @@ footer a {
         transform: translateY(0%);  
     }
     50% {
-        transform: translateY(8%);  
+        transform: translateY(5%);  
     }   
     100% {
         transform: translateY(0%);
@@ -496,7 +496,7 @@ footer a {
         -webkit-transform: translateY(0%);  
     }
     50% {
-        -webkit-transform: translateY(8%);  
+        -webkit-transform: translateY(5%);  
     }   
     100% {
         -webkit-transform: translateY(0%);
