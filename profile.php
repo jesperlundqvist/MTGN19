@@ -117,7 +117,9 @@
         if ($name != null) {
           echo "<div class='non-semantic-protector'> ";
           echo "<p class='bottom-ribbon'><span class='ribbon-content'>$name</span></p>";
-          echo "<p class='n0llegroup'>$n0llegroup</p>";
+          if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
+            echo "<p class='n0llegroup'>$n0llegroup</p>";
+          }
           echo "</div>";
         }
 
