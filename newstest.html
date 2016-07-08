@@ -17,14 +17,20 @@
           font-family: Open Sans;
       }
 
-      .news p {
-    width: 80%;
-    float: left;
-}
+      .news-content:nth-child(odd) {
+        width: 80%;
+        float: left;
+      }
 
-.news p.long {
-    overflow: hidden;
-    }
+      .news-content:nth-child(even) {
+        width: 80%;
+        float: right;
+        color: red;
+      }
+
+      .news p.long {
+          overflow: hidden;
+          }
 
       .news a {
         text-decoration: none;
@@ -54,6 +60,10 @@
         float: right;
         height: 100px;
         
+      }
+
+      .news-symbol:nth-child(2n) {
+        float: left;
       }
 
       .news-author, .news-category, .news-edit {
@@ -90,6 +100,7 @@
   </head>
   <body>
   <div class='news'>
+    <div class='news-content'>
 <h2><a class="news-title" href="#">Why is the rum gone?</a></h2>
 <p class="long">Furl gangway fore hardtack fluke interloper tack grog jury mast spirits. Yardarm walk the plank stern Brethren of the Coast Shiver me timbers six pounders topsail dead men tell no tales tender crow's nest. Bilge rat hearties gabion fathom Cat o'nine tails brig squiffy rutters booty quarterdeck.<br/><br/>
 Killick parrel matey coxswain Pieces of Eight cutlass yarl gangway fore hardtack fluke interloper tack grog jury mast spirits. Yardarm walk the plank stern Brethren of the Coast Shiver me timbers six pounders topsail dead men tell no tales tender crow's nest. Bilge rat hearties gabion fathom Cat o'nine tails brig squiffy rutters booty quarterdeck.
@@ -98,6 +109,7 @@ Killick parrel matey coxswain Pieces of Eight cutlassl gangway fore hardtack flu
 
 Killick parrel matey coxswain Pieces of Eight cutlass yard galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum. Matey Brethren of the Coast Sink me grapple Sea Legs yard galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum. Matey Brethren of the Coast Sink me grapple Sea Legsd galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum.
 Matey Brethren of the Coast Sink me grapple Sea Legs tack jury mast topsail cackle fruit gangplank. Clipper hardtack aft yo-ho-ho tender clap of thunder smartly swing the lead yardarm draught. Corsair barkadeer nipperkin schooner squiffy chase guns bilged on her anchor jolly boat trysail booty.</p>
+</div>
 <img class="news-symbol" src="C:/Users/Karl/Documents/GitHub/MTGN/images/testfish.png">
 <span class='post-footer'>
 <h5 class="news-author"><span class='hide-on-mobile2'><span class='ion-ios-person news-icon news-icon-author'></span></span><span>Skrivet av: </span>Namn Namnsson</h5>
@@ -116,25 +128,26 @@ Matey Brethren of the Coast Sink me grapple Sea Legs tack jury mast topsail cack
 </div>
 
 <div class='news'>
-<h2><a class="news-title" href="#">Men först måste ni ta det lugnt</a></h2>
-<p>Furl gangway fore hardtack fluke interloper tack grog jury mast spirits. Yardarm walk the plank stern Brethren of the Coast Shiver me timbers six pounders topsail dead men tell no tales tender crow's nest. Bilge rat hearties gabion fathom Cat o'nine tails brig squiffy rutters booty quarterdeck.<br/><br/>
-Killick parrel matey coxswain Pieces of Eight cutlass yard galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum.
-Matey Brethren of the Coast Sink me grapple Sea Legs tack jury mast topalleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum.
-Matey Brethren of the Coast Sink me grapple Sea Legs tack jury mast topsail cackle fruit gangplank. Clipper hardtack aft yo-ho-ho tender clap of thunder smartly swing the lead yardarm draught. Corsair barkadeer nipperkin schooner squiffy sail cackle fruit gangplank. Clipper hardtack aft yo-ho-ho tender clap of thunder smartly swing the lead yardarm draught. Corsair barkadeer nipperkin schooner squiffy chase guns bilged on her anchor jolly boat trysail booty.</p><img class="news-symbol" src="C:/Users/Karl/Documents/GitHub/MTGN/images/testfish.png"></img>
+    <div class='news-content'>
+<h2><a class="news-title" href="#">Why is the rum gone?</a></h2>
+<p class="long">Furl gangway fore hardtack fluke interloper tack grog jury mast spirits. Yardarm walk the plank stern Brethren of the Coast Shiver me timbers six pounders topsail dead men tell no tales tender crow's nest. Bilge rat hearties gabion fathom Cat o'nine tails brig squiffy rutters booty quarterdeck.<br/><br/>
+Killick parrel matey coxswain Pieces of Eight cutlass yarl gangway fore hardtack fluke interloper tack grog jury mast spirits. Yardarm walk the plank stern Brethren of the Coast Shiver me timbers six pounders topsail dead men tell no tales tender crow's nest. Bilge rat hearties gabion fathom Cat o'nine tails brig squiffy rutters booty quarterdeck.
+
+Killick parrel matey coxswain Pieces of Eight cutlassl gangway fore hardtack fluke interloper tack grog jury mast spirits. Yardarm walk the plank stern Brethren of the Coast Shiver me timbers six pounders topsail dead men tell no tales tender crow's nest. Bilge rat hearties gabion fathom Cat o'nine tails brig squiffy rutters booty quarterdeck.
+
+Killick parrel matey coxswain Pieces of Eight cutlass yard galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum. Matey Brethren of the Coast Sink me grapple Sea Legs yard galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum. Matey Brethren of the Coast Sink me grapple Sea Legsd galleon American Main belay. Chase pink ye hempen halter crimp black spot bilged on her anchor Sink me American Main dead men tell no tales. Crimp furl Sail ho poop deck jury mast scurvy swing the lead long clothes Cat o'nine tails rum.
+Matey Brethren of the Coast Sink me grapple Sea Legs tack jury mast topsail cackle fruit gangplank. Clipper hardtack aft yo-ho-ho tender clap of thunder smartly swing the lead yardarm draught. Corsair barkadeer nipperkin schooner squiffy chase guns bilged on her anchor jolly boat trysail booty.</p>
+</div>
+<img class="news-symbol" src="C:/Users/Karl/Documents/GitHub/MTGN/images/testfish.png">
 <span class='post-footer'>
-<h5><span class='hide-on-mobile2'><span class='ion-ios-person news-icon news-icon-author'></span></span><span>Skrivet av: </span>Namn Namnsson</h5>
+<h5 class="news-author"><span class='hide-on-mobile2'><span class='ion-ios-person news-icon news-icon-author'></span></span><span>Skrivet av: </span>Namn Namnsson</h5>
 <h5><span class='hide-on-mobile2'><span class='ion-android-bookmark news-icon news-icon-tag'></span> </span><a class="news-category" href=\"#">Kategori</a></h5>
 <a class="news-edit" href=\"newspage_edit.php?id=$newsid\"><h5>Redigera inlägg</h5></a>
-</span>
-<div class='white'></div>
 <div class='newsdate-wrapper'>
 <div class='right-banner'>
 <h6 class="news-timestamp">mån 4 juli 13:37</h6>
 </div>
 </div>
-<svg class="news-divider-line">
-  <line x1="0" y1="0" x2="100%" y2="0"/>
-</svg>
-</div>
+</span>
   </body>
 </html>

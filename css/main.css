@@ -433,7 +433,7 @@ footer a {
     line-height: 0.5;
 }
 
-#username, #password {
+#username, #password, #search {
     width: 20%;
     height: 20px;
     min-width: 250px;
