@@ -212,7 +212,7 @@ function areYouSureDeleteBlandare(blandarid, ext) {
 
 function deleteImage(imageid, ext) {
   $.ajax({
-    url: 'deleteimage.php',
+    url: 'delete_handler.php?action=image',
     type: "POST",
     data: {
       'id': imageid + '.' + ext
@@ -226,7 +226,7 @@ function deleteImage(imageid, ext) {
 
 function deleteVideo(videoid) {
   $.ajax({
-    url: 'deletevideo.php',
+    url: 'delete_handler.php?action=video',
     type: "POST",
     data: {
       'id': videoid
@@ -240,7 +240,7 @@ function deleteVideo(videoid) {
 
 function deleteBlandare(blandarid) {
   $.ajax({
-    url: 'deleteblandare.php',
+    url: 'delete_handler.php?action=blandaren',
     type: "POST",
     data: {
       'id': blandarid

@@ -23,6 +23,7 @@ $admin = $_SESSION['admin'];
 	     ?>
     	<li><a href="allprofiles.php">Profiler</a></li>
       <li><a href="gallery.php">Galleri</a></li>
+      <li><a href="blandaren.php">Bländaren</a></li>
     	<li><a href="functions_logout.php">Logga ut </a></li>
 		</ul>
 	</div>
