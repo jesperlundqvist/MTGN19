@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <style type="text/css">
+  	html, body {
+	    margin: 0;
+	    padding: 0;
+	    font-family: Open Sans, sans-serif;
+	}
+
+	body {
+	    background: #025c77 url('C:/Users/Karl/Documents/GitHub/MTGN/design/body_bg.jpg');
+
+	    color: #f7ecd6;
+	    font-size: 14px;
+}
+
+ a {
+    font-size: 14px;
+    letter-spacing: 0.5;
+
+    /*color: #02A0C7;*/
+    color:#f7ecd6;
+    text-decoration: none;
+}
+
+a:hover {
+    color: auto;
+    opacity: 0.8;
+}
+
+.content-wrapper {
+    padding-bottom: 25px;
+    margin: 0 auto;
+    max-width: 1000px;
+
+    position: relative;
+    overflow: hidden;
+
+    text-align: center;
+ }
+
+	.weekbutton, .weekdaybutton {
+		text-transform: uppercase;
+	}
+
+
+  	.weekbutton {
+  		display: inline-block;
+  		padding: 10px 50px;
+  		
+  		font-size: 24px;
+
+  		transition: background-color 0.3s, color 0.3s;
+  		-webkit-transition: background-color 0.3s, color 0.3s;
+  	}
+
+  	.weekbutton:hover, .weekbuttonselected {
+  		background-color: #f7ecd6;
+  		color: #025c77;
+  	}
+
+  	.weekdaybutton {
+  		display: inline-block;
+  		padding: 5px 20px;
+
+  		font-size: 16px;
+
+  		border-bottom: 1px solid #025c77;
+  		transition: border-color 0.3s;
+  		-webkit-transition: border-color 0.3s;
+  	}
+
+  	.weekdaybutton:hover, .weekdaybuttonselected {
+  		border-color: #f7ecd6;
+  	}
+
+
+  	.gallery-divider-line {
+  		height: 1px;
+  		width: 85%;
+  	}
+
+  	.gallery-divider-line line {
+  		stroke: white;
+  		stroke-width: 1px;
+  	}
+  </style>
+  <body>
+  	<div class="content-wrapper">
+  	<div class="weeks">
+  <a id="linkweek" class="weekbutton weekbuttonselected" href="#">Vecka 34</a>
+<a id="linkweek" class="weekbutton" href="#">Vecka 35</a>
+<a id="linkweek" class="weekbutton" href="#">Vecka 36</a>
+<a id="linkweek" class="weekbutton" href="#">Vecka 37</a>
+</div>
+<svg class="gallery-divider-line">
+	<line x1="0" y1="0" x2="100%" y2="0">
+</svg>
+<div class="days">
+<a id="linkweekday" class="weekdaybutton weekdaybuttonselected" href="#">måndag</a>
+<a id="linkweekday" class="weekdaybutton" href="#">tisdag</a>
+<a id="linkweekday" class="weekdaybutton" href="#">onsdag</a>
+<a id="linkweekday" class="weekdaybutton" href="#">torsdag</a>
+<a id="linkweekday" class="weekdaybutton" href="#">fredag</a>
+<a id="linkweekday" class="weekdaybutton" href="#">lördag</a>
+<a id="linkweekday" class="weekdaybutton" href="#">söndag</a>
+</div>
+</div>
+  </body>
+</html>

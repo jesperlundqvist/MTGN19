@@ -6,26 +6,36 @@
 
   $year = 2014;
 
-  function printWeekLink($year, $week, $currentweek) {
-    $link = getGalleryLink($year, $week);
-    if ($week == $currentweek) {
-      echo "<a id=\"linkweek$week\" class=\"weekbutton weekbuttonselected\" href=\"$link\">Vecka $week</a>";
+  echo "<div class='weeks'>";
+
+  function printWeekLink($year, , $currentweek) {
+    $link = getGalleryLink($year, );
+    if ( == $currentweek) {
+      echo "<a id=\"linkweek\" class=\"weekbutton weekbuttonselected\" href=\"$link\">Vecka </a>";
     } else {
-      echo "<a id=\"linkweek$week\" class=\"weekbutton\" href=\"$link\">Vecka $week</a>";
+      echo "<a id=\"linkweek\" class=\"weekbutton\" href=\"$link\">Vecka </a>";
     }
   }
 
-  function printWeekdaysLink($year, $week, $day, $currentday) {
-    $day++;
+  echo "</div>"; //weeks
+  echo "<svg class='gallery-divider-line'>";
+  echo "<line x1='0' y1='0' x2='100%' y2='0'>";
+  echo "</svg>";
+  echo "div class='days'>";
 
-    $link = getGalleryLink($year, $week, $day);
-    $daystring = getTheDayString($year, $week, $day);
-    if ($day == $currentday) {
-      echo "<a id=\"linkweekday$day\" class=\"weekdaybutton weekdaybuttonselected\" href=\"$link\">$daystring</a>";
+  function printWeekdaysLink($year, , , $currentday) {
+    ++;
+
+    $link = getGalleryLink($year, , );
+    string = getTheDayString($year, , );
+    if ( == $currentday) {
+      echo "<a id=\"linkweekday\" class=\"weekdaybutton weekdaybuttonselected\" href=\"$link\">string</a>";
     } else {
-      echo "<a id=\"linkweekday$day\" class=\"weekdaybutton\" href=\"$link\">$daystring</a>";
+      echo "<a id=\"linkweekday\" class=\"weekdaybutton\" href=\"$link\">string</a>";
     }
   }
+
+  echo "</div>"; //days
 ?>
     <title>Galleri</title>
     <link rel="stylesheet" href="css/swiper.min.css" />
@@ -41,7 +51,7 @@
     h3 {
   display: block;
   clear: both;
-  font-family: Sunday;
+  font-family: Open Sans;
   font-weight: normal;
   font-size: 110%;
   padding-top: 15px;
@@ -513,26 +523,26 @@ a.weekdaybutton:hover {
 
           echo '<div class="week-choice choice buttons">';
           if (isset($_GET['week'])) {
-            $week = $_GET['week'];
+             = $_GET['week'];
           } else {
-            $week = date("W");
+             = date("W");
           }
 
           for ($i = 0; $i < 4; $i++) {
-            printWeekLink($year, 34 + $i, $week);
+            printWeekLink($year, 34 + $i, );
           }
 
           if ($_GET['day'] != "") {
-            $day = $_GET['day'];
+             = $_GET['day'];
           } else {
-            $day = 10; // Valde 10 bara för att null inte fungerade.
+             = 10; // Valde 10 bara för att null inte fungerade.
           }
 
           echo '</div>';
 
           echo '<div class="day-choice choice buttons">';
           for($i = 0; $i < 7; $i++) {
-            printWeekdaysLink($year, $week, $i, $day);
+            printWeekdaysLink($year, , $i, );
           }
           echo '</div>';
 
@@ -540,14 +550,14 @@ a.weekdaybutton:hover {
 
 
           //$query = "SELECT imagename, imagedate FROM images ORDER BY imagedate, imageorder ASC";
-          if ($day == 10) { // day är alltså inte specifierad
-            $weekdates = getStartAndEndDate($year, $week);
-            $startdate = $weekdates['weekstart'];
-            $enddate = $weekdates['weekend'];
+          if ( == 10) { // day är alltså inte specifierad
+            dates = getStartAndEndDate($year, );
+            $startdate = dates['weekstart'];
+            $enddate = dates['weekend'];
             // $query = "SELECT imagename, imagecreateddate FROM images WHERE date(imagecreateddate) BETWEEN '$startdate' AND '$enddate' ORDER BY imagecreateddate, imageorder ASC";
             $query = "SELECT imagename, imagecreateddate FROM images ORDER BY imagecreateddate, imageorder ASC";
           } else {
-            $thedate = getTheDate($year, $week, $day);
+            $thedate = getTheDate($year, , );
             $query = "SELECT imagename, imagecreateddate FROM images WHERE date(imagecreateddate) = '$thedate' ORDER BY imagecreateddate, imageorder ASC";
           }
 
