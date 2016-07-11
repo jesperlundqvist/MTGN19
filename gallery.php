@@ -6,8 +6,6 @@
 
   $year = 2014;
 
-  echo "<div class='weeks'>";
-
   function printWeekLink($year, $week, $currentweek) {
     $link = getGalleryLink($year, $week);
     if ($week == $currentweek) {
@@ -17,17 +15,11 @@
     }
   }
 
-  echo "</div>"; //weeks
-  echo "<svg class='gallery-divider-line'>";
-  echo "<line x1='0' y1='0' x2='100%' y2='0'>";
-  echo "</svg>";
-  echo "div class='days'>";
-
   function printWeekdaysLink($year, $week, $day, $currentday) {
     $day++;
 
     $link = getGalleryLink($year, $week, $day);
-    string = getTheDayString($year, $week, $day);
+    $daystring = getTheDayString($year, $week, $day);
     if ($day == $currentday) {
       echo "<a id=\"linkweekday$day\" class=\"weekdaybutton weekdaybuttonselected\" href=\"$link\">$daystring</a>";
     } else {
@@ -35,7 +27,6 @@
     }
   }
 
-  echo "</div>"; //days
 ?>
     <title>Galleri</title>
     <link rel="stylesheet" href="css/swiper.min.css" />
@@ -540,6 +531,10 @@ a.weekdaybutton:hover {
 
           echo '</div>';
 
+          echo "<svg class='gallery-divider-line'>";
+          echo "<line x1='0' y1='0' x2='100%' y2='0'>";
+          echo "</svg>";
+
           echo '<div class="day-choice choice buttons">';
           for($i = 0; $i < 7; $i++) {
             printWeekdaysLink($year, $week, $i, $day);
@@ -552,8 +547,8 @@ a.weekdaybutton:hover {
           //$query = "SELECT imagename, imagedate FROM images ORDER BY imagedate, imageorder ASC";
           if ($day == 10) { // day är alltså inte specifierad
             $weekdates = getStartAndEndDate($year, $week);
-            $startdate = dates['weekstart'];
-            $enddate = dates['weekend'];
+            $startdate = $weekdates['weekstart'];
+            $enddate = $weekdates['weekend'];
             // $query = "SELECT imagename, imagecreateddate FROM images WHERE date(imagecreateddate) BETWEEN '$startdate' AND '$enddate' ORDER BY imagecreateddate, imageorder ASC";
             $query = "SELECT imagename, imagecreateddate FROM images ORDER BY imagecreateddate, imageorder ASC";
           } else {
