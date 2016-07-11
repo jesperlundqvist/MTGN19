@@ -8,12 +8,12 @@
 
   echo "<div class='weeks'>";
 
-  function printWeekLink($year, , $currentweek) {
-    $link = getGalleryLink($year, );
-    if ( == $currentweek) {
-      echo "<a id=\"linkweek\" class=\"weekbutton weekbuttonselected\" href=\"$link\">Vecka </a>";
+  function printWeekLink($year, $week, $currentweek) {
+    $link = getGalleryLink($year, $week);
+    if ($week == $currentweek) {
+      echo "<a id=\"linkweek$week\" class=\"weekbutton weekbuttonselected\" href=\"$link\">Vecka $week</a>";
     } else {
-      echo "<a id=\"linkweek\" class=\"weekbutton\" href=\"$link\">Vecka </a>";
+      echo "<a id=\"linkweek$week\" class=\"weekbutton\" href=\"$link\">Vecka $week</a>";
     }
   }
 
@@ -23,15 +23,15 @@
   echo "</svg>";
   echo "div class='days'>";
 
-  function printWeekdaysLink($year, , , $currentday) {
-    ++;
+  function printWeekdaysLink($year, $week, $day, $currentday) {
+    $day++;
 
-    $link = getGalleryLink($year, , );
-    string = getTheDayString($year, , );
-    if ( == $currentday) {
-      echo "<a id=\"linkweekday\" class=\"weekdaybutton weekdaybuttonselected\" href=\"$link\">string</a>";
+    $link = getGalleryLink($year, $week, $day);
+    string = getTheDayString($year, $week, $day);
+    if ($day == $currentday) {
+      echo "<a id=\"linkweekday$day\" class=\"weekdaybutton weekdaybuttonselected\" href=\"$link\">$daystring</a>";
     } else {
-      echo "<a id=\"linkweekday\" class=\"weekdaybutton\" href=\"$link\">string</a>";
+      echo "<a id=\"linkweekday$day\" class=\"weekdaybutton\" href=\"$link\">$daystring</a>";
     }
   }
 
@@ -48,7 +48,7 @@
 ?>
     <style>
 
-    h3 {
+    /*h3 {
   display: block;
   clear: both;
   font-family: Open Sans;
@@ -105,7 +105,7 @@ a.weekdaybutton:hover {
   border-radius: 0;
   height: 48px;
   line-height: 48px;
-}
+}*/
 
 .upload_link {
   width:100%;
@@ -523,26 +523,26 @@ a.weekdaybutton:hover {
 
           echo '<div class="week-choice choice buttons">';
           if (isset($_GET['week'])) {
-             = $_GET['week'];
+            $week = $_GET['week'];
           } else {
-             = date("W");
+            $week = date("W");
           }
 
           for ($i = 0; $i < 4; $i++) {
-            printWeekLink($year, 34 + $i, );
+            printWeekLink($year, 34 + $i, $week);
           }
 
           if ($_GET['day'] != "") {
-             = $_GET['day'];
+            $day = $_GET['day'];
           } else {
-             = 10; // Valde 10 bara för att null inte fungerade.
+            $day = 10; // Valde 10 bara för att null inte fungerade.
           }
 
           echo '</div>';
 
           echo '<div class="day-choice choice buttons">';
           for($i = 0; $i < 7; $i++) {
-            printWeekdaysLink($year, , $i, );
+            printWeekdaysLink($year, $week, $i, $day);
           }
           echo '</div>';
 
@@ -550,14 +550,14 @@ a.weekdaybutton:hover {
 
 
           //$query = "SELECT imagename, imagedate FROM images ORDER BY imagedate, imageorder ASC";
-          if ( == 10) { // day är alltså inte specifierad
-            dates = getStartAndEndDate($year, );
+          if ($day == 10) { // day är alltså inte specifierad
+            $weekdates = getStartAndEndDate($year, $week);
             $startdate = dates['weekstart'];
             $enddate = dates['weekend'];
             // $query = "SELECT imagename, imagecreateddate FROM images WHERE date(imagecreateddate) BETWEEN '$startdate' AND '$enddate' ORDER BY imagecreateddate, imageorder ASC";
             $query = "SELECT imagename, imagecreateddate FROM images ORDER BY imagecreateddate, imageorder ASC";
           } else {
-            $thedate = getTheDate($year, , );
+            $thedate = getTheDate($year, $week, $day);
             $query = "SELECT imagename, imagecreateddate FROM images WHERE date(imagecreateddate) = '$thedate' ORDER BY imagecreateddate, imageorder ASC";
           }
 
