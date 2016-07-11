@@ -58,13 +58,13 @@
           $newsid = $news->id;
 
           echo "<div class='news'>";
+          echo "<div class='news-content'>";
           echo "<h2><a class='news-title' href=\"newspage.php?id=$newsid\">$news->title</a></h2>";
           if (strlen($body) > 700) {
             echo "<p class=\"long\">$body</p>";
           } else {
             echo "<p>$body</p>";
           }
-          echo "<img class='news-symbol' src='/images/testfish.png'>";
           echo "<span class='post-footer'>";
           echo "<h5><span class='hide-on-mobile2'><span class='ion-ios-person news-icon news-icon-author'></span></span><span>Skrivet av: </span>$name</h5>";
           echo "<h5><span class='hide-on-mobile2'><span class='ion-android-bookmark news-icon news-icon-tag'></span></span><a class='news-category' href=\"/index.php?category=$news->category\">$news->category</a></h5>";
@@ -78,6 +78,8 @@
           echo "</div>"; //newsdate-wrapper
           echo "</span>"; //post-footer
           //echo "<div class='white'></div>";
+          echo "</div>"; //news-content
+          echo "<img class='news-symbol' src='/images/testfish.png'>";
           echo "<svg class='news-divider-line'>";
           echo "<line x1='0' y1='0' x2='100%'' y2='0'/>";
           echo "</svg>";
