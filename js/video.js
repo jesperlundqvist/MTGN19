@@ -202,7 +202,7 @@ function areYouSureDeleteVideo(videoid) {
 
 function deleteVideo(videoid) {
   $.ajax({
-    url: 'deletevideo.php',
+    url: 'delete_handler.php?action=video',
     type: "POST",
     data: {
       'id': videoid
