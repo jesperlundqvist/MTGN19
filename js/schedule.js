@@ -23,7 +23,7 @@ $( document ).ready(function() {
 
 
   //globala variabler
-  browserKey = 'AIzaSyCzzBWkA8251MD1bQnHItIQWOxb_NIJWE0'; // Gustav test
+  browserKey = 'AIzaSyCsUBinzlYwP-gE74Ls5L9-xSlZbJTIqlM'; // Gustav test
   calendarid = 'qh3at27vur0f76h63fc37tcd18@group.calendar.google.com'; // Också gustav test
   startTime = new Date();
 
