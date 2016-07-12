@@ -132,6 +132,10 @@ function drawSchedule(data) {
   updateDates();
 
   for (var i in data.items) {
+    if (typeof data.items[i].location == 'undefined') {
+      data.items[i].location = '';
+    }
+    console.log(data.items[i].location);
     var eventDate = new Date(data.items[i].start.dateTime);
     var eventEndDate = new Date(data.items[i].end.dateTime);
     var day = schedule.find('#' + eventDate.getDayOfWeek());
