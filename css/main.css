@@ -533,6 +533,32 @@ footer a {
     line-height: 0;
 }
 
+/*
+    Bländaren
+*/
+
+.blandar_container {
+    text-align: center;
+ }
+
+ .blandarDiv_container {
+    text-align: center;
+
+    max-width: 33%;
+    display: inline-block;
+    margin: 0 48px;
+ }
+
+  .blandartitle {
+    font-family: Pirata One;
+    font-size: 32px;
+    font-weight: normal;
+  }
+
+  .blandarthumb {
+    max-width: 100%;
+  }
+
 /* Animation causing a "floating" effect */
 /* ------------------------------------- */
 .floating{

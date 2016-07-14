@@ -3,7 +3,8 @@
     include_once ('inc_header.php');
   ?>
     <title>Bländaren</title>
-    <link rel="stylesheet" href="CSS/swiper.min.css" />
+    <link rel="stylesheet" href="css/swiper.min.css" />
+    <link rel="stylesheet" href="css/main.css" type="text/css">
     <script src="js/gallery.js"></script>
   </head>
 
@@ -40,17 +41,15 @@
               echo '<div id="' . $blandare->blandarid . '" class="blandarDiv_container">';
 
 
-              echo  '<div class="blandardiv">';
               if ($admin) {
                 echo '<div class="delete deleteblandare" id="delete_' . $blandare->frontpage . '"><span class="ion-ios-trash-outline"></span> <span class="hide-on-mobile">DELETE </span>' . $blandare->blandarid . '</div>';
               }
               echo '
                     <a class="no-link" target="_blank" href="images/uploads/blandaren/pdfs/' . $blandare->blandarpdf . '">
-                      <h3 class"blandartitle">' . $blandare->blandarname . '</h3>
+                      <h3 class="blandartitle">' . $blandare->blandarname . '</h3>
                       <img class="blandarthumb" src="images/uploads/blandaren/frontpages/' . $blandare->frontpage . '"/>
-                    </a>
-                  </div>'; // end blandardiv
-              echo '</div>';
+                    </a>';
+              echo '</div>'; // blandarDiv_container
 
             }
             echo '</div>';
