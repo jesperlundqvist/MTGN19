@@ -55,7 +55,7 @@
 	</svg>
 	<!-- Email links -->
 	<div class="email-wrapper">
-		<h5 class="email-title">Mail</h5>
+		<p class="email-title">Mail</p>
 		<ul class="links-email">
 			<li class="links-element">
 				<a href="mailto:oph@medieteknik.com" target="_top">oph@medieteknik.com</a>
