@@ -543,6 +543,7 @@ footer a {
 
  .blandarDiv_container {
     text-align: center;
+    vertical-align: top;
 
     max-width: 33%;
     display: inline-block;
@@ -557,6 +558,7 @@ footer a {
 
   .blandarthumb {
     max-width: 100%;
+    border: 1px solid #f7ecd6;
   }
 
 /* Animation causing a "floating" effect */
