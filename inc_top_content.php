@@ -13,8 +13,8 @@ $admin = $_SESSION['admin'];
     <div class="header-wave"></div>
 </div>
 <nav class="menubar">
-	<div class="constrainer">
-		<ul class="sitenav">
+	<div class="constrainer nav-wrapper">
+		<ul id="nav-mobile" class="sitenav left hide-on-med-and-down">
 			<li><a href="/">Startsida </a></li>
 			<?php
 			if ($admin) { ?>
