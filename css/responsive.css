@@ -1,0 +1,28 @@
+@media all and (max-width: 1024px) {
+
+}
+
+
+@media all and (max-width: 960px) {
+
+}
+
+/* This is the size where we switch to mobile menu */
+@media all and (max-width: 768px) {
+
+
+}
+
+
+
+
+
+
+/*
+* HELPERS
+*/
+
+@media all and (max-width: 1024px) {
+}
+@media all and (max-width: 768px) {
+}
