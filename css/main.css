@@ -410,39 +410,34 @@ a:hover {
 
 footer {
     background: #F7ECD6;
+    color: black;
 
     padding: 1% 0 1% 0;
-    color: #000;
+
+    width: 100%;
+    height: 200px;
+
+    text-align: center;
 }
 
 footer a {
-    color: #000;
-}
-
-.footer-wrapper {
-
-    width: 100%;
-    height: 25%;
-
-    text-align: center;
-
+    color: black;
 }
 
 .medieteknik-wrapper {
     float:left;
     width: 25%;
-
-    text-align: center;
+    min-width: 175px;
 }
 
 .instagram-wrapper, .snapchat-wrapper, .email-wrapper, .credits-wrapper {
     float: left;
     width: 20%;
+    min-width: 150px;
 }
 
 .medieteknik-logo {
-    /*height: 50%;*/
-    height: 120px;
+    width: 25%;
 }
 
 .medieteknik-title {
@@ -452,14 +447,14 @@ footer a {
 
 .instagram-logo, .snapchat-logo {
     width: 40%;
+    min-width: 100px;
+    max-width: 200px;
+
 }
 
 .email-title {
     font-size: 24px;
     font-family: Pirata One;
-
-    margin-top: 0;
-
 }
 
 .links-element {
@@ -476,6 +471,8 @@ footer a {
     height: 50%;
 
     float: left;
+
+    margin-top: 40px;
 }
 
 .divider-line {

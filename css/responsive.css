@@ -10,6 +10,36 @@
 /* This is the size where we switch to mobile menu */
 @media all and (max-width: 768px) {
 
+	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
+		width: 100%;
+		background-color: #F7ECD6;
+
+		padding-top: 20px;
+	}
+
+	.medieteknik-logo {
+		height: 80%;
+	}
+
+	.instagram-logo, .snapchat-logo {
+		margin-left: -10%;
+	}
+
+	.medieteknik-title {
+		font-size: 24px;
+	}
+
+	.divider-line-canvas {
+		display: none;
+	}
+
+	.email-title {
+		font-size: 40px;
+	}
+
+	.links-element {
+		font-size: 20px !important;
+	}
 
 }
 

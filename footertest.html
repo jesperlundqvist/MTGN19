@@ -28,23 +28,24 @@ footer {
 	background: #F7ECD6;
 
 	padding: 1% 0 1% 0;
-}
-
-.footer-wrapper {
 
 	width: 100%;
 	height: 25%;
+	min-height: 165px;
 
+	text-align: center;
 }
 
 .medieteknik-wrapper {
 	float:left;
 	width: 25%;
+	min-width: 175px;
 }
 
 .instagram-wrapper, .snapchat-wrapper, .email-wrapper, .credits-wrapper {
 	float: left;
 	width: 20%;
+	min-width: 150px;
 }
 
 .medieteknik-logo {
@@ -58,13 +59,14 @@ footer {
 
 .instagram-logo, .snapchat-logo {
 	width: 40%;
+	min-width: 100px;
+	max-width: 200px;
+
 }
 
 .email-title {
 	font-size: 24px;
 	font-family: Pirata One;
-
-	margin-top: -5%;
 }
 
 .links-element {
@@ -81,11 +83,39 @@ footer {
 	height: 50%;
 
 	float: left;
+
+	margin-top: 40px;
 }
 
 .divider-line {
 	stroke: black;
 	stroke-width: 1px;
+}
+
+/* This is the size where we switch to mobile menu */
+@media all and (max-width: 768px) {
+	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
+		width: 100%;
+		background-color: #F7ECD6;
+	}
+
+	.medieteknik-logo {
+		height: 80%;
+	}
+
+	.instagram-logo, .snapchat-logo {
+		margin-left: -10%;
+	}
+
+	.medieteknik-title {
+		font-size: 24px;
+	}
+
+	.divider-line-canvas {
+		display: none;
+	}
+
+
 }
 
 </style>
@@ -100,10 +130,9 @@ footer {
 <footer>
 
 	<!-- Footer content -->
-	<div class="footer-wrapper center-align valign-wrapper">
 	<!-- Medieteknik logo -->
 	<div class="medieteknik-wrapper">
-		<img class="medieteknik-logo" src="medieteknik_logo.png"/>
+		<img class="medieteknik-logo" src="images/medieteknik_logo.png"/>
 		<p class="medieteknik-title">KTH | Medieteknik</p>
 	</div>
 	<svg class="divider-line-canvas">
@@ -112,7 +141,7 @@ footer {
 	<!-- Links -->
 	<!-- Instagram links -->
 	<div class="instagram-wrapper">
-		<img class="instagram-logo" src="instagram.png"/>
+		<img class="instagram-logo" src="images/instagram.png"/>
 		<ul class="links-instagram">
 			<li class="links-element">
 				<a href="#">kphgram</a>
@@ -130,7 +159,7 @@ footer {
 	</svg>
 	<!-- Snapchat links -->
 	<div class="snapchat-wrapper">
-		<img class="snapchat-logo" src="snapchat-black.png"/>
+		<img class="snapchat-logo" src="images/snapchat-black.png"/>
 		<ul class="links-snapchat">
 			<li class="links-element">
 				<a href="#">kphsnap</a>
@@ -184,5 +213,4 @@ footer {
 			</li>
 		</ul>
 	</div> -->
-	</div>
 </footer>

@@ -4,12 +4,11 @@
 
 
 
-<footer>
+<footer class="valign-wrapper">
 
 	<!-- Footer content -->
-	<div class="footer-wrapper center-align valign-wrapper clearfix">
 	<!-- Medieteknik logo -->
-	<div class="medieteknik-wrapper">
+	<div class="medieteknik-wrapper valign">
 		<img class="medieteknik-logo" src="/images/medieteknik_logo.png"/>
 		<p class="medieteknik-title">KTH | Medieteknik</p>
 	</div>
@@ -36,7 +35,7 @@
 		<line class="divider-line" x1="0" y1="0" x2="0" y2="100%">
 	</svg>
 	<!-- Snapchat links -->
-	<div class="snapchat-wrapper">
+	<div class="snapchat-wrapper valign">
 		<img class="snapchat-logo" src="/images/snapchat-black.png"/>
 		<ul class="links-snapchat">
 			<li class="links-element">
@@ -54,7 +53,7 @@
 		<line class="divider-line" x1="0" y1="0" x2="0" y2="100%">
 	</svg>
 	<!-- Email links -->
-	<div class="email-wrapper">
+	<div class="email-wrapper valign">
 		<p class="email-title">Mail</p>
 		<ul class="links-email">
 			<li class="links-element">
@@ -91,5 +90,4 @@
 			</li>
 		</ul>
 	</div> -->
-	</div>
 </footer>
