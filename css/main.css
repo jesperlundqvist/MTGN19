@@ -108,10 +108,6 @@ a:hover {
     position: absolute;
     top: 37px;
     left: 317px;
-    background: url('/design/logo.png');
-
-    width: 365px;
-    height: 72px;
 }
 
 .header-sun {
@@ -403,6 +399,14 @@ a:hover {
 
 
 
+/*
+    Schedule
+*/
+
+.event {
+    background-color: #F7ECD6;
+}
+
 
 /*
     Footer
@@ -449,7 +453,6 @@ footer a {
     width: 40%;
     min-width: 100px;
     max-width: 200px;
-
 }
 
 .email-title {

@@ -6,7 +6,7 @@ $admin = $_SESSION['admin'];
     <div class="header-wave-back"></div>
 	<div class="constrainer">
 		<div class="header-ship floating"></div>
-		<div class="header-logo"></div>
+		<div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga" /></a></div>
 		<div class="header-sun"></div>
     </div>
 
