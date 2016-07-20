@@ -2,7 +2,12 @@
 $admin = $_SESSION['admin'];
 ?>
 
+
 <div class="header">
+	
+	<div class="header-mini-menu">
+		<button class="neutral-btn mini-menu">Hamburgare</button>
+	</div>
     <div class="header-wave-back"></div>
 	<div class="constrainer">
 		<div class="header-ship floating"></div>
@@ -11,10 +16,12 @@ $admin = $_SESSION['admin'];
     </div>
 
     <div class="header-wave"></div>
+
+
 </div>
 <nav class="menubar">
 	<div class="constrainer nav-wrapper">
-		<ul id="nav-mobile" class="sitenav left hide-on-med-and-down">
+		<ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
 			<li><a href="/">Startsida </a></li>
 			<?php
 			if ($admin) { ?>

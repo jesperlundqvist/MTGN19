@@ -1,3 +1,9 @@
+.mobile-header,
+.mobile-nav,
+.header-mini-menu {
+	display: none;
+}
+
 @media all and (max-width: 1024px) {
 
 }
@@ -10,9 +16,17 @@
 /* This is the size where we switch to mobile menu */
 @media all and (max-width: 768px) {
 
+	/* Hide desktop stuff */
 	.header-ship,
 	.menubar {
 		display: none;
+	}
+	
+	/* Show mobile stuff */
+	.mobile-header,
+	.mobile-nav,
+	.header-mini-menu {
+		display: block;
 	}
 
 
@@ -22,9 +36,9 @@
 	}
 	
 	.header-logo {
-		position: relative;
-		top: auto;
-		left: auto;
+		left: 100px;
+		right: 100px;
+		top: 0;
 		padding-top: 20px;
 		z-index: 3;
 	}
@@ -35,10 +49,18 @@
 	
 	.header-sun {
 		top: -70px;
-		left: -112px;
+		right: -112px;
 
 		/* Hide for now...*/
-		display: none;
+		/*display: none;*/
+	}
+
+	.header-mini-menu {
+		position: absolute;
+		left: 25px;
+		top: 25px;
+
+		z-index: 10;
 	}
 
 
