@@ -1,5 +1,6 @@
    <?php
     //Load header
+    //Testcommit
     include_once ('inc_header.php');
   ?>
     <title>Mottagningen 2016</title>
