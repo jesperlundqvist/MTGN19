@@ -1,4 +1,4 @@
-   <?php
+  <?php
     //Load header
     include_once ('inc_header.php');
   ?>
