@@ -102,6 +102,25 @@
 
 }
 
+@media (max-width: 1000px) {
+  .complete_day {
+    display: none;
+  }
+  .event-summary {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 600px) {
+  .content_container {
+    padding: 20px 8px !important;
+  }
+
+  .date {
+    font-size: 95%;
+  }
+}
+
 
 
 

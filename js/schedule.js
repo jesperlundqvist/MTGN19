@@ -135,7 +135,6 @@ function drawSchedule(data) {
     if (typeof data.items[i].location == 'undefined') {
       data.items[i].location = '';
     }
-    console.log(data.items[i].location);
     var eventDate = new Date(data.items[i].start.dateTime);
     var eventEndDate = new Date(data.items[i].end.dateTime);
     var day = schedule.find('#' + eventDate.getDayOfWeek());
@@ -166,10 +165,10 @@ function drawSchedule(data) {
         popup_cont.append('<div id="eventpopup"></div>');
         var eventpopup = popup_cont.find('#eventpopup');
         popup_cont.append('<div id="black_overlay"></div>');
-        eventpopup.append('<div><h3>' + summary + '</h3></div>');
+        eventpopup.append('<h3>' + summary + '</h3>');
         var timeString = getTimeString(ed, eed);
-        eventpopup.append('<div class="event-time-place"><span class="ion-ios-clock-outline schedule-icon"></span> ' + timeString + '</div>');
-        eventpopup.append('<div class="event-time-place"><span class="ion-ios-location-outline schedule-icon"></span> ' + location + '</div>');
+        eventpopup.append('<div class="event-time"><span class="ion-ios-clock-outline schedule-icon"></span> ' + timeString + '</div>');
+        eventpopup.append('<div class="event-place"><span class="ion-ios-location-outline schedule-icon"></span> ' + location + '</div>');
         eventpopup.append('<button class="event_ok button">Stäng</button>');
         popup.find("#black_overlay").click(function() {
           popup.empty();

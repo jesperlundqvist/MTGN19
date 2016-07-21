@@ -15,13 +15,15 @@
     ?>
 
     <div class="content-wrapper">
-      <div class="button" id="button_week_back"><span class="ion-ios-arrow-thin-left"></span> Föregående vecka</div>
-        <div class="button" id="button_week_forward">Nästa vecka <span class="ion-ios-arrow-thin-right"></span></div>
         <div id="schedule">
           <table>
             <tr class="toprow">
               <th colspan="8">
-                <h2>Schema, <div id="week"></div></h2>
+                <h2 class="week-title">
+                  <div class="button" id="button_week_back"><span class="ion-ios-arrow-thin-left"></span><</div>
+                  Schema, <div id="week"></div>
+                <div class="button" id="button_week_forward">><span class="ion-ios-arrow-thin-right"></span></div>
+              </h2>
               <div class="toprow-bg"></div>
               </th>
             </tr>
@@ -70,7 +72,7 @@
             <?php // skriver ut resten av tiderna i tabellen
               $startHour = 9;
               for ($i = 0; $i < 19; $i++) {
-                echo "<tr>";
+                echo "<tr class='timerow'>";
                 echo "<td class='timecell'>";
                 if ($startHour < 10) {
                   echo "0$startHour:00";
