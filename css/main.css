@@ -519,8 +519,12 @@ p {
   -ms-transition: all 0.3s ease-in-out;
 }
 
-.button {
-
+#button_week_back, #button_week_forward {
+  cursor: pointer;
+  /* Disable text highlighting */
+  -webkit-user-select: none;        
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 #button_week_back {
