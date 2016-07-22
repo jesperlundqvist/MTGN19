@@ -49,7 +49,7 @@
                   ?>
                   </select>
                   <br/>
-                  <input type="submit" value="Skapa inlägg" id="post_news"/>
+                  <input type="submit" value="Skapa inlägg" id="post_news" class="submit_button"/>
                 </div>
               </form>
             </div>

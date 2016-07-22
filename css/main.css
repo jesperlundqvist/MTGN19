@@ -284,10 +284,14 @@ a:hover {
 }
 
 .input_areas {  
-  margin-top: 24px;
+  margin-bottom: 24px;
 
   width: 40%;
   min-width: 380px;
+}
+
+#news_title {
+  margin-top: 24px;
 }
 
 #news_input {
@@ -307,7 +311,7 @@ a:hover {
   background-color: white;
 }
 
-#post_news {
+.submit_button {
   margin-top: 24px;
 
   background-color: #f7ecd6;
@@ -326,6 +330,10 @@ a:hover {
 /*
  *  All profiles
  */
+
+#profiles {
+  text-align: center;
+}
 
 .usergroup_banner {
     font-family: Pirata One;
@@ -352,6 +360,8 @@ a:hover {
 }
 
 .profile_preview_img {
+    margin-bottom: 8px;
+
     background-position: 50%;
     border-radius: 50%;
     border: 2px solid white;
@@ -394,20 +404,31 @@ a:hover {
     background-repeat: no-repeat;
 }
 
+/*
+  Single profiles
+*/
+
+.bottom-ribbon {
+  margin: 16px;
+}
+
 .ribbon-content {
     font-family: Pirata One;
-    font-size: 48px;
+    font-size: 60px;
 }
 
 .n0llegroup {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 0.5;
 }
 
 .profile-divider-line {
     width: 33%;
+    min-width: 300px;
     height: 1px;
-    }
+
+    margin: 24px 0 16px 0;
+}
 
 .profile-divider-line line {
     stroke: #f7ecd6;
@@ -418,6 +439,35 @@ a:hover {
     margin-left: auto;
     margin-right: auto;
     max-width: 40%;
+    min-width: 300px;
+
+    font-size: 16px;
+    font-style: italic;
+}
+
+.edit_profile_link {
+  margin-top: 24px;
+}
+
+.edit_profile_link a {
+  font-size: 20px;
+}
+
+/*
+  Edit profile
+*/
+
+.input_description {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+#description {
+  height: 200px;
+}
+
+#new_password_1 {
+  margin-bottom: 16px;
 }
 
 /*

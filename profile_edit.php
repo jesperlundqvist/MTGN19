@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Redigera profil</title>
+    <title>Registrera ny användare</title>
     <script src="js/profile_edit.js"></script>
   </head>
 
@@ -85,12 +85,12 @@
         }
 
 
-        echo "<p>E-post</p>";
+        echo "<p class='input_description'>E-post</p>";
         echo "<input type=\"text\" id=\"email\" value=\"$email\" class=\"input_areas\"/><br/>";
 
 
-        echo "<p>Beskriv dig själv!</p>";
-        echo "<input type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\"/><br/>";
+        echo "<p class='input_description'>Beskriv dig själv!</p>";
+        echo "<textarea type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\"></textarea><br/>";
 
         //if ($gandalf == null) {
         //  $gandalf = "Gandalf eller Dumbledore";
@@ -110,9 +110,9 @@
         // echo "<p>Skepnad på Patronus</p>";
         // echo "<input type=\"text\" id=\"patronus\" value=\"$patronus\" class=\"input_areas\"/><br/>";
 
-        echo "<p>Ändra lösenord</p>";
-        echo "<input type='password' id='new_password_1' placeholder='Nytt lösenord' class='input_areas'/>";
-        echo "<input type='password' id='new_password_2' placeholder='Nytt lösenord igen' class='input_areas'/>";
+        echo "<p class='input_description'>Ändra lösenord</p>";
+        echo "<input type='password' id='new_password_1' placeholder='Nytt lösenord' class='input_areas'/><br/>";
+        echo "<input type='password' id='new_password_2' placeholder='Nytt lösenord igen' class='input_areas'/><br/>";
 
         if ($usergroup == 'nØllan' && $admin) {
           ?>
@@ -152,7 +152,7 @@
         }
       ?>
 
-        <button id="submit_new_user_btn">Spara ändringar</button>
+        <button id="submit_new_user_btn" class="submit_button">Spara ändringar</button>
         <div id="statusbarcontainer"></div>
         <div id="info"></div>
     </div>
