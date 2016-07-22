@@ -19,23 +19,24 @@
     if ($admin) { ?>
       <div class="content-wrapper">
             <div class="admin-controls">
-              <a href="register.php">Lägg till användare</a>
-              <a href="gallery_upload_images.php">Ladda upp bilder</a>
+              <a class="admin-control" href="register.php">Lägg till användare</a>
+              <a class="admin-control" href="gallery_upload_images.php">Ladda upp bilder</a>
             </div>
 
             <div id="news_input_container" class="news-top">
               <form id="news_input_form" action="newspage_handler.php?action=add" method="post">
-                <h2 id="new_post_trigger">Skapa nytt inlägg <span class="ion-ios-plus-outline" id="new_post_icon"></span></h2>
+                <h2 id="new_post_trigger">Nytt inlägg <span class="ion-ios-plus-outline" id="new_post_icon"></span></h2>
                 <div id="new_post_container">
                   <div class="news_instructions">
                     <p class="first">TIPS! Du kan använda HTML i inläggen. Länk och bild visas nedan. Du kan även embedda Youtube-videos.</p>
-                    <code>
+                    <code class="first">
                       LÄNK: &lt;a href="http://google.com"&gt;text som ska visas&lt;/a&gt; </br>
                       BILD: &lt;img src="http://länktillbilden.com/bild.jpg"/&gt;
                     </code>
                   </div>
                   <input id="news_title" name="news_title" placeholder="Titel" class="input_areas"/><br/>
-                  <textarea id="news_input" name="news_input" placeholder="Skriv..." cols="" rows="5" class="input_areas"></textarea><br/>
+                  <textarea id="news_input" name="news_input" placeholder="Innehåll" cols="" rows="5" class="input_areas"></textarea><br/>
+                  <p class="news_category_title">Kategori</p>
                   <select id="news_category" name="news_category">
                   <?php
                     $query = "SELECT category FROM categories ORDER BY category ASC";
@@ -48,7 +49,7 @@
                   ?>
                   </select>
                   <br/>
-                  <input type="submit" value="Posta" id="post_news"/>
+                  <input type="submit" value="Skapa inlägg" id="post_news"/>
                 </div>
               </form>
             </div>
