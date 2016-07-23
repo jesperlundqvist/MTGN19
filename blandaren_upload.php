@@ -16,17 +16,19 @@
     <?php
     if ($_SESSION['admin']) {
     ?>
-      <h2>Ladda upp bländaren</h2>
+      <h2 class="adminpanel_title">Ladda upp bländaren</h2>
           <div id="form">
             <br/>
             <input type="text" id="name" name="name" placeholder="Namn" class="input_areas"/>
             <div class="front-wrap">
-              <span>Framsida: </span><input type="file" id="blandarfront" name="blandarfront"/>
+              <span class="input_description">Framsida: </span><input type="file" id="blandarfront" name="blandarfront" class="file_input"/><label for="blandarfront">Välj fil...</label>
             </div>
+            <br/><br/>
             <div class="pdf-wrap">
-            <span>PDF: </span><input type="file" id="blandarpdf" name="blandarpdf"/>
+            <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input"/><label for="blandarpdf">Välj fil...</label>
             </div>
-            <button id="submit_blandare">Ladda upp bländaren</button>
+            <br/>
+            <button id="submit_blandare" class="submit_button">Ladda upp bländaren</button>
           </div>
           <div id="statusbar">
             <div id="filesize"></div>
