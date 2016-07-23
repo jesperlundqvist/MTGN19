@@ -17,17 +17,20 @@
 @media all and (max-width: 768px) {
 
 	/* Hide desktop stuff */
-	.header-ship,
+	/*.header-ship,
 	.menubar {
+		display: none;
+	}*/
+	.header-ship {
 		display: none;
 	}
 	
 	/* Show mobile stuff */
-	.mobile-header,
+	/*.mobile-header,
 	.mobile-nav,
 	.header-mini-menu {
 		display: block;
-	}
+	}*/
 
 
 	.header {
@@ -68,7 +71,8 @@
 		padding: 15px;
 	}
 
-	/* Footer*/
+	/* Footer */
+
 	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
 		width: 100%;
 		background-color: #F7ECD6;
@@ -98,6 +102,20 @@
 
 	.links-element {
 		font-size: 20px !important;
+	}
+
+	/* Bländaren */
+
+	.blandarDiv_container {
+		max-width: 40% !important;
+		margin: 0 16px !important;
+	}
+
+	/* Profiles */
+
+	.profile_preview_img {
+		width: 150px;
+		height: 150px;
 	}
 
 }

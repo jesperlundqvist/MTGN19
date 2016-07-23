@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Registrera ny användare</title>
+    <title>Redigera profil</title>
     <script src="js/profile_edit.js"></script>
   </head>
 
@@ -71,7 +71,7 @@
           // $imagepath = null;
         // }
 
-        echo "<h2>Redigera profil</h2>";
+        echo "<h2 class='adminpanel_title'>Redigera profil</h2>";
         // Prints username, hidden and for use with javascript later
         echo "<div id=\"username\" style=\"display: none\">$username</div>";
 
@@ -80,7 +80,7 @@
           if ($name == null) {
             $name = "Namn";
           }
-          echo "<p>Namn</p>";
+          echo "<p class='input_description'>Namn</p>";
           echo "<input type=\"text\" id=\"name\" value=\"$name\" class=\"input_areas\"/><br/>";
         }
 
@@ -90,7 +90,7 @@
 
 
         echo "<p class='input_description'>Beskriv dig själv!</p>";
-        echo "<textarea type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\"></textarea><br/>";
+        echo "<textarea type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\">$description</textarea><br/>";
 
         //if ($gandalf == null) {
         //  $gandalf = "Gandalf eller Dumbledore";
@@ -116,7 +116,7 @@
 
         if ($usergroup == 'nØllan' && $admin) {
           ?>
-          <div id="n0llegroup_container">
+          <div id="n0llegroup_container" class="input_description">
           nØllegrupp:
           <select id="n0llegroup" name="usergroup">
           <?php
@@ -142,12 +142,14 @@
 
         // Man kan bara ändra profilbild om man är admin
         if ($admin) {
-          echo "<img id=\"profilepicture\" src=\"$imagepath\"/><br/>";
-          echo "<input type=\"file\" id=\"fileselect\" class=\"fileselect\" name=\"profilepicture\"/><br/>";
+          echo "<img id=\"profilepicture\" src=\"$imagepath\" class=\"profile_preview_img edit_img\"/><br/>";
+          echo "<input type=\"file\" id=\"fileselect\" class=\"fileselect file_input\" name=\"profilepicture\"/>";
+          echo "<label for=\"fileselect\">Välj fil...</label><br/>";
           echo "<div class=\"drag\" id=\"filedrag\"></div><br/>";
 
-          echo "<img id=\"profilepicture\" src=\"$gifpath\"/><br/>";
-          echo "<input type=\"file\" id=\"fileselect_gif\" class=\"fileselect\" name=\"profilepicture\"/><br/>";
+          echo "<img id=\"profilepicture\" src=\"$gifpath\" class=\"profile_preview_img edit_img\"/><br/>";
+          echo "<input type=\"file\" id=\"fileselect_gif\" class=\"fileselect file_input\" name=\"profilepicture\"/>";
+          echo "<label for=\"fileselect_gif\">Välj fil...</label><br/>";
           echo "<div class=\"drag\" id=\"filedrag_gif\"></div><br/>";
         }
       ?>

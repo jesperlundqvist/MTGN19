@@ -25,7 +25,7 @@
 
             <div id="news_input_container" class="news-top">
               <form id="news_input_form" action="newspage_handler.php?action=add" method="post">
-                <h2 id="new_post_trigger">Nytt inlägg <span class="ion-ios-plus-outline" id="new_post_icon"></span></h2>
+                <h2 id="new_post_trigger" class="adminpanel_title">Nytt inlägg <span class="ion-ios-plus-outline" id="new_post_icon"></span></h2>
                 <div id="new_post_container">
                   <div class="news_instructions">
                     <p class="first">TIPS! Du kan använda HTML i inläggen. Länk och bild visas nedan. Du kan även embedda Youtube-videos.</p>

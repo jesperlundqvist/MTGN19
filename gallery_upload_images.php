@@ -20,7 +20,7 @@
       }
       if ($_SESSION['admin']) {
         ?>
-      <h2>Ladda upp bilder</h2>
+      <h2 class="adminpanel_title">Ladda upp bilder</h2>
           <div id="form">
             Fotograf:
             <select id="photographer" name="photographer">
@@ -43,14 +43,15 @@
             </select>
             <br/>
             <div id="datepicker"></div>
+            <br/><br/>
+            <input type="file" id="fileselect" name="pictures" multiple="multiple" class="file_input"/>
+            <label for="fileselect">Välj fil...</label>
             <br/>
-            <input type="file" id="fileselect" name="pictures" multiple="multiple"/>
-            <br/>
-            <div id="filedrag">
+            <div id="filedrag" class="drag">
               <div id="filedraginfo"></div>
             </div>
             <br/>
-            <button id="submit_pictures">Ladda upp bilder</button>
+            
           </div>
           <div id="statusbar">
             <div id="filesizes"></div>
@@ -58,6 +59,7 @@
           </div>
           <div id="info"></div>
           <ul id="previewcontainer"></ul>
+          <button id="submit_pictures" class="submit_button">Ladda upp bilder</button>
         </div>
       </div>
       <?php

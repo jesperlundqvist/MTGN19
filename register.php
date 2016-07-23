@@ -14,7 +14,6 @@
     ?>
 
     <div class="content-wrapper">
-    <a href="/"> Startsidan</a>
       <?php
     // Vi kollar att användaren är inloggad som admin
     if (session_status() == PHP_SESSION_NONE) {
@@ -25,7 +24,7 @@
         <!-- Sidinnehåll -->
       <div class="container">
         <div class="content_container">
-          <h2>Skapa ny användare</h2>
+          <h2 class="adminpanel_title">Skapa ny användare</h2>
           <input type="text" id="new_username" placeholder="Användarnamn" class="input_areas"/>
           <br/>
           <input type="password" id="new_password_1" placeholder="Lösenord" class="input_areas"/>
@@ -36,7 +35,7 @@
           <br/>
           <input type="email" id="email" placeholder="E-post" class="input_areas"/>
           <br/>
-          Grupp:
+          <p class="input_description">Grupp:</p>
           <select id="usergroup" name="usergroup">
           <?php
             $query = "SELECT usergroup FROM usergroups ORDER BY usergroup ASC";
@@ -64,13 +63,19 @@
           </select>
           <br/>
           </div>
-          <span>Profilbild (normal): </span>
-          <input type="file" id="fileselect" name="profilepicture"/>
+          <div class="set_profile_pic_div">
+          <span class="input_description" id="profile_pic_entry">Profilbild (normal): </span>
+          <input type="file" id="fileselect" name="profilepicture" class="file_input"/>
+          <label for="fileselect">Välj fil...</label>
+          </div>
           <br/>
           <div class="drag" id="filedrag"></div>
           <br/>
-          <span>Profilbild (gif): </span>
-          <input type="file" id="fileselect_gif" name="profilepicture"/>
+          <div class="set_profile_gif_div">
+          <span class="input_description">Profilbild (gif): </span>
+          <input type="file" id="fileselect_gif" name="profilepicture" class="file_input"/>
+          <label for="fileselect_gif">Välj fil...</label>
+          </div>
           <br/>
           <div class="drag" id="filedrag_gif"></div>
           <br/>
@@ -78,7 +83,7 @@
             <div id="filesizes"></div>
             <div id="progressbar"><div></div></div>
           </div>
-          <button id="submit_new_user_btn">Spara ny användare</button>
+          <button id="submit_new_user_btn" class="submit_button">Spara ny användare</button>
           <div id="info"></div>
         </div>
       </div>

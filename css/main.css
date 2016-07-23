@@ -34,6 +34,15 @@ a:hover {
     opacity: 0.8;
 }
 
+select {
+  border: 1px solid white;
+  border-radius: 4px;
+
+  font-family: Open Sans;
+  font-size: 16px;
+  padding: 4px;
+}
+
 /*
     Layout
 */
@@ -265,10 +274,10 @@ a:hover {
   font-size: 16px;
 }
 
-#new_post_trigger {
+.adminpanel_title {
   font-family: Pirata One;
+  font-size: 40px;
   font-weight: normal;
-  font-size: 36px;
 }
 
 .first {
@@ -279,6 +288,7 @@ a:hover {
   border: 1px solid white;
   border-radius: 4px;
 
+  font-family: Open Sans;
   font-size: 16px;
   padding: 8px;
 }
@@ -326,6 +336,73 @@ a:hover {
   font-weight: bold;
 
 }
+
+.set_profile_pic_div {
+  margin-top: 24px;
+}
+
+.drag {
+  border: 1px solid white;
+  border-radius: 4px;
+
+  width: 33%;
+  min-width: 250px;
+  height: 100px;
+
+  margin-top: 16px;
+}
+
+.file_input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+label {
+  color: black;
+
+  background-color: white;
+  border-radius: 4px;
+
+  margin: 8px;
+  padding: 8px;
+
+  cursor: pointer;
+}
+
+#submit_new_user_btn {
+  width: 33%;
+  min-width: 200px;
+}
+
+.edit_img {
+  width: 500px;
+}
+
+#previewcontainer {
+  text-align: center;
+}
+
+#previewcontainer li {
+  width: 33%;
+  min-width: 350px;
+
+  display: inline-block;
+  vertical-align: top;
+
+  margin: 16px;
+}
+
+#previewcontainer img{
+  width: 100% !important;
+
+  border: 1px solid white;
+}
+
+
 
 /*
  *  All profiles
@@ -375,11 +452,14 @@ a:hover {
 }
 
 #profilepicture {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+
     -webkit-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
+
+    margin: 16px;
 }
 
 .profile-wrapper {
@@ -904,7 +984,7 @@ footer a {
     Bländaren
 */
 
-.blandar_container {
+#blandar_container {
     text-align: center;
  }
 
