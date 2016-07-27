@@ -41,9 +41,30 @@
               }
             ?>
             </select>
-            <br/>
-            <div id="datepicker"></div>
+            <br/><br>
+            Välj vecka
+            <select id="week" name="week">
+              <option>Auto</option>
+              <option value="33">33</option>
+              <option value="34">34</option>
+              <option value="35">35</option>
+              <option value="36">36</option>
+            </select>
             <br/><br/>
+
+            Event
+            <select id="event" name="event">
+              <?php
+              $query = "SELECT name FROM event";
+              $result = execQuery($link, $query);
+
+              while ($eventlist = $result->fetch_object()) {
+                $name = $eventlist->name;
+                echo'<option value="'.$name.'">'.$name.'</option>';
+              }
+            ?>
+            </select>
+            <br/><br/><br>
             <input type="file" id="fileselect" name="pictures" multiple="multiple" class="file_input"/>
             <label for="fileselect">Välj fil...</label>
             <br/>

@@ -141,6 +141,8 @@ function sendNextFile(files) {
 
   var fd = new FormData();
   fd.append('photographer', $("#photographer").val());
+  fd.append('week', $("#week").val());
+  fd.append('event', $("#event").val());
   fd.append('file', file);
 
   var status = new createStatus(file.size, totalSize);
