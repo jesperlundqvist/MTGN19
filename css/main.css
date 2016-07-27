@@ -570,7 +570,7 @@ label {
 .grid {
   margin-top: 25px;
   margin-bottom: 25px;
-  border: 1px solid #333;
+  /*border: 1px solid #333;*/
 }
 
 /* clear fix */
