@@ -588,13 +588,16 @@ label {
 .filter-item {
   position: relative;
   float: left;
-  width: 300px;
-  height: 300px;
+  width: 240px;
+  height: 240px;
   margin: 5px;
   padding: 10px;
   background: #888;
   color: #262524;
   text-align: center;
+
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 .is-checked {
