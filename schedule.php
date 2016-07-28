@@ -15,6 +15,10 @@
     ?>
 
     <div class="content-wrapper">
+      <!-- <div class="buttons">
+        <div class="button" id="button_week_back"><span class="ion-ios-arrow-thin-left"></span> Föregående vecka</div>
+        <div class="button" id="button_week_forward">Nästa vecka <span class="ion-ios-arrow-thin-right"></span></div>
+      </div> -->
         <div id="schedule">
           <table>
             <tr class="toprow">
@@ -107,5 +111,9 @@
       include_once ('inc_footer.php');
     ?>
   <script src="js/swiper.jquery.min.js"></script>
+
+    </div> <!-- close push-wrap from inc_top_content -->
+    </div> <!-- close site-wrap from inc_top_content -->
+  
   </body>
 </html>
