@@ -67,3 +67,11 @@ Date.prototype.getDayOfWeek = function(){
 //   //   e.preventDefault()
 //   // });
 // })();
+
+// Mobile menu
+$(function() {
+    $('.toggle-mobile-menu').click(function() {
+          $('body').toggleClass('show-nav'); 
+          return false;
+    });
+});

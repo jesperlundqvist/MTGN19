@@ -146,6 +146,20 @@
 		margin-right: 20%;
 	}
 
+	/* Mobile menu */
+
+	.menu-hamburger {
+		display: inline-block !important;
+	}
+
+	.menu-adminpanel, .menu-profiles, .menu-blandaren, .menu-logout {
+		display: none !important;
+	}
+
+	.nav-wrapper li a {
+		font-size: 28px;
+	}
+
 }
 
 @media (max-width: 1000px) {

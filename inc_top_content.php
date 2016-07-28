@@ -2,6 +2,18 @@
 $admin = $_SESSION['admin'];
 ?>
 
+<div class="site-wrap">
+
+<nav class="mobile-nav">
+    <ul>
+        <li><a href="#">Home</a></li> 
+        <li><a href="#">About</a></li> 
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li> 
+    </ul>
+</nav>
+
+<div class="push-wrap">
 
 <div class="header">
 	
@@ -22,18 +34,21 @@ $admin = $_SESSION['admin'];
 <nav class="menubar">
 	<div class="constrainer nav-wrapper">
 		<ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
-			<li><a href="/">Startsida </a></li>
+			<li class="menu-hamburger" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">&#9776;</a></li>
+			<li class="menu-start"><a href="/">Startsida </a></li>
 			<?php
 			if ($admin) { ?>
-				<li><a href="adminpanel.php">Adminpanel</a></li> <?php
+				<li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
 	    }
 	     ?>
-    	<li><a href="allprofiles.php">Profiler</a></li>
-    	<li><a href="media.php">Media</a></li>
+    	<li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
+    	<li class="menu-media"><a href="media.php">Media</a></li>
       <!-- Lägg till funktioner getgallerylink osv för att få rätt länk till galleriet -->
-      <li><a href="schedule.php">Schema</a></li>
-      <li><a href="blandaren.php">Bländaren</a></li>
-    	<li><a href="functions_logout.php">Logga ut </a></li>
+      <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
+      <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
+    	<li class="menu-logout"><a href="functions_logout.php">Logga ut </a></li>
 		</ul>
 	</div>
 </nav>
+
+
