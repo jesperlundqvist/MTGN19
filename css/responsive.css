@@ -71,6 +71,24 @@
 		padding: 15px;
 	}
 
+	/* News */
+
+	.news {
+		text-align: center;
+	}
+
+	.news-content {
+		width: 100% !important;
+	}
+
+	.news-timestamp {
+		float: none;
+	}
+
+	.news-symbol {
+		float: none !important;
+	}
+
 	/* Footer */
 
 	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
@@ -118,11 +136,21 @@
 		height: 150px;
 	}
 
+	/* Schedule */
+
+	#button_week_back {
+		margin-left: 20%;
+	}
+
+	#button_week_forward {
+		margin-right: 20%;
+	}
+
 }
 
 @media (max-width: 1000px) {
   .complete_day {
-    display: none;
+    /*display: none;*/
   }
   .event-summary {
     font-size: 0.9em;

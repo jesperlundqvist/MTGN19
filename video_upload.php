@@ -19,7 +19,7 @@
       }
       if ($_SESSION['admin']) {
         ?>
-        <h2>Ladda upp video</h2>
+        <h2 class="adminpanel_title">Ladda upp video</h2>
           <div id="form">
             <input type="text" id="videoname" name="videoname" placeholder="Namn" class="input_areas"/>
             <br/>

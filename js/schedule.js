@@ -1,15 +1,15 @@
 $( document ).ready(function() {
-  if(window.innerWidth <= 1000) {
-    $('#schedule').hide();
-    $('#button_week_back').hide();
-    $('#button_week_forward').hide();
-    $('#schedule_mobile').show();
-  } else {
+  // if(window.innerWidth <= 1000) {
+  //   $('#schedule').hide();
+  //   $('#button_week_back').hide();
+  //   $('#button_week_forward').hide();
+  //   $('#schedule_mobile').show();
+  // } else {
     $('#schedule').show();
     $('#button_week_back').show();
     $('#button_week_forward').show();
     $('#schedule_mobile').hide();
-  }
+  // }
 
   weekdays = [
     'Söndag',

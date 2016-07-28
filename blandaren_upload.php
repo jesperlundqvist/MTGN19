@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Ladda upp bilder till bländaren</title>
+    <title>Ladda upp Bländaren</title>
   </head>
 
   <body>
@@ -16,7 +16,7 @@
     <?php
     if ($_SESSION['admin']) {
     ?>
-      <h2 class="adminpanel_title">Ladda upp bländaren</h2>
+      <h2 class="adminpanel_title">Ladda upp Bländaren</h2>
           <div id="form">
             <br/>
             <input type="text" id="name" name="name" placeholder="Namn" class="input_areas"/>
@@ -28,7 +28,7 @@
             <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input"/><label for="blandarpdf">Välj fil...</label>
             </div>
             <br/>
-            <button id="submit_blandare" class="submit_button">Ladda upp bländaren</button>
+            <button id="submit_blandare" class="submit_button">Ladda upp Bländaren</button>
           </div>
           <div id="statusbar">
             <div id="filesize"></div>
