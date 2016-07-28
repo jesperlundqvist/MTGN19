@@ -25,6 +25,16 @@ h1 {
   font-size: 40px;
 }
 
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -420,6 +430,11 @@ label {
  *  All profiles
  */
 
+.search-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
 #profiles {
   text-align: center;
 }
@@ -568,7 +583,7 @@ label {
 */
 
 .grid {
-  margin-top: 25px;
+  margin-top: 15px;
   margin-bottom: 25px;
   /*border: 1px solid #333;*/
 }
@@ -580,9 +595,25 @@ label {
   clear: both;
 }
 
+.filter-wrap {
+  display: inline-block;
+  margin-right: 25px;
+}
+
 .button-group {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  display: flex;
+}
+
+.button-group a {
+  padding: 15px;
+  cursor: pointer;
+
+  background:#F7ECD6;
+  color: #000;
+}
+
+.button-group a.is-checked {
+  background: #d1bf9b;
 }
 
 .filter-item {
@@ -599,11 +630,6 @@ label {
   -webkit-background-size: cover;
   background-size: cover;
   cursor: pointer;
-}
-
-.is-checked {
-  background: blue;
-  color: #fff;
 }
 
 .video-play-icon {
@@ -682,7 +708,7 @@ p {
   margin: 0px;
 }
 .toprow {
-  color: #fff;
+  /*color: #fff;*/
   position: relative !important;
   display: table-row;
 }
@@ -1008,14 +1034,14 @@ footer a {
 }
 
 #username, #password, #search {
-    width: 20%;
-    height: 20px;
+    width: 40%;
+    height: 40px;
     min-width: 250px;
 
     margin: 10px 0;
-    padding: 5px;
+    padding: 15px;
 
-    font-size: 14px;
+    font-size: 16px;
 
     background-color: white;
     border: 1px solid white;
@@ -1023,9 +1049,9 @@ footer a {
 }
 
 #submit_btn {
-    width: 10%;
-    height: 20px;
-    min-width: 120px;
+    width: 40%;
+    height: 40px;
+    min-width: 250px;
 
     margin: 10px 0;
     padding: 16px;
@@ -1038,6 +1064,8 @@ footer a {
     font-size: 16px;
     color: white;
     line-height: 0;
+
+    cursor: pointer;
 }
 
 /*

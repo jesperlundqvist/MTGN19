@@ -7,15 +7,6 @@
     $imagethumbpath = "images/uploads/gallery/thumbs/";
     $imagelargepath = "images/uploads/gallery/large/";
 
-    setlocale(LC_ALL, 'sv_SE.ISO8859-1');
-    $tz = new DateTimeZone('Europe/Stockholm');
-    $year = 2016;
-    $week = date("W");
-    $weekdates = getStartAndEndDate($year, $week);
-    $startdate = $weekdates['weekstart'];
-    $enddate = $weekdates['weekend'];
-
-
   ?>
     <title>Media</title>
     <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css">
@@ -35,36 +26,45 @@
     <div class="content-wrapper">
       <h1>Media</h1>
 
-      <div class="filters">
-        <div class="button-group filters-button-group" data-filter-group="type">
-          <button class="button is-checked" data-filter="">Visa alla</button>
-          <button class="button" data-filter=".filter-image">Bild</button>
-          <button class="button" data-filter=".filter-video">Video</button>
+      <div class="filters clearfix">
+        <div class="filter-wrap">
+          <h3>Typ</h3>
+          <div class="button-group filters-button-group" data-filter-group="type">
+            <a class="button is-checked" data-filter="">Visa alla</a>
+            <a class="button" data-filter=".filter-image">Bild</a>
+            <a class="button" data-filter=".filter-video">Video</a>
+          </div>
         </div>
-
-        <div class="button-group filters-button-group" data-filter-group="week">
-          <button class="button is-checked" data-filter="">Visa alla</button>
-          <button class="button" data-filter=".filter-33">33</button>
-          <button class="button" data-filter=".filter-34">34</button>
-          <button class="button" data-filter=".filter-35">35</button>
-          <button class="button" data-filter=".filter-36">36</button>
+        
+        <div class="filter-wrap">
+          <h3>Vecka</h3>
+          <div class="button-group filters-button-group" data-filter-group="week">
+            <a class="button is-checked" data-filter="">Visa alla</a>
+            <a class="button" data-filter=".filter-33">33</a>
+            <a class="button" data-filter=".filter-34">34</a>
+            <a class="button" data-filter=".filter-35">35</a>
+            <a class="button" data-filter=".filter-36">36</a>
+          </div>
         </div>
 
         <?php
         $query = "SELECT name FROM event";
         $result = execQuery($link, $query);
         ?>
-
-        <div class="button-group filters-button-group" data-filter-group="event">
-          <button class="button is-checked" data-filter="">Visa alla</button>
-          <?php
-          while ($event = $result->fetch_object()) {
-            $name = $event->name;
-            echo'<button class="button" data-filter=".filter-'.$name.'">'.$name.'</button>';
-          }
-          ?>
+        <div class="filter-wrap">
+          <h3>Event</h3>
+          <div class="button-group filters-button-group" data-filter-group="event">
+            <a class="button is-checked" data-filter="">Visa alla</a>
+            <?php
+            while ($event = $result->fetch_object()) {
+              $name = $event->name;
+              echo'<a class="button" data-filter=".filter-'.$name.'">'.$name.'</a>';
+            }
+            ?>
+          </div>
         </div>
-      </div>
+
+      </div> <!-- end filters -->
       <div class="grid">
 
         <?php
