@@ -51,7 +51,7 @@
             // output är tom...
             // console.log('loggas det inget...');
             if (output == 'false') {
-              $("#error").html("Hoppsan, nu blev det fel! Försök igen nØllan.");
+              $("#error").html("Hoppsan, nu blev det fel! Försök igen.");
             } else { //inloggningen lyckades
               // var domain = document.domain;
               //window.location.href = "http://" + domain + "/index.php";
@@ -93,7 +93,7 @@
       var delay_rand = Math.floor(Math.random() * 16);
       
       // Randomise their speed (3-8s)
-      var speed_rand = 3 + Math.floor(Math.random() * 9);
+      var speed_rand = 5 + Math.floor(Math.random() * 9);
       
       // Random blur
       var blur_rand = Math.floor(Math.random() * 3);
