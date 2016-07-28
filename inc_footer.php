@@ -9,8 +9,7 @@
 	<!-- Footer content -->
 	<!-- Medieteknik logo -->
 	<div class="medieteknik-wrapper valign">
-		<img class="medieteknik-logo" src="/images/medieteknik_logo.png"/>
-		<p class="medieteknik-title">KTH | Medieteknik</p>
+		<img class="medieteknik-logo" src="/images/medieteknik_logo_text.png"/>
 	</div>
 	<svg class="divider-line-canvas">
 		<line class="divider-line" x1="0" y1="0" x2="0" y2="100%">
