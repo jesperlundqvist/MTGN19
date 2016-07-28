@@ -31,8 +31,6 @@ $admin = $_SESSION['admin'];
     	<li><a href="allprofiles.php">Profiler</a></li>
     	<li><a href="media.php">Media</a></li>
       <!-- Lägg till funktioner getgallerylink osv för att få rätt länk till galleriet -->
-      <li><a href="gallery.php">Galleri</a></li>
-      <li><a href="video.php">Video</a></li>
       <li><a href="schedule.php">Schema</a></li>
       <li><a href="blandaren.php">Bländaren</a></li>
     	<li><a href="functions_logout.php">Logga ut </a></li>

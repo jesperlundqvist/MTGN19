@@ -461,7 +461,7 @@ a.weekdaybutton:hover {
           if ($admin) {
             echo '<a class="no-link upload_link" href="video_upload.php">Ladda upp videos</a>';
             echo '<div id="deleteimagesbutton" class="deletestuff">Radera videos</div>';
-          }
+
 
           // länkar
           echo '<div id="links">';
@@ -553,6 +553,15 @@ a.weekdaybutton:hover {
         <!-- If we need scrollbar -->
         <!-- <div class="swiper-scrollbar"></div> -->
       </div>
+
+
+      <?php
+      }
+      else {
+        echo'Logga in som admin';
+      }
+      ?>
+
     </div>
 
     <?php

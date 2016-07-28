@@ -598,11 +598,16 @@ label {
 
   -webkit-background-size: cover;
   background-size: cover;
+  cursor: pointer;
 }
 
 .is-checked {
   background: blue;
   color: #fff;
+}
+
+.video-play-icon {
+  margin-top: 45px;
 }
 
 /*

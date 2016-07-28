@@ -18,7 +18,10 @@
 
   ?>
     <title>Media</title>
-
+    <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css">
+    <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
     <script type="text/javascript" src="js/media.js"></script>
   </head>
 
@@ -65,28 +68,23 @@
       <div class="grid">
 
         <?php
+        // Images
         $query = "SELECT imagename, imagecreateddate, event, week FROM images ORDER BY imagecreateddate, imageorder ASC";
         $result = execQuery($link, $query);
         while ($image = $result->fetch_object()) {
           echo'
-          <div class="filter-item filter-image filter-'.$image->week .' filter-'.$image->event .'" data-category="transition" style="background-image:url(' . $imagethumbpath . $image->imagename . ')">
-          </div>';
+          <a class="fancybox-media" rel="gallery1" href="' . $imagelargepath . $image->imagename . '"><div class="filter-item filter-image filter-'.$image->week .' filter-'.$image->event .'" data-category="transition" style="background-image:url(' . $imagethumbpath . $image->imagename . ')">
+          </div></a>';
         }
 
-
-      //   <div class="filter-item filter-image filter-36 filter-vgasque" data-category="transition">
-      //     TESTBILD1
-      //   </div>
-      //   <div class="filter-item filter-image filter-36 filter-other" data-category="transition">
-      //     TESTBILD2
-      //   </div>
-      //   <div class="filter-item filter-video filter-37 filter-other" data-category="transition">
-      //     TESTVIDEO1
-      //   </div>
-      //   <div class="filter-item filter-video filter-37 filter-none" data-category="transition">
-      //     TESTVIDEO2
-      //   </div>
-      // </div>
+        // Video
+        $query = "SELECT videoid, event FROM videos ORDER BY uploaddate ASC";
+        $result = execQuery($link, $query);
+        while ($video = $result->fetch_object()) {
+          echo'
+         <a class="fancybox-media" rel="gallery1" href="http://www.youtube.com/watch?v='.$video->videoid.'"><div class="filter-item filter-video filter-'.$video->event .'" data-category="transition" style="background-image:url(http://img.youtube.com/vi/' . $video->videoid . '/hqdefault.jpg)"><img class="video-play-icon" src="/design/play_icon.png" />
+          </div></a>';
+        }
     ?>
     </div>
     </div>

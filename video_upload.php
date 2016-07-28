@@ -25,19 +25,20 @@
             <br/>
             <input type="text" id="videourl" name="videourl" placeholder="Youtubelänk" class="input_areas"/>
             <br/>
-            <div class="category-select">
-            <span>Kategori: </span><select id="category" name="category">
+            <div class="event-select">
+            <span>Event: </span><select id="event" name="event">
             <?php
-              $query = "SELECT category FROM videocategories ORDER BY category ASC";
+              $query = "SELECT name FROM event";
               $result = execQuery($link, $query);
 
               while ($r = $result->fetch_object()) {
-                $c = $r->category;
+                $c = $r->name;
                 echo "<option value=\"$c\">$c</option>";
               }
             ?>
             </select>
             </div>
+            <br><br>
 
             <button id="submit_video">Ladda upp video</button>
           </div>
@@ -63,11 +64,11 @@
       $('#submit_video').click(function() {
         var videourl = $("#videourl").val();
         var videoid = getParameterFromStringByName(videourl, "v");
-        var category = $("#category").val();
+        var event = $("#event").val();
         var videoname = $("#videoname").val();
 
         var pass = true;
-        if (videoname == "" || category == "" || videourl == "") {
+        if (videoname == "" || event == "" || videourl == "") {
           $("#info").html("<p style=\"color: red\">Alla fält måste fyllas i.</p>");
           pass = false;
         }
@@ -78,13 +79,13 @@
         }
 
         if (pass) {
-          uploadVideo(videoid, category, videoname);
+          uploadVideo(videoid, event, videoname);
         }
 
       });
     });
 
-    function uploadVideo(videoid, category, videoname) {
+    function uploadVideo(videoid, event, videoname) {
       var uploadURL = "video_upload_process.php";
 
       $.ajax({
@@ -92,7 +93,7 @@
         type: "POST",
         data: {
           'videoid': videoid,
-          'category': category,
+          'event': event,
           'videoname': videoname
         },
         success: function(output){

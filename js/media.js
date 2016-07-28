@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  // Init fancybox
+  $(".fancybox").fancybox();
+  $('.fancybox-media').fancybox({
+    openEffect  : 'none',
+    closeEffect : 'none',
+    helpers : {
+      media : {}
+    }
+  });
+
   // init Isotope
   var $grid = $('.grid').isotope({
     itemSelector: '.filter-item',
