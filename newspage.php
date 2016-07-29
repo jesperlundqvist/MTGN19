@@ -58,7 +58,7 @@
 
         // The markup or displaying the news article
         echo "<div class='news'>";
-        echo "<h2>$title</h2>";
+        echo "<h2 class='adminpanel_title'>$title</h2>";
         echo "<p>$body</p>";
         echo "<span class='post-footer'>";
           echo "<h5><span class='hide-on-mobile2'><span class='ion-android-person news-icon'></span> </span>$name</h5>";

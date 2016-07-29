@@ -153,13 +153,14 @@
           echo "<div class=\"drag\" id=\"filedrag_gif\"></div><br/>";
         }
 
-          echo "</div>";
+          // echo "</div>";
       ?>
 
         <button id="submit_new_user_btn" class="submit_button">Spara ändringar</button>
         <div id="statusbarcontainer"></div>
         <div id="info"></div>
     </div>
+  </div>
 
     <?php
       //Load footer

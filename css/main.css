@@ -220,6 +220,12 @@ select {
   opacity: 0.8;
 }
 
+.read-more {
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .news-title {
   font-family: Pirata One;
   font-size: 40px;
@@ -342,7 +348,7 @@ select {
 }
 
 .submit_button {
-  margin-top: 24px;
+  margin: 24px 0;
 
   background-color: #f7ecd6;
   border: 2px solid #f7ecd6;
@@ -1165,10 +1171,10 @@ footer a {
 }
 /* Adds a transition and the resting translate state */
 .push-wrap {
-    -webkit-transition: all 300ms ease 0;
-    -moz-transition: all 300ms ease 0;
-    -o-transition: all 300ms ease 0;
-    transition: all 300ms ease 0;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 
     -webkit-transform: translate(0, 0);
     -moz-transform: translate(0, 0);
@@ -1196,13 +1202,65 @@ footer a {
     -o-transform: translate3d(275px, 0, 0);
     transform: translate3d(275px, 0, 0);
 }
+
 /* Positions the nav fixed below the push wrapper */
 .mobile-nav {
-    width: 275px;
+    width: 0;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
+
+    text-align: center;
+
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.2s ease-out;
 }
+
+.show-nav .mobile-nav {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mobile-menu-wrapper {
+  width: 275px;
+  height: 100%;
+
+  padding: 16px;
+
+  border-right: 2px solid #f7ecd6;
+
+}
+
+.mobile-menu-wrapper #profilepic-wrapper {
+  width: 150px;
+  height: 150px;
+}
+
+.mobile-menu-wrapper .ribbon-content {
+  font-size: 40px;
+  font-weight: normal;
+}
+
+.mobile-menu-wrapper .n0llegroup {
+  margin: 16px;
+}
+
+.mobile-menu-wrapper .profile-divider-line {
+  width: 220px;
+  min-width: 0;
+
+  margin: 8px;
+}
+
+.mobile-item-wrapper {
+  margin: 16px;
+}
+
+.mobile-menu-wrapper #edit_profile, .mobile-menu-wrapper .show-all-profiles, .mobile-blandaren, .mobile-logout {
+  font-size: 22px;
+  font-weight: normal;
+}
+
 

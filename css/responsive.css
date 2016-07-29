@@ -1,7 +1,8 @@
 .mobile-header,
 .mobile-nav,
 .header-mini-menu {
-	display: none;
+	/*display: none;*/
+	visibility: hidden;
 }
 
 @media all and (max-width: 1024px) {
@@ -75,6 +76,8 @@
 
 	.news {
 		text-align: center;
+
+		font-size: 16px !important;
 	}
 
 	.news-content {
@@ -129,6 +132,12 @@
 		margin: 0 16px !important;
 	}
 
+	.blandartitle {
+		font-size: 28px !important;
+
+		margin: 16px 0;
+	}
+
 	/* Profiles */
 
 	.profile_preview_img {
@@ -157,7 +166,7 @@
 	}
 
 	.nav-wrapper li a {
-		font-size: 28px;
+		font-size: 28px !important;
 	}
 
 }
