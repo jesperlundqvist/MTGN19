@@ -1205,7 +1205,7 @@ footer a {
 
 /* Positions the nav fixed below the push wrapper */
 .mobile-nav {
-    width: 0;
+    width: 275px;
     height: 100%;
     position: fixed;
     top: 0;

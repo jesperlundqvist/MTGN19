@@ -70,6 +70,8 @@
 
 	.content-wrapper {
 		padding: 15px;
+
+		max-width: 425px;
 	}
 
 	/* News */
@@ -95,7 +97,7 @@
 	/* Footer */
 
 	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
-		width: 100%;
+		width: 100% !important;
 		background-color: #F7ECD6;
 
 		padding-top: 20px;
@@ -118,7 +120,7 @@
 	}
 
 	.email-title {
-		font-size: 40px;
+		font-size: 40px !important;
 	}
 
 	.links-element {
@@ -166,7 +168,153 @@
 	}
 
 	.nav-wrapper li a {
-		font-size: 28px !important;
+		font-size: 24px !important;
+	}
+
+}
+
+@media (max-width: 380px) { /* Medium mobile screens */
+
+	/* General */
+
+	.input_areas {
+		min-width: 350px !important;
+	}
+}
+
+
+@media (max-width: 375px) { /* Small mobile screens */
+
+	/* Content wrapper */
+
+	.content-wrapper {
+		max-width: 320px !important;
+		overflow: scroll;
+	}
+
+	/* Schedule */
+
+	table {
+		max-width: 320px;
+	}
+
+	/* Mobile menu */
+
+	.nav-wrapper li a {
+		font-size: 20px !important;
+	}
+
+	.show-nav .push-wrap {
+	    -webkit-transform: translate(225px, 0);
+	    -moz-transform: translate(225px, 0);
+	    -ms-transform: translate(225px, 0);
+	    -o-transform: translate(225px, 0);
+	    transform: translate(225px, 0);
+
+	    -webkit-transform: translate3d(225px, 0, 0);
+	    -moz-transform: translate3d(225px, 0, 0);
+	    -ms-transform: translate3d(225px, 0, 0);
+	    -o-transform: translate3d(225px, 0, 0);
+	    transform: translate3d(225px, 0, 0);
+	}
+
+	/* Positions the nav fixed below the push wrapper */
+	.mobile-nav {
+	    width: 225px;
+	    height: 100%;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    z-index: 100;
+
+	    text-align: center;
+
+	    opacity: 0;
+	    transition: visibility 0.2s, opacity 0.2s ease-out;
+	}
+
+	.show-nav .mobile-nav {
+	  visibility: visible;
+	  opacity: 1;
+	}
+
+	.mobile-menu-wrapper {
+	  width: 225px;
+	  height: 100%;
+
+	  padding: 16px;
+
+	  border-right: 2px solid #f7ecd6;
+
+	}
+
+	.mobile-menu-wrapper #profilepic-wrapper {
+	  width: 150px;
+	  height: 150px;
+	}
+
+	.mobile-menu-wrapper .ribbon-content {
+	  font-size: 28px;
+	  font-weight: normal;
+	}
+
+	.mobile-menu-wrapper .n0llegroup {
+	  margin: 16px;
+	}
+
+	.mobile-menu-wrapper .profile-divider-line {
+	  width: 175px;
+	  min-width: 0;
+
+	  margin: 8px;
+	}
+
+	.mobile-item-wrapper {
+	  margin: 16px;
+	}
+
+	.mobile-menu-wrapper #edit_profile, .mobile-menu-wrapper .show-all-profiles, .mobile-blandaren, .mobile-logout {
+	  font-size: 20px;
+	  font-weight: normal;
+	}
+
+	/* News */
+
+	.news-title {
+		font-size: 32px;
+	}
+
+	/* Footer */
+
+	.email-title {
+		font-size: 28px;
+	}
+
+	/* Profiles */
+
+	.profile_link {
+		margin: 12px;
+	}
+
+	.profile_preview_img {
+		width: 120px;
+		height: 120px;
+	}
+
+	/* Bländaren */
+
+	.blandarDiv_container {
+		max-width: 33% !important;
+	}
+
+	.blandartitle {
+		font-size: 24px !important;
+	}
+
+	/* General */
+
+	.input_areas {
+		min-width: 290px !important;
 	}
 
 }
