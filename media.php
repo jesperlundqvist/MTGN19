@@ -25,25 +25,31 @@
 
     <div class="content-wrapper">
       <h1>Media</h1>
-
+      
+      <div class="js-filter-show filter-show"><h3>Visa filter</h3></div>
+      <div class="js-filter-hide filter-hide"><h3>Göm filter</h3></div>
       <div class="filters clearfix">
         <div class="filter-wrap">
           <h3>Typ</h3>
           <div class="button-group filters-button-group" data-filter-group="type">
-            <a class="button is-checked" data-filter="">Visa alla</a>
-            <a class="button" data-filter=".filter-image">Bild</a>
-            <a class="button" data-filter=".filter-video">Video</a>
+            <ul class="button-group-ul">
+              <li><a class="button is-checked" data-filter="">Visa alla</a></li>
+              <li><a class="button" data-filter=".filter-image">Bild</a></li>
+              <li><a class="button" data-filter=".filter-video">Video</a></li>
+            </ul>
           </div>
         </div>
         
         <div class="filter-wrap">
           <h3>Vecka</h3>
           <div class="button-group filters-button-group" data-filter-group="week">
-            <a class="button is-checked" data-filter="">Visa alla</a>
-            <a class="button" data-filter=".filter-33">33</a>
-            <a class="button" data-filter=".filter-34">34</a>
-            <a class="button" data-filter=".filter-35">35</a>
-            <a class="button" data-filter=".filter-36">36</a>
+            <ul class="button-group-ul">
+              <li><a class="button is-checked" data-filter="">Visa alla</a>
+              <li><a class="button" data-filter=".filter-33">33</a></li>
+              <li><a class="button" data-filter=".filter-34">34</a></li>
+              <li><a class="button" data-filter=".filter-35">35</a></li>
+              <li><a class="button" data-filter=".filter-36">36</a></li>
+            </ul>
           </div>
         </div>
 
@@ -54,13 +60,15 @@
         <div class="filter-wrap">
           <h3>Event</h3>
           <div class="button-group filters-button-group" data-filter-group="event">
-            <a class="button is-checked" data-filter="">Visa alla</a>
-            <?php
-            while ($event = $result->fetch_object()) {
-              $name = $event->name;
-              echo'<a class="button" data-filter=".filter-'.$name.'">'.$name.'</a>';
-            }
-            ?>
+            <ul class="button-group-ul">
+              <li><a class="button is-checked" data-filter="">Visa&nbsp;alla</a></li>
+              <?php
+              while ($event = $result->fetch_object()) {
+                $name = $event->name;
+                echo'<li><a class="button" data-filter=".filter-'.$name.'">'.$name.'</a></li>';
+              }
+              ?>
+            </ul>
           </div>
         </div>
 

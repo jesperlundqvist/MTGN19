@@ -600,10 +600,20 @@ label {
   display: block;
   clear: both;
 }
+  
+  /* hide filters, show with js*/
+.filters {
+  display: none;
+}
 
 .filter-wrap {
   display: inline-block;
   margin-right: 25px;
+}
+
+.filter-show, .filter-hide {
+  margin-bottom: 25px;
+  display: none;
 }
 
 .button-group {
@@ -611,22 +621,33 @@ label {
 }
 
 .button-group a {
+}
+
+.button-group-ul {
+  width: 100%;
+}
+
+.button-group-ul li {
+  float: left;
+}
+
+.button-group-ul li .is-checked {
+    background: #d1bf9b;
+}
+
+.button-group-ul li a {
   padding: 15px;
   cursor: pointer;
+  display: block;
 
   background:#F7ECD6;
-  color: #000;
+  color: #000;  
 }
-
-.button-group a.is-checked {
-  background: #d1bf9b;
-}
-
 .filter-item {
   position: relative;
   float: left;
-  width: 240px;
-  height: 240px;
+  width: 180px;
+  height: 180px;
   margin: 5px;
   padding: 10px;
   background: #888;
@@ -639,7 +660,8 @@ label {
 }
 
 .video-play-icon {
-  margin-top: 45px;
+  margin-top: 30px;
+  width: 100px;
 }
 
 /*

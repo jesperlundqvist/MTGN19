@@ -15,6 +15,18 @@ $(document).ready(function() {
     layoutMode: 'fitRows'
   });
 
+  $('.js-filter-show').click(function() {
+    $('.filters').show();
+    $('.js-filter-hide').show();
+    $(this).hide();
+  });
+
+  $('.js-filter-hide').click(function() {
+    $('.filters').hide();
+    $('.js-filter-show').show();
+    $(this).hide();
+  });
+
   // store filter for each group
   var filters = {};
 
