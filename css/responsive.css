@@ -16,23 +16,12 @@
 
 /* This is the size where we switch to mobile menu */
 @media all and (max-width: 768px) {
-
-	/* Hide desktop stuff */
-	/*.header-ship,
-	.menubar {
-		display: none;
-	}*/
+	body {
+		background: #F7ECD6;
+	}
 	.header-ship {
 		display: none;
 	}
-	
-	/* Show mobile stuff */
-	/*.mobile-header,
-	.mobile-nav,
-	.header-mini-menu {
-		display: block;
-	}*/
-
 
 	.header {
 		height: 135px;
@@ -54,9 +43,6 @@
 	.header-sun {
 		top: -70px;
 		right: -112px;
-
-		/* Hide for now...*/
-		/*display: none;*/
 	}
 
 	.header-mini-menu {

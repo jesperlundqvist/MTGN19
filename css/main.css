@@ -1171,6 +1171,7 @@ footer a {
 }
 /* Adds a transition and the resting translate state */
 .push-wrap {
+    background: #025c77 url('/design/body_bg.jpg');
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -1211,11 +1212,20 @@ footer a {
     top: 0;
     left: 0;
     z-index: 100;
-
+    background: #F7ECD6;
+    color: #222;
     text-align: center;
 
     opacity: 0;
     transition: visibility 0.2s, opacity 0.2s ease-out;
+}
+
+.mobile-nav a {
+  color: #222;
+}
+
+.mobile-nav #profilepic-wrapper {
+  border: 2px solid #222;
 }
 
 .show-nav .mobile-nav {
@@ -1229,7 +1239,7 @@ footer a {
 
   padding: 16px;
 
-  border-right: 2px solid #f7ecd6;
+  border-right: 2px solid #222;
 
 }
 

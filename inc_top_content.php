@@ -13,62 +13,11 @@ $link = connectToDB();
   $username = $_SESSION['username'];
   $admin = $_SESSION['admin'];
 
-  if(isset($_GET['user'])) {
-    $get_username = $_GET['user'];
-  }
-
-  // Kolla om det är användarens egna sida
-  if ($get_username == $username || $get_username == null) {
-    $ownProfile = true;
-  } else {
-    $ownProfile = false;
-  }
-
-  if (!$ownProfile) {
-    $username = $get_username;
-  }
-
-  // Hämta föregående användare och nästa
-  $query = "SELECT username FROM users ORDER BY usergroup, n0llegroup, name ASC";
-  $result = execQuery($link, $query);
-
-  $count = mysqli_num_rows($result);
-
-  $counter = 1;
-  while ($r = $result->fetch_object()) {
-    if ($counter == 1) {
-      $firstUser = $r->username;
-    }
-    if ($r->username == $username) {
-      if ($nextUserObj = $result->fetch_object()) {
-        $nextUser = $nextUserObj->username;
-      }
-
-      $prevUser =  $pu;
-    }
-
-    $pu = $r->username;
-    $counter += 1;
-    if ($counter == $count) {
-      $lastUser = $r->username;
-    }
-  }
-
-  if (!$prevUser) {
-    $prevUser = $lastUser;
-  }
-
-  if (!$nextUser) {
-    $nextUser = $firstUser;
-  }
-
   // Hämta användaruppgifter
-  // $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, gandalf, kaniner, patronus, n0llegroup FROM users WHERE username = ? LIMIT 1");
-  $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, n0llegroup FROM users WHERE username = ? LIMIT 1");
-  $stmt->bind_param('s', $username);
+  $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, n0llegroup FROM users WHERE username = '$username' LIMIT 1");
   $stmt->execute();
   $stmt->store_result();
-  // $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $gandalf, $kaniner, $patronus, $n0llegroup);
+
   $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $n0llegroup);
   $stmt->fetch();
 
@@ -135,9 +84,6 @@ $link = connectToDB();
 
 <div class="header">
 	
-	<div class="header-mini-menu">
-		<button class="neutral-btn mini-menu">Hamburgare</button>
-	</div>
     <div class="header-wave-back"></div>
 	<div class="constrainer">
 		<div class="header-ship floating"></div>
