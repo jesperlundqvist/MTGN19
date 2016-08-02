@@ -18,7 +18,8 @@ body {
 h1,h2,h3 {
   font-family:Pirata One;
   font-weight: normal;
-
+  text-align: center;
+  
 }
 
 h1 {
@@ -41,9 +42,7 @@ ul {
 }
 
 a {
-    font-size: 14px;
     letter-spacing: 0.5;
-
     /*color: #02A0C7;*/
     color:#f7ecd6;
     text-decoration: none;
@@ -496,11 +495,24 @@ label {
 }
 
 .profile-wrapper {
-    text-align: center;
+  position: relative;
+  text-align: center;
+}
 
-    margin-top: 50px;
-    }
+.prevProfileLink,
+.nextProfileLink {
+  position: absolute;
+  top: 74px;
+  
+  font-size: 30px;
+}
 
+.prevProfileLink {
+  left: 0;
+}
+.nextProfileLink {
+  right: 0;
+}
 #profilepic-wrapper {
     margin-left: auto;
     margin-right: auto;

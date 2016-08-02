@@ -103,8 +103,8 @@
         //Wrapper
         echo "<div class='profile-wrapper'>";
         //Länkar
-        echo "<div class='prevProfileLink'><a class='no-link' href='profile.php?user=$prevUser'><span class='ion-ios-arrow-thin-left'></span></a></div>";
-        echo "<div class='nextProfileLink'><a class='no-link' href='profile.php?user=$nextUser'><span class='ion-ios-arrow-thin-right'></span></a></div>";
+        echo "<div class='prevProfileLink'><a class='no-link' href='profile.php?user=$prevUser'><i class='fa fa-arrow-left' aria-hidden='true'></i></a></div>";
+        echo "<div class='nextProfileLink'><a class='no-link' href='profile.php?user=$nextUser'><i class='fa fa-arrow-right' aria-hidden='true'></i></span></a></div>";
 
         // Profilbild
         if ($imagepath != null) {
