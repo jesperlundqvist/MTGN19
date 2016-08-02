@@ -15,7 +15,7 @@
     ?>
 
     <div class="content-wrapper">
-      <!-- <div class="buttons">
+   <!--    <div class="buttons">
         <div class="button" id="button_week_back"><span class="ion-ios-arrow-thin-left"></span> Föregående vecka</div>
         <div class="button" id="button_week_forward">Nästa vecka <span class="ion-ios-arrow-thin-right"></span></div>
       </div> -->

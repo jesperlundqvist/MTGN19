@@ -1,15 +1,15 @@
 $( document ).ready(function() {
-  // if(window.innerWidth <= 1000) {
-  //   $('#schedule').hide();
-  //   $('#button_week_back').hide();
-  //   $('#button_week_forward').hide();
-  //   $('#schedule_mobile').show();
-  // } else {
+  if(window.innerWidth <= 1000) {
+    $('#schedule').hide();
+    $('#button_week_back').hide();
+    $('#button_week_forward').hide();
+    $('#schedule_mobile').show();
+  } else {
     $('#schedule').show();
     $('#button_week_back').show();
     $('#button_week_forward').show();
     $('#schedule_mobile').hide();
-  // }
+  }
 
   weekdays = [
     'Söndag',
@@ -42,9 +42,11 @@ $( document ).ready(function() {
   });
 
   //Mobile
-  var mobileStartDate = new Date(Date.UTC(2015, 7, 16, 0, 0, 0));
-  // var mobileStartDate = new Date();
-  var mobileEndDate = new Date(Date.UTC(2015, 8, 13, 0, 0, 0));
+  var mobileStartDate = new Date(Date.UTC(2016, 7, 1, 0, 0, 0));
+  // console.log(mobileStartDate);
+  var mobileStartDate2 = new Date();
+  // console.log(mobileStartDate2);
+  var mobileEndDate = new Date(Date.UTC(2016, 8, 13, 0, 0, 0));
   // var mobileEndDate = mobileStartDate.addDays(14);
 
   var today = new Date();
@@ -256,6 +258,11 @@ function drawScheduleSliders(data, startSlide) {
   var today = new Date();
 
   for (var i in events) {
+
+    // Fix undefined location
+    if (typeof data.items[i].location == 'undefined') {
+      data.items[i].location = '';
+    }
     var eventDate = new Date(events[i].start.dateTime);
     var eventEndDate = new Date(events[i].end.dateTime);
     if (prevDate == null || (prevDate.getDate() !== eventDate.getDate() || prevDate.getMonth() !== eventDate.getMonth())) {
@@ -265,7 +272,7 @@ function drawScheduleSliders(data, startSlide) {
 
       slider.append('<div id="slider_' + i + '" class="swiper-slide"></div>');
       eventSlider = slider.find("#slider_" + i);
-      eventSlider.append('<div class="schedule_date">' + weekdays[eventDate.getDay()] + ' ' + eventDate.getDate() + '/' + (eventDate.getMonth() + 1) + '</div>');
+      eventSlider.append('<div class="schedule_date"><h3>' + weekdays[eventDate.getDay()] + ' ' + eventDate.getDate() + '/' + (eventDate.getMonth() + 1) + '</h3></div>');
     }
     eventSlider.append('<div id="event_mobile_' + i + '" class="event_mobile"></div>');
     var eventContainer = $('#event_mobile_' + i);
@@ -282,7 +289,7 @@ function drawScheduleSliders(data, startSlide) {
     } else {
       minutes = eventDate.getMinutes();
     }
-
+  
     // Sluttid
     var endHours = "";
     if (eventEndDate.getHours() < 10) {
