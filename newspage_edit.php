@@ -70,7 +70,7 @@
         echo "<form action=\"newspage_handler.php?action=update\" method=\"post\">";
         echo "<input type=\"text\" id=\"id\" name=\"id\" value=\"$id\" style=\"display: none\"/>";
         echo "<input id='news_title' type=\"text\" id=\"title\" name=\"title\" value=\"$title\" class=\"input_areas\"/><br/>";
-        echo "<textarea id=\"body\" name=\"body\" cols=\"\" rows=\"\" class=\"input_areas\">$body</textarea></br>";
+        echo "<textarea id=\"body\" name=\"body\" cols=\"\" rows=\"10\" class=\"input_areas\">$body</textarea></br>";
 
 
         $query = "SELECT category FROM categories ORDER BY category ASC";
