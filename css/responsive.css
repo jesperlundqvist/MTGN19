@@ -7,8 +7,22 @@
 
 @media all and (max-width: 1024px) {
 	.content-wrapper {
-		padding: 15px;
+		padding: 10px;
 	}
+
+
+	.filter-item {
+		width: 23%;
+	}
+}
+
+@media all and (max-width: 1000px) {
+  .complete_day {
+    /*display: none;*/
+  }
+  .event-summary {
+    font-size: 0.9em;
+  }
 }
 
 
@@ -26,7 +40,7 @@
 		height: 135px;
 		text-align: center;
 	}
-	
+
 	.header-logo {
 		position: relative;
 		top: auto;
@@ -38,7 +52,7 @@
 	.header-logo img {
 		width: 200px;
 	}
-	
+
 	.header-sun {
 		top: -70px;
 		right: -112px;
@@ -151,7 +165,54 @@
 
 }
 
-@media (max-width: 380px) { /* Medium mobile screens */
+
+@media all and (max-width: 600px) {
+	.content_container {
+	padding: 20px 8px !important;
+	}
+
+	.login-title {
+	font-size: 4em;
+	}
+
+	.date {
+	font-size: 95%;
+	}
+	.filter-item {
+		width: 30%;
+	}
+
+	.video-play-icon {
+	margin-top: 24px;
+	width: 82px;
+	}
+
+	.filter-wrap {
+		width: 100%;
+	}
+
+	.button-group-ul li {
+		float: none;
+		text-align: center;
+	}
+
+	.filter-show {
+		display: block;
+	}
+
+
+}
+
+@media all and (max-width: 410px) { /* Medium mobile screens */
+
+	/* General */
+
+	.filter-item {
+		width: 47%;
+	}
+}
+
+@media all and (max-width: 380px) { /* Medium mobile screens */
 
 	/* General */
 
@@ -161,7 +222,7 @@
 }
 
 
-@media (max-width: 375px) { /* Small mobile screens */
+@media all and (max-width: 375px) { /* Small mobile screens */
 
 	/* Content wrapper */
 
@@ -295,61 +356,10 @@
 		min-width: 290px !important;
 	}
 
-}
-
-@media (max-width: 1000px) {
-  .complete_day {
-    /*display: none;*/
-  }
-  .event-summary {
-    font-size: 0.9em;
-  }
-
-
-}
-
-@media (max-width: 600px) {
-	.content_container {
-	padding: 20px 8px !important;
-	}
-
-	.login-title {
-	font-size: 4em;
-	}
-
-	.date {
-	font-size: 95%;
-	}
 	.filter-item {
-	width: 130px;
-	height: 130px;
+		width: 46%;
 	}
-
-	.video-play-icon {
-	margin-top: 24px;
-	width: 82px;
-	}
-
-	.filter-wrap {
-		width: 100%;
-	}
-
-	.button-group-ul li {
-		float: none;
-		text-align: center;
-	}
-
-	.filter-show {
-		display: block;
-	}
-
-
 }
-
-
-
-
-
 
 /*
 * HELPERS

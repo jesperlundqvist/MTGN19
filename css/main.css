@@ -19,7 +19,7 @@ h1,h2,h3 {
   font-family:Pirata One;
   font-weight: normal;
   text-align: center;
-  
+
 }
 
 h1 {
@@ -244,7 +244,7 @@ select {
 
   float: right;
   height: 100px;
-  
+
 }
 
 .news:nth-child(even) .news-symbol {
@@ -318,7 +318,7 @@ select {
   padding: 8px;
 }
 
-.input_areas {  
+.input_areas {
   margin-bottom: 24px;
 
   width: 40%;
@@ -503,7 +503,7 @@ label {
 .nextProfileLink {
   position: absolute;
   top: 74px;
-  
+
   font-size: 30px;
 }
 
@@ -596,7 +596,7 @@ label {
 }
 
 
-/* 
+/*
   MEDIA
 */
 
@@ -612,7 +612,7 @@ label {
   display: block;
   clear: both;
 }
-  
+
   /* hide filters, show with js*/
 .filters {
   display: none;
@@ -653,12 +653,12 @@ label {
   display: block;
 
   background:#F7ECD6;
-  color: #000;  
+  color: #000;
 }
 .filter-item {
   position: relative;
   float: left;
-  width: 180px;
+  width: 19%;
   height: 180px;
   margin: 5px;
   padding: 10px;
@@ -687,7 +687,7 @@ label {
 .weekbutton {
     display: inline-block;
     padding: 10px 50px;
-    
+
     font-size: 24px;
 
     transition: background-color 0.3s, color 0.3s;
@@ -850,7 +850,7 @@ p {
 #button_week_back, #button_week_forward {
   cursor: pointer;
   /* Disable text highlighting */
-  -webkit-user-select: none;        
+  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
 }
@@ -1162,7 +1162,7 @@ footer a {
     animation-name: floating;
     -webkit-animation-name: floating;
 
-    animation-duration: 4s; 
+    animation-duration: 4s;
     -webkit-animation-duration: 4s;
 
     animation-iteration-count: infinite;
@@ -1171,26 +1171,26 @@ footer a {
 
 @keyframes floating {
     0% {
-        transform: translateY(0%);  
+        transform: translateY(0%);
     }
     50% {
-        transform: translateY(5%);  
-    }   
+        transform: translateY(5%);
+    }
     100% {
         transform: translateY(0%);
-    }           
+    }
 }
 
 @-webkit-keyframes floating {
     0% {
-        -webkit-transform: translateY(0%);  
+        -webkit-transform: translateY(0%);
     }
     50% {
-        -webkit-transform: translateY(5%);  
-    }   
+        -webkit-transform: translateY(5%);
+    }
     100% {
         -webkit-transform: translateY(0%);
-    }           
+    }
 }
 /* ----------- FLOATING --------------- */
 
