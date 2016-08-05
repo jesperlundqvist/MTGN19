@@ -16,6 +16,7 @@ body {
 }
 
 h1,h2,h3 {
+  margin-top: 0;
   font-family:Pirata One;
   font-weight: normal;
   text-align: center;
@@ -66,6 +67,7 @@ select {
     Layout
 */
  .content-wrapper {
+    padding-top: 15px;
     padding-bottom: 25px;
     margin: 0 auto;
     max-width: 1000px;
@@ -478,6 +480,7 @@ label {
 }
 
 .n0llegroup_title {
+  margin-top: 15px;
     font-size: 16px;
     font-weight: normal;
     text-transform: uppercase;
@@ -593,6 +596,12 @@ label {
 
     font-size: 16px;
     font-style: italic;
+}
+
+.rsa-ser-allt {
+  font-family: Stencil;
+  font-size: 40px !important;
+  color: #000;
 }
 
 .edit_profile_link {

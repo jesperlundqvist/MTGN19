@@ -16,7 +16,7 @@
     <?php
       //Load top content
       include_once ('inc_top_content.php');
-      
+
       $username = $_SESSION['username'];
       $admin = $_SESSION['admin'];
 
@@ -129,29 +129,20 @@
         echo "</svg>";
 
         // beskrivning
-
-        if ($usergroup == 'RSA' ) {
-          echo "<div class='description-wrap rsa-ser-allt'>";
-        } else {
-          echo "<p>
-            <span class='ion-ios-color-wand-outline wand-icon'></span>
-            </p>";
-          echo "<div class='description-wrap'>";
-        }
-        echo "<p class=\"description\">
-              <!--<span class=\"ion-quote\"></span>-->
-              $description
-            </p>";
+        echo "<div class='description-wrap'>";
+        echo '<p class="description '.($usergroup == 'RSA' ? 'rsa-ser-allt' : '').'">'.
+              $description.'
+            </p>';
         echo "</div>";
 
         // Kommenterar bort detta så länge - diskutera om hur n0llegruppsnamnet ska visas /Kalle
 
-        // if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
-        //   echo "<p>
-        //       <span class='question'>nØllegrupp</span>
-        //       <span class='answer'>$n0llegroup</span>
-        //     </p>";
-        // }
+        if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
+          echo "<p>
+              <span class='question'>nØllegrupp</span>
+              <span class='answer'>$n0llegroup</span>
+            </p>";
+        }
 
         // if ($gandalf != null) {
         //   echo "<p>
