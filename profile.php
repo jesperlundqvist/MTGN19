@@ -124,9 +124,9 @@
         }
 
         // brytstreck
-        echo "<svg class='profile-divider-line'>";
-        echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
-        echo "</svg>";
+        // echo "<svg class='profile-divider-line'>";
+        // echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
+        // echo "</svg>";
 
         // beskrivning
         echo "<div class='description-wrap'>";
@@ -137,12 +137,12 @@
 
         // Kommenterar bort detta så länge - diskutera om hur n0llegruppsnamnet ska visas /Kalle
 
-        if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
-          echo "<p>
-              <span class='question'>nØllegrupp</span>
-              <span class='answer'>$n0llegroup</span>
-            </p>";
-        }
+        // if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
+        //   echo "<p>
+        //       <span class='question'>nØllegrupp</span>
+        //       <span class='answer'>$n0llegroup</span>
+        //     </p>";
+        // }
 
         // if ($gandalf != null) {
         //   echo "<p>
