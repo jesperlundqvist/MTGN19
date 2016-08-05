@@ -48,7 +48,7 @@
           exit();
         }
 
-        echo "<h2>Redigera inlägg</h2>";
+        echo "<h2 class='adminpanel_title'>Redigera inlägg</h2>";
 
         // --- DELETE ---
         echo "<form action=\"newspage_handler.php?action=delete\" method=\"post\">";
@@ -60,7 +60,7 @@
         ?>
         <div class="news_instructions">
           <p class="first">TIPS! Du kan använda HTML i inläggen. Länk och bild visas nedan. Du kan även embedda Youtube-videos.</p>
-          <code>
+          <code class="first">
             LÄNK: &lt;a href="http://google.com"&gt;text som ska visas&lt;/a&gt; </br>
             BILD: &lt;img src="http://länktillbilden.com/bild.jpg"/&gt;
           </code>
@@ -69,7 +69,7 @@
         // Update
         echo "<form action=\"newspage_handler.php?action=update\" method=\"post\">";
         echo "<input type=\"text\" id=\"id\" name=\"id\" value=\"$id\" style=\"display: none\"/>";
-        echo "<input type=\"text\" id=\"title\" name=\"title\" value=\"$title\" class=\"input_areas\"/><br/>";
+        echo "<input id='news_title' type=\"text\" id=\"title\" name=\"title\" value=\"$title\" class=\"input_areas\"/><br/>";
         echo "<textarea id=\"body\" name=\"body\" cols=\"\" rows=\"\" class=\"input_areas\">$body</textarea></br>";
 
 
