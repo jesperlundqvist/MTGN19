@@ -25,7 +25,7 @@
 
     <div class="content-wrapper">
       <h1>Media</h1>
-      
+
       <div class="js-filter-show filter-show"><h3>Visa filter</h3></div>
       <div class="js-filter-hide filter-hide"><h3>Göm filter</h3></div>
       <div class="filters clearfix">
@@ -39,7 +39,7 @@
             </ul>
           </div>
         </div>
-        
+
         <div class="filter-wrap">
           <h3>Vecka</h3>
           <div class="button-group filters-button-group" data-filter-group="week">
@@ -86,11 +86,11 @@
         }
 
         // Video
-        $query = "SELECT videoid, event FROM videos ORDER BY uploaddate ASC";
+        $query = "SELECT videoid, event, week FROM videos ORDER BY uploaddate ASC";
         $result = execQuery($link, $query);
         while ($video = $result->fetch_object()) {
           echo'
-         <a class="fancybox-media" rel="gallery1" href="http://www.youtube.com/watch?v='.$video->videoid.'"><div class="filter-item filter-video filter-'.$video->event .'" data-category="transition" style="background-image:url(http://img.youtube.com/vi/' . $video->videoid . '/hqdefault.jpg)"><img class="video-play-icon" src="/design/play_icon.png" />
+         <a class="fancybox-media" rel="gallery1" href="http://www.youtube.com/watch?v='.$video->videoid.'"><div class="filter-item filter-video filter-'.$video->week .' filter-'.$video->event .'" data-category="transition" style="background-image:url(http://img.youtube.com/vi/' . $video->videoid . '/hqdefault.jpg)"><img class="video-play-icon" src="/design/play_icon.png" />
           </div></a>';
         }
     ?>

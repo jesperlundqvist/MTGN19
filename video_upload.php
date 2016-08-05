@@ -40,6 +40,18 @@
             </div>
             <br><br>
 
+            <div class="week-select">
+              <span>Vecka: </span>
+              <select id="week" name="week">
+                <option>Auto</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+              </select>
+            </div>
+            <br><br>
+
             <button id="submit_video">Ladda upp video</button>
           </div>
           <div id="info"></div>
@@ -65,6 +77,7 @@
         var videourl = $("#videourl").val();
         var videoid = getParameterFromStringByName(videourl, "v");
         var event = $("#event").val();
+        var week = $("#week").val();
         var videoname = $("#videoname").val();
 
         var pass = true;
@@ -79,13 +92,13 @@
         }
 
         if (pass) {
-          uploadVideo(videoid, event, videoname);
+          uploadVideo(videoid, event, week, videoname);
         }
 
       });
     });
 
-    function uploadVideo(videoid, event, videoname) {
+    function uploadVideo(videoid, event, week, videoname) {
       var uploadURL = "video_upload_process.php";
 
       $.ajax({
@@ -94,6 +107,7 @@
         data: {
           'videoid': videoid,
           'event': event,
+          'week': week,
           'videoname': videoname
         },
         success: function(output){
