@@ -78,14 +78,23 @@
 		width: 100% !important;
 	}
 
-	.news-timestamp {
+	.news-timestamp,
+	.news-writtenby {
 		float: none;
+	}
+
+	.news-symbol_wrap {
+		text-align: center;
 	}
 
 	.news-symbol {
 		float: none !important;
+		margin-top: 0;
 	}
 
+	.post-footer {
+		text-align: left;
+	}
 	/* Footer */
 
 	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
