@@ -23,6 +23,7 @@
               <a class="admin-control" href="gallery_upload_images.php">Ladda upp bilder</a>
               <a class="admin-control" href="video_upload.php">Ladda upp video</a>
               <a class="admin-control" href="blandaren_upload.php">Ladda upp Bländare</a>
+              <a class="admin-control" href="event.php">Lägg till event</a>
             </div>
 
             <div id="news_input_container" class="news-top">
