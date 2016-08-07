@@ -649,11 +649,6 @@ label {
   clear: both;
 }
 
-  /* hide filters, show with js*/
-.filters {
-  /*display: none;*/
-}
-
 .filter-wrap {
   display: inline-block;
   margin-right: 25px;

@@ -205,9 +205,14 @@
 		text-align: center;
 	}
 
+	.filters {
+		display: none;
+	}
+
 	.filter-show {
 		display: block;
 	}
+
 
 
 }
