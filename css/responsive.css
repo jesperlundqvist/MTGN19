@@ -148,6 +148,11 @@
 		height: 150px;
 	}
 
+	.ribbon-content {
+		font-size: 37px;
+	}
+
+
 	/* Schedule */
 
 	#button_week_back {
@@ -159,17 +164,33 @@
 	}
 
 	/* Mobile menu */
+	.header {
+		display: none;
+	}
+	.sitenav {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.sitenav li {
+		display: none;
+	}
+	.mobile-logo-wrap {
+		margin-top: 23px;
+	  display: inline-block;
+	}
+
+	.center-mobile {
+		text-align: center;
+	}
+
 
 	.menu-hamburger {
 		display: inline-block !important;
 	}
 
-	.menu-adminpanel, .menu-profiles, .menu-blandaren, .menu-logout {
-		display: none !important;
-	}
-
 	.nav-wrapper li a {
-		font-size: 24px !important;
+		font-size: 30px !important;
 	}
 
 }
@@ -233,6 +254,12 @@
 	.input_areas {
 		min-width: 350px !important;
 	}
+
+
+	.mobile-logo {
+	  width: 160px;
+	}
+
 }
 
 
@@ -254,7 +281,7 @@
 	/* Mobile menu */
 
 	.nav-wrapper li a {
-		font-size: 20px !important;
+		/*font-size: 20px !important;*/
 	}
 
 	.show-nav .push-wrap {
@@ -294,25 +321,25 @@
 	.mobile-menu-wrapper {
 	  width: 225px;
 	  height: 100%;
+	}
 
-	  padding: 16px;
+	.mobile-menu-top {
+		background-position:right 0 bottom -48px;
+	}
 
-	  /*border-right: 2px solid #f7ecd6;*/
-
+	.name-wrap {
+		margin-bottom: 32px;
 	}
 
 	.mobile-menu-wrapper #profilepic-wrapper {
-	  width: 150px;
-	  height: 150px;
+	  width: 100px;
+	  height: 100px;
 	}
+
 
 	.mobile-menu-wrapper .ribbon-content {
 	  font-size: 28px;
 	  font-weight: normal;
-	}
-
-	.mobile-menu-wrapper .n0llegroup {
-	  margin: 16px;
 	}
 
 	.mobile-menu-wrapper .profile-divider-line {
@@ -331,6 +358,14 @@
 	  font-weight: normal;
 	}
 
+	.mobilenav li {
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+
+	.mobilenav li a{
+		font-size: 23px;
+	}
 	/* News */
 
 	.news-title {

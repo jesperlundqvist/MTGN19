@@ -570,7 +570,7 @@ label {
 */
 
 .bottom-ribbon {
-  margin: 5px;
+  margin: 16px;
 }
 
 .ribbon-content {
@@ -1304,7 +1304,6 @@ footer a {
 
     opacity: 0;
     transition: visibility 0.2s, opacity 0.2s ease-out;
-
 }
 
 .mobile-nav a {
@@ -1312,7 +1311,7 @@ footer a {
 }
 
 .mobile-nav #profilepic-wrapper {
-  border: 2px solid #0d3c42;
+  border: 2px solid #222;
 }
 
 .show-nav .mobile-nav {
@@ -1324,44 +1323,25 @@ footer a {
   width: 275px;
   height: 100%;
 
-  background: #f7ecd6;
+  padding: 16px;
 
-  border-right: 2px solid #0d3c42;
+  border-right: 2px solid #222;
 
 }
-
-.mobile-menu-top {
-  padding-top: 16px;
-  padding-bottom: 16px;
-
-  background: #f6f9fb url('/design/mobile-waves.png') no-repeat;
-  background-position:right 0 bottom -31px;
-}
-
-.mobile-menu-bottom {
-  padding-top: 20px;
-  margin-top: -3px;
-  background: url('/design/mobile-fader.png') no-repeat;
-  background-position: 0 0;
-}
-
 
 .mobile-menu-wrapper #profilepic-wrapper {
   width: 150px;
   height: 150px;
 }
 
-.name-wrap {
-  margin-bottom: 50px;
-}
-
 .mobile-menu-wrapper .ribbon-content {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: normal;
-
-  color: #0d3c42;
 }
 
+.mobile-menu-wrapper .n0llegroup {
+  margin: 16px;
+}
 
 .mobile-menu-wrapper .profile-divider-line {
   width: 220px;
@@ -1374,37 +1354,9 @@ footer a {
   margin: 16px;
 }
 
-.mobile-menu-wrapper #edit_profile,
-.mobile-menu-wrapper
-.show-all-profiles,
-.mobile-blandaren,
-.mobile-logout {
+.mobile-menu-wrapper #edit_profile, .mobile-menu-wrapper .show-all-profiles, .mobile-blandaren, .mobile-logout {
   font-size: 22px;
   font-weight: normal;
 }
 
-.mobile-logo-wrap {
-  display: none;
-}
-
-.mobile-logo {
-  width: 200px;
-}
-
-.mobilenav {
-  margin-top: 5px;
-  text-align: left;
-}
-
-.mobilenav li {
-  padding-left: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.mobilenav li a  {
-  font-size: 25px;
-  font-family: Pirata One;
-  color: #0d3c42;
-}
 

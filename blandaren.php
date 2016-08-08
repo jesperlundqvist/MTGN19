@@ -4,8 +4,7 @@
   ?>
     <title>Bländaren</title>
     <link rel="stylesheet" href="css/swiper.min.css" />
-    <link rel="stylesheet" href="css/main.css" type="text/css">
-    <script src="js/gallery.js"></script>
+    <!-- <script src="js/gallery.js"></script> -->
   </head>
 
   <body>
@@ -26,12 +25,6 @@
 
           // =================== BLÄNDAREN ===============
           echo '<div id="blandar_container">';
-            if ($admin) {
-              echo '<div class="admin-controls">';
-              echo '<a class="no-link upload_link admin-control" href="blandaren_upload.php">Ladda upp Bländaren</a>';
-              echo '<div id="deleteblandarenbutton" class="deletestuff admin-control">Radera bländare</div>';
-              echo '</div>';
-            }
 
             echo '<div id="blandare">';
             $query = "SELECT blandarpdf, frontpage, blandarid, blandarname FROM blandare ORDER BY uploaddate ASC";
@@ -49,10 +42,6 @@
                       <h3 class="blandartitle">' . $blandare->blandarname . '</h3>
                       <img class="blandarthumb" src="images/uploads/blandaren/frontpages/' . $blandare->frontpage . '"/>
                     </a>';
-
-              if ($admin) {
-                echo '<div class="delete deleteblandare" id="delete_' . $blandare->frontpage . '"><span class="ion-ios-trash-outline"></span> <span class="hide-on-mobile">DELETE </span>' . $blandare->blandarid . '</div>';
-              }
 
               echo '</div>'; // blandarDiv_container
 
