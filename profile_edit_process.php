@@ -41,12 +41,12 @@ if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['
 
   if ($updatePassword) {
     if ($password1 != $password2) {
-      echo 'Lösenorden matchar inte.';
+      echo '<p style="color:red;font-size:20px;">Lösenorden matchar inte.</p>';
       exit();
     }
 
     if (strlen($password1) != 128) {
-      echo 'Lösenordet hashades inte ordentligt.';
+      echo '<p style="color:red;font-size:20px;">Lösenordet hashades inte ordentligt.</p>';
       exit();
     }
   }
@@ -113,6 +113,15 @@ if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['
     echo "Error: $stmt->error";
   } else {
     echo "ok";
+  }
+
+  if ($updatePassword) {
+    ?>
+    <script type="text/javascript">
+    alert('Du har bytt lösenord. Vänligen logga in med ditt nya lösenord.');
+    window.location.href = "/"
+    </script>
+    <?php
   }
 }
 ?>

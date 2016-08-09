@@ -243,7 +243,7 @@ select {
   font-weight: bold;
   letter-spacing: 1px;
   font-family: Pirata One;
-  color: #FFA726;
+  color: #e3af49;
 
   cursor: pointer;
 }
@@ -290,7 +290,7 @@ select {
   margin-bottom: 15px;
   margin-top: 15px;
   color: #fff;
-  background: #FFA726;
+  background: #e3af49;
   display: inline-block;
 }
 
@@ -349,7 +349,7 @@ select {
 }
 
 .first {
-  color: yellow;
+  color: #e3af49;
 }
 
 .input_areas, #news_category {
@@ -509,7 +509,7 @@ label {
 }
 
 .n0llegroup_title h3 {
-  color: #FFA726;
+  color: #e3af49;
   letter-spacing: 0.5px;
 }
 
@@ -652,7 +652,7 @@ label {
 .question-wrap h3 {
   margin-bottom: 5px;
   letter-spacing: 0.5px;
-  color: #FFA726;
+  color: #e3af49;
 }
 
 .edit_profile_link {
@@ -706,7 +706,7 @@ label {
 }
 
 .filter-wrap h3 {
-  color: #FFA726;
+  color: #e3af49;
 }
 
 .filter-show, .filter-hide {
@@ -1267,7 +1267,7 @@ footer a {
 
 .button-primary {
   padding: 12px;
-  background: #FFA726;
+  background: #e3af49;
   outline:none;
   border:none;
   border-radius: 5px;
@@ -1407,3 +1407,6 @@ footer a {
   color: #0d3c42;
 }
 
+.no-display {
+  display: none;
+}

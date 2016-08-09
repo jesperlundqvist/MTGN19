@@ -149,7 +149,9 @@
       ?>
 
         <button id="submit_new_user_btn" class="button-primary">Spara ändringar</button>
-        <div id="statusbarcontainer"></div>
+        <?php
+        echo'<div id="statusbarcontainer '.($admin ? '' : 'no-display').'"></div>';
+        ?>
         <div id="info"></div>
     </div>
   </div>

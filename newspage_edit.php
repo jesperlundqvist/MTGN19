@@ -12,7 +12,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper form-page">
       <!-- Content -->
       <?php
         $link = connectToDB();
@@ -53,8 +53,11 @@
         // --- DELETE ---
         echo "<form action=\"newspage_handler.php?action=delete\" method=\"post\">";
         echo "<input type=\"text\" id=\"id\" name=\"id\" value=\"$id\" style=\"display: none\"/>";
-        echo "<input type=\"submit\" value=\"Radera nyheten\" id=\"delete_news\">";
+        echo "<input style=\"background:red;\" class=\"button-primary\" type=\"submit\" value=\"Radera nyheten\" id=\"delete_news\">";
         echo "</form>";
+
+        echo'<br>';
+
         // --- DELETE ---
 
         ?>
@@ -88,8 +91,8 @@
         }
         echo "</select>";
 
-
-        echo "<input type=\"submit\" value=\"Spara\" id=\"save_news\">";
+        echo'<br><br>';
+        echo "<input type=\"submit\" class=\"button-primary\" value=\"Spara\" id=\"save_news\">";
         echo "</form>";
 
       ?>
