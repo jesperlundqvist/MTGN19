@@ -24,7 +24,8 @@ $( document ).ready(function() {
 
   //globala variabler
   browserKey = 'AIzaSyCsUBinzlYwP-gE74Ls5L9-xSlZbJTIqlM'; // Gustav test
-  calendarid = 'qh3at27vur0f76h63fc37tcd18@group.calendar.google.com'; // Också gustav test
+  // calendarid = 'qh3at27vur0f76h63fc37tcd18@group.calendar.google.com'; // Också gustav test
+  calendarid = 't1jrb271f5t9pm4gq7vfbs7mek@group.calendar.google.com';
   startTime = new Date();
 
   startTime.setHours(0,0,0);
@@ -289,7 +290,7 @@ function drawScheduleSliders(data, startSlide) {
     } else {
       minutes = eventDate.getMinutes();
     }
-  
+
     // Sluttid
     var endHours = "";
     if (eventEndDate.getHours() < 10) {

@@ -1255,6 +1255,10 @@ footer a {
     width: 100%;
     height: 100%;
 }
+
+.show-nav {
+  overflow: hidden;
+}
 /* Adds a transition and the resting translate state */
 .push-wrap {
     background: #025c77 url('/design/body_bg.jpg');
@@ -1304,6 +1308,8 @@ footer a {
 
     opacity: 0;
     transition: visibility 0.2s, opacity 0.2s ease-out;
+
+    overflow:auto;
 
 }
 
@@ -1398,12 +1404,12 @@ footer a {
 
 .mobilenav li {
   padding-left: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .mobilenav li a  {
-  font-size: 25px;
+  font-size: 30px;
   font-family: Pirata One;
   color: #0d3c42;
 }
