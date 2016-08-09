@@ -111,9 +111,5 @@
       include_once ('inc_footer.php');
     ?>
   <script src="js/swiper.jquery.min.js"></script>
-
-    </div> <!-- close push-wrap from inc_top_content -->
-    </div> <!-- close site-wrap from inc_top_content -->
-  
   </body>
 </html>

@@ -51,27 +51,3 @@ Date.prototype.getDayOfWeek = function(){
   }
   return d;
 }
-
-
-// Mobile menu
-// (function() {
-//   $('.mini-menu').on('click', function(e) {
-//     alert('wat');
-//     // $('html').toggleClass('is-mobile-nav-open');
-
-//     // e.stopPropagation();
-//     // e.preventDefault();
-//   });
-
-//   // $('.is-mobile-nav-open .page').on('touchmove', function(e) {
-//   //   e.preventDefault()
-//   // });
-// })();
-
-// Mobile menu
-$(function() {
-    $('.toggle-mobile-menu').click(function() {
-          $('body').toggleClass('show-nav'); 
-          return false;
-    });
-});

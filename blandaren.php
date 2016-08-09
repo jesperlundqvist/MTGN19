@@ -36,7 +36,7 @@
               echo '<div id="' . $blandare->blandarid . '" class="blandarDiv_container">';
 
 
-              
+
               echo '
                     <a class="no-link" target="_blank" href="images/uploads/blandaren/pdfs/' . $blandare->blandarpdf . '">
                       <h3 class="blandartitle">' . $blandare->blandarname . '</h3>
@@ -60,9 +60,5 @@
     ?>
 
     <script src="js/swiper.jquery.min.js"></script>
-
-    </div> <!-- close push-wrap from inc_top_content -->
-    </div> <!-- close site-wrap from inc_top_content -->
-
   </body>
 </html>

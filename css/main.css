@@ -1249,51 +1249,6 @@ footer a {
 
 /* Mobile menu */
 
-/* Hides everything pushed outside of it */
-.site-wrap {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-}
-
-.show-nav {
-  overflow: hidden;
-}
-/* Adds a transition and the resting translate state */
-.push-wrap {
-    background: #025c77 url('/design/body_bg.jpg');
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-
-    -webkit-transform: translate(0, 0);
-    -moz-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0);
-
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-/* Will animate the content to the right 275px revealing the hidden nav */
-.show-nav .push-wrap {
-    -webkit-transform: translate(275px, 0);
-    -moz-transform: translate(275px, 0);
-    -ms-transform: translate(275px, 0);
-    -o-transform: translate(275px, 0);
-    transform: translate(275px, 0);
-
-    -webkit-transform: translate3d(275px, 0, 0);
-    -moz-transform: translate3d(275px, 0, 0);
-    -ms-transform: translate3d(275px, 0, 0);
-    -o-transform: translate3d(275px, 0, 0);
-    transform: translate3d(275px, 0, 0);
-}
-
 /* Positions the nav fixed below the push wrapper */
 .mobile-nav {
     width: 275px;

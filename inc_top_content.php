@@ -2,7 +2,7 @@
 $admin = $_SESSION['admin'];
 ?>
 
-<?php 
+<?php
 
 $link = connectToDB();
 
@@ -38,56 +38,55 @@ $link = connectToDB();
   }
 
 ?>
-<div class="site-wrap">
-
-<nav class="mobile-nav">
-	<div class="mobile-menu-wrapper">
-    <div class="mobile-menu-top">
-      <a href="/profile.php?user=<?=$username?>">
-      <?php 
-        // Profilbild
-        if ($imagepath != null) {
-          echo "<div id='profilepic-wrapper' style='background-image:url(\"$imagepath\")'>";
-          echo "</div>";
-          echo "<div id='profile-banner'></div>";
-        }
-
-        // namn
-        if ($name != null) {
-          echo "<div class='name-wrap'> ";
-          echo "<p class='bottom-ribbon'><span class='ribbon-content'>$name</span></p>";
-          if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
-            echo "<p class='n0llegroup'>$n0llegroup</p>";
+<div off-canvas="id-1 left reveal">
+  <nav class="mobile-nav">
+  	<div class="mobile-menu-wrapper">
+      <div class="mobile-menu-top">
+        <a href="/profile.php?user=<?=$username?>">
+        <?php
+          // Profilbild
+          if ($imagepath != null) {
+            echo "<div id='profilepic-wrapper' style='background-image:url(\"$imagepath\")'>";
+            echo "</div>";
+            echo "<div id='profile-banner'></div>";
           }
-          echo "</div>";
-        }
-      ?>
-      
-     </div>
-     <div class="mobile-menu-bottom">    
-      <ul class="mobilenav">
-        <?php
-          echo "<li><a href=\"profile_edit.php?user=$username\">Redigera profil</a></li>";
-        ?>
-        <?php
-        if ($admin) { ?>
-          <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
-        }
-         ?>
-        <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-        <li class="menu-media"><a href="media.php">Media</a></li>
-        <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
-        <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
-        <li class="menu-logout"><a href="functions_logout.php">Logga ut </a></li>
-      </ul>
-    </div>
-	</div> <!-- mobile-menu-wrapper -->
-</nav>
 
-<div class="push-wrap">
+          // namn
+          if ($name != null) {
+            echo "<div class='name-wrap'> ";
+            echo "<p class='bottom-ribbon'><span class='ribbon-content'>$name</span></p>";
+            if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
+              echo "<p class='n0llegroup'>$n0llegroup</p>";
+            }
+            echo "</div>";
+          }
+        ?>
+
+       </div>
+       <div class="mobile-menu-bottom">
+        <ul class="mobilenav">
+          <?php
+            echo "<li><a href=\"profile_edit.php?user=$username\">Redigera profil</a></li>";
+          ?>
+          <?php
+          if ($admin) { ?>
+            <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
+          }
+           ?>
+          <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
+          <li class="menu-media"><a href="media.php">Media</a></li>
+          <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
+          <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
+          <li class="menu-logout"><a href="functions_logout.php">Logga ut </a></li>
+        </ul>
+      </div>
+  	</div> <!-- mobile-menu-wrapper -->
+  </nav>
+</div>
+<div class="site-wrap" canvas="container">
 
 <div class="header">
-	
+
     <div class="header-wave-back"></div>
 	<div class="constrainer">
 		<div class="header-ship floating"></div>
