@@ -1,9 +1,3 @@
-.mobile-header,
-.mobile-nav,
-.header-mini-menu {
-	/*display: none;*/
-	visibility: hidden;
-}
 
 @media all and (max-width: 1024px) {
 	.content-wrapper {
@@ -280,48 +274,6 @@
 
 	/* Mobile menu */
 
-	.nav-wrapper li a {
-		/*font-size: 20px !important;*/
-	}
-
-	.show-nav .push-wrap {
-	    -webkit-transform: translate(225px, 0);
-	    -moz-transform: translate(225px, 0);
-	    -ms-transform: translate(225px, 0);
-	    -o-transform: translate(225px, 0);
-	    transform: translate(225px, 0);
-
-	    -webkit-transform: translate3d(225px, 0, 0);
-	    -moz-transform: translate3d(225px, 0, 0);
-	    -ms-transform: translate3d(225px, 0, 0);
-	    -o-transform: translate3d(225px, 0, 0);
-	    transform: translate3d(225px, 0, 0);
-	}
-
-	/* Positions the nav fixed below the push wrapper */
-	.mobile-nav {
-	    width: 225px;
-	    height: 100%;
-	    position: fixed;
-	    top: 0;
-	    left: 0;
-	    z-index: 100;
-
-	    text-align: center;
-
-	    opacity: 0;
-	    transition: visibility 0.2s, opacity 0.2s ease-out;
-	}
-
-	.show-nav .mobile-nav {
-	  visibility: visible;
-	  opacity: 1;
-	}
-
-	.mobile-menu-wrapper {
-	  width: 225px;
-	  height: 100%;
-	}
 
 	.mobile-menu-top {
 		background-position:right 0 bottom -48px;
@@ -358,13 +310,9 @@
 	  font-weight: normal;
 	}
 
-	.mobilenav li {
-		padding-top: 3px;
-		padding-bottom: 3px;
-	}
 
 	.mobilenav li a{
-		font-size: 23px;
+		font-size: 27px;
 	}
 	/* News */
 

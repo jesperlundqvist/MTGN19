@@ -38,7 +38,7 @@ $link = connectToDB();
   }
 
 ?>
-<div off-canvas="id-1 left reveal">
+<div off-canvas="mobilemenu left push">
   <nav class="mobile-nav">
   	<div class="mobile-menu-wrapper">
       <div class="mobile-menu-top">
@@ -102,7 +102,7 @@ $link = connectToDB();
 	<div class="constrainer center-mobile nav-wrapper">
     <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>
 		<ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
-			<li class="menu-hamburger show-mobile" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">&#9776;</a></li>
+			<li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">&#9776;</a></li>
 			<li class="menu-start"><a href="/">Startsida </a></li>
 			<?php
 			if ($admin) { ?>

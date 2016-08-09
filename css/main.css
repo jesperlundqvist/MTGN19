@@ -571,6 +571,7 @@ label {
 
 .bottom-ribbon {
   margin: 5px;
+  text-align: center;
 }
 
 .ribbon-content {
@@ -1250,28 +1251,6 @@ footer a {
 /* Mobile menu */
 
 /* Positions the nav fixed below the push wrapper */
-.mobile-nav {
-    width: 275px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background: #F7ECD6;
-    color: #222;
-    text-align: center;
-
-    opacity: 0;
-    transition: visibility 0.2s, opacity 0.2s ease-out;
-
-    overflow:auto;
-
-}
-
-.mobile-nav a {
-  color: #222;
-}
-
 .mobile-nav #profilepic-wrapper {
   border: 2px solid #0d3c42;
 }
@@ -1279,16 +1258,6 @@ footer a {
 .show-nav .mobile-nav {
   visibility: visible;
   opacity: 1;
-}
-
-.mobile-menu-wrapper {
-  width: 275px;
-  height: 100%;
-
-  background: #f7ecd6;
-
-  border-right: 2px solid #0d3c42;
-
 }
 
 .mobile-menu-top {

@@ -14,6 +14,7 @@ $(document).ready(function() {
       searchUsers($('#search'));
     }
   });
+
 });
 
 // Search users
@@ -51,3 +52,19 @@ Date.prototype.getDayOfWeek = function(){
   }
   return d;
 }
+
+$(function(){
+  // Initialize Slidebars
+  var controller = new slidebars();
+  controller.init();
+
+  // Toggle Slidebars
+  $( '.toggle-mobilemenu' ).click(function(){
+    // Stop default action and bubbling
+    event.stopPropagation();
+    event.preventDefault();
+    // Toggle the Slidebar with id 'id-1'
+    controller.toggle( 'mobilemenu' );
+
+  });
+});
