@@ -7,37 +7,25 @@ if (session_status() == PHP_SESSION_NONE) {
     sec_session_start();
 }
 
-if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['name'], $_POST['email'], $_POST['description'], $_POST['n0llegroup'])) {
+if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['name'], $_POST['email'], $_POST['description'], $_POST['q1'], $_POST['q2'], $_POST['q3'], $_POST['n0llegroup'])) {
   $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
   $password1 = filter_input(INPUT_POST, 'password1', FILTER_SANITIZE_STRING);
   $password2 = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_STRING);
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
   $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+  $q1 = filter_input(INPUT_POST, 'q1', FILTER_SANITIZE_STRING);
+  $q2 = filter_input(INPUT_POST, 'q2', FILTER_SANITIZE_STRING);
+  $q3 = filter_input(INPUT_POST, 'q3', FILTER_SANITIZE_STRING);
   $n0llegroup = filter_input(INPUT_POST, 'n0llegroup', FILTER_SANITIZE_STRING);
 
-
-// if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['name'], $_POST['email'], $_POST['description'], $_POST['gandalf'], $_POST['kaniner'], $_POST['patronus'], $_POST['n0llegroup'])) {
-//   $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
-//   $password1 = filter_input(INPUT_POST, 'password1', FILTER_SANITIZE_STRING);
-//   $password2 = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_STRING);
-//   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-//   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-//   $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
-//   $gandalf = filter_input(INPUT_POST, 'gandalf', FILTER_SANITIZE_STRING);
-//   $kaniner = filter_input(INPUT_POST, 'kaniner', FILTER_SANITIZE_STRING);
-//   $patronus = filter_input(INPUT_POST, 'patronus', FILTER_SANITIZE_STRING);
-//   $n0llegroup = filter_input(INPUT_POST, 'n0llegroup', FILTER_SANITIZE_STRING);
-
   // Hämta gamla informationen
-  // if ($stmt = $link->prepare("SELECT name, imagename, gifname, email, description, gandalf, kaniner, patronus, n0llegroup FROM users WHERE username = ? LIMIT 1")) {
-  if ($stmt = $link->prepare("SELECT name, imagename, gifname, email, description, n0llegroup FROM users WHERE username = ? LIMIT 1")) {
+  if ($stmt = $link->prepare("SELECT name, imagename, gifname, email, description, q1, q2, q3, n0llegroup FROM users WHERE username = ? LIMIT 1")) {
 
     $stmt->bind_param('s', $username);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($oldname, $oldimagename, $oldgifname, $oldemail, $olddescription, $oldn0llegroup);
-    // $stmt->bind_result($oldname, $oldimagename, $oldgifname, $oldemail, $olddescription, $oldgandalf, $oldkaniner, $oldpatronus, $oldn0llegroup);
+    $stmt->bind_result($oldname, $oldimagename, $oldgifname, $oldemail, $olddescription, $oldq1, $oldq2, $oldq3, $oldn0llegroup);
     $stmt->fetch();
   } else {
     echo "Något gick fel med kopplingen till databasen.";
@@ -112,19 +100,12 @@ if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['
   if ($updatePassword) {
     $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
     $salted_password = hash('sha512', $password1 . $random_salt);
-    $stmt = $link->prepare("UPDATE users SET name = ?, email = ?, imagename = ?, gifname = ?, description = ?, password = ?, salt = ?, n0llegroup = ? WHERE username = ?");
-    $stmt->bind_param('sssssssss', $name, $email, $imagename, $gifname, $description, $salted_password, $random_salt, $n0llegroup, $username);
-    //  $stmt = $link->prepare("UPDATE users SET name = ?, email = ?, imagename = ?, gifname = ?, description = ?, gandalf = ?, kaniner = ?, patronus = ?, password = ?, salt = ?, n0llegroup = ? WHERE username = ?");
-    // $stmt->bind_param('ssssssssssss', $name, $email, $imagename, $gifname, $description, $gandalf, $kaniner, $patronus, $salted_password, $random_salt, $n0llegroup, $username);
+     $stmt = $link->prepare("UPDATE users SET name = ?, email = ?, imagename = ?, gifname = ?, description = ?, q1 = ?, q2 = ?, q3 = ?, password = ?, salt = ?, n0llegroup = ? WHERE username = ?");
+    $stmt->bind_param('ssssssssssss', $name, $email, $imagename, $gifname, $description, $q1, $q2, $q3, $salted_password, $random_salt, $n0llegroup, $username);
   } else {
 
-    $stmt = $link->prepare("UPDATE users SET name = ?, email = ?, imagename = ?, gifname = ?, description = ?, n0llegroup = ? WHERE username = ?");
-    $stmt->bind_param('sssssss', $name, $email, $imagename, $gifname, $description, $n0llegroup, $username);
-
-
-
-    //  $stmt = $link->prepare("UPDATE users SET name = ?, email = ?, imagename = ?, gifname = ?, description = ?, gandalf = ?, kaniner = ?, patronus = ?, n0llegroup = ? WHERE username = ?");
-    // $stmt->bind_param('ssssssssss', $name, $email, $imagename, $gifname, $description, $gandalf, $kaniner, $patronus, $n0llegroup, $username);
+     $stmt = $link->prepare("UPDATE users SET name = ?, email = ?, imagename = ?, gifname = ?, description = ?, q1 = ?, q2 = ?, q3 = ?, n0llegroup = ? WHERE username = ?");
+    $stmt->bind_param('ssssssssss', $name, $email, $imagename, $gifname, $description, $q1, $q2, $q3, $n0llegroup, $username);
   }
 
   $stmt->execute();

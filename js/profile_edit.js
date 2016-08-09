@@ -118,9 +118,9 @@ function updateUser(profilepicture, gif) {
   }
   var email = $("#email").val();
   var description = $("#description").val();
-  var gandalf = $("#gandalf").val();
-  var kaniner = $("#kaniner").val();
-  var patronus = $("#patronus").val();
+  var q1 = $("#q1").val();
+  var q2 = $("#q2").val();
+  var q3 = $("#q3").val();
   var n0llegroup = $("#n0llegroup").val();
   if (n0llegroup == null) {
     n0llegroup = "";
@@ -143,9 +143,9 @@ function updateUser(profilepicture, gif) {
   fd.append('name', name);
   fd.append('email', email);
   fd.append('description', description);
-  fd.append('gandalf', gandalf);
-  fd.append('kaniner', kaniner);
-  fd.append('patronus', patronus);
+  fd.append('q1', q1);
+  fd.append('q2', q2);
+  fd.append('q3', q3);
   fd.append('n0llegroup', n0llegroup);
 
   var info = $("#info");
@@ -184,47 +184,6 @@ function updateUser(profilepicture, gif) {
     }
   });
 }
-
-// function updateProfilePicture(formData, status) {
-//  var uploadURL = "uploadprofilepic.php";
-//  var path = "profile_pictures";
-//  var extraData = {};
-//  var jqXHR = $.ajax({
-//    xhr: function() {
-//      var xhrobj = $.ajaxSettings.xhr();
-//      if (xhrobj.upload) {
-//        xhrobj.upload.addEventListener('progress', function(event) {
-//          var percent = 0;
-//          var position = event.loaded || event.position;
-//          var total = event.total;
-//          if (event.lengthComputable) {
-//            percent = Math.ceil(position / total * 100);
-//          }
-//          //Set progress
-//          status.setProgress(percent);
-//        }, false);
-//      }
-//      return xhrobj;
-//    },
-//    url: uploadURL,
-//    type: "POST",
-//    contentType:false,
-//    processData: false,
-//    cache: false,
-//    data: formData,
-//    success: function(output){
-//      if (output != "error") {
-//        status.setProgress(100);
-//        updateUser(output);
-//      } else {
-//        $("#imageinfo").html(output);
-//      }
-//    }
-//  });
-
-//  status.setAbort(jqXHR);
-// }
-
 var rowCount = 0;
 function createStatusbar() {
   this.statusbar = $("<div class='statusbar'></div>");

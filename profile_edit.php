@@ -44,16 +44,14 @@
         }
 
         // Get info from database
-        // $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, gandalf, kaniner, patronus, n0llegroup FROM users WHERE username = ? LIMIT 1");
-         $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, n0llegroup FROM users WHERE username = ? LIMIT 1");
+         $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, q1, q2, q3, n0llegroup FROM users WHERE username = ? LIMIT 1");
         if (!$ownProfile) {
           $username = $get_username;
         }
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $stmt->store_result();
-        // $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $gandalf, $kaniner, $patronus, $n0llegroup);
-        $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $n0llegroup);
+        $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $q1, $q2, $q3, $n0llegroup);
         $stmt->fetch();
 
         // Get profile picture if there is any
@@ -92,23 +90,23 @@
         echo "<p class='input_description'>Beskriv dig själv!</p>";
         echo "<textarea type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\">$description</textarea><br/>";
 
-        //if ($gandalf == null) {
-        //  $gandalf = "Gandalf eller Dumbledore";
-        //}
-        // echo "<p>Gandalf eller Dumbledore</p>";
-        // echo "<input type=\"text\" id=\"gandalf\" value=\"$gandalf\" class=\"input_areas\"/><br/>";
+        if ($q1 == null) {
+         $q1 = "";
+        }
+        echo "<p>Skepp ohoj eller ett skepp med oboy?</p>";
+        echo "<input type=\"text\" id=\"q1\" name=\"q1\" value=\"$q1placeholder=\"$q1\" class=\"input_areas\"/><br/>";
 
-        //if ($kaniner == null) {
-        //  $kaniner = "Antal kaniner i hatten";
-        //}
-        // echo "<p>Antal kaniner i hatten</p>";
-        // echo "<input type=\"text\" id=\"kaniner\" value=\"$kaniner\" class=\"input_areas\"/><br/>";
+        if ($q2 == null) {
+         $q2 = "";
+        }
+        echo "<p>Kapten Haddock eller Kapten Krok?</p>";
+        echo "<input type=\"text\" id=\"q2\" name=\"q2\" value=\"$q1placeholder=\"$q2\" class=\"input_areas\"/><br/>";
 
-        //if ($patronus == null) {
-        //  $patronus = "Skepnad på Patronus";
-        //}
-        // echo "<p>Skepnad på Patronus</p>";
-        // echo "<input type=\"text\" id=\"patronus\" value=\"$patronus\" class=\"input_areas\"/><br/>";
+        if ($q3 == null) {
+         $q3 = "";
+        }
+        echo "<p>Ett skepp kommer lastat med ...</p>";
+        echo "<input type=\"text\" id=\"q3\" name=\"q3\" value=\"$q1placeholder=\"$q3\" class=\"input_areas\"/><br/>";
 
         echo "<p class='input_description'>Ändra lösenord</p>";
         echo "<input type='password' id='new_password_1' placeholder='Nytt lösenord' class='input_areas'/><br/>";
@@ -138,7 +136,6 @@
 
           <?php
         }
-
 
         // Man kan bara ändra profilbild om man är admin
         if ($admin) {

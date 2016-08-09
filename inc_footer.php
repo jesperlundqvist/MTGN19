@@ -4,7 +4,6 @@
 
 
 <div class="footer-image">
-
 </div>
 <footer class="valign-wrapper">
 

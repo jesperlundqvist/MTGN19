@@ -70,13 +70,11 @@
       }
 
       // Hämta användaruppgifter
-      // $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, gandalf, kaniner, patronus, n0llegroup FROM users WHERE username = ? LIMIT 1");
-      $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, n0llegroup FROM users WHERE username = ? LIMIT 1");
+      $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, q1, q2, q3, n0llegroup FROM users WHERE username = ? LIMIT 1");
       $stmt->bind_param('s', $username);
       $stmt->execute();
       $stmt->store_result();
-      // $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $gandalf, $kaniner, $patronus, $n0llegroup);
-      $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $n0llegroup);
+      $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $q1, $q2, $q3, $n0llegroup);
       $stmt->fetch();
 
       // Hämta profilbild om det finns någon
@@ -124,9 +122,9 @@
         }
 
         // brytstreck
-        // echo "<svg class='profile-divider-line'>";
-        // echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
-        // echo "</svg>";
+        echo "<svg class='profile-divider-line'>";
+        echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
+        echo "</svg>";
 
         // beskrivning
         echo "<div class='description-wrap'>";
@@ -135,39 +133,33 @@
             </p>';
         echo "</div>";
 
-        // Kommenterar bort detta så länge - diskutera om hur n0llegruppsnamnet ska visas /Kalle
 
-        // if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
-        //   echo "<p>
-        //       <span class='question'>nØllegrupp</span>
-        //       <span class='answer'>$n0llegroup</span>
-        //     </p>";
-        // }
+        if ($q1 != null) {
+          echo "<div class='question-wrap'>
+              <h3 class='question notranslate'>Skepp ohoj eller ett skepp med oboy?</h3>
+              <span class='answer'>$q1</span>
+              </div> ";
+        }
 
-        // if ($gandalf != null) {
-        //   echo "<p>
-        //       <span class='question'>Gandalf eller Dumbledore</span>
-        //       <span class='answer'>$gandalf</span>
-        //       </p> ";
-        // }
+        if ($q2 != null) {
+          echo "<div class='question-wrap'>
+              <h3 class='question notranslate'>Kapten Haddock eller Kapten Krok?</h3>
+              <span class='answer'>$q2</span>
+              </div> ";
+        }
 
-        // if ($kaniner != null) {
-        //   echo "<p>
-        //       <span class='question'>Antal kaniner i hatten</span>
-        //       <span class='answer'>$kaniner</span>
-        //       </p> ";
-        // }
+        if ($q3 != null) {
+          echo "<div class='question-wrap'>
+              <h3 class='question notranslate'>Ett skepp kommer lastat med...</h3>
+              <span class='answer'>$q3</span>
+              </div> ";
+        }
 
-        // if ($patronus != null) {
-        //   echo "<p>
-        //       <span class='question'>Skepnad på patronus</span>
-        //       <span class='answer'>$patronus</span>
-        //       </p> ";
-        // }
+        echo'<br>';
 
         // Användaren kan bara redigera profilen om det är hens profil eller om hen är admin
         if ($admin || $ownProfile) {
-          echo "<div class=\"edit_profile_link\"><a id=\"edit_profile\" class=\"no-link button\" href=\"profile_edit.php?user=$username\">Redigera profil</a></div>";
+          echo "<div class=\"edit_profile_link\"><a class=\"button-primary\" id=\"edit_profile\" class=\"no-link button\" href=\"profile_edit.php?user=$username\">Redigera profil</a></div>";
         }
 
         echo "</div>"; //Wrapper

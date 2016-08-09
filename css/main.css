@@ -235,7 +235,7 @@ select {
   font-weight: bold;
   letter-spacing: 1px;
   font-family: Pirata One;
-  color: #F57C00;
+  color: #FFA726;
 
   cursor: pointer;
 }
@@ -282,7 +282,7 @@ select {
   margin-bottom: 15px;
   margin-top: 15px;
   color: #fff;
-  background: #F57C00;
+  background: #FFA726;
   display: inline-block;
 }
 
@@ -495,6 +495,11 @@ label {
     text-align: center;
 }
 
+.n0llegroup_title h3 {
+  color: #FFA726;
+  letter-spacing: 0.5px;
+}
+
 .profile_link {
     display: inline-block;
     text-align: center;
@@ -615,12 +620,30 @@ label {
   color: #000;
 }
 
+.description {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.question-wrap {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.question-wrap h3 {
+  margin-bottom: 5px;
+  letter-spacing: 0.5px;
+  color: #FFA726;
+}
+
 .edit_profile_link {
   margin-top: 24px;
 }
 
 .edit_profile_link a {
   font-size: 20px;
+  display: inline-block;
 }
 
 /*
@@ -661,6 +684,10 @@ label {
 .filter-wrap {
   display: inline-block;
   margin-right: 25px;
+}
+
+.filter-wrap h3 {
+  color: #FFA726;
 }
 
 .filter-show, .filter-hide {
@@ -1026,11 +1053,14 @@ p {
 */
 
 .footer-image {
-
+  background: url('/design/footer_image.png') no-repeat;
+  background-position:right;
+  height: 250px;
+  width: 100%;
 }
 
 footer {
-    background: #F7ECD6;
+    background: #d1bf9b;
     color: black;
 
     padding: 1% 0 1% 0;
@@ -1203,7 +1233,7 @@ footer a {
 
 .button-primary {
   padding: 12px;
-  background: #F57C00;
+  background: #FFA726;
   outline:none;
   border:none;
   border-radius: 5px;
