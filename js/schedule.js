@@ -162,6 +162,7 @@ function drawSchedule(data) {
       var ed = eventDate;
       var eed = eventEndDate;
       return function() {
+        $('.site-wrap').css('overflow-y','visible');
         var popup = $("#popup_container");
         popup.append('<div id="popup_container2"></div>');
         var popup_cont = popup.find('#popup_container2');
@@ -181,6 +182,7 @@ function drawSchedule(data) {
         });
         popup.click(function() {
           popup.empty();
+          $('.site-wrap').css('overflow-y','auto');
         });
       }
     })());
