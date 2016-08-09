@@ -104,6 +104,7 @@ $link = connectToDB();
 		<ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
 			<li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">&#9776;</a></li>
 			<li class="menu-start"><a href="/">Startsida </a></li>
+      <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
 			<?php
 			if ($admin) { ?>
 				<li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
@@ -118,5 +119,3 @@ $link = connectToDB();
 		</ul>
 	</div>
 </nav>
-
-

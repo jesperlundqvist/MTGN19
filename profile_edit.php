@@ -94,19 +94,19 @@
          $q1 = "";
         }
         echo "<p>Skepp ohoj eller ett skepp med oboy?</p>";
-        echo "<input type=\"text\" id=\"q1\" name=\"q1\" value=\"$q1placeholder=\"$q1\" class=\"input_areas\"/><br/>";
+        echo "<input type=\"text\" id=\"q1\" name=\"q1\" value=\"$q1\" placeholder=\"$q1\" class=\"input_areas\"/><br/>";
 
         if ($q2 == null) {
          $q2 = "";
         }
         echo "<p>Kapten Haddock eller Kapten Krok?</p>";
-        echo "<input type=\"text\" id=\"q2\" name=\"q2\" value=\"$q1placeholder=\"$q2\" class=\"input_areas\"/><br/>";
+        echo "<input type=\"text\" id=\"q2\" name=\"q2\" value=\"$q2\" placeholder=\"$q2\" class=\"input_areas\"/><br/>";
 
         if ($q3 == null) {
          $q3 = "";
         }
         echo "<p>Ett skepp kommer lastat med ...</p>";
-        echo "<input type=\"text\" id=\"q3\" name=\"q3\" value=\"$q1placeholder=\"$q3\" class=\"input_areas\"/><br/>";
+        echo "<input type=\"text\" id=\"q3\" name=\"q3\" value=\"$q3\" placeholder=\"$q3\" class=\"input_areas\"/><br/>";
 
         echo "<p class='input_description'>Ändra lösenord</p>";
         echo "<input type='password' id='new_password_1' placeholder='Nytt lösenord' class='input_areas'/><br/>";
