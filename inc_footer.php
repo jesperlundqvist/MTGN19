@@ -9,16 +9,13 @@
 	<div class="constrainer">
 
 	<!-- Footer content -->
-	<!-- Medieteknik logo -->
-	<div class="footer-column valign">
-		<img class="footer-logo" src="/images/medieteknik_logo_text.png"/>
-	</div>
-	<svg class="divider-line-canvas">
+
+<!-- 	<svg class="divider-line-canvas">
 		<line class="divider-line" x1="0" y1="0" x2="0" y2="100%">
-	</svg>
+	</svg> -->
 	<!-- Links -->
 	<!-- Instagram links -->
-	<div class="footer-column">
+	<div class="footer-column-right">
 		<img class="instagram-logo" src="/images/instagram.png"/>
 		<ul class="links-instagram">
 			<li class="links-element">
@@ -32,11 +29,11 @@
 			</li>
 		</ul>
 	</div>
-	<svg class="divider-line-canvas">
+<!-- 	<svg class="divider-line-canvas">
 		<line class="divider-line" x1="0" y1="0" x2="0" y2="100%">
-	</svg>
+	</svg> -->
 	<!-- Snapchat links -->
-	<div class="footer-column valign">
+	<div class="footer-column-right">
 		<img class="snapchat-logo" src="/images/snapchat-black.png"/>
 		<ul class="links-snapchat">
 			<li class="links-element">
@@ -49,6 +46,16 @@
 				<a href="#">inphosnap</a>
 			</li>
 		</ul>
+	</div>
+
+		<!-- Medieteknik logo -->
+	<div class="footer-column-left">
+		<img class="footer-logo" src="/design/logos/medie_logo.png"/>
+		<img class="footer-logo" src="/design/logos/nl_logo.png"/>
+		<img class="footer-logo" src="/design/logos/comviq_logo.png"/>
+		<img class="footer-logo" src="/design/logos/ericsson_logo.png"/>
+		<img class="footer-logo" src="/design/logos/chas_logo.png"/>
+		<img class="footer-logo" src="/design/logos/bontouch_logo.png"/>
 	</div>
 
 	</div>

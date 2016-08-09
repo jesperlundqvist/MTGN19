@@ -8,6 +8,11 @@
 	.filter-item {
 		width: 23%;
 	}
+
+	.footer-column-left {
+		padding: 15px;
+		width: 55%;
+	}
 }
 
 @media all and (max-width: 1000px) {
@@ -91,16 +96,23 @@
 	}
 	/* Footer */
 
-	.footer-column, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
+	.footer-column-right, .footer-column-left , .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
 		width: 100% !important;
 		background-color: #d1bf9b;
+		
+		text-align: center;
 
 		padding-top: 20px;
 	}
 
-	.footer-logo {
-		height: 80%;
+	.footer-column-left {
+		border-right:none;
+		border-top:1px solid #000;
 	}
+
+	.footer-logo {
+		margin-right: 15px;
+		margin-left: 15px;	}
 
 	.instagram-logo, .snapchat-logo {
 		margin-left: -10%;
