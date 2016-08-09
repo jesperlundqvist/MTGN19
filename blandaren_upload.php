@@ -12,7 +12,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper form-page">
     <?php
     if ($_SESSION['admin']) {
     ?>
@@ -28,7 +28,7 @@
             <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input"/><label for="blandarpdf">Välj fil...</label>
             </div>
             <br/>
-            <button id="submit_blandare" class="submit_button">Ladda upp Bländaren</button>
+            <button id="submit_blandare" class="button-primary">Ladda upp Bländaren</button>
           </div>
           <div id="statusbar">
             <div id="filesize"></div>

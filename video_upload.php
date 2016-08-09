@@ -12,7 +12,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper form-page">
       <?php
       if (session_status() == PHP_SESSION_NONE) {
         sec_session_start();
@@ -52,7 +52,7 @@
             </div>
             <br><br>
 
-            <button id="submit_video">Ladda upp video</button>
+            <button id="submit_video" class="button-primary">Ladda upp video</button>
           </div>
           <div id="info"></div>
           <?php

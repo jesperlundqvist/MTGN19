@@ -13,7 +13,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper form-page">
       <?php
     // Vi kollar att användaren är inloggad som admin
     if (session_status() == PHP_SESSION_NONE) {
@@ -76,7 +76,7 @@
             <div id="filesizes"></div>
             <div id="progressbar"><div></div></div>
           </div>
-          <button id="submit_new_user_btn" class="submit_button">Spara ny användare</button>
+          <button id="submit_new_user_btn" class="button-primary">Spara ny användare</button>
           <div id="info"></div>
         </div>
       </div>

@@ -12,7 +12,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper form-page">
       <!-- Content -->
       <?php
       if ($_SESSION['admin']) {

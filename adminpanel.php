@@ -26,7 +26,7 @@
               <a class="admin-control" href="event.php">Lägg till event</a>
             </div>
 
-            <div id="news_input_container" class="news-top">
+            <div id="news_input_container" class="news-top form-page">
               <form id="news_input_form" action="newspage_handler.php?action=add" method="post">
                 <h2 id="new_post_trigger" class="adminpanel_title">Nytt inlägg <span class="ion-ios-plus-outline" id="new_post_icon"></span></h2>
                 <div id="new_post_container">
@@ -52,7 +52,8 @@
                   ?>
                   </select>
                   <br/>
-                  <input type="submit" value="Skapa inlägg" id="post_news" class="submit_button"/>
+                  <br>
+                  <input type="submit" value="Skapa inlägg" id="post_news" class="button-primary"/>
                 </div>
               </form>
             </div>

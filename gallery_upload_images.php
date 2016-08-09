@@ -13,7 +13,7 @@
       //Load top content
       include_once ('inc_top_content.php');
     ?>
-    <div class="content-wrapper">
+    <div class="content-wrapper form-page left">
       <?php
       if (session_status() == PHP_SESSION_NONE) {
           sec_session_start();
@@ -80,7 +80,7 @@
           </div>
           <div id="info"></div>
           <ul id="previewcontainer"></ul>
-          <button id="submit_pictures" class="submit_button">Ladda upp bilder</button>
+          <button id="submit_pictures" class="button-primary">Ladda upp bilder</button>
         </div>
       </div>
       <?php

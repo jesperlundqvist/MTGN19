@@ -110,6 +110,10 @@
 		border-top:1px solid #000;
 	}
 
+	.footer-column-right {
+		margin-top: 0;
+	}
+
 	.footer-logo {
 		margin-right: 15px;
 		margin-left: 15px;	}
@@ -182,7 +186,7 @@
 		display: none;
 	}
 	.mobile-logo-wrap {
-		margin-top: 23px;
+		margin-top: 20px;
 	  display: inline-block;
 	}
 

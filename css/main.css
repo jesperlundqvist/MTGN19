@@ -64,7 +64,11 @@ select {
 }
 
 .center {
-  text-align: center;
+  text-align: center !important;
+}
+
+.left {
+  text-align: left !important;
 }
 
 /*
@@ -193,6 +197,10 @@ select {
 /*
  *  News
  */
+
+ .news-top {
+  margin: 0 auto;
+ }
 
 .news {
     /*max-width: 800px;*/
@@ -353,11 +361,15 @@ select {
   padding: 8px;
 }
 
+.form-page {
+  /*text-align: center;*/
+  max-width: 400px;
+}
+
 .input_areas {
   margin-bottom: 24px;
 
-  width: 40%;
-  min-width: 380px;
+  width: 100%;
 }
 
 #news_title {
@@ -435,7 +447,7 @@ label {
 }
 
 #submit_new_user_btn {
-  width: 33%;
+  width: 100%;
   min-width: 200px;
 }
 
@@ -539,6 +551,9 @@ label {
 .profile-wrapper {
   position: relative;
   text-align: center;
+
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 .prevProfileLink,
@@ -656,6 +671,7 @@ label {
 .input_description {
   font-size: 16px;
   margin-bottom: 8px;
+  text-align: left;
 }
 
 #description {
@@ -1087,7 +1103,7 @@ footer a {
 }
 
 .footer-column-right {
-  margin-top: 10px;
+  margin-top: 40px;
     float:right;
     width: 17%;
 }
@@ -1255,6 +1271,7 @@ footer a {
   outline:none;
   border:none;
   border-radius: 5px;
+  width: 100%;
 
   color: #fff;
   font-size: 16px;
