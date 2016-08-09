@@ -91,14 +91,14 @@
 	}
 	/* Footer */
 
-	.medieteknik-wrapper, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
+	.footer-column, .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
 		width: 100% !important;
 		background-color: #d1bf9b;
 
 		padding-top: 20px;
 	}
 
-	.medieteknik-logo {
+	.footer-logo {
 		height: 80%;
 	}
 
