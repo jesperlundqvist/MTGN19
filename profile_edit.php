@@ -143,11 +143,6 @@
           echo "<input type=\"file\" id=\"fileselect\" class=\"fileselect file_input\" name=\"profilepicture\"/>";
           echo "<label for=\"fileselect\">Välj fil...</label><br/>";
           echo "<div class=\"drag\" id=\"filedrag\"></div><br/>";
-
-          echo "<img id=\"profilepicture\" src=\"$gifpath\" class=\"profile_preview_img edit_img\"/><br/>";
-          echo "<input type=\"file\" id=\"fileselect_gif\" class=\"fileselect file_input\" name=\"profilepicture\"/>";
-          echo "<label for=\"fileselect_gif\">Välj fil...</label><br/>";
-          echo "<div class=\"drag\" id=\"filedrag_gif\"></div><br/>";
         }
 
           // echo "</div>";

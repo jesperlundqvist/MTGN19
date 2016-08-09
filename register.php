@@ -71,13 +71,6 @@
           <br/>
           <div class="drag" id="filedrag"></div>
           <br/>
-          <div class="set_profile_gif_div">
-          <span class="input_description">Profilbild (gif): </span>
-          <input type="file" id="fileselect_gif" name="profilepicture" class="file_input"/>
-          <label for="fileselect_gif">Välj fil...</label>
-          </div>
-          <br/>
-          <div class="drag" id="filedrag_gif"></div>
           <br/>
           <div id="statusbar">
             <div id="filesizes"></div>
