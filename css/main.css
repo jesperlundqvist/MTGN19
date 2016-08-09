@@ -1152,11 +1152,10 @@ footer a {
 
 #username, #password, #search {
     width: 40%;
-    height: 40px;
     min-width: 250px;
 
     margin: 10px 0;
-    padding: 15px;
+    padding: 10px;
 
     font-size: 16px;
 
