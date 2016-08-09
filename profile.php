@@ -9,6 +9,7 @@
   }
   ?>
     <title>Mottagningen 2016</title>
+    <link href='https://fonts.googleapis.com/css?family=Stardos+Stencil:700' rel='stylesheet' type='text/css'>
   </head>
 
   <body>

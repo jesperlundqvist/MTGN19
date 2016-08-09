@@ -103,7 +103,7 @@ if (isset($_POST['search'])) {
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
-    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner'>RSA</h2></div>";
+    $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner rsa-ser-allt'>RSA</h2></div>";
   }
 
   while ($r = $result->fetch_object()) {

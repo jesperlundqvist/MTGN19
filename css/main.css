@@ -480,11 +480,12 @@ label {
 }
 
 .usergroup_banner {
-    font-family: Pirata One;
-    font-size: 40px;
-    font-weight: normal;
+  margin-bottom: 0;
+  font-family: Pirata One;
+  font-size: 40px;
+  font-weight: normal;
 
-    text-align: center;
+  text-align: center;
 }
 
 .n0llegroup_title {
@@ -615,7 +616,8 @@ label {
 }
 
 .rsa-ser-allt {
-  font-family: Stencil;
+  font-family: 'Stardos Stencil', cursive;
+  font-weight: bold;
   font-size: 40px !important;
   color: #000;
 }

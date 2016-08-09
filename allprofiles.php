@@ -2,6 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
+  <link href='https://fonts.googleapis.com/css?family=Stardos+Stencil:700' rel='stylesheet' type='text/css'>
     <title>Mottagningen 2016</title>
   </head>
 
