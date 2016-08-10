@@ -1411,6 +1411,6 @@ footer a {
   display: none;
 }
 
-.logout-button {
-  color: #B71C1C;
+.logout-button a{
+  color: #B71C1C !important;
 }
