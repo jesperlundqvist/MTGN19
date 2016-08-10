@@ -106,7 +106,7 @@
 	.footer-column-right, .footer-column-left , .instagram-wrapper, .snapchat-wrapper, .email-wrapper {
 		width: 100% !important;
 		background-color: #d1bf9b;
-		
+
 		text-align: center;
 
 		padding-top: 20px;
@@ -262,6 +262,17 @@
 	.filter-item {
 		width: 47%;
 	}
+
+	#profilepic-wrapper {
+		width: 200px;
+		height: 200px;
+	}
+
+	.prevProfileLink, .nextProfileLink {
+		top: 75px;
+	}
+
+
 }
 
 @media all and (max-width: 380px) { /* Medium mobile screens */
