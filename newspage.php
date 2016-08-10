@@ -20,6 +20,7 @@
         if (session_status() == PHP_SESSION_NONE) {
             sec_session_start();
         }
+        setlocale(LC_ALL, 'sv_SE.ISO8859-1');
 
         $username = $_SESSION['username'];
         $admin = $_SESSION['admin'];
@@ -60,20 +61,21 @@
         echo "<div class='news'>";
         echo "<h2 class='adminpanel_title'>$title</h2>";
         echo "<p>$body</p>";
-        echo "<span class='post-footer'>";
-          echo "<h5><span class='hide-on-mobile2'><span class='ion-android-person news-icon'></span> </span>$name</h5>";
-          echo "<h5><span class='hide-on-mobile2'><span class='ion-android-bookmark news-icon'></span> </span><a href=\"/index.php?category=$category\">$category</a></h5>";
-        if ($username === $currusername || $admin) {
-          echo "<a href=\"newspage_edit.php?id=$id\"><h5>Redigera inlägg</h5></a>";
-        }
 
-        echo "</span>"; // end post-footer
-        echo "<div class='white'></div>";
-        echo "<div class='newsdate-wrapper'>";
-        echo "<div class='right-banner'>";
-        echo "<h6>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($newsdate))) . "</h6>";
-        echo "</div>";
-        echo "</div>"; // end newsdate-wrapper
+       if ($username === $currusername || $admin) {
+            echo "<a class='news-edit button' href=\"newspage_edit.php?id=$newsid\">Redigera inlägg</a>";
+          }
+          echo "<div class='post-footer clearfix'>";
+          echo "<a class='news-category' href=\"/index.php?category=$news->category\">$news->category</a>";
+          echo "<div class='news-writtenby'>";
+          echo "<span>Skrivet av: </span>$name";
+
+          echo "</div>";
+          echo "<div class='news-timestamp'>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($news->newsdate))) . "</div>";
+          echo "</div>"; //post-footer
+          //echo "<div class='white'></div>";
+          echo "</div>"; //news-content
+          echo "</div>"; //news
         echo "</div>"; // end news
 
       ?>

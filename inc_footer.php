@@ -19,13 +19,13 @@
 		<img class="instagram-logo" src="/images/instagram.png"/>
 		<ul class="links-instagram">
 			<li class="links-element">
-				<a href="#">kphgram</a>
+				<a target="_blank" href="https://www.instagram.com/kphgram/">kphgram</a>
 			</li>
 			<li class="links-element">
-				<a href="#">kennystarrfighter</a>
+				<a target="_blank" href="https://www.instagram.com/kennystarrfighter/" href="">kennystarrfighter</a>
 			</li>
 			<li class="links-element">
-				<a href="#">inphogram</a>
+				<a target="_blank" href="https://www.instagram.com/inphogram/" href="#">inphogram</a>
 			</li>
 		</ul>
 	</div>
