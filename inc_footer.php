@@ -19,6 +19,9 @@
 		<img class="instagram-logo" src="/images/instagram.png"/>
 		<ul class="links-instagram">
 			<li class="links-element">
+				<a target="_blank" href="https://www.instagram.com/ofverphoseriet/">ofverphoseriet</a>
+			</li>
+			<li class="links-element">
 				<a target="_blank" href="https://www.instagram.com/kphgram/">kphgram</a>
 			</li>
 			<li class="links-element">
@@ -26,6 +29,12 @@
 			</li>
 			<li class="links-element">
 				<a target="_blank" href="https://www.instagram.com/inphogram/" href="#">inphogram</a>
+			</li>
+			<li class="links-element">
+				<a target="_blank" href="https://www.instagram.com/lekogram/" href="#">lekogram</a>
+			</li>
+			<li class="links-element">
+				<a target="_blank" href="https://www.instagram.com/vraqueogram/" href="#">vraqueogram</a>
 			</li>
 		</ul>
 	</div>

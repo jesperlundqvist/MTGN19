@@ -46,9 +46,11 @@
             <ul class="button-group-ul">
               <li><a class="button is-checked" data-filter="">Visa alla</a>
               <li><a class="button" data-filter=".filter-33">33</a></li>
-              <li><a class="button" data-filter=".filter-34">34</a></li>
-              <li><a class="button" data-filter=".filter-35">35</a></li>
-              <li><a class="button" data-filter=".filter-36">36</a></li>
+              <?php
+              // <li><a class="button" data-filter=".filter-34">34</a></li>
+              // <li><a class="button" data-filter=".filter-35">35</a></li>
+              // <li><a class="button" data-filter=".filter-36">36</a></li>
+              ?>
             </ul>
           </div>
         </div>
