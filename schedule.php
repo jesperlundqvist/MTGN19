@@ -24,9 +24,9 @@
             <tr class="toprow">
               <th colspan="8">
                 <h2 class="week-title">
-                  <div class="button" id="button_week_back"><span class="ion-ios-arrow-thin-left"></span><</div>
+                  <div class="button" id="button_week_back"><i class='fa fa-arrow-left' aria-hidden='true'></i></div>
                   Schema, <div id="week"></div>
-                <div class="button" id="button_week_forward">><span class="ion-ios-arrow-thin-right"></span></div>
+                <div class="button" id="button_week_forward"><i class='fa fa-arrow-right' aria-hidden='true'></i></div>
               </h2>
               <div class="toprow-bg"></div>
               </th>

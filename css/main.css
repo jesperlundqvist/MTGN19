@@ -529,8 +529,8 @@ label {
     border-radius: 50%;
     border: 2px solid white;
 
-    width: 120px;
-    height: 120px;
+    width: 119px;
+    height: 119px;
 
     -webkit-background-size: cover;
     background-size: cover;
@@ -1409,4 +1409,8 @@ footer a {
 
 .no-display {
   display: none;
+}
+
+.logout-button {
+  color: #B71C1C;
 }
