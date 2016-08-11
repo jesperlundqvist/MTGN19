@@ -140,7 +140,7 @@
 
         if ($q1 != null) {
           echo "<div class='question-wrap'>
-              <h3 class='question notranslate'>Skepp ohoj eller ett skepp med oboy?</h3>
+              <h3 class='question notranslate'>Skepp ohoj eller ett skepp med O'boy?</h3>
               <span class='answer'>$q1</span>
               </div> ";
         }

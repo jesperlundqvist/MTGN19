@@ -93,7 +93,7 @@
         if ($q1 == null) {
          $q1 = "";
         }
-        echo "<p class='input_description'>Skepp ohoj eller ett skepp med oboy?</p>";
+        echo "<p class='input_description'>Skepp ohoj eller ett skepp med O'boy?</p>";
         echo "<input type=\"text\" id=\"q1\" name=\"q1\" value=\"$q1\" placeholder=\"$q1\" class=\"input_areas\"/><br/>";
 
         if ($q2 == null) {
