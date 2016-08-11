@@ -354,7 +354,6 @@ select {
 }
 
 .input_areas, #news_category {
-  border: 1px solid white;
   border-radius: 4px;
 
   font-family: Open Sans;
@@ -371,6 +370,8 @@ select {
   margin-bottom: 24px;
 
   width: 100%;
+  border:none;
+  outline:none;
 }
 
 #news_title {

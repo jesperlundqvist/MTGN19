@@ -30,9 +30,11 @@
 			<li class="links-element">
 				<a target="_blank" href="https://www.instagram.com/inphogram/" href="#">inphogram</a>
 			</li>
-			<li class="links-element">
-				<a target="_blank" href="https://www.instagram.com/lekogram/" href="#">lekogram</a>
-			</li>
+			<?php
+			// <li class="links-element">
+			// 	<a target="_blank" href="https://www.instagram.com/lekogram/" href="#">lekogram</a>
+			// </li>
+			?>
 			<li class="links-element">
 				<a target="_blank" href="https://www.instagram.com/vraqueogram/" href="#">vraqueogram</a>
 			</li>
