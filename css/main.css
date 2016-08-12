@@ -565,6 +565,7 @@ label {
 .profile-column-left {
   width: 50%;
   float: left;
+  text-align: center;
 }
 
 .profile-column-right {
