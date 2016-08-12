@@ -43,7 +43,7 @@ if (isset($_POST['search'])) {
   // --------- KPH -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND usergroup = 'KPH') ORDER BY name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND usergroup = 'KPH') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {

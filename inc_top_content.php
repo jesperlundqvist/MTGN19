@@ -102,7 +102,7 @@ $link = connectToDB();
 	<div class="constrainer center-mobile nav-wrapper">
     <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>
 		<ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
-			<li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">&#9776;</a></li>
+			<li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;"><i class='fa fa-bars' aria-hidden='true'></i></a></li>
 			<li class="menu-start"><a href="/">Startsida </a></li>
       <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
 			<?php

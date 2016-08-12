@@ -37,7 +37,7 @@
       }
 
       // Hämta föregående användare och nästa
-      $query = "SELECT username FROM users ORDER BY usergroup, n0llegroup, name ASC";
+      $query = "SELECT username FROM users ORDER BY weight, n0llegroup, name ASC";
       $result = execQuery($link, $query);
 
       $count = mysqli_num_rows($result);

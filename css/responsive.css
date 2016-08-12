@@ -344,9 +344,10 @@
 	  font-weight: normal;
 	}
 
-
 	.mobilenav li a{
 		font-size: 27px;
+		width: 100%;
+		display: block;
 	}
 	/* News */
 

@@ -88,7 +88,7 @@
 
 
         echo "<p class='input_description'>Beskriv dig själv!</p>";
-        echo "<textarea type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\">$description</textarea><br/>";
+        echo "<textarea rows=\"7\" type=\"text\" id=\"description\" value=\"$description\" class=\"input_areas\">$description</textarea><br/>";
 
         if ($q1 == null) {
          $q1 = "";
