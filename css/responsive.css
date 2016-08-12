@@ -169,6 +169,16 @@
 		font-size: 37px;
 	}
 
+	.profile-column-right,
+	.profile-column-left {
+		float: none;
+		width: 100%;
+		text-align: center;
+	}
+	.question-wrap h3 {
+		text-align: center;
+	}
+
 
 	/* Schedule */
 

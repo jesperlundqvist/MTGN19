@@ -173,7 +173,7 @@ function drawSchedule(data) {
         var timeString = getTimeString(ed, eed);
         eventpopup.append('<div class="event-time"><span class="ion-ios-clock-outline schedule-icon"></span> ' + timeString + '</div>');
         eventpopup.append('<div class="event-place"><span class="ion-ios-location-outline schedule-icon"></span> ' + location + '</div>');
-        eventpopup.append('<button class="event_ok button">Stäng</button>');
+        eventpopup.append('<br><button class="event_ok button button-primary">Stäng</button>');
         popup.find("#black_overlay").click(function() {
           popup.empty();
         });

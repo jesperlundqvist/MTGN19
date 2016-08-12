@@ -108,6 +108,7 @@
         echo "<div class='prevProfileLink'><a class='no-link' href='profile.php?user=$prevUser'><i class='fa fa-arrow-left' aria-hidden='true'></i></a></div>";
         echo "<div class='nextProfileLink'><a class='no-link' href='profile.php?user=$nextUser'><i class='fa fa-arrow-right' aria-hidden='true'></i></span></a></div>";
 
+        echo '<div class="profile-column-left">';
         // Profilbild
         if ($imagepath != null) {
           echo "<div id='profilepic-wrapper' style='background-image:url(\"$imagepath\")'>";
@@ -125,10 +126,14 @@
           echo "</div>";
         }
 
+        echo'</div>';
+
+        echo'<div class="profile-column-right">';
+
         // brytstreck
-        echo "<svg class='profile-divider-line'>";
-        echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
-        echo "</svg>";
+        // echo "<svg class='profile-divider-line'>";
+        // echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
+        // echo "</svg>";
 
         // beskrivning
         echo "<div class='description-wrap'>";
@@ -165,6 +170,8 @@
         if ($admin || $ownProfile) {
           echo "<div class=\"edit_profile_link\"><a class=\"button-primary\" id=\"edit_profile\" class=\"no-link button\" href=\"profile_edit.php?user=$username\">Redigera profil</a></div>";
         }
+
+        echo'</div>';
 
         echo "</div>"; //Wrapper
       ?>
