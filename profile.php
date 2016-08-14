@@ -130,6 +130,11 @@
 
         echo'<div class="profile-column-right">';
 
+        // Användaren kan bara redigera profilen om det är hens profil eller om hen är admin
+        if ($admin || $ownProfile) {
+          echo "<div class=\"edit_profile_link\"><a class=\"button-primary\" id=\"edit_profile\" class=\"no-link button\" href=\"profile_edit.php?user=$username\">Redigera profil</a></div>";
+        }
+
         // brytstreck
         // echo "<svg class='profile-divider-line'>";
         // echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
@@ -165,11 +170,6 @@
         }
 
         echo'<br>';
-
-        // Användaren kan bara redigera profilen om det är hens profil eller om hen är admin
-        if ($admin || $ownProfile) {
-          echo "<div class=\"edit_profile_link\"><a class=\"button-primary\" id=\"edit_profile\" class=\"no-link button\" href=\"profile_edit.php?user=$username\">Redigera profil</a></div>";
-        }
 
         echo'</div>';
 

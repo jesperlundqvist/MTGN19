@@ -220,6 +220,10 @@
 		font-size: 30px !important;
 	}
 
+	#map {
+		height: 300px;
+	}
+
 }
 
 

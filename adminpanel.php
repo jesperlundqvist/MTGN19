@@ -24,6 +24,7 @@
               <a class="admin-control" href="video_upload.php">Ladda upp video</a>
               <a class="admin-control" href="blandaren_upload.php">Ladda upp Bländare</a>
               <a class="admin-control" href="event.php">Lägg till event</a>
+              <a class="admin-control" href="basecamp_edit.php">Ändra basecamp</a>
             </div>
 
             <div id="news_input_container" class="news-top form-page">
@@ -34,7 +35,7 @@
                     <p class="first">TIPS! Du kan använda HTML i inläggen. Länk och bild visas nedan. Du kan även embedda Youtube-videos.</p>
                     <code class="first">
                       LÄNK: &lt;a href="http://google.com"&gt;text som ska visas&lt;/a&gt; </br>
-                      BILD: &lt;img src="http://länktillbilden.com/bild.jpg"/&gt;
+                      BILD: &lt;img src=a"http://länktillbilden.com/bild.jpg"/&gt;
                     </code>
                   </div>
                   <input id="news_title" name="news_title" placeholder="Titel" class="input_areas"/><br/>

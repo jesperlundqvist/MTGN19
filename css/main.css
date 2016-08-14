@@ -1417,3 +1417,13 @@ footer a {
 .logout-button a{
   color: #B71C1C !important;
 }
+
+/* BASECAMP */
+.basecamp-description {
+  margin-bottom: 15px;
+}
+
+#map {
+  height: 400px;
+  border:2px solid black;
+}
