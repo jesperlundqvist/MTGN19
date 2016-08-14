@@ -13,13 +13,14 @@
 
       $admin = $_SESSION['admin'];
 
-      $query = "SELECT description, lat, lng FROM basecamp";
+      $query = "SELECT description, lat, lng, isActive FROM basecamp";
       $result = execQuery($link, $query);
 
       while ($basecamp = $result->fetch_object()) {
         $description = $basecamp->description;
         $lat = $basecamp->lat;
         $lng = $basecamp->lng;
+        $isActive = $basecamp->isActive;
       }
 
     ?>
@@ -34,14 +35,23 @@
           </div>
         <?php
       }
+
+      if($isActive){
       ?>
       <div class="basecamp-description">
         <?= $description ?>
       </div>
       <div id="map"></div>
-    </div>
 
     <?php
+
+      } // end isActive
+      else {
+        ?>
+        Basecamp är tyvärr inte ute för tillfället.
+        <?php
+      }
+      echo '</div>'; // content wrapper
       //Load footer
       include_once ('inc_footer.php');
     ?>
