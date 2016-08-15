@@ -43,7 +43,7 @@ $(document).ready(function() {
     // set filter for Isotope
     $grid.isotope({ filter: filterValue });
   });
-  
+
   // change is-checked class on buttons
   $('.button-group').each( function( i, buttonGroup ) {
     var $buttonGroup = $( buttonGroup );
