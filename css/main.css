@@ -1078,7 +1078,7 @@ p {
 */
 
 .footer-image {
-  background: url('/design/footer_image.png') no-repeat;
+  background: url('/design/footer_image.png');
   background-position:right;
   height: 250px;
   width: 100%;

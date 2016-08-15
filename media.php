@@ -79,7 +79,7 @@
 
         <?php
         // Images
-        $query = "SELECT imagename, imagecreateddate, event, week FROM images ORDER BY imagecreateddate, imageorder ASC";
+        $query = "SELECT imagename, imagecreateddate, event, week FROM images ORDER BY imagecreateddate, imageorder DESC";
         $result = execQuery($link, $query);
         while ($image = $result->fetch_object()) {
           echo'
@@ -88,7 +88,7 @@
         }
 
         // Video
-        $query = "SELECT videoid, event, week FROM videos ORDER BY uploaddate ASC";
+        $query = "SELECT videoid, event, week FROM videos ORDER BY uploaddate DESC";
         $result = execQuery($link, $query);
         while ($video = $result->fetch_object()) {
           echo'
