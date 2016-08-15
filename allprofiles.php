@@ -16,7 +16,7 @@
     <div class="content-wrapper">
       <!-- Content -->
         <div class="search-container">
-          <input class="input_areas" id="search" type="text" placeholder="Sök..."/>
+          <input class="input_areas" id="search" type="text" placeholder="Sök namn, gruppnamn, nØllegrupp mm..."/>
           <span class="ion-ios-search search-icon"></span>
         </div>
 

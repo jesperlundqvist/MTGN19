@@ -61,12 +61,12 @@
 
 		<!-- Medieteknik logo -->
 	<div class="footer-column-left">
-		<img class="footer-logo" src="/design/logos/medie_logo.png"/>
-		<img class="footer-logo" src="/design/logos/nl_logo.png"/>
-		<img class="footer-logo" src="/design/logos/comviq_logo.png"/>
-		<img class="footer-logo" src="/design/logos/ericsson_logo.png"/>
-		<img class="footer-logo" src="/design/logos/chas_logo.png"/>
-		<img class="footer-logo" src="/design/logos/bontouch_logo.png"/>
+		<div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/medie_logo.png"/></div>
+		<div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/nl_logo.png"/></div>
+		<div class="footer-logo-wrap"><img class="footer-logo comviq" src="/design/logos/comviq_logo.png"/></div>
+		<div class="footer-logo-wrap"><img class="footer-logo ericsson" src="/design/logos/ericsson_logo.png"/></div>
+		<div class="footer-logo-wrap"><img class="footer-logo chas" src="/design/logos/chas_logo.png"/></div>
+		<div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/bontouch_logo.png"/></div>
 	</div>
 
 	</div>

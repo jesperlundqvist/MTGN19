@@ -25,7 +25,7 @@
 
     ?>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper center">
       <h1>Basecamp</h1>
       <?php
       if($admin){

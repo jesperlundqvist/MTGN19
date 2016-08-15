@@ -80,7 +80,13 @@ if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['
 
     move_uploaded_file($_FILES['files']['tmp_name'][0], $upload_dir . $imagename);
   } else {
-    $imagename = 'default.png';
+
+    if($usergroup =='VRAQUE'){
+      $imagename = 'default_phos.png';
+    }
+    else {
+      $imagename = 'default.png';
+    }
   }
 
   if (isset($_FILES['files']['tmp_name'][1])) {
