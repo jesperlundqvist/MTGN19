@@ -145,7 +145,7 @@
 
         // fulhax
         if ($name == 'Ceder') {
-          echo "<img src='http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fmtgn.nu%2Fprofile.php%3Fuser%3DCeder&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L' alt='qr code' />";        }
+          echo "<img style='width:200px;' src='http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fmtgn.nu%2Fprofile.php%3Fuser%3DCeder&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L' alt='qr code' />";        }
         if($name == 'Marcus'){
         ?>
           <script>
