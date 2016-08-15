@@ -59,7 +59,7 @@ $(function(){
   controller.init();
 
   // Toggle Slidebars
-  $( '.toggle-mobilemenu' ).click(function(){
+  $( '.toggle-mobilemenu' ).click(function(event){
     // Stop default action and bubbling
     event.stopPropagation();
     event.preventDefault();

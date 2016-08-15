@@ -45,9 +45,8 @@ $( document ).ready(function() {
   //Mobile
   var mobileStartDate = new Date(Date.UTC(2016, 7, 1, 0, 0, 0));
   // console.log(mobileStartDate);
-  var mobileStartDate2 = new Date();
-  // console.log(mobileStartDate2);
-  var mobileEndDate = new Date(Date.UTC(2016, 8, 13, 0, 0, 0));
+  var mobileEndDate = new Date(Date.UTC(2016, 8, 10, 0, 0, 0));
+  // console.log(mobileEndDate);
   // var mobileEndDate = mobileStartDate.addDays(14);
 
   var today = new Date();
