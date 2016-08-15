@@ -113,7 +113,6 @@ $link = connectToDB();
 	     ?>
     	<li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
     	<li class="menu-media"><a href="media.php">Media</a></li>
-      <!-- Lägg till funktioner getgallerylink osv för att få rätt länk till galleriet -->
       <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
       <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
       <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
