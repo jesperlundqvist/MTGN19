@@ -190,7 +190,7 @@ function sendFileToServer(formData, status, files, fileid) {
 }
 
 function sendFileWithDateToServer(formData, fileid) {
-  var uploadURL = "gallery_upload_images.php?action=upload";
+  var uploadURL = "gallery_upload_images_process.php";
   var date = $("#date_" + fileid);
   var time = $("#time_" + fileid);
 

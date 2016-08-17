@@ -79,7 +79,7 @@
 
         <?php
         // Images
-        $query = "SELECT imagename, imagecreateddate, event, week FROM images ORDER BY imagecreateddate, imageorder DESC";
+        $query = "SELECT imagename, imagecreateddate, event, week FROM images ORDER BY imagecreateddate, uploaddate DESC";
         $result = execQuery($link, $query);
         while ($image = $result->fetch_object()) {
           echo'

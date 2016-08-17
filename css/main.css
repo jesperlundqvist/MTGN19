@@ -617,6 +617,11 @@ label {
     margin-bottom: 15px;
 }
 
+.mobile-menu-top .n0llegroup {
+  color:#0d3c42;
+  text-align:center;
+}
+
 .profile-divider-line {
     width: 33%;
     min-width: 300px;

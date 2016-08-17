@@ -48,7 +48,11 @@
       } // end isActive
       else {
         ?>
-        Basecamp är tyvärr inte ute för tillfället.
+        <!-- inline jag vet förlåt -->
+        <h2 style="color:#e3af49;">Basecamp är tyvärr inte ute för tillfället.</h2>
+
+        <?= $description ?>
+
         <?php
       }
       echo '</div>'; // content wrapper
