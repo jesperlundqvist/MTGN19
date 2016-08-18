@@ -23,6 +23,7 @@
           }
           $admin = $_SESSION['admin'];
 
+
           // =================== BLÄNDAREN ===============
           echo '<div id="blandar_container">';
 

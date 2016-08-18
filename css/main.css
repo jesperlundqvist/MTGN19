@@ -238,6 +238,18 @@ select {
   opacity: 0.8;
 }
 
+.important-link {
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: Pirata One;
+  color: #e3af49;
+
+  cursor: pointer;
+}
+
 .read-more {
   margin-top: 5px;
   text-transform: uppercase;
@@ -1144,7 +1156,8 @@ footer a {
     width: 100px;
 }
 
-.comviq {
+.comviq,
+.mtg {
   width: 85px;
 }
 
@@ -1451,4 +1464,11 @@ footer a {
 #map {
   height: 400px;
   border:2px solid black;
+}
+
+.game-canvas {
+  border:3px solid #0d3c42;
+  margin:0 auto;
+  width:300px;
+  box-sizing: content-box;
 }

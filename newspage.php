@@ -76,11 +76,11 @@
           //echo "<div class='white'></div>";
           echo "</div>"; //news-content
           echo "</div>"; //news
-        echo "</div>"; // end news
+        // echo "</div>"; // end news
 
       ?>
         <div id="info"></div>
-    </div>
+    <!-- </div> -->
 
     <?php
       //Load footer
