@@ -179,10 +179,29 @@ var deadState = {
         spaceKey.onDown.add(this.startGame, this);
 
         game.input.onTap.add(this.startGame, this);
+
+        this.addscore();
     },
 
     startGame: function() {
         game.state.start('main');
+    },
+
+    addscore: function(){
+        var username = $('#js-username').html();
+        console.log(username);
+
+        // $.ajax({
+        //   url: 'game_addscore.php',
+        //   type: "POST",
+        //   data: {
+        //     'score': score,
+        //     'username': username
+        //   },
+        //   success: function(output){
+        //     console.log('Skickat highscore!');
+        //   }
+        // });
     }
 };
 

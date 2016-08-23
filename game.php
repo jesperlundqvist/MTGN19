@@ -12,8 +12,14 @@
     <?php
       //Load top content
       include_once ('inc_top_content.php');
+      $username = $_SESSION['username'];
     ?>
 
+    <div class="hidden username" id="js-username">
+    <?php
+      echo $username;
+    ?>
+    </div>
     <div class="content-wrapper">
     <div id="js-phaser" class="game-canvas"></div>
     </div>
