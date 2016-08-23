@@ -6,10 +6,12 @@ $upload_dir = "images/uploads/gallery/";
 $thumb_dir = $upload_dir . "thumbs/";
 $large_dir = $upload_dir . "large/";
 $original_dir = $upload_dir . "original/";
-if (isset($_FILES['file'], $_POST['photographer'], $_POST['week'],$_POST['event'])) {
+if (isset($_FILES['file'], $_POST['photographer'], $_POST['week'],$_POST['event'],$_POST['seldate'])) {
   $photographer = $_POST['photographer'];
   $week = $_POST['week'];
   $event = $_POST['event'];
+  $date = $_POST['seldate'];
+
   // Set auto week
   if($week == 'Auto') {
     setlocale(LC_ALL, 'sv_SE.ISO8859-1');
@@ -56,7 +58,7 @@ if (isset($_FILES['file'], $_POST['photographer'], $_POST['week'],$_POST['event'
     $image->resizeToWidth(1200);
   }
   $image->save($large_dir . $imagename);
-  $date = date("Y-m-d H:i:s");
+  // $date = date("Y-m-d H:i:s");
   // echo $imagecreateddate;
   //$imagecreateddate = date("Y-m-d H:i:s");
   // Skapa posten i databasen

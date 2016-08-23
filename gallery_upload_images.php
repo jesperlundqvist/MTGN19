@@ -12,6 +12,9 @@
     <?php
       //Load top content
       include_once ('inc_top_content.php');
+
+      setlocale(LC_ALL, 'sv_SE.ISO8859-1');
+      $date = date("Y-m-d H:i:s");
     ?>
     <div class="content-wrapper form-page left">
       <?php
@@ -41,6 +44,11 @@
               }
             ?>
             </select>
+            <br/><br>
+            Datum: (behåll samma format pls)
+            <?php
+            echo'<input id="seldate" class="input_areas" value="'.$date.'" name="seldate" />';
+            ?>
             <br/><br>
             Välj vecka
             <select id="week" name="week">
@@ -72,7 +80,7 @@
               <div id="filedraginfo"></div>
             </div>
             <br/>
-            
+
           </div>
           <div id="statusbar">
             <div id="filesizes"></div>

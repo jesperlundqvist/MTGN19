@@ -142,6 +142,7 @@ function sendNextFile(files) {
   var fd = new FormData();
   fd.append('photographer', $("#photographer").val());
   fd.append('week', $("#week").val());
+  fd.append('seldate', $("#seldate").val());
   fd.append('event', $("#event").val());
   fd.append('file', file);
 
