@@ -191,17 +191,17 @@ var deadState = {
         var username = $('#js-username').html();
         console.log(username);
 
-        // $.ajax({
-        //   url: 'game_addscore.php',
-        //   type: "POST",
-        //   data: {
-        //     'score': score,
-        //     'username': username
-        //   },
-        //   success: function(output){
-        //     console.log('Skickat highscore!');
-        //   }
-        // });
+        $.ajax({
+          url: 'game_addscore.php',
+          type: "POST",
+          data: {
+            'score': this.score,
+            'username': username
+          },
+          success: function(output){
+            console.log('Skickat highscore!');
+          }
+        });
     }
 };
 

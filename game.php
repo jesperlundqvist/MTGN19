@@ -13,6 +13,10 @@
       //Load top content
       include_once ('inc_top_content.php');
       $username = $_SESSION['username'];
+
+      if($username == 'gustav'){
+
+
     ?>
 
     <div class="hidden username" id="js-username">
@@ -25,6 +29,11 @@
     </div>
 
     <?php
+
+    }
+    else {
+      echo'<div class="center">under uppbyggnad</div>';
+    }
       //Load footer
       include_once ('inc_footer.php');
     ?>
