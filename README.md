@@ -4,11 +4,10 @@ Parentes är i vilken branch du ska vara i när du utför kommandot.
 
 ### Instruktioner
 <ol>
-    <li>Pull (master)</li>
-    <li>Merge (branch)</li>
+    <li>Pull (master) & Merge (branch)</li>
     <li>Koda (branch)</li>
-    <li>Pull (master)</li>
-    <li>Merge (branch)</li>
+    <li>Commit (branch)</li>
+    <li>Pull (master) & Merge (branch)</li>
     <li>Push/Pull request (branch)</li>
 </ol>
 
