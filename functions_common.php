@@ -261,8 +261,7 @@ function connectToDB() {
   $link = mysqli_connect(
     $host,
     $user,
-    $password,
-    //$db
+    $password
   );
 
   if (mysqli_connect_errno()) {
