@@ -255,14 +255,14 @@ function connectToDB() {
   $host = 'localhost';
   $user = '166397_xb73815';
   $password = 'AlltLuktarKorv';
-  $db = '166397-mtgn';
+  $db = '10.209.2.44';
   $port = 8889;
 
   $link = mysqli_connect(
     $host,
     $user,
     $password,
-    $db
+    //$db
   );
 
   if (mysqli_connect_errno()) {
