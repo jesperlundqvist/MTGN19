@@ -252,10 +252,10 @@ function time2str($ts)
 
 function connectToDB() {
   // Logga in på databasen
-  $host = '10.209.2.44';
-  $user = '166397_xb73815';
-  $password = 'AlltLuktarKorv';
-  $db = '166397-mtgn';
+  $host = 'localhost';
+  $user = 'root';
+  $password = 'root';
+  $db = 'mtgn_local';
   $port = 8889;
 
   $link = mysqli_connect(
