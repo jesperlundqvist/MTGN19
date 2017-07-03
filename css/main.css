@@ -462,6 +462,10 @@ select {
 
 #news_title {
   margin-top: 24px;
+  font-size: 32px;
+  color: #f7ecd6;
+  background-color: transparent;
+  border-bottom: 1px solid;
 }
 
 #news_input {
