@@ -66,12 +66,12 @@
             echo "<a class='news-edit button' href=\"newspage_edit.php?id=$newsid\">Redigera inlägg</a>";
           }
           echo "<div class='post-footer clearfix'>";
-          echo "<a class='news-category' href=\"/index.php?category=$news->category\">$news->category</a>";
+          echo "<a class='news-category' href=\"/index.php?category=$category\">$category</a>";
           echo "<div class='news-writtenby'>";
           echo "<span>Skrivet av: </span>$name";
 
           echo "</div>";
-          echo "<div class='news-timestamp'>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($news->newsdate))) . "</div>";
+          echo "<div class='news-timestamp'>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($newsdate))) . "</div>";
           echo "</div>"; //post-footer
           //echo "<div class='white'></div>";
           echo "</div>"; //news-content
