@@ -63,7 +63,7 @@
         echo "<p>$body</p>";
 
        if ($username === $currusername || $admin) {
-            echo "<a class='news-edit button' href=\"newspage_edit.php?id=$newsid\">Redigera inlägg</a>";
+            echo "<a class='news-edit button' href=\"newspage_edit.php?id=$id\">Redigera inlägg</a>";
           }
           echo "<div class='post-footer clearfix'>";
           echo "<a class='news-category' href=\"/index.php?category=$category\">$category</a>";
