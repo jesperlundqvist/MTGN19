@@ -103,26 +103,30 @@
         echo "<div class=\"news pagelinks-wrap\">";
         if($page > 1) {
           $prevpage = $page - 1;
-          echo "<a class=\"pagelinks button\" href=\"/index.php?page=$prevpage\"><span class=\"ion-ios-arrow-thin-left\"> Föregående</a>";
+          echo "<a class=\"pagelinks button\" href=\"/index.php?page=$prevpage\"><span class=\"ion-ios-arrow-thin-left\"> Föregående</a> ";
         }
 
         for($i = 0; $i < $numofpages; $i++) {
           $counter = $i + 1;
-          if ($page === $counter) {
-            $currentpageclass = " pagelinks_current";
-          } else {
-            $currentpageclass = "";
+
+          if ($page == $counter)
+          {
+              echo "<span class=\"pagelinks pagelinks_current button\">$counter</span>";
           }
-          // Dont show if only one page
-          if($counter != 1){
-            echo "<a class=\"pagelinks$currentpageclass button\" href=\"/index.php?page=$counter\">$counter</a>";
+          else {
+              echo "<a class=\"pagelinks$currentpageclass button\" href=\"/index.php?page=$counter\">$counter</a>";
+          }
+
+          if ($counter < $numofpages)
+          {
+              echo " ";
           }
 
         }
 
         if($page < $numofpages) {
           $nextpage = $page + 1;
-          echo "<a class=\"button \" href=\"/index.php?page=$nextpage\">Nästa <span class=\"ion-ios-arrow-thin-right\"></a>";
+          echo " <a class=\"pagelinks button \" href=\"/index.php?page=$nextpage\">Nästa <span class=\"ion-ios-arrow-thin-right\"></a>";
         }
         echo "</div>";
 ?>

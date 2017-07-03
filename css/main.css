@@ -394,6 +394,24 @@ select {
   text-align: center;
 }
 
+.pagelinks_current
+{
+    font-weight: bold;
+    background-color: #CB9839 !important;
+}
+
+.pagelinks
+{
+    padding: 12px;
+    background-color: #e3af49;
+    outline:none;
+    border:none;
+    border-radius: 5px;
+    width: 100%;
+
+    color: #fff;
+    font-size: 16px;
+}
 
 /*
   Admin controls
