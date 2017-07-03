@@ -100,23 +100,27 @@ $link = connectToDB();
 
 </div>
 <nav class="menubar">
-	<div class="constrainer center-mobile nav-wrapper">
-    <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>
-		<ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
-			<li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;"><i class='fa fa-bars' aria-hidden='true'></i></a></li>
-			<li class="menu-start"><a href="/">Startsida </a></li>
-      <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
-			<?php
-			if ($admin) { ?>
-				<li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
-	    }
-	     ?>
-    	<li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-    	<li class="menu-media"><a href="media.php">Media</a></li>
-      <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
-      <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
-      <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
-    	<li class="menu-logout logout-button"><a href="functions_logout.php">Logga ut </a></li>
-		</ul>
-	</div>
+    <div class="center-mobile nav-wrapper">
+        <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>
+        <ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
+            <li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;"><i class='fa fa-bars' aria-hidden='true'></i></a></li>
+            <li class="menu-left"></li>
+            <li class="menu-padding"></li>
+            <li class="menu-start"><a href="/">Startsida </a></li>
+            <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
+            <?php
+            if ($admin) { ?>
+                <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
+            }
+            ?>
+            <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
+            <li class="menu-media"><a href="media.php">Media</a></li>
+            <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
+            <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
+            <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
+            <li class="menu-logout logout-button"><a href="functions_logout.php">Logga ut </a></li>
+            <li class="menu-padding"></li>
+            <li class="menu-right"></li>
+        </ul>
+    </div>
 </nav>

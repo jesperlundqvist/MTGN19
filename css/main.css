@@ -163,14 +163,58 @@ select {
 }
 
 .menubar {
-    margin-top: -5px;
+    /*margin-top: -5px;*/
 
     min-height: 78px;
     width: 100%;
-    background: url('/design/menubar_bg.png');
+    /*background: url('/design/menubar.png');
+    background-size: 100% 78px;*/
 
     position: relative;
     z-index: 2;
+}
+
+@media (min-width:769px) {
+    .sitenav {
+        display: flex;
+        background: url('/design/menubar_bg.png');
+    }
+
+    .sitenav > li {
+        background: url('/design/menubar.png');
+        background-position: center;
+        background-repeat: repeat-x;
+        height: 150px;
+        white-space: nowrap;
+    }
+
+    .sitenav > li.menu-padding {
+        width: 100%;
+    }
+
+    .sitenav > li.menu-left {
+        background: url('/design/menubar_left.png');
+        min-width: 64px;
+        display: inline-block;
+        background-repeat: no-repeat;
+    }
+
+    .sitenav > li.menu-right {
+        background: url('/design/menubar_right.png');
+        min-width: 64px;
+        display: inline-block;
+        background-repeat: no-repeat;
+    }
+}
+
+@media (max-width:769px) {
+    .menubar {
+        background: url('/design/menubar_mobile.png');
+        background-position: center;
+        background-repeat: repeat-x;
+        height: 92px;
+        white-space: nowrap;
+    }
 }
 
 .sitenav {
@@ -184,16 +228,26 @@ select {
     display: inline-block;
 }
 
-.sitenav > li > a{
-    display: block;
-    padding: 0 12px;
 
 
-    color: #4b2b02;
-    font-weight: 600;
-    line-height: 72px;
-    font-size: 24px;
-    font-family: Pirata One;
+@media (min-width:769px) {
+    .sitenav > li > a {
+        display: block;
+        padding: 0 12px;
+
+        color: #4b2b02;
+        font-weight: 600;
+        line-height: 150px;
+        font-size: 28px;
+        font-family: Diogenes;
+    }
+}
+
+@media (max-width:769px) {
+    .sitenav > li > a {
+        color: #4b2b02;
+        line-height: 92px;
+    }
 }
 
 /*
@@ -1405,9 +1459,9 @@ footer a {
 
 .mobile-menu-wrapper .ribbon-content {
   font-size: 32px;
-  font-weight: normal;
+  font-weight: bold;
 
-  color: #0d3c42;
+  color: #312f2b;
 }
 
 
@@ -1436,7 +1490,9 @@ footer a {
 }
 
 .mobile-logo {
-  width: 200px;
+  height: 50px;
+  padding-top: 10px;
+  box-sizing: content-box;
 }
 
 .mobilenav {
