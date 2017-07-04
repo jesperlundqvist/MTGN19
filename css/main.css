@@ -1200,6 +1200,12 @@ footer {
 
 }
 
+@media (max-width: 400px) {
+    footer {
+        border-width: 42px 56px 0px 56px !important;
+    }
+}
+
 footer a {
     color: black;
 }
@@ -1239,6 +1245,14 @@ footer a {
 
     vertical-align: middle;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .footer-logo-wrap {
+        width: 150px !important;
+        margin-left: auto;
+        margin-right: auto !important;
+    }
 }
 
 .footer-logo {
