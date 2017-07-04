@@ -2,6 +2,11 @@
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
+@font-face {
+    font-family: Diogenes;
+    src: url('/design/DIOGENES.ttf');
+}
+
 html, body {
     margin: 0;
     padding: 0;
