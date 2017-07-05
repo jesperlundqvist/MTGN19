@@ -104,6 +104,8 @@
             </div>
           </div>
         </div>
+        <br /><br />
+        <a href="#" class="button-primary" id="subscribe-link">Lägg till i egen kalender</a>
     </div>
 
     <?php

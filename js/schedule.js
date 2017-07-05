@@ -23,10 +23,11 @@ $( document ).ready(function() {
 
 
   //globala variabler
-  browserKey = 'AIzaSyCsUBinzlYwP-gE74Ls5L9-xSlZbJTIqlM'; // Gustav test
-  // calendarid = 'qh3at27vur0f76h63fc37tcd18@group.calendar.google.com'; // Också gustav test
-  calendarid = 't1jrb271f5t9pm4gq7vfbs7mek@group.calendar.google.com';
+  browserKey = 'AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk';
+  //calendarid = 'nkr096rgr14rliajk6hsi251n0@group.calendar.google.com';
+  calendarid = "t1jrb271f5t9pm4gq7vfbs7mek@group.calendar.google.com"; // Mottagningen 2016
   startTime = new Date();
+  document.getElementById("subscribe-link").href = "https://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics";
 
   startTime.setHours(0,0,0);
   startTime = startTime.addDays(-startTime.getDayOfWeek());
