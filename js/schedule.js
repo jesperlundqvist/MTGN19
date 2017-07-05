@@ -25,9 +25,16 @@ $( document ).ready(function() {
   //globala variabler
   browserKey = 'AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk';
   //calendarid = 'nkr096rgr14rliajk6hsi251n0@group.calendar.google.com';
-  calendarid = "t1jrb271f5t9pm4gq7vfbs7mek@group.calendar.google.com"; // Mottagningen 2016
+  calendarid = "j4tdc98qohhntounmnlmu6usm4@group.calendar.google.com"; // Mottagningen 2016
   startTime = new Date();
-  document.getElementById("subscribe-link").href = "https://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics";
+  if (navigator.userAgent.match(/Mac OS X/i) != null)
+  {
+      document.getElementById("subscribe-link").href = "webcal://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics";
+  }
+  else
+  {
+      document.getElementById("subscribe-link").href = "https://calendar.google.com/calendar/embed?src=" + calendarid + "&ctz=Europe/Stockholm"
+  }
 
   startTime.setHours(0,0,0);
   startTime = startTime.addDays(-startTime.getDayOfWeek());
@@ -44,9 +51,9 @@ $( document ).ready(function() {
   });
 
   //Mobile
-  var mobileStartDate = new Date(Date.UTC(2016, 7, 1, 0, 0, 0));
+  var mobileStartDate = new Date(Date.UTC(2017, 7, 1, 0, 0, 0));
   // console.log(mobileStartDate);
-  var mobileEndDate = new Date(Date.UTC(2016, 8, 10, 0, 0, 0));
+  var mobileEndDate = new Date(Date.UTC(2017, 8, 10, 0, 0, 0));
   // console.log(mobileEndDate);
   // var mobileEndDate = mobileStartDate.addDays(14);
 
