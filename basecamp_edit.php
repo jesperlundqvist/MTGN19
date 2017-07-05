@@ -49,7 +49,7 @@
       ?>
       <br><br>
 
-      Dra i markern för att ändra position på basecamp. Tryck sedan på "uppdatera". 
+      Dra i markern för att ändra position på basecamp. Tryck sedan på "uppdatera".
       <div id="map"></div>
       <br>
       <div class="form-page">
@@ -101,7 +101,7 @@
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsUBinzlYwP-gE74Ls5L9-xSlZbJTIqlM&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk&callback=initMap"
     async defer></script>
   </body>
 </html>
