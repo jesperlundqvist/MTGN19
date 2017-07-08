@@ -88,17 +88,19 @@ $link = connectToDB();
 
 <div class="header">
 
-    <div class="header-wave-back"></div>
+  <div class="header-wave-back"></div>
+
 	<div class="constrainer">
-		<div class="header-ship floating"></div>
+		<div class="header-mountain"></div>
 		<div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga" /></a></div>
 		<div class="header-sun"></div>
-    </div>
+    <div class="header-sun_rays floating"></div>
+  </div>
 
-    <div class="header-wave"></div>
-
+  <div class="header-hills"></div>
 
 </div>
+
 <nav class="menubar">
 	<div class="constrainer center-mobile nav-wrapper">
     <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>

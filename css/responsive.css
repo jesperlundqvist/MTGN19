@@ -34,13 +34,17 @@
 	.header-sun {
 		display: none;
 	}
+	
+	.header-sun_rays {
+		display: none;
+	}
 
 
 }
 
 /* This is the size where we switch to mobile menu */
 @media all and (max-width: 768px) {
-	.header-ship {
+	.header-mountain {
 		display: none;
 	}
 
@@ -62,6 +66,11 @@
 	}
 
 	.header-sun {
+		top: -70px;
+		right: -112px;
+	}
+
+	.header-sun_rays {
 		top: -70px;
 		right: -112px;
 	}
