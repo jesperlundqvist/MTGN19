@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-    background: #025c77 url('/design/body_bg.jpg');
+    background: #784800 /*url('/design/body_bg.jpg')*/;
 
     color: #f7ecd6;
     font-size: 14px;
