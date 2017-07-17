@@ -8,7 +8,7 @@
       sec_session_start();
   }
   ?>
-    <title>Mottagningen 2016</title>
+    <title>Mottagningen 2017</title>
     <link href='https://fonts.googleapis.com/css?family=Stardos+Stencil:700' rel='stylesheet' type='text/css'>
   </head>
 
@@ -150,7 +150,7 @@
         ?>
           <script>
             $( document ).ready(function() {
-              arr = ["Kapten Haddock", "Kapten Krok"]; 
+              arr = ["Kapten Haddock", "Kapten Krok"];
               rand = Math.round(Math.random());
               console.log(arr[rand]);
               $(".q2-js").html(arr[rand]);
