@@ -81,7 +81,7 @@ if (isset($_POST['username'], $_POST['password1'], $_POST['password2'], $_POST['
     move_uploaded_file($_FILES['files']['tmp_name'][0], $upload_dir . $imagename);
   } else {
 
-    if($usergroup =='VRAQUE'){
+    if($usergroup != 'nØllan'){
       $imagename = 'default_phos.png';
     }
     else {

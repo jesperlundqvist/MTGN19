@@ -252,23 +252,42 @@ function time2str($ts)
 
 function connectToDB() {
   // Logga in på databasen
-  $host = '10.209.2.44';
-  $user = '166397_xb73815';
-  $password = 'AlltLuktarKorv';
-  $db = '166397-mtgn';
+
+  // FTP-servern
+  // $host = '10.209.2.44';
+  // $user = '166397_xb73815';
+  // $password = 'AlltLuktarKorv';
+  // $db = '166397-mtgn';
+
+  // FTP-server
+  // $link = mysqli_connect(
+  //   $host,
+  //   $user,
+  //   $password,
+  //   $db
+  // );
+  //
+  // if (mysqli_connect_errno()) {
+  //   printf("Connect failed: %s\n", mysqli_connect_error());
+  //   exit();
+  // }
+
+  // Lokal server
+  $user = 'root';
+  $password = 'root';
+  $db = 'mtgn';
+  $host = 'localhost';
   $port = 8889;
 
-  $link = mysqli_connect(
+  $link = mysqli_init();
+  $success = mysqli_real_connect(
+    $link,
     $host,
     $user,
     $password,
-    $db
+    $db,
+    $port
   );
-
-  if (mysqli_connect_errno()) {
-    printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
-  }
 
   $link->set_charset('utf8'); //Fixar åäö
 
