@@ -1471,7 +1471,7 @@ footer a {
 
 .mobile-menu-top {
   padding-top: 32px;
-  padding-bottom: 16px;
+  /*padding-bottom: 16px;*/
 
   background: url('/design/mobile-fader.png') no-repeat;
   background-position:right 0 top;
