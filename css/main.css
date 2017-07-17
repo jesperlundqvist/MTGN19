@@ -22,7 +22,7 @@ body {
 
 h1,h2,h3 {
   margin-top: 0;
-  font-family:Pirata One;
+  font-family:Diogenes;
   font-weight: normal;
   text-align: center;
 
@@ -303,7 +303,7 @@ select {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 1px;
-  font-family: Pirata One;
+  font-family: Diogenes;
   color: #e3af49;
 
   cursor: pointer;
@@ -315,14 +315,14 @@ select {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 1px;
-  font-family: Pirata One;
+  font-family: Diogenes;
   color: #e3af49;
 
   cursor: pointer;
 }
 
 .news-title {
-  font-family: Pirata One;
+  font-family: Diogenes;
   font-size: 40px;
   font-weight: normal;
 
@@ -435,7 +435,7 @@ select {
 }
 
 .adminpanel_title {
-  font-family: Pirata One;
+  font-family: Diogenes;
   font-size: 40px;
   font-weight: normal;
 }
@@ -480,7 +480,7 @@ select {
 .news_category_title {
   margin-top: 16px;
 
-  font-family: Pirata One;
+  font-family: Diogenes;
   font-size: 28px;
 }
 
@@ -590,7 +590,7 @@ label {
 
 .usergroup_banner {
   margin-bottom: 0;
-  font-family: Pirata One;
+  font-family: Diogenes;
   font-size: 40px;
   font-weight: normal;
 
@@ -700,7 +700,7 @@ label {
 }
 
 .ribbon-content {
-    font-family: Pirata One;
+    font-family: Diogenes;
     font-size: 60px;
 }
 
@@ -951,7 +951,7 @@ p {
 }
 
 .toprow th h2{
-  font-family: Pirata One;
+  font-family: Diogenes;
   font-size: 28px;
   font-weight: normal;
 }
@@ -1286,7 +1286,7 @@ footer a {
 
 .email-title {
     font-size: 24px;
-    font-family: Pirata One;
+    font-family: Diogenes;
 }
 
 .links-element {
@@ -1321,7 +1321,7 @@ footer a {
 }
 
 .login-title {
-    font-family: Pirata One;
+    font-family: Diogenes;
     font-size: 5em;
     font-weight: normal;
     line-height: 0.5;
@@ -1394,7 +1394,7 @@ footer a {
  }
 
   .blandartitle {
-    font-family: Pirata One;
+    font-family: Diogenes;
     font-size: 32px;
     font-weight: normal;
   }
@@ -1539,7 +1539,7 @@ footer a {
 
 .mobilenav li a  {
   font-size: 30px;
-  font-family: Pirata One;
+  font-family: Diogenes;
   color: #0d3c42;
 }
 
