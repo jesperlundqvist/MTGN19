@@ -103,7 +103,7 @@ select {
 
 .header {
     position: relative;
-    background: #f6f9fb;
+    background: LightSkyBlue;
 
     height: 200px;
     overflow: hidden;
@@ -114,10 +114,10 @@ select {
     min-height: 200px;
 }
 
-.header-wave {
+.header-hills {
     position: absolute;
-    bottom: -23px;
-    background: url('/design/wave_first.png') repeat-x;
+    bottom: 0px;
+    background: url('/design/hills.png') repeat-x;
 
     height: 59px;
     width: 100%;
@@ -125,7 +125,7 @@ select {
     z-index: 2;
 }
 
-.header-wave-back {
+/*.header-wave-back {
     position: absolute;
     bottom: 0;
     background: url('/design/wave_second.png') repeat-x;
@@ -133,18 +133,18 @@ select {
     height: 59px;
     width: 100%;
     z-index: 1;
-}
+}*/
 
-.header-ship {
+.header-mountain {
     position: absolute;
-    top: 37px;
-    left: 0;
-    background: url('/design/ship.png');
+    top: 25px;
+    right: 0;
+    background: url('/design/mountain.png');
 
-    width: 206px;
-    height: 150px;
+    width: 220px;
+    height: 180px;
 
-    z-index: 2;
+    z-index: 0;
 }
 
 .header-logo {
@@ -158,13 +158,25 @@ select {
 .header-sun {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     background: url('/design/sun.png');
 
     width: 212px;
     height: 149px;
 
-    z-index: 0;
+    z-index: 1;
+}
+
+.header-sun_rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('/design/sun_rays.png');
+
+  width: 212px;
+  height: 149px;
+
+  z-index: 0;
 }
 
 .menubar {
@@ -1438,25 +1450,25 @@ footer a {
 
 @keyframes floating {
     0% {
-        transform: translateY(0%);
+        transform: scale(1, 1);
     }
     50% {
-        transform: translateY(5%);
+        transform: scale(0.9, 0.9);
     }
     100% {
-        transform: translateY(0%);
+        transform: scale(1, 1);
     }
 }
 
 @-webkit-keyframes floating {
     0% {
-        -webkit-transform: translateY(0%);
+        -webkit-transform: scale(1, 1);
     }
     50% {
-        -webkit-transform: translateY(5%);
+        -webkit-transform: scale(0.9, 0.9);
     }
     100% {
-        -webkit-transform: translateY(0%);
+        -webkit-transform: scale(1, 1);
     }
 }
 /* ----------- FLOATING --------------- */

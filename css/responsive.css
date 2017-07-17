@@ -31,45 +31,54 @@
         font-size: 22px;
     }
 
-    .header-sun {
-        display: none;
-    }
+	.header-sun {
+		display: none;
+	}
+
+	.header-sun_rays {
+		display: none;
+	}
 
 
 }
 
 /* This is the size where we switch to mobile menu */
 @media all and (max-width: 768px) {
-    .header-ship {
-        display: none;
-    }
+	.header-mountain {
+		display: none;
+	}
 
-    .header {
-        height: 135px;
-        text-align: center;
-    }
+	.header {
+		height: 135px;
+		text-align: center;
+	}
 
-    .header-logo {
-        position: relative;
-        top: auto;
-        left: auto;
-        padding-top: 20px;
-        z-index: 3;
-    }
+	.header-logo {
+		position: relative;
+		top: auto;
+		left: auto;
+		padding-top: 20px;
+		z-index: 3;
+	}
 
-    .header-logo img {
-        width: 200px;
-    }
+	.header-logo img {
+		width: 200px;
+	}
 
-    .header-sun {
-        top: -70px;
-        right: -112px;
-    }
+	.header-sun {
+		top: -70px;
+		right: -112px;
+	}
 
-    .header-mini-menu {
-        position: absolute;
-        left: 25px;
-        top: 25px;
+	.header-sun_rays {
+		top: -70px;
+		right: -112px;
+	}
+
+	.header-mini-menu {
+		position: absolute;
+		left: 25px;
+		top: 25px;
 
         z-index: 10;
     }
