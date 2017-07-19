@@ -254,40 +254,40 @@ function connectToDB() {
   // Logga in på databasen
 
   // FTP-servern
-  // $host = '10.209.2.44';
-  // $user = '166397_xb73815';
-  // $password = 'AlltLuktarKorv';
-  // $db = '166397-mtgn';
+  $host = '10.209.2.44';
+  $user = '166397_xb73815';
+  $password = 'AlltLuktarKorv';
+  $db = '166397-mtgn';
 
   // FTP-server
-  // $link = mysqli_connect(
-  //   $host,
-  //   $user,
-  //   $password,
-  //   $db
-  // );
-  //
-  // if (mysqli_connect_errno()) {
-  //   printf("Connect failed: %s\n", mysqli_connect_error());
-  //   exit();
-  // }
-
-  // Lokal server
-  $user = 'root';
-  $password = 'root';
-  $db = 'mtgn';
-  $host = 'localhost';
-  $port = 8889;
-
-  $link = mysqli_init();
-  $success = mysqli_real_connect(
-    $link,
+  $link = mysqli_connect(
     $host,
     $user,
     $password,
-    $db,
-    $port
+    $db
   );
+
+  if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+  }
+
+  // Lokal server
+  // $user = 'root';
+  // $password = 'root';
+  // $db = 'mtgn';
+  // $host = 'localhost';
+  // $port = 8889;
+  //
+  // $link = mysqli_init();
+  // $success = mysqli_real_connect(
+  //   $link,
+  //   $host,
+  //   $user,
+  //   $password,
+  //   $db,
+  //   $port
+  // );
 
   $link->set_charset('utf8'); //Fixar åäö
 
