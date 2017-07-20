@@ -257,7 +257,7 @@ select {
         display: block;
         padding: 0 12px;
 
-        color: #4b2b02;
+        color: #464646; /*Old color: #4b2b02*/
         font-weight: 600;
         line-height: 150px;
         font-size: 28px;
@@ -267,7 +267,7 @@ select {
 
 @media (max-width:769px) {
     .sitenav > li > a {
-        color: #4b2b02;
+        color: #464646; /*Old color: #4b2b02*/
         line-height: 92px;
     }
 }
@@ -1560,7 +1560,7 @@ footer a {
 .mobilenav li a  {
   font-size: 30px;
   font-family: mtgn;
-  color: #0d3c42;
+  color: #464646; /*Old color: #0d3c42*/
 }
 
 .no-display {
