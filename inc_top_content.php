@@ -46,7 +46,7 @@ $link = connectToDB();
         <?php
           // Profilbild
           if ($imagepath != null) {
-            echo "<div id='profilepic-wrapper' style='background-image: url(\"design/mobile_profile_border.png\"), url(\"$imagepath\");'>";
+            echo "<div id='mobile-menu-profile-pic' style='background-image: url(\"design/mobile_profile_border.png\"), url(\"$imagepath\");'>";
             echo "</div>";
             echo "<div id='profile-banner'></div>";
           }
@@ -65,9 +65,7 @@ $link = connectToDB();
        </div>
        <div class="mobile-menu-bottom">
         <ul class="mobilenav">
-          <?php
-            echo "<li><a href=\"profile_edit.php?user=$username\">Redigera profil</a></li>";
-          ?>
+          <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
           <?php
           if ($admin) { ?>
             <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
@@ -109,7 +107,7 @@ $link = connectToDB();
             <li class="menu-left"></li>
             <li class="menu-padding"></li>
             <li class="menu-start"><a href="/">Startsida</a></li>
-            <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
+            <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
             <?php
             if ($admin) { ?>
                 <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
