@@ -109,7 +109,7 @@ $link = connectToDB();
             <li class="menu-left"></li>
             <li class="menu-padding"></li>
             <li class="menu-start"><a href="/">Startsida </a></li>
-            <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
+            <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
             <?php
             if ($admin) { ?>
                 <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php

@@ -186,6 +186,7 @@
 
     .ribbon-content {
         font-size: 37px;
+        text-transform: uppercase;
     }
 
     .profile-column-right,
