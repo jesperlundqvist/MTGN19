@@ -17,6 +17,10 @@ $(document).ready(function() {
 
 });
 
+function adminDropdownToggle() {
+    $(".admin-dropdown-mobile").fadeToggle();
+}
+
 // Search users
 function searchUsers(search) {
   $.ajax({

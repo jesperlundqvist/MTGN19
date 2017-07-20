@@ -13,7 +13,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper form-page">
+    <div class="content-wrapper ">
       <?php
     // Vi kollar att användaren är inloggad som admin
     if (session_status() == PHP_SESSION_NONE) {
@@ -23,7 +23,8 @@
       ?>
         <!-- Sidinnehåll -->
       <div class="container">
-        <div class="content_container">
+
+        <div class="form-page">
           <h2 class="adminpanel_title">Skapa ny användare</h2>
           <input type="text" id="new_username" placeholder="Användarnamn" class="input_areas"/>
           <br/>
@@ -94,6 +95,8 @@
       //Load footer
       include_once ('inc_footer.php');
     ?>
-
+    <script>
+        adminDropdownToggle();
+    </script>
   </body>
 </html>

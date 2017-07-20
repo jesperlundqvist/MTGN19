@@ -29,6 +29,7 @@
     <?php
     if ($admin){
       ?>
+
       <h1>Basecamp</h1>
       <?php
       if($isActive){
@@ -100,6 +101,8 @@
           map.setCenter(marker.getPosition());
         });
       }
+      
+      adminDropdownToggle();
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk&callback=initMap"
     async defer></script>

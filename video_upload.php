@@ -12,13 +12,15 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper form-page">
+    <div class="content-wrapper">
       <?php
       if (session_status() == PHP_SESSION_NONE) {
         sec_session_start();
       }
       if ($_SESSION['admin']) {
         ?>
+
+        <div class="form-page">
         <h2 class="adminpanel_title">Ladda upp video</h2>
           <div id="form">
             <input type="text" id="videoname" name="videoname" placeholder="Namn" class="input_areas"/>
@@ -55,6 +57,7 @@
             <button id="submit_video" class="button-primary">Ladda upp video</button>
           </div>
           <div id="info"></div>
+        </div>
           <?php
        }
        else {
@@ -129,6 +132,7 @@
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
+    adminDropdownToggle();
   </script>
 
   </body>

@@ -19,14 +19,7 @@
     $admin = $_SESSION['admin'];
     if ($admin) { ?>
       <div class="content-wrapper">
-            <div class="admin-controls">
-              <a class="admin-control" href="register.php">Lägg till användare</a>
-              <a class="admin-control" href="gallery_upload_images.php">Ladda upp bilder</a>
-              <a class="admin-control" href="video_upload.php">Ladda upp video</a>
-              <a class="admin-control" href="blandaren_upload.php">Ladda upp Bländare</a>
-              <a class="admin-control" href="event.php">Lägg till event</a>
-              <a class="admin-control" href="basecamp_edit.php">Ändra basecamp</a>
-            </div>
+
 
             <div id="news_input_container" class="news-top form-page">
               <form id="news_input_form" action="newspage_handler.php?action=add" method="post">
@@ -121,6 +114,8 @@
                 }
             }
         });
+
+        adminDropdownToggle();
     </script>
     <style>
         .ql-editor {

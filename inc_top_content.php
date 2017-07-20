@@ -68,7 +68,18 @@ $link = connectToDB();
           <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
           <?php
           if ($admin) { ?>
-            <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
+            <li class="menu-adminpanel" onclick="adminDropdownToggle();">
+                <a>Admin</a>
+                <div class="admin-dropdown-mobile">
+                    <a href="adminpanel.php">Nytt inlägg</a>
+                    <a href="register.php">Skapa ny användare</a>
+                    <a href="gallery_upload_images.php">Ladda upp bilder</a>
+                    <a href="video_upload.php">Ladda upp video</a>
+                    <a href="blandaren_upload.php">Ladda upp Bländaren</a>
+                    <a href="event.php">Lägg till event</a>
+                    <a href="basecamp_edit.php">Ändra basecamp</a>
+                </div>
+            </li> <?php
           }
            ?>
           <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
@@ -110,7 +121,18 @@ $link = connectToDB();
             <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
             <?php
             if ($admin) { ?>
-                <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
+                <li class="menu-adminpanel">
+                    <a href="adminpanel_header.php">Admin</a>
+                    <div class="admin-dropdown">
+                        <a href="adminpanel.php">Nytt inlägg</a>
+                        <a href="register.php">Skapa ny användare</a>
+                        <a href="gallery_upload_images.php">Ladda upp bilder</a>
+                        <a href="video_upload.php">Ladda upp video</a>
+                        <a href="blandaren_upload.php">Ladda upp Bländaren</a>
+                        <a href="event.php">Lägg till event</a>
+                        <a href="basecamp_edit.php">Ändra basecamp</a>
+                    </div>
+                </li> <?php
             }
             ?>
             <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>

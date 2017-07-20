@@ -12,11 +12,13 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper form-page">
+    <div class="content-wrapper">
+
       <!-- Content -->
       <?php
-      if ($_SESSION['admin']) {
-
+      if ($_SESSION['admin']) { ?>
+          <div class="form-page">
+        <?php
         if ($_POST){
           $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 
@@ -36,6 +38,7 @@
           <input id="edit_title" name="name" placeholder="Namn" class="input_areas">
           <input type="submit" value="Lägg till" class="button-primary">
         </form>
+        </div>
       <?php
       }
       else {
@@ -48,6 +51,8 @@
       //Load footer
       include_once ('inc_footer.php');
     ?>
-
+    <script>
+        adminDropdownToggle();
+    </script>
   </body>
 </html>
