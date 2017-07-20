@@ -74,7 +74,7 @@
       frontpage = $('#blandarfront')[0].files[0];
       console.log(frontpage.name);
 
-      if (fileExt(frontpage.name) !== "png" || fileExt(frontpage.name) !== "jpg" || fileExt(frontpage.name) !== "jpeg") {
+      if (fileExt(frontpage.name) !== "png" && fileExt(frontpage.name) !== "jpg" && fileExt(frontpage.name) !== "jpeg") {
         frontpage = null;
         $("#info").append('<p style="color: red">Framsidan måste vara en bild.</p>');
       }
