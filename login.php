@@ -15,7 +15,7 @@
       <div class="content-wrapper">
         <div class="login-wrap">
           <h1 class="login-title">Mottagningen</h1>
-            <input type="text" id="username" placeholder="Användarnamn"/>
+            <input type="text" id="username" placeholder="Användarnamn" autocorrect="off" />
             <br/>
             <input type="password" id="password" placeholder="Lösenord"/>
             <br/>
