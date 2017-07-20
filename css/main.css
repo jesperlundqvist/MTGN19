@@ -125,16 +125,6 @@ select {
     z-index: 2;
 }
 
-/*.header-wave-back {
-    position: absolute;
-    bottom: 0;
-    background: url('/design/wave_second.png') repeat-x;
-
-    height: 59px;
-    width: 100%;
-    z-index: 1;
-}*/
-
 .header-mountain {
     position: absolute;
     top: 25px;
@@ -177,6 +167,18 @@ select {
   height: 149px;
 
   z-index: 0;
+}
+
+.ikaros {
+  background: url('/design/ikaros1.png');
+  position: absolute;
+  top: 170px;
+  left: 210px;
+
+  width: 25px;
+  height: 37px;
+
+  z-index: 2;
 }
 
 .menubar {
@@ -1440,8 +1442,9 @@ footer a {
   cursor: pointer;
 }
 
+/*-------------ANIMATION----------------*/
+/* ----------- FLOATING --------------- */
 /* Animation causing a "floating" effect */
-/* ------------------------------------- */
 .floating{
     animation-name: floating;
     -webkit-animation-name: floating;
@@ -1476,8 +1479,62 @@ footer a {
         -webkit-transform: scale(1, 1);
     }
 }
-/* ----------- FLOATING --------------- */
+/* ----------- IKAROS --------------- */
+/*Ikaros moves near the sun and then fall */
+.ikaros{
+    animation-name: ikaros-fly;
+    -webkit-animation-name: ikaros-fly;
 
+    animation-duration: 60s;
+    -webkit-animation-duration: 60s;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+
+    animation-delay: 60s;
+    -webkit-animation-delay: 60s;
+
+    animation-timing-function: ease-in;
+}
+
+@keyframes ikaros-fly {
+    0% {
+      transform: translate(0, 0);
+    }
+    6% {
+      background: url('/design/ikaros1.png');
+    }
+    6.2% {
+      transform: translate(-115px, -115px);
+      background: url('/design/ikaros2.png');
+    }
+    6.8% {
+      background: url('/design/ikaros2.png');
+    }
+    7% {
+      transform: translate(-115px, 0);
+    }
+}
+
+@-webkit-keyframes ikaros-fly {
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  6% {
+    -webkit-background: url('/design/ikaros1.png');
+  }
+  6.2% {
+    -webkit-transform: translate(-115px, -115px);
+    -webkit-background: url('/design/ikaros2.png');
+  }
+  6.8% {
+    -webkit-background: url('/design/ikaros2.png');
+  }
+  7% {
+    -webkit-transform: translate(-115px, 0);
+  }
+}
+/* ----------------------------------- */
 
 /* Mobile menu */
 
