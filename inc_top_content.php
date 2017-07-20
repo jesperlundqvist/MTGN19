@@ -40,13 +40,13 @@ $link = connectToDB();
 ?>
 <div off-canvas="mobilemenu left push">
   <nav class="mobile-nav">
-  	<div class="mobile-menu-wrapper">
+      <div class="mobile-menu-wrapper">
       <div class="mobile-menu-top">
         <a href="/profile.php?user=<?=$username?>">
         <?php
           // Profilbild
           if ($imagepath != null) {
-            echo "<div id='profilepic-wrapper' style='background-image:url(\"$imagepath\")'>";
+            echo "<div id='profilepic-wrapper' style='background-image: url(\"design/mobile_profile_border.png\"), url(\"$imagepath\");'>";
             echo "</div>";
             echo "<div id='profile-banner'></div>";
           }
@@ -81,7 +81,7 @@ $link = connectToDB();
           <li class="menu-logout logout-button"><a href="functions_logout.php">Logga ut </a></li>
         </ul>
       </div>
-  	</div> <!-- mobile-menu-wrapper -->
+      </div> <!-- mobile-menu-wrapper -->
   </nav>
 </div>
 <div class="site-wrap" canvas="container">
@@ -90,10 +90,10 @@ $link = connectToDB();
 
   <div class="header-wave-back"></div>
 
-	<div class="constrainer">
-		<div class="header-mountain"></div>
-		<div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga" /></a></div>
-		<div class="header-sun"></div>
+    <div class="constrainer">
+        <div class="header-mountain"></div>
+        <div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga" /></a></div>
+        <div class="header-sun"></div>
     <div class="header-sun_rays floating"></div>
   </div>
 
