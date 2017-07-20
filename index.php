@@ -75,7 +75,7 @@
           echo "<span>Skrivet av: </span>$name";
 
           echo "</div>";
-          echo "<div class='news-timestamp'>" . utf8_encode(strftime("%A %#d %B %H:%M", strtotime($news->newsdate))) . "</div>";
+          echo "<div class='news-timestamp'>" . utf8_encode(strftime("%A %d %B %H:%M", strtotime($news->newsdate))) . "</div>";
           echo "</div>"; //post-footer
           //echo "<div class='white'></div>";
           echo "</div>"; //news-content
