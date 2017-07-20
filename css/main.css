@@ -203,9 +203,11 @@ select {
         background-repeat: repeat-x;
         height: 150px;
         white-space: nowrap;
+
+        transition: all 0.3s;
     }
 
-    .sitenav > li :hover {
+    .sitenav > li:hover:not(.menu-padding) {
         background: url('/design/menubar_hover.png');
     }
 

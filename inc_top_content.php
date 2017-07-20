@@ -108,7 +108,7 @@ $link = connectToDB();
             <li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;"><i class='fa fa-bars' aria-hidden='true'></i></a></li>
             <li class="menu-left"></li>
             <li class="menu-padding"></li>
-            <li class="menu-start"><a href="/">Startsida </a></li>
+            <li class="menu-start"><a href="/">Startsida</a></li>
             <li class="menu-schedule"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
             <?php
             if ($admin) { ?>
