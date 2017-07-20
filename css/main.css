@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-    background: #784800 /*url('/design/body_bg.jpg')*/;
+    /*background: #f7ecd7 url('/design/body_bg.jpg')*/;
 
     color: #f7ecd6;
     font-size: 14px;
@@ -203,9 +203,11 @@ select {
         background-repeat: repeat-x;
         height: 150px;
         white-space: nowrap;
+
+        transition: all 0.3s;
     }
 
-    .sitenav > li :hover {
+    .sitenav > li:hover:not(.menu-padding) {
         background: url('/design/menubar_hover.png');
     }
 
@@ -250,8 +252,6 @@ select {
     text-transform: uppercase;
 }
 
-
-
 @media (min-width:769px) {
     .sitenav > li > a {
         display: block;
@@ -270,6 +270,92 @@ select {
         color: #464646; /*Old color: #4b2b02*/
         line-height: 92px;
     }
+
+    #mobile-menu {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .content-wrapper {
+        padding-top: 100px !important;
+    }
+
+    #mobile-nav {
+        padding-bottom: 75px;
+    }
+}
+
+/* Admin dropdown */
+
+.admin-dropdown {
+    display: none;
+    position: absolute;
+    margin-top: -30px;
+}
+
+.menu-adminpanel:hover .admin-dropdown {
+    display: block;
+}
+
+.admin-dropdown > a {
+    display: block;
+    height: 40px;
+    background-color: #f7ecd6;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    color: #4b2b02;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 16px;
+
+    opacity: 1.0;
+
+    transition: 0.3s;
+}
+
+.admin-dropdown > a:hover {
+    background-color: #d0c6b2
+}
+
+.admin-control {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+
+    transition: 0.3s;
+}
+
+.admin-control:hover {
+    background-color: #543303;
+}
+
+.admin-control {
+    display: block;
+    padding-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.admin-dropdown-mobile {
+    display: none;
+}
+
+.admin-dropdown-mobile > a {
+    font-weight: bold;
+    font-size: 18px !important;
+    font-family: Open Sans !important;
+    line-height: 40px;
+
+    margin-left: 30px;
+    max-width: 200px;
+
+    border-bottom: 2px solid #d0c6b2;
 }
 
 /*
@@ -445,12 +531,6 @@ select {
   margin-bottom: 20px;
 }
 
-.admin-control {
-  margin: 0 8px;
-
-  font-size: 16px;
-}
-
 .adminpanel_title {
   font-family: mtgn;
   font-size: 40px;
@@ -471,7 +551,8 @@ select {
 
 .form-page {
   /*text-align: center;*/
-  max-width: 400px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .input_areas {
@@ -695,9 +776,21 @@ label {
     margin-left: auto;
     margin-right: auto;
 
-    /*background-position: 50%;
+    background-position: 50%;
     border-radius: 50%;
-    border: 2px solid white;*/
+    border: 0;
+
+    width: 200px;
+    height: 200px;
+
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#mobile-menu-profile-pic {
+    margin-left: auto;
+    margin-right: auto;
 
     width: 200px;
     height: 200px;

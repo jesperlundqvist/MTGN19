@@ -39,14 +39,14 @@ $link = connectToDB();
 
 ?>
 <div off-canvas="mobilemenu left push">
-  <nav class="mobile-nav">
+  <nav class="mobile-nav" id="mobile-nav">
       <div class="mobile-menu-wrapper">
       <div class="mobile-menu-top">
         <a href="/profile.php?user=<?=$username?>">
         <?php
           // Profilbild
           if ($imagepath != null) {
-            echo "<div id='profilepic-wrapper' style='background-image: url(\"design/mobile_profile_border.png\"), url(\"$imagepath\");'>";
+            echo "<div id='mobile-menu-profile-pic' style='background-image: url(\"design/mobile_profile_border.png\"), url(\"$imagepath\");'>";
             echo "</div>";
             echo "<div id='profile-banner'></div>";
           }
@@ -65,12 +65,21 @@ $link = connectToDB();
        </div>
        <div class="mobile-menu-bottom">
         <ul class="mobilenav">
-          <?php
-            echo "<li><a href=\"profile_edit.php?user=$username\">Redigera profil</a></li>";
-          ?>
+          <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
           <?php
           if ($admin) { ?>
-            <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
+            <li class="menu-adminpanel" onclick="adminDropdownToggle();">
+                <a>Admin</a>
+                <div class="admin-dropdown-mobile">
+                    <a href="adminpanel.php">Nytt inlägg</a>
+                    <a href="register.php">Skapa ny användare</a>
+                    <a href="gallery_upload_images.php">Ladda upp bilder</a>
+                    <a href="video_upload.php">Ladda upp video</a>
+                    <a href="blandaren_upload.php">Ladda upp Bländaren</a>
+                    <a href="event.php">Lägg till event</a>
+                    <a href="basecamp_edit.php">Ändra basecamp</a>
+                </div>
+            </li> <?php
           }
            ?>
           <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
@@ -97,18 +106,29 @@ $link = connectToDB();
   <div class="header-hills"></div>
 </div>
 
-<nav class="menubar">
+<nav class="menubar" id="mobile-menu">
     <div class="center-mobile nav-wrapper">
         <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>
         <ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
-            <li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;"><i class='fa fa-bars' aria-hidden='true'></i></a></li>
+            <li id="hamburger-button" class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">☰</a></li>
             <li class="menu-left"></li>
             <li class="menu-padding"></li>
-            <li class="menu-start"><a href="/">Startsida </a></li>
+            <li class="menu-start"><a href="/">Startsida</a></li>
             <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
             <?php
             if ($admin) { ?>
-                <li class="menu-adminpanel"><a href="adminpanel.php">Adminpanel</a></li> <?php
+                <li class="menu-adminpanel">
+                    <a href="adminpanel_header.php">Admin</a>
+                    <div class="admin-dropdown">
+                        <a href="adminpanel.php">Nytt inlägg</a>
+                        <a href="register.php">Skapa ny användare</a>
+                        <a href="gallery_upload_images.php">Ladda upp bilder</a>
+                        <a href="video_upload.php">Ladda upp video</a>
+                        <a href="blandaren_upload.php">Ladda upp Bländaren</a>
+                        <a href="event.php">Lägg till event</a>
+                        <a href="basecamp_edit.php">Ändra basecamp</a>
+                    </div>
+                </li> <?php
             }
             ?>
             <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
@@ -122,3 +142,5 @@ $link = connectToDB();
         </ul>
     </div>
 </nav>
+
+<div id="content-panel">

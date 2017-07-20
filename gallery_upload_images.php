@@ -16,13 +16,15 @@
       setlocale(LC_ALL, 'sv_SE.ISO8859-1');
       $date = date("Y-m-d H:i:s");
     ?>
-    <div class="content-wrapper form-page left">
+    <div class="content-wrapper left">
       <?php
       if (session_status() == PHP_SESSION_NONE) {
           sec_session_start();
       }
       if ($_SESSION['admin']) {
         ?>
+
+        <div class="form-page">
       <h2 class="adminpanel_title">Ladda upp bilder</h2>
           <div id="form">
             Fotograf:
@@ -73,7 +75,7 @@
             ?>
             </select>
             <br/><br/><br>
-            <input type="file" id="fileselect" name="pictures" multiple="multiple" class="file_input"/>
+            <input type="file" id="fileselect" name="pictures" multiple="multiple" class="file_input" accept="image/*"/>
             <label for="fileselect">Välj fil...</label>
             <br/>
             <div id="filedrag" class="drag">
@@ -90,6 +92,7 @@
           <ul id="previewcontainer"></ul>
           <button id="submit_pictures" class="button-primary">Ladda upp bilder</button>
         </div>
+        </div>
       </div>
       <?php
       } else {
@@ -105,6 +108,8 @@
       //Load footer
       include_once ('inc_footer.php');
     ?>
+    <script>
+        adminDropdownToggle();
+    </script>
   </body>
 </html>
-

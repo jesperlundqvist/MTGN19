@@ -3,7 +3,7 @@ include_once("functions_common.php");
 
 $link = connectToDB();
 
-$ALLOWED_TAGS = '<img>|<a>|<iframe>|<ol>|<ul>|<li>|<b>';
+$ALLOWED_TAGS = '<p>|<br>|<strong>|<em>|<u>|<img>|<a>|<iframe>|<ol>|<ul>|<li>|<b>';
 
 if (session_status() == PHP_SESSION_NONE) {
     sec_session_start();

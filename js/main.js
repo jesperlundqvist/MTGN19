@@ -17,6 +17,10 @@ $(document).ready(function() {
 
 });
 
+function adminDropdownToggle() {
+    $(".admin-dropdown-mobile").fadeToggle();
+}
+
 // Search users
 function searchUsers(search) {
   $.ajax({
@@ -54,17 +58,42 @@ Date.prototype.getDayOfWeek = function(){
 }
 
 $(function(){
-  // Initialize Slidebars
-  var controller = new slidebars();
-  controller.init();
+    if (document.getElementById("mobile-nav"))
+    {
+        var slideout = new Slideout({
+            'panel': document.getElementById('content-panel'),
+            'menu': document.getElementById('mobile-nav'),
+            'padding': 256,
+            'tolerance': 70
+        });
 
-  // Toggle Slidebars
-  $( '.toggle-mobilemenu' ).click(function(event){
-    // Stop default action and bubbling
-    event.stopPropagation();
-    event.preventDefault();
-    // Toggle the Slidebar with id 'id-1'
-    controller.toggle( 'mobilemenu' );
+        document.getElementById("hamburger-button").addEventListener("click", function(e) {
+            e.preventDefault();
+            slideout.toggle();
+        });
 
-  });
+        var fixed = document.getElementById('mobile-menu');
+
+        slideout.on('translate', function(translated) {
+          fixed.style.transform = 'translateX(' + translated + 'px)';
+        });
+
+        slideout.on('beforeopen', function () {
+          fixed.style.transition = 'transform 300ms ease';
+          fixed.style.transform = 'translateX(256px)';
+        });
+
+        slideout.on('beforeclose', function () {
+          fixed.style.transition = 'transform 300ms ease';
+          fixed.style.transform = 'translateX(0px)';
+        });
+
+        slideout.on('open', function () {
+          fixed.style.transition = '';
+        });
+
+        slideout.on('close', function () {
+          fixed.style.transition = '';
+        });
+    }
 });

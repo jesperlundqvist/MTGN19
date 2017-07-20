@@ -12,20 +12,22 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper form-page">
+    <div class="content-wrapper">
     <?php
     if ($_SESSION['admin']) {
     ?>
+
+    <div class="form-page">
       <h2 class="adminpanel_title">Ladda upp Bländaren</h2>
           <div id="form">
             <br/>
             <input type="text" id="name" name="name" placeholder="Namn" class="input_areas"/>
             <div class="front-wrap">
-              <span class="input_description">Framsida: </span><input type="file" id="blandarfront" name="blandarfront" class="file_input"/><label for="blandarfront">Välj fil...</label>
+              <span class="input_description">Framsida: </span><input type="file" id="blandarfront" name="blandarfront" class="file_input" accept="image/*"/><label for="blandarfront">Välj fil...</label>
             </div>
             <br/><br/>
             <div class="pdf-wrap">
-            <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input"/><label for="blandarpdf">Välj fil...</label>
+            <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input" accept="application/pdf"/><label for="blandarpdf">Välj fil...</label>
             </div>
             <br/>
             <button id="submit_blandare" class="button-primary">Ladda upp Bländaren</button>
@@ -38,6 +40,7 @@
           <ul id="previewcontainer"></ul>
         </div>
       </div>
+  </div>
 
       <?php
     } else {
@@ -71,6 +74,11 @@
       frontpage = $('#blandarfront')[0].files[0];
       console.log(frontpage.name);
 
+      if (fileExt(frontpage.name) !== "png" && fileExt(frontpage.name) !== "jpg" && fileExt(frontpage.name) !== "jpeg") {
+        frontpage = null;
+        $("#info").append('<p style="color: red">Framsidan måste vara en bild.</p>');
+      }
+
       showImage(frontpage);
     });
 
@@ -79,7 +87,7 @@
       console.log(pdf.name);
       if (fileExt(pdf.name) !== "pdf") {
         pdf = null;
-        $("#info").append('<p style="color: red">Det är inte en pdf.</p>');
+        $("#info").append('<p style="color: red">Bländaren måste laddas upp som en PDF.</p>');
       }
     });
   });
@@ -185,6 +193,7 @@
     return filename.split('.').pop();
   }
 
+    adminDropdownToggle();
   </script>
   </body>
 </html>
