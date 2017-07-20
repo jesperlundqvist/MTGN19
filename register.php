@@ -60,6 +60,7 @@
               echo "<option value=\"$u\">$u</option>";
             }
           ?>
+          <option value="">Ingen</option>
           </select>
           <br/>
           </div>
@@ -96,4 +97,3 @@
 
   </body>
 </html>
-

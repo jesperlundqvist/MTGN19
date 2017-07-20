@@ -81,7 +81,7 @@ $(document).ready(function() {
   });
 
   $(document).on('change', '#usergroup', function() {
-    if ($('#usergroup').val() == 'nØllan') {
+    if ($('#usergroup').val() == 'nØllan' || $('#usergroup').val() == 'KPH') {
       $('#n0llegroup_container').show();
     } else {
       $('#n0llegroup_container').hide();
@@ -116,7 +116,7 @@ function uploadUser(file, gif) {
   var email = $("#email").val();
   var usergroup = $("#usergroup").val();
 
-  if(usergroup == 'nØllan') {
+  if(usergroup == 'nØllan' || usergroup == 'KPH') {
     var n0llegroup = $('#n0llegroup').val();
   } else {
     var n0llegroup = "";
