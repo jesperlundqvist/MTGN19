@@ -321,6 +321,21 @@ select {
 
 .admin-control {
     display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+
+    transition: 0.3s;
+}
+
+.admin-control:hover {
+    background-color: #543303;
+}
+
+.admin-control {
+    display: block;
     padding-bottom: 20px;
     font-size: 18px;
     font-weight: bold;
