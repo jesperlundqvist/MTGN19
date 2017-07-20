@@ -63,7 +63,8 @@ $(function(){
             'tolerance': 70
         });
 
-        document.getElementById("hamburger-button").addEventListener("click", function() {
+        document.getElementById("hamburger-button").addEventListener("click", function(e) {
+            e.preventDefault();
             slideout.toggle();
         });
 
