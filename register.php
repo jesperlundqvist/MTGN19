@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Mottagningen 2016</title>
+    <title>Mottagningen 2017</title>
     <script src="js/register.js"></script>
   </head>
 
