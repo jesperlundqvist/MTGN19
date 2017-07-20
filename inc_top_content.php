@@ -39,7 +39,7 @@ $link = connectToDB();
 
 ?>
 <div off-canvas="mobilemenu left push">
-  <nav class="mobile-nav">
+  <nav class="mobile-nav" id="mobile-nav">
       <div class="mobile-menu-wrapper">
       <div class="mobile-menu-top">
         <a href="/profile.php?user=<?=$username?>">
@@ -101,11 +101,11 @@ $link = connectToDB();
 
 </div>
 
-<nav class="menubar">
+<nav class="menubar" id="mobile-menu">
     <div class="center-mobile nav-wrapper">
         <a class="mobile-logo-wrap" href="/"><img class="mobile-logo" src="/design/logo_mobile.png" alt="Logga" /></a>
         <ul id="js-nav-mobile" class="sitenav left hide-on-med-and-down">
-            <li class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;"><i class='fa fa-bars' aria-hidden='true'></i></a></li>
+            <li id="hamburger-button" class="menu-hamburger toggle-mobilemenu" style="display:none;"><a href="#" class="toggle-mobile-menu" style="font-size: 32px; margin-left: 8px;">☰</a></li>
             <li class="menu-left"></li>
             <li class="menu-padding"></li>
             <li class="menu-start"><a href="/">Startsida</a></li>

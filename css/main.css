@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-    background: #784800 /*url('/design/body_bg.jpg')*/;
+    /*background: #f7ecd7 url('/design/body_bg.jpg')*/;
 
     color: #f7ecd6;
     font-size: 14px;
@@ -270,6 +270,20 @@ select {
     .sitenav > li > a {
         color: #4b2b02;
         line-height: 92px;
+    }
+
+    #mobile-menu {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .content-wrapper {
+        padding-top: 100px !important;
+    }
+
+    #mobile-nav {
+        padding-bottom: 75px;
     }
 }
 

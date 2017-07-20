@@ -12,6 +12,7 @@
       include_once ('inc_top_content.php');
     ?>
 
+    <div id="content-panel">
     <div class="content-wrapper">
       <!-- Content -->
 <?php
@@ -164,7 +165,7 @@
     });
   });
 
-</script>
-
+    </script>
+    </div> <!-- #content-panel från inc_top_content.php  -->
   </body>
 </html>
