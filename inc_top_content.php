@@ -65,6 +65,7 @@ $link = connectToDB();
        </div>
        <div class="mobile-menu-bottom">
         <ul class="mobilenav">
+          <li class="menu-start"><a href="/">Startsida</a></li>
           <li class="menu-profile"><a href="/profile.php?user=<?=$username?>">Min profil</a></li>
           <?php
           if ($admin) { ?>
