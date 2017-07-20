@@ -3,8 +3,8 @@
 .clearfix:after { clear: both; }
 
 @font-face {
-    font-family: Diogenes;
-    src: url('/design/DIOGENES.ttf');
+    font-family: mtgn;
+    src: url('/design/mtgn2017.ttf');
 }
 
 html, body {
@@ -22,7 +22,7 @@ body {
 
 h1,h2,h3 {
   margin-top: 0;
-  font-family:Diogenes;
+  font-family: mtgn;
   font-weight: normal;
   text-align: center;
 
@@ -125,16 +125,6 @@ select {
     z-index: 2;
 }
 
-/*.header-wave-back {
-    position: absolute;
-    bottom: 0;
-    background: url('/design/wave_second.png') repeat-x;
-
-    height: 59px;
-    width: 100%;
-    z-index: 1;
-}*/
-
 .header-mountain {
     position: absolute;
     top: 25px;
@@ -179,10 +169,21 @@ select {
   z-index: 0;
 }
 
-.menubar {
-    /*margin-top: -5px;*/
+.ikaros {
+  background: url('/design/ikaros1.png');
+  position: absolute;
+  top: 170px;
+  left: 210px;
 
-    min-height: 78px;
+  width: 25px;
+  height: 37px;
+
+  z-index: 2;
+}
+
+.menubar {
+    margin-top: -30px;
+    min-height: 74px;
     width: 100%;
     /*background: url('/design/menubar.png');
     background-size: 100% 78px;*/
@@ -249,6 +250,7 @@ select {
 
 .sitenav li {
     display: inline-block;
+    text-transform: uppercase;
 }
 
 @media (min-width:769px) {
@@ -256,17 +258,17 @@ select {
         display: block;
         padding: 0 12px;
 
-        color: #4b2b02;
+        color: #464646; /*Old color: #4b2b02*/
         font-weight: 600;
         line-height: 150px;
         font-size: 28px;
-        font-family: Diogenes;
+        font-family: mtgn;
     }
 }
 
 @media (max-width:769px) {
     .sitenav > li > a {
-        color: #4b2b02;
+        color: #464646; /*Old color: #4b2b02*/
         line-height: 92px;
     }
 
@@ -405,7 +407,7 @@ select {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 1px;
-  font-family: Diogenes;
+  font-family: mtgn;
   color: #e3af49;
 
   cursor: pointer;
@@ -417,14 +419,14 @@ select {
   font-size: 25px;
   font-weight: bold;
   letter-spacing: 1px;
-  font-family: Diogenes;
+  font-family: mtgn;
   color: #e3af49;
 
   cursor: pointer;
 }
 
 .news-title {
-  font-family: Diogenes;
+  font-family: mtgn;
   font-size: 40px;
   font-weight: normal;
 
@@ -531,7 +533,7 @@ select {
 }
 
 .adminpanel_title {
-  font-family: Diogenes;
+  font-family: mtgn;
   font-size: 40px;
   font-weight: normal;
 }
@@ -577,7 +579,7 @@ select {
 .news_category_title {
   margin-top: 16px;
 
-  font-family: Diogenes;
+  font-family: mtgn;
   font-size: 28px;
 }
 
@@ -687,7 +689,7 @@ label {
 
 .usergroup_banner {
   margin-bottom: 0;
-  font-family: Diogenes;
+  font-family: mtgn;
   font-size: 40px;
   font-weight: normal;
 
@@ -809,8 +811,9 @@ label {
 }
 
 .ribbon-content {
-    font-family: Diogenes;
+    font-family: mtgn;
     font-size: 60px;
+    text-transform: uppercase;
 }
 
 .n0llegroup {
@@ -1060,7 +1063,7 @@ p {
 }
 
 .toprow th h2{
-  font-family: Diogenes;
+  font-family: mtgn;
   font-size: 28px;
   font-weight: normal;
 }
@@ -1395,7 +1398,7 @@ footer a {
 
 .email-title {
     font-size: 24px;
-    font-family: Diogenes;
+    font-family: mtgn;
 }
 
 .links-element {
@@ -1430,10 +1433,11 @@ footer a {
 }
 
 .login-title {
-    font-family: Diogenes;
+    font-family: mtgn;
     font-size: 5em;
     font-weight: normal;
     line-height: 0.5;
+    text-transform: uppercase;
 }
 
 #username, #password, #search {
@@ -1503,7 +1507,7 @@ footer a {
  }
 
   .blandartitle {
-    font-family: Diogenes;
+    font-family: mtgn;
     font-size: 32px;
     font-weight: normal;
   }
@@ -1532,8 +1536,9 @@ footer a {
   cursor: pointer;
 }
 
+/*-------------ANIMATION----------------*/
+/* ----------- FLOATING --------------- */
 /* Animation causing a "floating" effect */
-/* ------------------------------------- */
 .floating{
     animation-name: floating;
     -webkit-animation-name: floating;
@@ -1568,8 +1573,62 @@ footer a {
         -webkit-transform: scale(1, 1);
     }
 }
-/* ----------- FLOATING --------------- */
+/* ----------- IKAROS --------------- */
+/*Ikaros moves near the sun and then fall */
+.ikaros{
+    animation-name: ikaros-fly;
+    -webkit-animation-name: ikaros-fly;
 
+    animation-duration: 60s;
+    -webkit-animation-duration: 60s;
+
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+
+    animation-delay: 60s;
+    -webkit-animation-delay: 60s;
+
+    animation-timing-function: ease-in;
+}
+
+@keyframes ikaros-fly {
+    0% {
+      transform: translate(0, 0);
+    }
+    6% {
+      background: url('/design/ikaros1.png');
+    }
+    6.2% {
+      transform: translate(-115px, -115px);
+      background: url('/design/ikaros2.png');
+    }
+    6.8% {
+      background: url('/design/ikaros2.png');
+    }
+    7% {
+      transform: translate(-115px, 0);
+    }
+}
+
+@-webkit-keyframes ikaros-fly {
+  0% {
+    -webkit-transform: translate(0, 0);
+  }
+  6% {
+    -webkit-background: url('/design/ikaros1.png');
+  }
+  6.2% {
+    -webkit-transform: translate(-115px, -115px);
+    -webkit-background: url('/design/ikaros2.png');
+  }
+  6.8% {
+    -webkit-background: url('/design/ikaros2.png');
+  }
+  7% {
+    -webkit-transform: translate(-115px, 0);
+  }
+}
+/* ----------------------------------- */
 
 /* Mobile menu */
 
@@ -1644,12 +1703,13 @@ footer a {
   padding-left: 15px;
   padding-top: 7px;
   padding-bottom: 7px;
+  text-transform: uppercase;
 }
 
 .mobilenav li a  {
   font-size: 30px;
-  font-family: Diogenes;
-  color: #0d3c42;
+  font-family: mtgn;
+  color: #464646; /*Old color: #0d3c42*/
 }
 
 .no-display {
