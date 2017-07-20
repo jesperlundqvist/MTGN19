@@ -238,6 +238,7 @@ select {
         background-repeat: repeat-x;
         height: 92px;
         white-space: nowrap;
+        margin-top: 0 !important;
     }
 }
 
@@ -352,6 +353,7 @@ select {
     font-size: 18px !important;
     font-family: Open Sans !important;
     line-height: 40px;
+    text-transform: none !important;
 
     margin-left: 30px;
     max-width: 200px;
