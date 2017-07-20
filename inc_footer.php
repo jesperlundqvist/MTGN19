@@ -2,6 +2,7 @@
     //Footer template file
 ?>
 
+</div> <!-- #content-panel från inc_top_content.php  -->
 
 <div class="footer-image">
 </div>

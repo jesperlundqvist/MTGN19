@@ -126,3 +126,5 @@ $link = connectToDB();
         </ul>
     </div>
 </nav>
+
+<div id="content-panel">
