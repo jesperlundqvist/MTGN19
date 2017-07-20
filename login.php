@@ -5,7 +5,7 @@
     <title>Mottagningen 2017</title>
   </head>
 
-  <body>
+  <body style="background-color: #784800;">
 
     <?php
       //Load top content
