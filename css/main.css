@@ -238,6 +238,7 @@ select {
         background-repeat: repeat-x;
         height: 92px;
         white-space: nowrap;
+        margin-top: 0 !important;
     }
 }
 
