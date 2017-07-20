@@ -205,6 +205,10 @@ select {
         white-space: nowrap;
     }
 
+    .sitenav > li :hover {
+        background: url('/design/menubar_hover.png');
+    }
+
     .sitenav > li.menu-padding {
         width: 100%;
     }
