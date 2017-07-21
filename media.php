@@ -29,13 +29,6 @@
     <div class="content-wrapper">
     <div id="popup_container"></div>
       <h1>Media</h1>
-      <div id="loader">
-          <div class="rect1"></div>
-          <div class="rect2"></div>
-          <div class="rect3"></div>
-          <div class="rect4"></div>
-          <div class="rect5"></div>
-      </div>
       <div class="gallery">
           <div class="js-filter-show filter-show"><h3>Visa filter</h3></div>
       <div class="js-filter-hide filter-hide"><h3>Göm filter</h3></div>
@@ -102,6 +95,16 @@
             }
         }
         echo "</div>";
+        ?>
+        <div id="loader">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+        </div>
+
+        <?php
         echo "<div class='gallery-large'>";
         echo "<div id='gallery-carousel-previous'>&#x2039;</div><img id='gallery-large-image'/><iframe id='gallery-ytplayer' type='text/html' src='' frameborder='0' allowfullscreen></iframe><div id='gallery-carousel-next'>&#x203a;</div></div>";
     ?>

@@ -1,12 +1,13 @@
 $(document).on({
     ajaxStart: function() {
         $("#loader").addClass("loader-active");
-        $(".gallery").hide();
+        $(".gallery-large").hide();
     },
-    ajaxStop: function() {
-        $("#loader").removeClass("loader-active");
-        $(".gallery").show();
-    }
+});
+
+$(window).on("load", function() {
+    $("#loader").removeClass("loader-active");
+    $(".gallery-large").show();
 });
 
 function getUrlFromElem(elem) {
