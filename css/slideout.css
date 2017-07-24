@@ -28,7 +28,8 @@ body {
   position: relative;
   z-index: 1;
   will-change: transform;
-  background-color: #784800; /* A background-color is required */
+  /*background-color: #784800; /* A background is required */
+  background: url('/design/body_bg.jpg');
   min-height: 100vh;
 }
 

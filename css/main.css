@@ -13,8 +13,12 @@ html, body {
     font-family: Open Sans, sans-serif;
 }
 
+.login-body {
+    background: url('/design/login_bg.jpg');
+}
+
 body {
-    /*background: #f7ecd7 url('/design/body_bg.jpg')*/;
+    /*background: url('/design/body_bg.jpg');*/
 
     color: #f7ecd6;
     font-size: 14px;

@@ -4,8 +4,8 @@
   ?>
     <title>Mottagningen 2017</title>
   </head>
-
-  <body style="background-color: #784800;">
+  <!-- Color: #784800 -->
+  <body class="login-body">
 
     <?php
       //Load top content

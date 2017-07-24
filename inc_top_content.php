@@ -94,6 +94,7 @@ $link = connectToDB();
       </div> <!-- mobile-menu-wrapper -->
   </nav>
 </div>
+
 <div class="site-wrap" canvas="container">
 
 <div class="header">
