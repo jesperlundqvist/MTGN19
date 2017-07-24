@@ -73,14 +73,14 @@ $(function(){
         });
 
         // --- Add jQuery for this to work ---
-        // document.addEventListener("swiperight", function(e) {
-        //     e.preventDefault();
-        //     slideout.open();
-        // });
-        // document.addEventListener("swipeleft", function(e) {
-        //     e.preventDefault();
-        //     slideout.close();
-        // });
+        $().on("swiperight", function(e) {
+            e.preventDefault();
+            slideout.open();
+        });
+        $().on("swipeleft", function(e) {
+            e.preventDefault();
+            slideout.close();
+        });
 
         var fixed = document.getElementById('mobile-menu');
 
