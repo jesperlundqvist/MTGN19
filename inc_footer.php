@@ -62,7 +62,7 @@
 
         <!-- Medieteknik logo -->
     <div class="footer-column-left">
-        <div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/medie_logo.png"/></div>
+        <div class="footer-logo-wrap"><a href="/weekly_puzzle.php"><img class="footer-logo" src="/design/logos/medie_logo.png"/></a></div>
         <div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/nl_logo.png"/></div>
         <div class="footer-logo-wrap"><img class="footer-logo comviq" src="/design/logos/comviq_logo.png"/></div>
         <div class="footer-logo-wrap"><img class="footer-logo ericsson" src="/design/logos/ericsson_logo.png"/></div>
