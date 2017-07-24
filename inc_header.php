@@ -29,6 +29,11 @@
     <!--Icon-->
     <link rel="icon" href="/design/Icon.png" type="image/x-icon" />
 
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="css/responsive.css" type="text/css">
