@@ -8,6 +8,7 @@ $(document).on({
 $(window).on("load", function() {
     $("#loader").removeClass("loader-active");
     $(".gallery-large").show();
+    setAspectRatioOfPlayer();
 });
 
 function getUrlFromElem(elem) {

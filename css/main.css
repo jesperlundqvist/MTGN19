@@ -212,7 +212,7 @@ select {
         transition: all 0.3s;
     }
 
-    .sitenav > li:hover:not(.menu-padding) {
+    .sitenav > li:hover:not(.menu-padding):not(.menu-left):not(.menu-right) {
         background: url('/design/menubar_hover.png');
     }
 
@@ -1766,6 +1766,7 @@ footer a {
   font-size: 30px;
   font-family: mtgn;
   color: #464646; /*Old color: #0d3c42*/
+  display: block;
 }
 
 .no-display {
