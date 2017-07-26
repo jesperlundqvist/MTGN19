@@ -31,6 +31,8 @@ body {
   /*background-color: #784800; /* A background is required */
   background: url('/design/body_bg.jpg');
   min-height: 100vh;
+  top: -30px;
+  padding-top: 30px;
 }
 
 .slideout-open,
