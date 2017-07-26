@@ -1707,6 +1707,7 @@ footer a {
   font-size: 30px;
   font-family: mtgn;
   color: #464646; /*Old color: #0d3c42*/
+  display: block;
 }
 
 .no-display {
