@@ -27,9 +27,9 @@ body {
 h1,h2,h3 {
   margin-top: 0;
   font-family: mtgn;
+  text-transform: uppercase;  /*mtgn2017 typsnittet är mer läsbart såhär*/
   font-weight: normal;
   text-align: center;
-
 }
 
 h1 {
@@ -268,6 +268,7 @@ select {
         line-height: 150px;
         font-size: 28px;
         font-family: mtgn;
+        text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
     }
 }
 
@@ -414,8 +415,9 @@ select {
   font-weight: bold;
   letter-spacing: 1px;
   font-family: mtgn;
-  color: #e3af49;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
 
+  color: #e3af49;
   cursor: pointer;
 }
 
@@ -426,16 +428,17 @@ select {
   font-weight: bold;
   letter-spacing: 1px;
   font-family: mtgn;
-  color: #e3af49;
 
+  color: #e3af49;
   cursor: pointer;
 }
 
 .news-title {
   font-family: mtgn;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
+
   font-size: 40px;
   font-weight: normal;
-
   color: #f7ecd6;
 }
 
@@ -540,6 +543,8 @@ select {
 
 .adminpanel_title {
   font-family: mtgn;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
+
   font-size: 40px;
   font-weight: normal;
 }
@@ -586,6 +591,7 @@ select {
   margin-top: 16px;
 
   font-family: mtgn;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
   font-size: 28px;
 }
 
@@ -696,6 +702,7 @@ label {
 .usergroup_banner {
   margin-bottom: 0;
   font-family: mtgn;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
   font-size: 40px;
   font-weight: normal;
 
@@ -818,6 +825,7 @@ label {
 
 .ribbon-content {
     font-family: mtgn;
+    text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
     font-size: 60px;
     text-transform: uppercase;
 }
@@ -1065,6 +1073,7 @@ p {
 
 .toprow th h2{
   font-family: mtgn;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
   font-size: 28px;
   font-weight: normal;
 }
@@ -1400,6 +1409,7 @@ footer a {
 .email-title {
     font-size: 24px;
     font-family: mtgn;
+    text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
 }
 
 .links-element {
@@ -1435,10 +1445,10 @@ footer a {
 
 .login-title {
     font-family: mtgn;
+    text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
     font-size: 5em;
     font-weight: normal;
     line-height: 0.5;
-    text-transform: uppercase;
 }
 
 #username, #password, #search {
@@ -1484,11 +1494,7 @@ footer a {
     margin-top: 150px;
 }
 
-.puzzle-title {
-    font-family: mtgn;
-    font-size: 5em;
-    font-weight: normal;
-    line-height: 0.5;
+.puzzle_title {
     text-transform: uppercase;
 }
 
@@ -1564,6 +1570,7 @@ footer a {
 
   .blandartitle {
     font-family: mtgn;
+    text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
     font-size: 32px;
     font-weight: normal;
   }
@@ -1765,6 +1772,7 @@ footer a {
 .mobilenav li a  {
   font-size: 30px;
   font-family: mtgn;
+  text-transform: uppercase; /*mtgn2017 typsnittet är mer läsbart såhär*/
   color: #464646; /*Old color: #0d3c42*/
   display: block;
 }
