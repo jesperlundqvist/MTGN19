@@ -187,6 +187,7 @@ select {
 
 .menubar {
     margin-top: -30px;
+    margin-bottom: -30px;
     min-height: 74px;
     width: 100%;
     /*background: url('/design/menubar.png');
@@ -199,7 +200,7 @@ select {
 @media (min-width:769px) {
     .sitenav {
         display: flex;
-        background: url('/design/menubar_bg.png');
+        /*background: url('/design/menubar_bg.png');*/
     }
 
     .sitenav > li {
