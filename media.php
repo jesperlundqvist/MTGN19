@@ -30,7 +30,7 @@
     <div id="popup_container"></div>
       <h1>Media</h1>
       <div class="gallery">
-          <div class="js-filter-show filter-show"><h3>Visa filter</h3></div>
+      <div class="js-filter-show filter-show"><h3>Visa filter</h3></div>
       <div class="js-filter-hide filter-hide"><h3>Göm filter</h3></div>
       <div class="filters clearfix">
         <div class="filter-wrap">
@@ -87,11 +87,11 @@
             // Bild
             if (substr($media->imagename, -5, 1) == "." || substr($media->imagename, -4, 1) == ".")
             {
-                echo "<div class='gallery-carousel-item image gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' ' style='background-image: url(" . $imagethumbpath . $media->imagename . ");'></div>";
+                echo "<div class='gallery-carousel-item image gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' ' style='background-image: url(" . $imagethumbpath . $media->imagename . ");'><input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='image' /></div>";
             }
             // Video
             else {
-                echo "<div class='gallery-carousel-item video gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' style='background-image: url(http://img.youtube.com/vi/" . $media->imagename . "/hqdefault.jpg);'><img class='video-play-icon' src='/design/play_icon.png' /></div>";
+                echo "<div class='gallery-carousel-item video gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' style='background-image: url(http://img.youtube.com/vi/" . $media->imagename . "/hqdefault.jpg);'><img class='video-play-icon' src='/design/play_icon.png' /><input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='video' /></div>";
             }
         }
         echo "</div>";
@@ -107,6 +107,21 @@
         <?php
         echo "<div class='gallery-large'>";
         echo "<div id='gallery-carousel-previous'>&#x2039;</div><img id='gallery-large-image'/><iframe id='gallery-ytplayer' type='text/html' src='' frameborder='0' allowfullscreen></iframe><div id='gallery-carousel-next'>&#x203a;</div></div>";
+    ?>
+
+    <?php
+
+    if ($admin)
+    {
+        ?>
+        <br><br>
+        <a class="button button-primary" id="gallery-remove-button">Ta bort valda bilder/filmer</a>
+        <br>
+        <br>
+        <p id="gallery-remove-status"></p>
+        <?php
+    }
+
     ?>
     </div>
     </div>

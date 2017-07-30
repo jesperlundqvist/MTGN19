@@ -121,7 +121,10 @@ $(function(){
     setAspectRatioOfPlayer();
 
     $(".gallery-carousel").children().click(function(e) {
-        setLargeFromThumbElem($(e.target));
+        if (!$(e.target).hasClass("gallery-delete-checkbox"))
+        {
+            setLargeFromThumbElem($(e.target));
+        }
     });
 
     $("#gallery-carousel-previous").click(previousImage);
@@ -176,5 +179,35 @@ $(function(){
         }
 
         refreshFilter();
+    });
+
+    // Borttagning
+    $("#gallery-remove-button").click(function(e) {
+        var toDelete = $(".gallery-delete-checkbox:checkbox:checked");
+        if (toDelete.length > 0 && confirm("Är du säker på att du vill ta bort " + toDelete.length + " bilder/filmer?"))
+        {
+            toDelete.each(function(i, val) {
+                console.log($(val).data("id"));
+                console.log($(val).data("type"));
+                $.ajax({
+                    type: "POST",
+                    url: "/delete_handler.php",
+                    data: {
+                        id: $(val).data("id"),
+                        action: $(val).data("type")
+                    },
+                    success: function(data) {
+                        if (data != "")
+                        {
+                            alert(data);
+                        }
+                        else
+                        {
+                            location.reload(true);
+                        }
+                    }
+                });
+            });
+        }
     });
 })
