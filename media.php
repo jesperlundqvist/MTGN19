@@ -87,11 +87,23 @@
             // Bild
             if (substr($media->imagename, -5, 1) == "." || substr($media->imagename, -4, 1) == ".")
             {
-                echo "<div class='gallery-carousel-item image gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' ' style='background-image: url(" . $imagethumbpath . $media->imagename . ");'><input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='image' /></div>";
+                $checkbox = "";
+                if ($admin)
+                {
+                    $checkbox = "<input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='image' />";
+                }
+
+                echo "<div class='gallery-carousel-item image gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' ' style='background-image: url(" . $imagethumbpath . $media->imagename . ");'>" . $checkbox . "</div>";
             }
             // Video
             else {
-                echo "<div class='gallery-carousel-item video gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' style='background-image: url(http://img.youtube.com/vi/" . $media->imagename . "/hqdefault.jpg);'><img class='video-play-icon' src='/design/play_icon.png' /><input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='video' /></div>";
+                $checkbox = "";
+                if ($admin)
+                {
+                    $checkbox = "<input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='video' />";
+                }
+
+                echo "<div class='gallery-carousel-item video gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' style='background-image: url(http://img.youtube.com/vi/" . $media->imagename . "/hqdefault.jpg);'><img class='video-play-icon' src='/design/play_icon.png' />" . $checkbox . "</div>";
             }
         }
         echo "</div>";
