@@ -44,3 +44,4 @@
     <script type="text/javascript" src="js/sha512.js"></script>
     <script src="https://use.fontawesome.com/9b6ee04da3.js"></script>
     <script src="js/slideout.min.js"></script>
+    <script src="js/snapmodal.js"></script>

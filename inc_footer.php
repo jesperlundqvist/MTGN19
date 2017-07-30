@@ -47,13 +47,13 @@
         <img class="snapchat-logo" src="/images/snapchat-black.png"/>
         <ul class="links-snapchat">
             <li class="links-element">
-                <a href="#">kphsnap</a>
+                <a id="snapcode-link-kph">kphsnap</a>
             </li>
             <li class="links-element">
-                <a href="#">arrsnap</a>
+                <a id="snapcode-link-arr">arrsnap</a>
             </li>
             <li class="links-element">
-                <a href="#">inphosnap</a>
+                <a id="snapcode-link-inpho">inphosnap</a>
             </li>
         </ul>
     </div>
@@ -72,3 +72,11 @@
     </div>
 
 </footer>
+
+<div id="snapcode-modal">
+    <div id="snapcode-modal-content">
+        <p id="snapcode-modal-x">x</p>
+        <img id="snapcode-modal-img" />
+        <p id="snapcode-modal-description"></p>
+    </div>
+</div>

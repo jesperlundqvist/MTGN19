@@ -1823,3 +1823,58 @@ footer a {
 .hidden {
   display: none;
 }
+
+#snapcode-modal {
+    position: fixed;
+    display: none;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#snapcode-modal-content {
+    position: relative;
+    z-index: 4;
+    background-color: #e6e4d8;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    margin-bottom: auto%;
+    padding: 20px;
+    width: 300px;
+}
+
+#snapcode-modal-description {
+    text-align: center;
+    font-family: Open Sans;
+    color: black;
+    font-size: 24px;
+}
+
+#snapcode-modal-content > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#snapcode-modal-x {
+    font-family: Open Sans;
+    color: black;
+    font-size: 32px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin-top: -5px;
+    margin-right: 5px;
+
+    cursor: pointer;
+}
+
+#snapcode-link-kph, #snapcode-link-inpho, #snapcode-link-arr {
+    cursor: pointer;
+}
