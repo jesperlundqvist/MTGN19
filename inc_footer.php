@@ -4,8 +4,6 @@
 
 </div> <!-- #content-panel från inc_top_content.php  -->
 
-<div class="footer-image">
-</div>
 <footer class="valign-wrapper">
 
     <div class="constrainer">
