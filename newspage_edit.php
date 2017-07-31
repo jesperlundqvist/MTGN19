@@ -13,7 +13,7 @@
       include_once ('inc_top_content.php');
     ?>
 
-    <div class="content-wrapper form-page">
+    <div class="content-wrapper">
       <!-- Content -->
       <?php
         $link = connectToDB();
@@ -152,13 +152,20 @@
             }
         });
 
-        quill.clipboard.dangerouslyPasteHTML("<?php echo $body; ?>");
+        quill.clipboard.dangerouslyPasteHTML("<?php echo str_replace("\"", "'", $body); ?>");
     </script>
     <style>
         .ql-editor {
             /*background-color: white;*/
             min-height: 300px;
             height: 100%;
+            color: #f7ecd6;
+            font-size: 14px;
+            font-family: Open Sans;
+        }
+
+        .ql-editor > p > a {
+            color: #f7ecd6;
         }
 
         .ql-toolbar {

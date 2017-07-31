@@ -406,8 +406,8 @@ select {
     overflow: hidden;
     }
 
-.news a {
-  text-decoration: none;
+.news-content > p > a {
+  text-decoration: underline;
 }
 
 .news a:hover {

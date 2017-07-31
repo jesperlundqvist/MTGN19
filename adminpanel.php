@@ -122,6 +122,13 @@
             /*background-color: white;*/
             min-height: 300px;
             height: 100%;
+            color: #f7ecd6;
+            font-size: 14px;
+            font-family: Open Sans;
+        }
+
+        .ql-editor > p > a {
+            color: #f7ecd6;
         }
 
         .ql-toolbar {
