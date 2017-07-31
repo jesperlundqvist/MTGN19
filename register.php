@@ -26,15 +26,10 @@
 
         <div class="form-page">
           <h2 class="adminpanel_title">Skapa ny användare</h2>
-          <input type="text" id="new_username" placeholder="Användarnamn" class="input_areas"/>
-          <br/>
-          <input type="password" id="new_password_1" placeholder="Lösenord" class="input_areas"/>
-          <br/>
-          <input type="password" id="new_password_2" placeholder="Lösenord igen" class="input_areas"/>
-          <br/>
+          <a href="/register_manual.php"><strong>Om du hellre vill göra en användare manuellt, tryck här.</strong></a>
+          <br /><br />
+          <input type="hidden" id="auto_registration" />
           <input type="text" id="name" placeholder="Namn" class="input_areas"/>
-          <br/>
-          <input type="email" id="email" placeholder="E-post" class="input_areas"/>
           <br/>
           <p class="input_description">Grupp:</p>
           <select id="usergroup" name="usergroup">

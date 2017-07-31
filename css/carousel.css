@@ -24,6 +24,11 @@
     height: 76px;
 }
 
+.gallery-delete-checkbox {
+    position: absolute;
+    display: flex;
+}
+
 .gallery-carousel::-webkit-scrollbar
 {
     height: 12px;

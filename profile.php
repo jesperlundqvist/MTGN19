@@ -149,33 +149,33 @@
         if($name == 'Marcus'){
         ?>
           <script>
-            $( document ).ready(function() {
+            /*$( document ).ready(function() {
               arr = ["Kapten Haddock", "Kapten Krok"];
               rand = Math.round(Math.random());
               console.log(arr[rand]);
               $(".q2-js").html(arr[rand]);
-            });
+          });*/
           </script>
         <?php
         }
 
         if ($q1 != null) {
           echo "<div class='question-wrap'>
-              <h3 class='question notranslate'>Skepp ohoj eller ett skepp med O'boy?</h3>
+              <h3 class='question notranslate'>Grekisk sallad eller romerska bågar?</h3>
               <span class='answer'>$q1</span>
               </div> ";
         }
 
         if ($q2 != null) {
           echo "<div class='question-wrap'>
-              <h3 class='question notranslate'>Kapten Haddock eller Kapten Krok?</h3>
+              <h3 class='question notranslate'>Skrik eller panik?</h3>
               <span class='answer q2-js'>$q2</span>
               </div> ";
         }
 
         if ($q3 != null) {
           echo "<div class='question-wrap'>
-              <h3 class='question notranslate'>Ett skepp kommer lastat med...</h3>
+              <h3 class='question notranslate'>Are you not entertained??</h3>
               <span class='answer'>$q3</span>
               </div> ";
         }

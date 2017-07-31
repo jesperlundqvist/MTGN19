@@ -122,8 +122,15 @@
             /*background-color: white;*/
             min-height: 300px;
             height: 100%;
+            color: #f7ecd6;
+            font-size: 14px;
+            font-family: Open Sans;
         }
 
+        .ql-snow a {
+            color: #f7ecd6 !important;
+        }
+        
         .ql-toolbar {
             background-color: white;
         }
