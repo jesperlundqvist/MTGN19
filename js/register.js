@@ -65,7 +65,11 @@ $(document).ready(function() {
   });
 
   $('#submit_new_user_btn').click(function() {
-    uploadUser(file, gif);
+    uploadUser(file, gif, true);
+  });
+
+  $("#submit_new_user_btn_manual").click(function() {
+    uploadUser(file, gif, false);
   });
 
   $(document).on('change', '#fileselect', function() {
@@ -108,13 +112,34 @@ function showImage(file, filedrag) {
 }
 
 
-function uploadUser(file, gif) {
-  var password1 = $("#new_password_1").val();
-  var password2 = $("#new_password_2").val();
-  var username = $("#new_username").val();
-  var name = $("#name").val();
-  var email = $("#email").val();
-  var usergroup = $("#usergroup").val();
+function uploadUser(file, gif, auto) {
+    var usergroup = $("#usergroup").val();
+    var name = $("#name").val();
+    var password1;
+    var password2;
+    var username;
+    var email;
+
+    if (auto)
+    {
+        password1 = "password";
+        password2 = password1;
+        email = "";
+
+        username = name.toLowerCase();
+        username = username.replace(/ /g, "");
+        if (usergroup == "nØllan")
+        {
+            username += "-n0llan";
+        }
+    }
+    else
+    {
+        password1 = $("#new_password_1").val();
+        password2 = $("#new_password_2").val();
+        username = $("#new_username").val();
+        email = $("#email").val();
+    }
 
   if(usergroup == 'nØllan' || usergroup == 'KPH') {
     var n0llegroup = $('#n0llegroup').val();
