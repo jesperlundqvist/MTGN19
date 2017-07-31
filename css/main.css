@@ -18,8 +18,6 @@ html, body {
 }
 
 body {
-    background: url('/design/body_bg.jpg');
-
     color: #f7ecd6;
     font-size: 14px;
 }
@@ -1307,7 +1305,6 @@ p {
 }
 
 footer {
-    /*background-color: #e6e4d8;*/
     color: black;
 
     /*padding: 1% 0 1% 0;*/
