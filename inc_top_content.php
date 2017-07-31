@@ -120,7 +120,7 @@ $link = connectToDB();
             <?php
             if ($admin) { ?>
                 <li class="menu-adminpanel">
-                    <a href="adminpanel_header.php">Admin</a>
+                    <a style="cursor: pointer;">Admin</a>
                     <div class="admin-dropdown">
                         <a href="adminpanel.php">Nytt inlägg</a>
                         <a href="register.php">Skapa ny användare</a>
