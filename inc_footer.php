@@ -2,8 +2,6 @@
     //Footer template file
 ?>
 
-</div> <!-- #content-panel från inc_top_content.php  -->
-
 <footer class="valign-wrapper">
 
     <div class="constrainer">
@@ -72,6 +70,9 @@
     </div>
 
 </footer>
+
+</div> <!-- #content-panel från inc_top_content.php  -->
+
 
 <div id="snapcode-modal">
     <div id="snapcode-modal-content">
