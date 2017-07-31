@@ -406,7 +406,7 @@ select {
     overflow: hidden;
     }
 
-.news-content > p > a {
+.news-content a:not(.button):not(.news-category):not(.news-title) {
   text-decoration: underline;
 }
 
