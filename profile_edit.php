@@ -93,19 +93,19 @@
         if ($q1 == null) {
          $q1 = "";
         }
-        echo "<p class='input_description'>Skepp ohoj eller ett skepp med O'boy?</p>";
+        echo "<p class='input_description'>Grekisk sallad eller romerska bågar?</p>";
         echo "<input type=\"text\" id=\"q1\" name=\"q1\" value=\"$q1\" placeholder=\"$q1\" class=\"input_areas\"/><br/>";
 
         if ($q2 == null) {
          $q2 = "";
         }
-        echo "<p class='input_description'>Kapten Haddock eller Kapten Krok?</p>";
+        echo "<p class='input_description'>Skrik eller panik?</p>";
         echo "<input type=\"text\" id=\"q2\" name=\"q2\" value=\"$q2\" placeholder=\"$q2\" class=\"input_areas\"/><br/>";
 
         if ($q3 == null) {
          $q3 = "";
         }
-        echo "<p class='input_description'>Ett skepp kommer lastat med ...</p>";
+        echo "<p class='input_description'>Are you not entertained??</p>";
         echo "<input type=\"text\" id=\"q3\" name=\"q3\" value=\"$q3\" placeholder=\"$q3\" class=\"input_areas\"/><br/>";
 
         echo "<p class='input_description'>Ändra lösenord</p>";
