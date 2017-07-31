@@ -32,8 +32,6 @@ body {
     background: url('/design/body_bg.jpg');
 }
 
-.slideout-panel
-
 .slideout-open,
 .slideout-open body,
 .slideout-open .slideout-panel {
