@@ -44,9 +44,14 @@ h3 {
   padding: 0;
 }
 
-ul:not(.news-content) {
+ul {
     list-style: none;
     padding: 0;
+}
+
+.news-content ul {
+    list-style: disc;
+    padding-left: 40px;
 }
 
 a {
