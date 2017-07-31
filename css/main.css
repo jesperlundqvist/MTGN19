@@ -1870,3 +1870,7 @@ footer a {
 #snapcode-link-kph, #snapcode-link-inpho, #snapcode-link-arr {
     cursor: pointer;
 }
+
+.links-snapchat, .links-instagram {
+    list-style: none;
+}
