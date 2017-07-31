@@ -28,7 +28,7 @@
           </div>
           <div class="secret">
             <p>Code dare INPHO, sed in silentio. Vos autem nolo aliis audire loqui!</p>
-            <h3>LOREM IPSUM</h3>
+            <h1>LOREM IPSUM</h1>
           </div>
       </div>
     </div>

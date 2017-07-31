@@ -1510,8 +1510,8 @@ footer a {
     text-transform: uppercase;
 }
 
-.secret h3 {
-  margin-top: 10px;
+.secret h1 {
+  margin-top: 15px;
 }
 
 #puzzle-answer {
