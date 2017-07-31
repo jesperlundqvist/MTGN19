@@ -44,6 +44,11 @@ h3 {
   padding: 0;
 }
 
+ul:not(.news-content) {
+    list-style: none;
+    padding: 0;
+}
+
 a {
     letter-spacing: 0.5;
     /*color: #02A0C7;*/
@@ -1869,9 +1874,4 @@ footer a {
 
 #snapcode-link-kph, #snapcode-link-inpho, #snapcode-link-arr {
     cursor: pointer;
-}
-
-.links-snapchat, .links-instagram {
-    list-style: none;
-    padding: 0;
 }
