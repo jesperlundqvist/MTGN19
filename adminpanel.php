@@ -127,10 +127,10 @@
             font-family: Open Sans;
         }
 
-        .ql-editor > p > a {
-            color: #f7ecd6;
+        .ql-snow a {
+            color: #f7ecd6 !important;
         }
-
+        
         .ql-toolbar {
             background-color: white;
         }
