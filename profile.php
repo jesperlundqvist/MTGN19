@@ -8,7 +8,7 @@
       sec_session_start();
   }
   ?>
-    <title>Mottagningen 2017</title>
+    <title>Mottagningen</title>
     <link href='https://fonts.googleapis.com/css?family=Stardos+Stencil:700' rel='stylesheet' type='text/css'>
   </head>
 

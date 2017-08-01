@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Mottagningen 2017</title>
+    <title>Mottagningen</title>
     <link href="https://cdn.quilljs.com/1.2.6/quill.snow.css" rel="stylesheet">
   </head>
 

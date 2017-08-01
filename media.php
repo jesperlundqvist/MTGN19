@@ -8,7 +8,7 @@
     $imagelargepath = "images/uploads/gallery/large/";
 
   ?>
-    <title>Media</title>
+    <title>Mottagningen</title>
     <link rel="stylesheet" href="css/jquery.fancybox.css?v=1" type="text/css">
     <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
     <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
