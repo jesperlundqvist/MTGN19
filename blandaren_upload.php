@@ -3,6 +3,7 @@
     include_once ('inc_header.php');
   ?>
     <title>Ladda upp Bländaren</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/1.8.593/pdf.min.js"></script>
   </head>
 
   <body>
@@ -22,15 +23,13 @@
           <div id="form">
             <br/>
             <input type="text" id="name" name="name" placeholder="Namn" class="input_areas"/>
-            <div class="front-wrap">
-              <span class="input_description">Framsida: </span><input type="file" id="blandarfront" name="blandarfront" class="file_input" accept="image/*"/><label for="blandarfront">Välj fil...</label>
-            </div>
-            <br/><br/>
+            <br/>
             <div class="pdf-wrap">
-            <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input" accept="application/pdf"/><label for="blandarpdf">Välj fil...</label>
+            <span class="input_description">PDF: </span><input type="file" id="blandarpdf" name="blandarpdf" class="file_input" accept="application/pdf"/><label id="blandaren-upload-label" for="blandarpdf">Välj fil...</label>
             </div>
             <br/>
             <button id="submit_blandare" class="button-primary">Ladda upp Bländaren</button>
+            <div id="frontpage_status"></div>
           </div>
           <div id="statusbar">
             <div id="filesize"></div>
@@ -38,6 +37,8 @@
           </div>
           <div id="info"></div>
           <ul id="previewcontainer"></ul>
+            <canvas id="blandaren-preview-canvas" style="display:none">
+            </canvas>
         </div>
       </div>
   </div>
@@ -61,30 +62,56 @@
     $("#statusbar").hide();
 
     var pdf = null;
-    var frontpage = null;
 
     $('#submit_blandare').click(function() {
       // Om det finns bilder att ladda upp
-      if (pdf != null && frontpage != null && $("#name").val() != null) {
-        handleFileUpload(pdf, frontpage, $("#name").val());
-      }
-    });
+      var canvas = document.getElementById("blandaren-preview-canvas");
 
-    $(document).on('change', '#blandarfront', function() {
-      frontpage = $('#blandarfront')[0].files[0];
-      console.log(frontpage.name);
+      var reader = new FileReader();
 
-      if (fileExt(frontpage.name) !== "png" && fileExt(frontpage.name) !== "jpg" && fileExt(frontpage.name) !== "jpeg") {
-        frontpage = null;
-        $("#info").append('<p style="color: red">Framsidan måste vara en bild.</p>');
-      }
+      reader.addEventListener("progress", function(e) {
+          if (e.lengthComputable) {
+            var percentage = Math.round((e.loaded * 100) / e.total);
+            $("#frontpage_status").html('Laddar miniatyrbild: ' + percentage + '% ');
+        }
+      });
 
-      showImage(frontpage);
+      reader.addEventListener("loadend", function(e) {
+          $("#frontpage_status").html("Skapar miniatyrbild...");
+
+          PDFJS.getDocument(e.target.result).then(function(pdf) {
+              pdf.getPage(1).then(function(page) {
+                  var desiredWidth = 300;
+                  var viewport = page.getViewport(1);
+                  var scale = desiredWidth / viewport.width;
+                  var scaledViewport = page.getViewport(scale);
+
+                  var context = canvas.getContext('2d');
+                  canvas.height = scaledViewport.height;
+                  canvas.width = scaledViewport.width;
+
+                  var renderContext = {
+                    canvasContext: context,
+                    viewport: scaledViewport
+                  };
+
+                  page.render(renderContext).then(function() {
+                      var frontpage = canvas.toDataURL('image/jpeg');
+
+                      if (pdf != null && $("#name").val() != null) {
+                          handleFileUpload(pdf, frontpage, $("#name").val());
+                      }
+                  });
+              });
+          });
+      });
+
+      reader.readAsDataURL($('#blandarpdf')[0].files[0]);
     });
 
     $(document).on('change', '#blandarpdf', function() {
       pdf = $('#blandarpdf')[0].files[0];
-      console.log(pdf.name);
+      $("#blandaren-upload-label").html(pdf.name);
       if (fileExt(pdf.name) !== "pdf") {
         pdf = null;
         $("#info").append('<p style="color: red">Bländaren måste laddas upp som en PDF.</p>');
@@ -109,7 +136,7 @@
     $("#form").hide();
     $("#statusbar").show();
 
-    var totalSize = pdf.size + frontpage.size;
+    var totalSize = $('#blandarpdf')[0].files[0].size;
 
     // Ta fram den läsbara storleken
     var sizeStr="";
@@ -128,11 +155,11 @@
   function sendFiles(pdf, frontpage, name) {
     var fd = new FormData();
     // fd.append('imagedate', $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' }).val());
-    fd.append('files[]', pdf);
-    fd.append('files[]', frontpage);
+    fd.append('pdf', $('#blandarpdf')[0].files[0]);
+    fd.append('frontpage', frontpage);
     fd.append('name', name);
 
-    var status = new createStatus(pdf.size + frontpage.size);
+    var status = new createStatus($('#blandarpdf')[0].files[0].size);
     sendFileToServer(fd, status);
   }
 
@@ -148,7 +175,7 @@
             var position = event.loaded || event.position;
             var total = event.total;
             if (event.lengthComputable) {
-              percent = Math.ceil(position / total * 100);
+              percent = Math.round(position / total * 100);
             }
             //Set progress
             status.setProgress(position);
@@ -166,7 +193,7 @@
         if (output !== "") {
           $("#info").append('<p style="color: red">' + output + '</p>');
         } else {
-          $("#info").append('<p style="color: green">Uppladdnig klar.</p>');
+          $("#info").append('<p style="color: green">Uppladdning klar.</p>');
         }
       }
     });
@@ -180,7 +207,7 @@
       this.position = position;
       var progressBar = $("#progressbar");
       var currProgressBarWidth = (position / size) * progressBar.width();
-      var percent = Math.ceil(position / size * 100);
+      var percent = Math.round(position / size * 100);
       progressBar.find('div').width(currProgressBarWidth).html(percent + "%");
     }
 

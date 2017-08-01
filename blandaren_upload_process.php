@@ -4,48 +4,40 @@ include_once("functions_common.php");
 
 $link = connectToDB();
 
-
 $pdf_dir = "images/uploads/blandaren/pdfs/";
 $frontpage_dir = "images/uploads/blandaren/frontpages/";
 
-// var_dump($_FILES);
+//var_dump($_FILES);
 
-if (isset($_FILES['files'], $_POST['name'])) {
+if (isset($_FILES['pdf'], $_POST['frontpage'], $_POST['name'])) {
 
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 
-  if ($_FILES['files']['error'][0] > 0) {
-    echo "Det gick inte att ladda upp pdfen.<br/>Error: " . $_FILES['files']['error'][0];
-    exit();
-  }
-
-  if ($_FILES['files']['error'][1] > 0) {
-    echo "Det gick inte att ladda upp bilden.<br/>Error: " . $_FILES['files']['error'][1];
+  if ($_FILES['pdf']['error'] > 0) {
+    echo "Det gick inte att ladda upp pdfen.<br/>Error: " . $_FILES['pdf']['error'];
     exit();
   }
 
   $pdfid = uniqid();
   $frontpageid = uniqid();
 
-  $ext = pathinfo($_FILES['files']['name'][1], PATHINFO_EXTENSION);
-
-
   $pdfdir = $pdf_dir . $pdfid . '.pdf';
-  $frontpagedir = $frontpage_dir . $frontpageid . '.' . $ext;
+  $frontpagedir = $frontpage_dir . $frontpageid . '.jpg';
 
-  if(!move_uploaded_file($_FILES['files']['tmp_name'][0], $pdfdir)) {
+  if(!move_uploaded_file($_FILES['pdf']['tmp_name'], $pdfdir)) {
     echo "Det gick inte att flytta pdfen.";
     exit();
   }
 
-  if(!move_uploaded_file($_FILES['files']['tmp_name'][1], $frontpagedir)) {
-    echo "Det gick inte att flytta bilden.";
-    exit();
-  }
+  $encodedData = filter_input(INPUT_POST, 'frontpage', FILTER_SANITIZE_STRING);
+  $encodedData = str_replace('data:image/jpeg;base64,', '', $encodedData);
+  $encodedData = str_replace(' ','+',$encodedData);
+  $decodedData = base64_decode($encodedData);
+  file_put_contents($frontpagedir, $decodedData);
 
   $date = date("Y-m-d H:i:s");
   $pdfpath = $pdfid . '.pdf';
-  $frontpagepath = $frontpageid . '.' . $ext;
+  $frontpagepath = $frontpageid . '.jpg';
 
   if ($stmt = $link->prepare("INSERT INTO blandare (blandarid, blandarpdf, blandarname, frontpage, uploaddate) VALUES (?, ?, ?, ?, ?)")) {
     $stmt->bind_param('sssss', $frontpageid, $pdfpath, $name, $frontpagepath, $date);
