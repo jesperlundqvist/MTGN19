@@ -147,7 +147,7 @@
     } else {
       sizeStr = sizeKB.toFixed(2)+" KB";
     }
-    $("#filesize").html(sizeStr);
+    $("#filesize").html("Vänta tills det står \"uppladdning klar\"!<br>" + sizeStr);
 
     sendFiles(pdf, frontpage, name);
   }
