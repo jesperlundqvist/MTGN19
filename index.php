@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Mottagningen 2017</title>
+    <title>Mottagningen</title>
   </head>
 
   <body>
@@ -79,7 +79,7 @@
           echo "</div>"; //post-footer
           //echo "<div class='white'></div>";
           echo "</div>"; //news-content
-          echo "<div class='news-symbol_wrap'><img class='news-symbol' src='/images/testfish.png'></div>";
+          echo "<div class='news-symbol_wrap'><img class='news-symbol' src='/images/newsSymbol.png'></div>";
           echo "<svg class='news-divider-line'>";
           echo "<line x1='0' y1='0' x2='100%'' y2='0'/>";
           echo "</svg>";

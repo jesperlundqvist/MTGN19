@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Basecamp</title>
+    <title>Mottagningen</title>
   </head>
 
   <body>

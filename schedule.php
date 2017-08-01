@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Schema</title>
+    <title>Mottagningen</title>
     <link rel="stylesheet" href="css/swiper.min.css" />
     <script src="js/schedule.js"></script>
   </head>

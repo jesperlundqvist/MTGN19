@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Basecamp</title>
+    <title>Mottagningen</title>
   </head>
 
   <body>
@@ -101,7 +101,7 @@
           map.setCenter(marker.getPosition());
         });
       }
-      
+
       adminDropdownToggle();
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk&callback=initMap"
