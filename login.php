@@ -2,7 +2,7 @@
     //Load header
     include_once ('inc_header.php');
   ?>
-    <title>Mottagningen 2017</title>
+    <title>Mottagningen</title>
   </head>
   <!-- Color: #784800 -->
   <body class="login-body">

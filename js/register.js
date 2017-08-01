@@ -122,7 +122,7 @@ function uploadUser(file, gif, auto) {
 
     if (auto)
     {
-        password1 = "password";
+        password1 = "antiken";
         password2 = password1;
         email = "";
 
