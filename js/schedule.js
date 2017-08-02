@@ -25,16 +25,38 @@ $( document ).ready(function() {
   //globala variabler
   browserKey = 'AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk';
   //calendarid = 'nkr096rgr14rliajk6hsi251n0@group.calendar.google.com';
-  calendarid = "j4tdc98qohhntounmnlmu6usm4@group.calendar.google.com"; // Mottagningen 2016
+  calendarid = "j4tdc98qohhntounmnlmu6usm4%40group.calendar.google.com"; // Mottagningen 2017
   startTime = new Date();
-  if (navigator.userAgent.match(/Mac OS X/i) != null)
+  /*if (navigator.userAgent.match(/Mac OS X/i) != null)
   {
       document.getElementById("subscribe-link").href = "webcal://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics";
   }
   else
   {
       document.getElementById("subscribe-link").href = "https://calendar.google.com/calendar/embed?src=" + calendarid + "&ctz=Europe/Stockholm"
-  }
+  }*/
+
+  $("#schedule-subscribe-field").attr("value", "https://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics");
+  $("#android-link").attr("href", "https://calendar.google.com/calendar/embed?src=" + calendarid + "&ctz=Europe/Stockholm");
+  $("#schedule-subscribe-caldav-link").attr("href", "webcal://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics");
+
+  new Clipboard('#schedule-subscribe-copy-link');
+
+  $("#subscribe-link").click(function(e) {
+      $("#schedule-subscribe-modal").fadeIn();
+      e.stopPropagation();
+  });
+
+  $(document).click(function(e) {
+      if ($(e.target).has($("#schedule-subscribe-modal-content")).length != 0)
+      {
+          $("#schedule-subscribe-modal").fadeOut();
+      }
+  });
+
+  $("#schedule-subscribe-modal-x").click(function(e) {
+      $("#schedule-subscribe-modal").fadeOut();
+  });
 
   startTime.setHours(0,0,0);
   startTime = startTime.addDays(-startTime.getDayOfWeek());

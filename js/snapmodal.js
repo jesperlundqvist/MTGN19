@@ -1,6 +1,6 @@
 $(function(){
     $(document).click(function(e) {
-        if ($(e.target).not($("#snapcode-link-inpho, #snapcode-link-kph, #snapcode-link-arr")) && $(e.target).not($("#snapcode-modal")))
+        if ($(e.target).has($("#snapcode-modal-content")).length != 0)
         {
             $("#snapcode-modal").fadeOut();
         }
