@@ -1551,6 +1551,17 @@ footer a {
     Bländaren
 */
 
+.blandaren-delete-checkbox {
+    position: absolute;
+    display: flex;
+    top: 5px;
+    left: 5px;
+}
+
+.blandaren-preview {
+    position: relative;
+}
+
 #deleteblandarenbutton {
   cursor: pointer;
 }
