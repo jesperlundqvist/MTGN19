@@ -40,6 +40,8 @@ $( document ).ready(function() {
   $("#android-link").attr("href", "https://calendar.google.com/calendar/embed?src=" + calendarid + "&ctz=Europe/Stockholm");
   $("#schedule-subscribe-caldav-link").attr("href", "webcal://calendar.google.com/calendar/ical/" + calendarid + "/public/basic.ics");
 
+  calendarid = "j4tdc98qohhntounmnlmu6usm4@group.calendar.google.com";
+
   new Clipboard('#schedule-subscribe-copy-link');
 
   $("#subscribe-link").click(function(e) {
