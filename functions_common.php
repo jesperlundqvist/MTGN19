@@ -253,13 +253,12 @@ function time2str($ts)
 function connectToDB() {
   // Logga in på databasen
 
-  // FTP-servern
+  // ----- FTP-servern -----
   // $host = '10.209.2.44';
   // $user = '166397_xb73815';
   // $password = 'AlltLuktarKorv';
   // $db = '166397-mtgn';
-
-  // FTP-server
+  //
   // $link = mysqli_connect(
   //   $host,
   //   $user,
@@ -272,7 +271,7 @@ function connectToDB() {
   //   exit();
   // }
 
-  // Lokal server
+  // ----- Lokal server ------
   $user = 'root';
   $password = 'root';
   $db = 'mtgn';
