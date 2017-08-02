@@ -36,12 +36,17 @@
 
               echo '<div id="' . $blandare->blandarid . '" class="blandarDiv_container">';
 
+              if ($admin)
+              {
+                  $checkbox = '<input type="checkbox" class="blandaren-delete-checkbox" data-id="' . $blandare->blandarid . '" />';
+              }
+              
               echo '
                     <a class="no-link" target="_blank" href="images/uploads/blandaren/pdfs/' . $blandare->blandarpdf . '">
                       <h3 class="blandartitle">' . $blandare->blandarname . '</h3>
                       <div class="blandaren-preview">
                           <img class="blandarthumb" src="images/uploads/blandaren/frontpages/' . $blandare->frontpage . '"/>
-                          <input type="checkbox" class="blandaren-delete-checkbox" data-id="' . $blandare->blandarid . '" />
+                          ' . $checkbox . '
                       </div class="blandaren-preview">
                     </a>';
 
