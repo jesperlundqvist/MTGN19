@@ -54,6 +54,10 @@ ul {
     padding-left: 40px;
 }
 
+.news-content p {
+    word-wrap: break-word;
+}
+
 a {
     letter-spacing: 0.5;
     /*color: #02A0C7;*/
