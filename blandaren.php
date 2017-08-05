@@ -36,12 +36,18 @@
 
               echo '<div id="' . $blandare->blandarid . '" class="blandarDiv_container">';
 
-
-
+              if ($admin)
+              {
+                  $checkbox = '<input type="checkbox" class="blandaren-delete-checkbox" data-id="' . $blandare->blandarid . '" />';
+              }
+              
               echo '
                     <a class="no-link" target="_blank" href="images/uploads/blandaren/pdfs/' . $blandare->blandarpdf . '">
                       <h3 class="blandartitle">' . $blandare->blandarname . '</h3>
-                      <img class="blandarthumb" src="images/uploads/blandaren/frontpages/' . $blandare->frontpage . '"/>
+                      <div class="blandaren-preview">
+                          <img class="blandarthumb" src="images/uploads/blandaren/frontpages/' . $blandare->frontpage . '"/>
+                          ' . $checkbox . '
+                      </div class="blandaren-preview">
                     </a>';
 
               echo '</div>'; // blandarDiv_container
@@ -50,6 +56,15 @@
             echo '</div>';
           echo '</div>';
           // ================ BLÄNDAREN ================
+
+          if ($admin)
+          {
+              ?>
+              <br><br>
+              <a class="button button-primary" id="blandaren-remove-button">Ta bort valda Bländaren</a>
+              <br>
+              <?php
+          }
 
           ?>
 
@@ -61,5 +76,33 @@
     ?>
 
     <script src="js/swiper.jquery.min.js"></script>
+    <script>
+        $("#blandaren-remove-button").click(function(e) {
+            var toDelete = $(".blandaren-delete-checkbox:checkbox:checked");
+            if (toDelete.length > 0 && confirm("Är du säker på att du vill ta bort " + toDelete.length + " bländaren?"))
+            {
+                toDelete.each(function(i, val) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/delete_handler.php",
+                        data: {
+                            id: $(val).data("id"),
+                            action: "blandaren"
+                        },
+                        success: function(data) {
+                            if (data != "")
+                            {
+                                alert(data);
+                            }
+                            else
+                            {
+                                location.reload(true);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
   </body>
 </html>
