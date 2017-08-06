@@ -15,6 +15,7 @@
     <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
     <script type="text/javascript" src="js/media.js"></script>
     <script type="text/javascript" src="js/carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/carousel.css">
   </head>
@@ -117,8 +118,8 @@
         </div>
 
         <?php
-        echo "<div class='gallery-large'>";
-        echo "<div id='gallery-carousel-previous'>&#x2039;</div><img id='gallery-large-image'/><iframe id='gallery-ytplayer' type='text/html' src='' frameborder='0' allowfullscreen></iframe><div id='gallery-carousel-next'>&#x203a;</div></div>";
+        echo "<div class='gallery-large' data-slideout-ignore>";
+        echo "<div id='gallery-carousel-previous'><span>&#x2039;</span></div><img id='gallery-large-image'/><iframe id='gallery-ytplayer' type='text/html' src='' frameborder='0' allowfullscreen></iframe><div id='gallery-carousel-next'><span>&#x203a;</span></div></div>";
     ?>
 
     <?php
