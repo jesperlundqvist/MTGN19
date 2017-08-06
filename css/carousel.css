@@ -12,7 +12,7 @@
     display: inline-block;
     width: 100%;
     height: auto;
-    z-index: -1;
+    position: relative;
 }
 
 .gallery-carousel {
@@ -46,10 +46,10 @@
 
 #gallery-carousel-previous, #gallery-carousel-next {
     width: 64px;
-    height: 64px;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
+    top: 0;
+    z-index: 1;
 
     cursor: pointer;
 
@@ -58,6 +58,12 @@
     text-align: center;
     text-shadow: 0px 0px 15px rgb(119, 119, 119);
     transition: 0.3s;
+}
+
+#gallery-carousel-previous > span, #gallery-carousel-next > span {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 #gallery-carousel-next {
