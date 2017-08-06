@@ -54,6 +54,10 @@ ul {
     padding-left: 40px;
 }
 
+.news-content p {
+    word-wrap: break-word;
+}
+
 a {
     letter-spacing: 0.5;
     /*color: #02A0C7;*/
@@ -1070,6 +1074,7 @@ table {
   width: 100%;
   overflow: hidden;
   background: none;
+  border-collapse: collapse;
 }
 
 td, th {
@@ -1125,6 +1130,7 @@ p {
   empty-cells: show;
   border-right: 1px solid #eee;
 }
+
 .day0 { border-left: 1px solid #eee;  }
 
 .day_container, .week_container {
@@ -1148,7 +1154,6 @@ p {
 
 .event {
   position: absolute;
-  width: 100%;
   background-color: #f7ecd6;
   color: #000;
   overflow: hidden;
@@ -1156,6 +1161,8 @@ p {
   line-height: 135%;
   cursor: pointer;
   box-sizing: border-box;
+  left: 1px;
+  right: 1px;
 }
 .event p {
   padding: 0 5px;
@@ -1306,7 +1313,7 @@ p {
 }
 
 .timerow {
-  border: 1px dashed white;
+  /*border: 1px dashed white;*/
 }
 
 

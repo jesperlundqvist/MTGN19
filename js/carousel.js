@@ -59,6 +59,8 @@ function setLargeFromThumbElem(thumb) {
         $("#gallery-ytplayer").attr("src", "");
         $("#gallery-large-image").show();
         $("#gallery-ytplayer").hide();
+        $("#gallery-carousel-previous").css("height", "100%");
+        $("#gallery-carousel-next").css("height", "100%");
 
         thumb.addClass("gallery-active-image");
         if (current) {
@@ -71,10 +73,13 @@ function setLargeFromThumbElem(thumb) {
         }
         else if (thumb.hasClass("video"))
         {
-            $("#gallery-ytplayer").attr("src", "https://www.youtube.com/embed/" + getVideoIdFromYouTubeThumb(thumb) + "?modestbranding=1&autoplay=1&rel=0&showinfo=0");
+            $("#gallery-ytplayer").attr("src", "https://www.youtube.com/embed/" + getVideoIdFromYouTubeThumb(thumb) + "?autoplay=1&rel=0&showinfo=0");
             $("#gallery-ytplayer").show();
             setAspectRatioOfPlayer();
             $("#gallery-large-image").hide();
+            $("#gallery-carousel-previous").css("height", "90%");
+            $("#gallery-carousel-next").css("height", "90%");
+
         }
 
         scrollToTarget($(".gallery-carousel"), thumb);
@@ -129,6 +134,19 @@ $(function(){
 
     $("#gallery-carousel-previous").click(previousImage);
     $("#gallery-carousel-next").click(nextImage);
+
+    $(document).keydown(function(e) {
+        if (e.which == 37) { previousImage(); }
+        else if (e.which == 39) { nextImage(); }
+    });
+
+    var hammertime = new Hammer(document.getElementById("gallery-large-image"), {});
+    hammertime.on('swipeleft', function(ev) {
+        nextImage();
+    });
+    hammertime.on('swiperight', function(ev) {
+        previousImage();
+    });
 
     $(window).resize(setAspectRatioOfPlayer);
 
