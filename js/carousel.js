@@ -140,11 +140,11 @@ $(function(){
         else if (e.which == 39) { nextImage(); }
     });
 
-    $("#gallery-large-image").on("swipeleft",function(e){
+    var hammertime = new Hammer(document.getElementById("gallery-large-image"), {});
+    hammertime.on('swipeleft', function(ev) {
         nextImage();
     });
-
-    $("#gallery-large-image").on("swiperight",function(e){
+    hammertime.on('swiperight', function(ev) {
         previousImage();
     });
 

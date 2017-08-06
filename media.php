@@ -15,8 +15,7 @@
     <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
     <script type="text/javascript" src="js/media.js"></script>
     <script type="text/javascript" src="js/carousel.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/carousel.css">
   </head>
 
