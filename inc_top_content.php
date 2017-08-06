@@ -102,7 +102,7 @@ $link = connectToDB();
         <div class="header-mountain"></div>
         <div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga" /></a></div>
         <div class="header-sun"></div>
-        <div class="header-sun_rays floating"></div>
+        <div class="header-sun_rays sunRayAnim"></div>
         <div class="ikaros"></div>
     </div>
   <div class="header-hills"></div>
