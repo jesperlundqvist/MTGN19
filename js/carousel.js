@@ -132,6 +132,20 @@ $(function(){
         }
     });
 
+    $("#gallery-enable-remove-button").click(function(e) {
+        $(".gallery-delete-checkbox").toggle();
+        $("#gallery-remove-button").toggle();
+
+        if ($("#gallery-remove-button").is(":visible"))
+        {
+            $("#gallery-enable-remove-button").text("Sluta ta bort bilder/filmer");
+        }
+        else
+        {
+            $("#gallery-enable-remove-button").text("Ta bort bilder/filmer");
+        }
+    });
+
     $("#gallery-carousel-previous").click(previousImage);
     $("#gallery-carousel-next").click(nextImage);
 
