@@ -154,7 +154,7 @@ $(function(){
         else if (e.which == 39) { nextImage(); }
     });
 
-    var hammertime = new Hammer(document.getElementById("gallery-large-image"), {});
+    var hammertime = new Hammer($(".gallery-large").get(0), {});
     hammertime.on('swipeleft', function(ev) {
         nextImage();
     });
