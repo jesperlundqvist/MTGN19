@@ -168,7 +168,7 @@
 
         if ($q2 != null) {
           echo "<div class='question-wrap'>
-              <h3 class='question notranslate'>Skrik eller panik?</h3>
+              <h3 class='question notranslate'>Alla vägar bär till...?</h3>
               <span class='answer q2-js'>$q2</span>
               </div> ";
         }

@@ -99,7 +99,7 @@
         if ($q2 == null) {
          $q2 = "";
         }
-        echo "<p class='input_description'>Skrik eller panik?</p>";
+        echo "<p class='input_description'>Alla vägar bär till...?</p>";
         echo "<input type=\"text\" id=\"q2\" name=\"q2\" value=\"$q2\" placeholder=\"$q2\" class=\"input_areas\"/><br/>";
 
         if ($q3 == null) {
