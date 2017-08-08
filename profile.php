@@ -175,7 +175,7 @@
 
         if ($q3 != null) {
           echo "<div class='question-wrap'>
-              <h3 class='question notranslate'>Are you not entertained??</h3>
+              <h3 class='question notranslate'>Vad är ditt gladiatornamn?</h3>
               <span class='answer'>$q3</span>
               </div> ";
         }
