@@ -30,7 +30,38 @@ function updateUser(oldUsername, username, name, group, n0llegroup, admin, profi
     });
 }
 
+function getJsonFromElem(oldUsername, elem)
+{
+    var username = $($(elem).children().get(0)).children().first().val();
+    var name = $($(elem).children().get(1)).children().first().val();
+    var group = $($(elem).children().get(2)).children().first().val();
+    var n0llegroup = $($(elem).children().get(3)).children().first().val();
+    var admin = $($(elem).children().get(4)).children().first().children().first().is(':checked');
+    var profilePicture = $("#filechooser-" + oldUsername)[0].files[0];
+    var remove = $($(elem).children().get(6)).children().first().children().first().is(':checked');
+
+    return { username: username,
+             name: name,
+             group: group,
+             n0llegroup: n0llegroup,
+             admin: admin,
+             profilePicture: profilePicture,
+             remove: remove };
+}
+
 $(function(){
+    var initial = [];
+
+    $(".manage_users_table > tbody > tr").each(function(i, elem) {
+        var oldUsername = $(elem).data("username");
+
+        if (oldUsername)
+        {
+            initial[oldUsername] = getJsonFromElem(oldUsername, elem);
+        }
+    });
+
+
     if ($(window).width() <= 940)
     {
         $(".content-wrapper").html("<p style='padding-top: 50px'>Sorry, men denna sida fungerar inte på mobilen! Leta upp en dator ifall du vill använda denna sida!</p>");
@@ -51,15 +82,18 @@ $(function(){
 
             if (oldUsername)
             {
-                var username = $($(elem).children().get(0)).children().first().val();
-                var name = $($(elem).children().get(1)).children().first().val();
-                var group = $($(elem).children().get(2)).children().first().val();
-                var n0llegroup = $($(elem).children().get(3)).children().first().val();
-                var admin = $($(elem).children().get(4)).children().first().children().first().is(':checked');
-                var profilePicture = $("#filechooser-" + oldUsername)[0].files[0];
-                var remove = $($(elem).children().get(6)).children().first().children().first().is(':checked');
+                if (!(JSON.stringify(getJsonFromElem(oldUsername, elem)) === JSON.stringify(initial[oldUsername])))
+                {
+                    var username = $($(elem).children().get(0)).children().first().val();
+                    var name = $($(elem).children().get(1)).children().first().val();
+                    var group = $($(elem).children().get(2)).children().first().val();
+                    var n0llegroup = $($(elem).children().get(3)).children().first().val();
+                    var admin = $($(elem).children().get(4)).children().first().children().first().is(':checked');
+                    var profilePicture = $("#filechooser-" + oldUsername)[0].files[0];
+                    var remove = $($(elem).children().get(6)).children().first().children().first().is(':checked');
 
-                updateUser(oldUsername, username, name, group, n0llegroup, admin, profilePicture, remove);
+                    updateUser(oldUsername, username, name, group, n0llegroup, admin, profilePicture, remove);
+                }
             }
         });
 
