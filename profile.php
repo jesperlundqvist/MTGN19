@@ -37,7 +37,7 @@
       }
 
       // Hämta föregående användare och nästa
-      $query = "SELECT username FROM users ORDER BY weight, n0llegroup, name ASC";
+      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY weight, n0llegroup, name ASC";
       $result = execQuery($link, $query);
 
       $count = mysqli_num_rows($result);
@@ -71,11 +71,11 @@
       }
 
       // Hämta användaruppgifter
-      $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, q1, q2, q3, n0llegroup FROM users WHERE username = ? LIMIT 1");
+      $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, q1, q2, q3, n0llegroup, hidden FROM users WHERE username = ? AND hidden <> 1 LIMIT 1");
       $stmt->bind_param('s', $username);
       $stmt->execute();
       $stmt->store_result();
-      $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $q1, $q2, $q3, $n0llegroup);
+      $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $q1, $q2, $q3, $n0llegroup, $hidden);
       $stmt->fetch();
 
       // Hämta profilbild om det finns någon

@@ -28,10 +28,11 @@
                 <th>nØllegrupp</th>
                 <th>Admin</th>
                 <th>Profilbild</th>
+                <th>Dold</th>
                 <th>Ta bort</th>
             </tr>
          <?php
-             $query = "SELECT username, name, imagename, usergroup, n0llegroup, admin FROM users ORDER BY usergroup, name";
+             $query = "SELECT username, name, imagename, usergroup, n0llegroup, admin, hidden FROM users ORDER BY usergroup, name";
              $result = execQuery($link, $query);
 
              $usergroups = execQuery($link, "SELECT usergroup FROM usergroups")->fetch_all();
@@ -71,6 +72,7 @@
                  echo "</select></td>";
                  echo "<td><center><input type='checkbox' " . ($r->admin == 1 ? "checked" : "") . " /></center></td>";
                  echo "<td><input type='file' name='userFile' id='filechooser-" . $r->username . "' class='file_input' accept='image/*'><label for='filechooser-" . $r->username . "'>Välj ny...</label></td>";
+                 echo "<td><center><input type='checkbox' " . ($r->hidden == 1 ? "checked" : "") . " /></center></td>";
                  echo "<td><center><input type='checkbox' /></center></td>";
                  echo "</tr>";
              }

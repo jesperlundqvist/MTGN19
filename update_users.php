@@ -16,6 +16,7 @@ if ($_SESSION['admin'])
         isset($_POST["group"]) &&
         isset($_POST["n0llegroup"]) &&
         isset($_POST["admin"]) &&
+        isset($_POST["hidden"]) &&
         isset($_POST["remove"]))
     {
         $oldUsername = $_POST["oldUsername"];
@@ -24,6 +25,7 @@ if ($_SESSION['admin'])
         $group = $_POST["group"];
         $n0llegroup = $_POST["n0llegroup"];
         $admin = $_POST["admin"] == "true" ? 1 : 0;
+        $hidden = $_POST["hidden"] == "true" ? 1 : 0;
         $remove = $_POST["remove"] == "true" ? 1 : 0;
 
         if ($remove)
@@ -73,8 +75,8 @@ if ($_SESSION['admin'])
               echo "Laddar upp ny profilbild för " . $oldUsername . ".<br>";
             }
 
-            if ($stmt = $link->prepare("UPDATE users SET username = ?, name = ?, usergroup = ?, n0llegroup = ?, admin = ? " . (isset($imagename) ? $image_update_query : "") . " WHERE username = ?")) {
-                $stmt->bind_param('ssssss', $username, $name, $group, $n0llegroup, $admin, $oldUsername);
+            if ($stmt = $link->prepare("UPDATE users SET username = ?, name = ?, usergroup = ?, n0llegroup = ?, admin = ?, hidden = ? " . (isset($imagename) ? $image_update_query : "") . " WHERE username = ?")) {
+                $stmt->bind_param('sssssss', $username, $name, $group, $n0llegroup, $admin, $hidden, $oldUsername);
                 $stmt->execute();
                 if ($link->affected_rows > 0)
                 {
