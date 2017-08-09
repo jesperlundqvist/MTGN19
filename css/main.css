@@ -1928,3 +1928,20 @@ footer a {
 #snapcode-link-kph, #snapcode-link-inpho, #snapcode-link-arr {
     cursor: pointer;
 }
+
+.manage_users_table {
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.manage_users_table > tbody > tr > td, th {
+    padding-bottom: 5px;
+    width: auto;
+}
+
+.manage_users_table > tbody > tr > td > input {
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 14px;
+}

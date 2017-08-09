@@ -90,7 +90,7 @@
                 $checkbox = "";
                 if ($admin)
                 {
-                    $checkbox = "<input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='image' />";
+                    $checkbox = "<input type='checkbox' style='display:none;' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='image' />";
                 }
 
                 echo "<div class='gallery-carousel-item image gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' ' style='background-image: url(" . $imagethumbpath . $media->imagename . ");'>" . $checkbox . "</div>";
@@ -100,7 +100,7 @@
                 $checkbox = "";
                 if ($admin)
                 {
-                    $checkbox = "<input type='checkbox' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='video' />";
+                    $checkbox = "<input type='checkbox' style='display:none;' class='gallery-delete-checkbox' data-id='" . $media->imagename . "' data-type='video' />";
                 }
 
                 echo "<div class='gallery-carousel-item video gallery-active-filter-type gallery-active-filter-week gallery-active-filter-event' data-week='" . $media->week . "' data-event='" . $media->event . "' style='background-image: url(http://img.youtube.com/vi/" . $media->imagename . "/hqdefault.jpg);'><img class='video-play-icon' src='/design/play_icon.png' />" . $checkbox . "</div>";
@@ -127,7 +127,8 @@
     {
         ?>
         <br><br>
-        <a class="button button-primary" id="gallery-remove-button">Ta bort valda bilder/filmer</a>
+        <a class="button button-primary" id="gallery-enable-remove-button">Ta bort bilder/filmer</a>
+        <a class="button button-primary" id="gallery-remove-button" style="display:none;">Ta bort valda bilder/filmer</a>
         <br>
         <br>
         <p id="gallery-remove-status"></p>

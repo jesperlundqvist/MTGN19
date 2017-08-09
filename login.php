@@ -12,7 +12,7 @@
       // include_once ('inc_top_content.php');
     ?>
     <div class="bubbles">
-      <div class="content-wrapper" style="background-color: rgba(0,0,0,0)">
+      <div class="content-wrapper" style="background-color: rgba(0,0,0,0); padding-top: 0 !important;">
         <div class="login-wrap">
           <h1 class="login-title">Mottagningen</h1>
             <input type="text" id="username" placeholder="Användarnamn" autocorrect="off" />

@@ -132,6 +132,20 @@ $(function(){
         }
     });
 
+    $("#gallery-enable-remove-button").click(function(e) {
+        $(".gallery-delete-checkbox").toggle();
+        $("#gallery-remove-button").toggle();
+
+        if ($("#gallery-remove-button").is(":visible"))
+        {
+            $("#gallery-enable-remove-button").text("Sluta ta bort bilder/filmer");
+        }
+        else
+        {
+            $("#gallery-enable-remove-button").text("Ta bort bilder/filmer");
+        }
+    });
+
     $("#gallery-carousel-previous").click(previousImage);
     $("#gallery-carousel-next").click(nextImage);
 
@@ -140,7 +154,7 @@ $(function(){
         else if (e.which == 39) { nextImage(); }
     });
 
-    var hammertime = new Hammer(document.getElementById("gallery-large-image"), {});
+    var hammertime = new Hammer($(".gallery-large").get(0), {});
     hammertime.on('swipeleft', function(ev) {
         nextImage();
     });

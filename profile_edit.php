@@ -99,13 +99,13 @@
         if ($q2 == null) {
          $q2 = "";
         }
-        echo "<p class='input_description'>Skrik eller panik?</p>";
+        echo "<p class='input_description'>Alla vägar bär till...?</p>";
         echo "<input type=\"text\" id=\"q2\" name=\"q2\" value=\"$q2\" placeholder=\"$q2\" class=\"input_areas\"/><br/>";
 
         if ($q3 == null) {
          $q3 = "";
         }
-        echo "<p class='input_description'>Are you not entertained??</p>";
+        echo "<p class='input_description'>Vad är ditt gladiatornamn?</p>";
         echo "<input type=\"text\" id=\"q3\" name=\"q3\" value=\"$q3\" placeholder=\"$q3\" class=\"input_areas\"/><br/>";
 
         echo "<p class='input_description'>Ändra lösenord</p>";
