@@ -71,7 +71,7 @@ $(function(){
     }
 
     $("#manage_button_save").click(function() {
-        var toDelete = $(".manage_users_table > tbody > tr > td:nth-child(7) > center > input[type='checkbox']:checked").length;
+        var toDelete = $(".manage_users_table > tbody > tr > td:nth-child(8) > center > input[type='checkbox']:checked").length;
         if (toDelete > 0)
         {
             if (!confirm("Är du säker på att du vill ta bort " + toDelete + " användare?"))
