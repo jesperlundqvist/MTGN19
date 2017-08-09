@@ -1,4 +1,4 @@
-function updateUser(oldUsername, username, name, group, n0llegroup, admin, profilePicture, remove) {
+function updateUser(oldUsername, username, name, group, n0llegroup, admin, profilePicture, hidden, remove) {
     var fd = new FormData();
     fd.append("oldUsername", oldUsername);
     fd.append('username', username);
@@ -6,6 +6,7 @@ function updateUser(oldUsername, username, name, group, n0llegroup, admin, profi
     fd.append('group', group);
     fd.append('n0llegroup', n0llegroup);
     fd.append('admin', admin);
+    fd.append('hidden', hidden);
     fd.append('remove', remove);
 
     if (profilePicture != 0)
@@ -38,7 +39,8 @@ function getJsonFromElem(oldUsername, elem)
     var n0llegroup = $($(elem).children().get(3)).children().first().val();
     var admin = $($(elem).children().get(4)).children().first().children().first().is(':checked');
     var profilePicture = $("#filechooser-" + oldUsername)[0].files[0];
-    var remove = $($(elem).children().get(6)).children().first().children().first().is(':checked');
+    var hidden = $($(elem).children().get(6)).children().first().children().first().is(':checked');
+    var remove = $($(elem).children().get(7)).children().first().children().first().is(':checked');
 
     return { username: username,
              name: name,
@@ -46,6 +48,7 @@ function getJsonFromElem(oldUsername, elem)
              n0llegroup: n0llegroup,
              admin: admin,
              profilePicture: profilePicture,
+             hidden: hidden,
              remove: remove };
 }
 
@@ -82,6 +85,8 @@ $(function(){
 
             if (oldUsername)
             {
+                var user = getJsonFromElem(oldUsername, elem);
+
                 if (!(JSON.stringify(getJsonFromElem(oldUsername, elem)) === JSON.stringify(initial[oldUsername])))
                 {
                     var username = $($(elem).children().get(0)).children().first().val();
@@ -90,9 +95,10 @@ $(function(){
                     var n0llegroup = $($(elem).children().get(3)).children().first().val();
                     var admin = $($(elem).children().get(4)).children().first().children().first().is(':checked');
                     var profilePicture = $("#filechooser-" + oldUsername)[0].files[0];
-                    var remove = $($(elem).children().get(6)).children().first().children().first().is(':checked');
+                    var hidden = $($(elem).children().get(6)).children().first().children().first().is(':checked');
+                    var remove = $($(elem).children().get(7)).children().first().children().first().is(':checked');
 
-                    updateUser(oldUsername, username, name, group, n0llegroup, admin, profilePicture, remove);
+                    updateUser(oldUsername, username, name, group, n0llegroup, admin, profilePicture, hidden, remove);
                 }
             }
         });
