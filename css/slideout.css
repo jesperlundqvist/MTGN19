@@ -16,6 +16,12 @@ body {
   background-color: #f7ecd7;
 }
 
+@media (max-width: 768px) {
+    .slideout-menu {
+        display: none;
+    }
+}
+
 .slideout-menu-left {
   left: 0;
 }
