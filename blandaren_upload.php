@@ -41,7 +41,6 @@
             </canvas>
         </div>
       </div>
-  </div>
 
       <?php
     } else {
@@ -50,7 +49,6 @@
       <?php
     }
     ?>
-    </div>
 
     <?php
       //Load footer

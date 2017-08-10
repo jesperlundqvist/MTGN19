@@ -93,7 +93,6 @@
           <button id="submit_pictures" class="button-primary">Ladda upp bilder</button>
         </div>
         </div>
-      </div>
       <?php
       } else {
         ?>
@@ -102,7 +101,6 @@
       }
       ?>
 
-    </div>
 
     <?php
       //Load footer

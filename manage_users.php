@@ -83,7 +83,6 @@
         <p id="manage_status"></p>
        </div>
      </div>
-   </div>
    <?php
  }
  else {
