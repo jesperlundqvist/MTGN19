@@ -154,7 +154,6 @@
         ?>
         <div id="info"></div>
     </div>
-  </div>
 
     <?php
       //Load footer
