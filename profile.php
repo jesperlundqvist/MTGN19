@@ -37,7 +37,7 @@
       }
 
       // Hämta föregående användare och nästa
-      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY weight, n0llegroup, name ASC";
+      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY CASE usergroup WHEN 'nØllan' THEN 1 WHEN  'ÖPH' THEN 2 WHEN 'KPH' THEN 3 WHEN 'INPHO' THEN 4 WHEN 'ARR' THEN 5 WHEN 'LEK' THEN 6 WHEN 'RSA' THEN 7 ELSE 8 END , n0llegroup, name";
       $result = execQuery($link, $query);
 
       $count = mysqli_num_rows($result);
