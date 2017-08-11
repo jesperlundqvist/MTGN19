@@ -8,7 +8,7 @@ if (isset($_POST['search'])) {
 
   // --------- nØllan -----------
 
-  $query = "SELECT username, name, imagename, usergroup, n0llegroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'nØllan') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup, n0llegroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'nØllan') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   $output = "";
@@ -29,7 +29,7 @@ if (isset($_POST['search'])) {
     // --------- ÖPH -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'ÖPH') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'ÖPH') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
@@ -43,7 +43,7 @@ if (isset($_POST['search'])) {
   // --------- KPH -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'KPH') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'KPH') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
@@ -57,7 +57,7 @@ if (isset($_POST['search'])) {
   // --------- INPHO -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'INPHO') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'INPHO') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
@@ -71,7 +71,7 @@ if (isset($_POST['search'])) {
   // --------- ARR -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'ARR') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'ARR') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
@@ -85,7 +85,7 @@ if (isset($_POST['search'])) {
   // --------- LEK -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'LEK') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'LEK') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
@@ -99,7 +99,7 @@ if (isset($_POST['search'])) {
   // --------- RSA -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'RSA') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'RSA') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
@@ -113,7 +113,7 @@ if (isset($_POST['search'])) {
   // --------- VRAQUE -----------
 
   $search = $_POST['search'];
-  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'VRAQUE') ORDER BY n0llegroup, name";
+  $query = "SELECT username, name, imagename, usergroup FROM users WHERE ((name LIKE '%$search%' OR usergroup LIKE '%$search%' OR n0llegroup LIKE '%$search%') AND hidden <> 1 AND usergroup = 'VRAQUE') ORDER BY n0llegroup, name";
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
