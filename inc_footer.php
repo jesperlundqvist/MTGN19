@@ -62,7 +62,7 @@
         <div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/nl_logo.png"/></div>
         <div class="footer-logo-wrap"><img class="footer-logo comviq" src="/design/logos/comviq_logo.png"/></div>
         <div class="footer-logo-wrap"><img class="footer-logo ericsson" src="/design/logos/ericsson_logo.png"/></div>
-        <div class="footer-logo-wrap"><a href="/newspage.php?id=17"><img class="footer-logo chas" src="/design/logos/chas_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><img class="footer-logo hickhack" src="/design/logos/hickhack_logo.png"/></div>
         <div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/bontouch_logo.png"/></div>
         <div class="footer-logo-wrap"><img class="footer-logo mtg" src="/design/logos/mtg_logo.png"/></div>
     </div>
