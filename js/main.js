@@ -58,6 +58,11 @@ Date.prototype.getDayOfWeek = function(){
 }
 
 $(function(){
+    $(document).keydown(function(e) {
+        if (e.which == 37) { window.location.href = $(".prevProfileLink > a").attr("href"); }
+        else if (e.which == 39) { window.location.href = $(".nextProfileLink > a").attr("href"); }
+    });
+
     if (document.getElementById("mobile-nav"))
     {
         var slideout = new Slideout({
