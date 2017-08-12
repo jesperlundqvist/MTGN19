@@ -117,7 +117,7 @@ if (isset($_POST['search'])) {
   $result = execQuery($link, $query);
 
   if ($result->num_rows != 0) {
-      $output = $output . "<div style='background: linear-gradient(rgba(0,0,0,0), black); padding-top: 500px; margin-left: -50px; margin-right: -50px; margin-bottom: -50px;'>";
+      $output = $output . "<div style='background: linear-gradient(rgba(0,0,0,0), black 50%); padding-top: 200px; margin-left: -50px; margin-right: -50px; margin-bottom: -50px; padding-bottom: 50px;'>";
       $output = $output . "<div class='usergroup_title'><h2 class='usergroup_banner rsa-ser-allt'>RSA</h2></div>";
   }
 
