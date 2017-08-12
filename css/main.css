@@ -891,6 +891,7 @@ label {
   font-size: 40px !important;
   color: white;
   font-style: normal;
+  text-transform: uppercase;
 }
 
 .description {

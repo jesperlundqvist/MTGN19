@@ -126,7 +126,7 @@
         // namn
         if ($name != null) {
           echo "<div class='non-semantic-protector'> ";
-          echo "<p class='bottom-ribbon'><span class='ribbon-content'>$name</span></p>";
+          echo "<p class='bottom-ribbon'><span class='" . ($usergroup == "RSA" ? "rsa-ser-allt" : "ribbon-content") . "'>$name</span></p>";
           if ($n0llegroup != null) {
             echo "<p class='n0llegroup'>$n0llegroup</p>";
             if ($usergroup == "INPHO" || $usergroup == "ARR")
