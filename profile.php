@@ -37,7 +37,7 @@
       }
 
       // Hämta föregående användare och nästa
-      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY CASE usergroup WHEN 'nØllan' THEN 1 WHEN  'ÖPH' THEN 2 WHEN 'KPH' THEN 3 WHEN 'INPHO' THEN 4 WHEN 'ARR' THEN 5 WHEN 'LEK' THEN 6 WHEN 'RSA' THEN 7 ELSE 8 END , n0llegroup, name";
+      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY CASE usergroup WHEN 'nØllan' THEN 1 WHEN  'ÖPH' THEN 2 WHEN 'KPH' THEN 3 WHEN 'INPHO' THEN 4 WHEN 'ARR' THEN 5 WHEN 'LEK' THEN 6 WHEN 'VRAQUE' THEN 7 WHEN 'RSA' THEN 8 ELSE 9 END , n0llegroup, name";
       $result = execQuery($link, $query);
 
       $count = mysqli_num_rows($result);
@@ -97,9 +97,16 @@
 
 
 
-
-    <div class="content-wrapper">
-
+    <?php
+    if ($usergroup == "RSA")
+    {
+        echo "<div class='content-wrapper' style='background-color:black;'>";
+    }
+    else
+    {
+        echo "<div class='content-wrapper'>";
+    }
+    ?>
         <?php
 
         //Wrapper
@@ -146,6 +153,12 @@
         echo '<p class="description '.($usergroup == 'RSA' ? 'rsa-ser-allt' : '').'">'.
               $description.'
             </p>';
+
+        if ($usergroup == 'RSA')
+        {
+            echo "<img src='/design/rsa.png'>";
+        }
+
         echo "</div>";
 
         if ($q1 != null) {
