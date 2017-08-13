@@ -1520,6 +1520,7 @@ footer a {
 
 .secret h1 {
   margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 #puzzle-answer {
