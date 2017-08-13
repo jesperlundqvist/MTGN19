@@ -64,7 +64,7 @@
         <div class="footer-logo-wrap"><a href="https://www.ericsson.com/en" target="_blank"><img class="footer-logo ericsson" src="/design/logos/ericsson_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="https://viaplay.se/" target="_blank"><img class="footer-logo viaplay" src="/design/logos/viaplay_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="/weekly_puzzle.php"><img class="footer-logo hickhack" src="/design/logos/hickhack_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><a href="https://www.sverigesingenjorer.se/" target="_blank"><img class="footer-logo si" src="/design/logos/SI_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://www.sverigesingenjorer.se/" target="_blank"><img class="footer-logo si" src="/design/logos/si_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="https://www.unionen.se/" target="_blank"><img class="footer-logo unionen" src="/design/logos/unionen_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="https://myacademy.se/" target="_blank"><img class="footer-logo myacademy" src="/design/logos/myacademy_logo.png"/></a></div>
         <div class="footer-logo-wrap"><img class="footer-logo acad" src="/design/logos/acad_logo.png"/></div>
