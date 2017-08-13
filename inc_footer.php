@@ -61,14 +61,14 @@
         <div class="footer-logo-wrap"><img class="footer-logo" src="/design/logos/medie_logo.png"/></div>
         <div class="footer-logo-wrap"><a href="https://www.netlight.com/" target="_blank"><img class="footer-logo netlight" src="/design/logos/nl_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="https://webbutik.comviq.se/student/" target="_blank"><img class="footer-logo comviq" src="/design/logos/comviq_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><a href="https://www.ericsson.com/en"><img class="footer-logo ericsson" src="/design/logos/ericsson_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><a href="https://viaplay.se/"><img class="footer-logo viaplay" src="/design/logos/viaplay_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://www.ericsson.com/en" target="_blank"><img class="footer-logo ericsson" src="/design/logos/ericsson_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://viaplay.se/" target="_blank"><img class="footer-logo viaplay" src="/design/logos/viaplay_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="/weekly_puzzle.php"><img class="footer-logo hickhack" src="/design/logos/hickhack_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><a href="https://www.sverigesingenjorer.se/"><img class="footer-logo si" src="/design/logos/SI_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><a href="https://www.unionen.se/"><img class="footer-logo unionen" src="/design/logos/unionen_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><a href="https://myacademy.se/"><img class="footer-logo myacademy" src="/design/logos/myacademy_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://www.sverigesingenjorer.se/" target="_blank"><img class="footer-logo si" src="/design/logos/SI_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://www.unionen.se/" target="_blank"><img class="footer-logo unionen" src="/design/logos/unionen_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://myacademy.se/" target="_blank"><img class="footer-logo myacademy" src="/design/logos/myacademy_logo.png"/></a></div>
         <div class="footer-logo-wrap"><img class="footer-logo acad" src="/design/logos/acad_logo.png"/></div>
-        <div class="footer-logo-wrap"><a href="https://www.24mx.com/"><img class="footer-logo mx" src="/design/logos/24mx_logo.png"/></a></div>
+        <div class="footer-logo-wrap"><a href="https://www.24mx.com/" target="_blank"><img class="footer-logo mx" src="/design/logos/24mx_logo.png"/></a></div>
     </div>
 
     </div>
