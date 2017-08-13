@@ -198,6 +198,13 @@
       //Load footer
       include_once ('inc_footer.php');
     ?>
-
+    <script>
+    $(function(){
+        $(document).keydown(function(e) {
+            if (e.which == 37) { window.location.href = $(".prevProfileLink > a").attr("href"); }
+            else if (e.which == 39) { window.location.href = $(".nextProfileLink > a").attr("href"); }
+        });
+    });
+    </script>
   </body>
 </html>
