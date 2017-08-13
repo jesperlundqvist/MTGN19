@@ -288,7 +288,7 @@ function connectToDB() {
     $port
   );
 
-  $link->set_charset('utf8'); //Fixar åäö
+  $link->set_charset('utf8mb4'); //Fixar åäö
 
 
   return $link;

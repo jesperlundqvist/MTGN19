@@ -17,7 +17,7 @@
 
  $admin = $_SESSION['admin'];
  if ($admin) { ?>
-   <div class="content-wrapper">
+   <div class="content-wrapper" style="padding-left: 10px; padding-right: 10px;">
        <div>
          <h2 class="adminpanel_title">Hantera användare</h2>
          <table class="manage_users_table">
@@ -83,7 +83,6 @@
         <p id="manage_status"></p>
        </div>
      </div>
-   </div>
    <?php
  }
  else {

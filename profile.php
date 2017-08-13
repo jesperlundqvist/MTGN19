@@ -37,7 +37,7 @@
       }
 
       // Hämta föregående användare och nästa
-      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY weight, n0llegroup, name ASC";
+      $query = "SELECT username FROM users WHERE hidden <> 1 ORDER BY CASE usergroup WHEN 'nØllan' THEN 1 WHEN  'ÖPH' THEN 2 WHEN 'KPH' THEN 3 WHEN 'INPHO' THEN 4 WHEN 'ARR' THEN 5 WHEN 'LEK' THEN 6 WHEN 'VRAQUE' THEN 7 WHEN 'RSA' THEN 8 ELSE 9 END , n0llegroup, name";
       $result = execQuery($link, $query);
 
       $count = mysqli_num_rows($result);
@@ -97,9 +97,16 @@
 
 
 
-
-    <div class="content-wrapper">
-
+    <?php
+    if ($usergroup == "RSA")
+    {
+        echo "<div class='content-wrapper' style='background-color:black;'>";
+    }
+    else
+    {
+        echo "<div class='content-wrapper'>";
+    }
+    ?>
         <?php
 
         //Wrapper
@@ -119,9 +126,13 @@
         // namn
         if ($name != null) {
           echo "<div class='non-semantic-protector'> ";
-          echo "<p class='bottom-ribbon'><span class='ribbon-content'>$name</span></p>";
-          if ($usergroup == 'nØllan' || ($usergroup == 'KPH' && $n0llegroup != null)) {
+          echo "<p class='bottom-ribbon'><span class='" . ($usergroup == "RSA" ? "rsa-ser-allt" : "ribbon-content") . "'>$name</span></p>";
+          if ($n0llegroup != null) {
             echo "<p class='n0llegroup'>$n0llegroup</p>";
+            if ($usergroup == "INPHO" || $usergroup == "ARR")
+            {
+                echo "<p class='n0llegroup'>Bästis-" . $usergroup . "</p>";
+            }
           }
           echo "</div>";
         }
@@ -135,29 +146,20 @@
         // echo "<line x1='0' y1='0' x2='100%' y2='0'/>";
         // echo "</svg>";
 
+        echo "<br>";
+
         // beskrivning
         echo "<div class='description-wrap'>";
         echo '<p class="description '.($usergroup == 'RSA' ? 'rsa-ser-allt' : '').'">'.
               $description.'
             </p>';
-        echo "</div>";
 
-
-        // fulhax
-        if ($name == 'Ceder') {
-          echo "<img style='width:200px;' src='http://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=http%3A%2F%2Fmtgn.nu%2Fprofile.php%3Fuser%3DCeder&amp;qzone=1&amp;margin=0&amp;size=400x400&amp;ecc=L' alt='qr code' />";        }
-        if($name == 'Marcus'){
-        ?>
-          <script>
-            /*$( document ).ready(function() {
-              arr = ["Kapten Haddock", "Kapten Krok"];
-              rand = Math.round(Math.random());
-              console.log(arr[rand]);
-              $(".q2-js").html(arr[rand]);
-          });*/
-          </script>
-        <?php
+        if ($usergroup == 'RSA')
+        {
+            echo "<img src='/design/rsa.png'>";
         }
+
+        echo "</div>";
 
         if ($q1 != null) {
           echo "<div class='question-wrap'>

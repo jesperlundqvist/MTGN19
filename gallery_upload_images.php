@@ -84,16 +84,15 @@
             <br/>
 
           </div>
+          <div id="info"></div>
+          <ul id="previewcontainer"></ul>
+          <button id="submit_pictures" class="button-primary">Ladda upp bilder</button>
           <div id="statusbar">
             <div id="filesizes"></div>
             <div id="progressbar"><div></div></div>
           </div>
-          <div id="info"></div>
-          <ul id="previewcontainer"></ul>
-          <button id="submit_pictures" class="button-primary">Ladda upp bilder</button>
         </div>
         </div>
-      </div>
       <?php
       } else {
         ?>
@@ -102,7 +101,6 @@
       }
       ?>
 
-    </div>
 
     <?php
       //Load footer
