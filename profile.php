@@ -100,7 +100,7 @@
     <?php
     if ($usergroup == "RSA")
     {
-        echo "<div class='content-wrapper' style='background-color:black;'>";
+        echo "<div class='content-wrapper' style='background-color:rgba(0,0,0,0.7);'>";
     }
     else
     {
