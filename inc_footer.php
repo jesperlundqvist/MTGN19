@@ -67,7 +67,7 @@
         <div class="footer-logo-wrap"><a href="https://www.sverigesingenjorer.se/" target="_blank"><img class="footer-logo si" src="/design/logos/si_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="https://www.unionen.se/" target="_blank"><img class="footer-logo unionen" src="/design/logos/unionen_logo.png"/></a></div>
         <div class="footer-logo-wrap"><a href="https://myacademy.se/" target="_blank"><img class="footer-logo myacademy" src="/design/logos/myacademy_logo.png"/></a></div>
-        <div class="footer-logo-wrap"><img class="footer-logo acad" src="/design/logos/acad_logo.png"/></div>
+        <div class="footer-logo-wrap"><a href="http://www.acad.se/" target="_blank"><img class="footer-logo acad" src="/design/logos/acad_logo.png"/></div>
         <div class="footer-logo-wrap"><a href="https://www.24mx.com/" target="_blank"><img class="footer-logo mx" src="/design/logos/24mx_logo.png"/></a></div>
     </div>
 
