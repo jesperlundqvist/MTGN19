@@ -1404,8 +1404,7 @@ footer a {
     width: 100px;
 }
 
-.comviq,
-.mtg {
+.comviq {
   width: 85px;
 }
 
@@ -1413,8 +1412,8 @@ footer a {
   width: 66px;
 }
 
-.chas {
-  width: 88px;
+.si {
+  width: 80px;
 }
 
 .medieteknik-title {
@@ -1521,6 +1520,7 @@ footer a {
 
 .secret h1 {
   margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 #puzzle-answer {
