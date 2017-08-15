@@ -119,7 +119,12 @@ function refreshFilter() {
     setLargeFromThumbElem($(".gallery-active-filter-type.gallery-active-filter-week.gallery-active-filter-event").eq(0));
 }
 
+function hideWeeks() {
+  // Funtion to hide future weeks and show them when clicked
+}
+
 $(function(){
+    hideWeeks();
     current = 0;
 
     setLargeFromThumbElem($(".gallery-carousel").children().eq(0));
