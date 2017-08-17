@@ -1946,18 +1946,18 @@ footer a {
     font-size: 14px;
 }
 
-.menu-media > a {
+/*.menu-media > a {
     margin-top: -7px;
+}*/
+
+@keyframes media-notis {
+    0%   {opacity: 1.0;}
+    50%  {opacity: 0.2;}
+    100% {opacity: 1.0;}
 }
 
-@keyframes media-new {
-    0%   {color: #464646;}
-    50%  {color: #7c7c7c;}
-    100% {color: #464646;}
-}
-
-.menu-media > a > span.new {
+.menu-media img {
     vertical-align: super;
-    font-size: 14px;
-    animation: media-new 2s infinite;
+    height: 20px;
+    animation: media-notis 2s infinite;
 }
