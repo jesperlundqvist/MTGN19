@@ -1961,3 +1961,14 @@ footer a {
     font-size: 14px;
     animation: media-new 2s infinite;
 }
+
+.event-name-input {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.delete-event-button:hover {
+    color: red;
+}

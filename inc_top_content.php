@@ -92,7 +92,7 @@ $link = connectToDB();
                     <a href="gallery_upload_images.php">Ladda upp bilder</a>
                     <a href="video_upload.php">Ladda upp video</a>
                     <a href="blandaren_upload.php">Ladda upp Bländaren</a>
-                    <a href="event.php">Lägg till event</a>
+                    <a href="event.php">Hantera event</a>
                     <a href="basecamp_edit.php">Ändra basecamp</a>
                 </div>
             </li> <?php
@@ -143,7 +143,7 @@ $link = connectToDB();
                         <a href="gallery_upload_images.php">Ladda upp bilder</a>
                         <a href="video_upload.php">Ladda upp video</a>
                         <a href="blandaren_upload.php">Ladda upp Bländaren</a>
-                        <a href="event.php">Lägg till event</a>
+                        <a href="event.php">Hantera event</a>
                         <a href="basecamp_edit.php">Ändra basecamp</a>
                     </div>
                 </li> <?php
