@@ -99,7 +99,7 @@ $link = connectToDB();
           }
            ?>
           <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-          <li class="menu-media"><a href="media.php">Media<span class="new"><?php if ($seen_latest_images) { echo 'Nya bilder!'; } ?></span></a></li>
+          <li class="menu-media"><a href="media.php">Media<span class="notis"><?php if ($seen_latest_images) { echo '<img src="/design/notis.png"/>'; } ?></span></a></li>
           <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
           <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
           <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
@@ -115,7 +115,7 @@ $link = connectToDB();
 <div class="header">
     <div class="constrainer">
         <div class="header-mountain"></div>
-        <div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga" /></a></div>
+        <div class="header-logo"><a href="/"><img src="/design/logo.png" alt="Logga"/></a></div>
         <div class="header-sun"></div>
         <div class="header-sun_rays sunRayAnim"></div>
         <div class="ikaros"></div>
@@ -150,7 +150,7 @@ $link = connectToDB();
             }
             ?>
             <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-            <li class="menu-media"><a href="media.php">Media<span class="new"><?php if ($seen_latest_images) { echo 'Nya bilder!'; } ?></span></a></li>
+            <li class="menu-media"><a href="media.php">Media<span class="notis"><?php if ($seen_latest_images) { echo '<img src="/design/notis.png"/>'; } ?></span></a></li>
             <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
             <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
             <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
