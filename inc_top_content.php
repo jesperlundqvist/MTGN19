@@ -48,7 +48,7 @@ $link = connectToDB();
   {
       $seen_latest_images = 0;
 
-      if (new DateTime($uploaddate) > new DateTime($images_latest_timestamp))
+      if (new DateTime($uploaddate) < new DateTime($images_latest_timestamp))
       {
           $seen_latest_images = 1;
       }
@@ -102,7 +102,7 @@ $link = connectToDB();
           }
            ?>
           <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-          <li class="menu-media"><a href="media.php">Media<span class="notis"><?php if ($seen_latest_images) { echo '<img src="/design/notis.png"/>'; } ?></span></a></li>
+          <li class="menu-media"><a href="media.php">Media<span class="notis"><?php if (!$seen_latest_images) { echo '<img src="/design/notis.png"/>'; } ?></span></a></li>
           <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
           <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
           <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
@@ -153,7 +153,7 @@ $link = connectToDB();
             }
             ?>
             <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-            <li class="menu-media"><a href="media.php">Media<span class="notis"><?php if ($seen_latest_images) { echo '<img src="/design/notis.png"/>'; } ?></span></a></li>
+            <li class="menu-media"><a href="media.php">Media<span class="notis"><?php if (!$seen_latest_images) { echo '<img src="/design/notis.png"/>'; } ?></span></a></li>
             <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
             <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
             <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
