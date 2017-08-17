@@ -1945,3 +1945,19 @@ footer a {
     border-radius: 5px;
     font-size: 14px;
 }
+
+.menu-media > a {
+    margin-top: -7px;
+}
+
+@keyframes media-new {
+    0%   {color: #464646;}
+    50%  {color: #7c7c7c;}
+    100% {color: #464646;}
+}
+
+.menu-media > a > span.new {
+    vertical-align: super;
+    font-size: 14px;
+    animation: media-new 2s infinite;
+}

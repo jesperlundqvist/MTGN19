@@ -14,11 +14,11 @@ $link = connectToDB();
   $admin = $_SESSION['admin'];
 
   // Hämta användaruppgifter
-  $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, n0llegroup FROM users WHERE username = '$username' LIMIT 1");
+  $stmt = $link->prepare("SELECT name, email, imagename, gifname, usergroup, description, n0llegroup, images_latest_timestamp FROM users WHERE username = '$username' LIMIT 1");
   $stmt->execute();
   $stmt->store_result();
 
-  $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $n0llegroup);
+  $stmt->bind_result($name, $email, $imagename, $gifname, $usergroup, $description, $n0llegroup, $images_latest_timestamp);
   $stmt->fetch();
 
   // Hämta profilbild om det finns någon
@@ -35,6 +35,20 @@ $link = connectToDB();
     } else {
       $imagepath = null;
     }
+  }
+
+  $stmt = $link->prepare("SELECT uploaddate FROM images ORDER BY uploaddate DESC LIMIT 1");
+  $stmt->execute();
+  $stmt->store_result();
+
+  $stmt->bind_result($uploaddate);
+  $stmt->fetch();
+
+  $seen_latest_images = 0;
+
+  if (new DateTime($uploaddate) > new DateTime($images_latest_timestamp))
+  {
+      $seen_latest_images = 1;
   }
 
 ?>
@@ -85,7 +99,7 @@ $link = connectToDB();
           }
            ?>
           <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-          <li class="menu-media"><a href="media.php">Media</a></li>
+          <li class="menu-media"><a href="media.php">Media<span class="new"><?php if ($seen_latest_images) { echo 'Nya bilder!'; } ?></span></a></li>
           <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
           <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
           <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
@@ -136,7 +150,7 @@ $link = connectToDB();
             }
             ?>
             <li class="menu-profiles"><a href="allprofiles.php">Profiler</a></li>
-            <li class="menu-media"><a href="media.php">Media</a></li>
+            <li class="menu-media"><a href="media.php">Media<span class="new"><?php if ($seen_latest_images) { echo 'Nya bilder!'; } ?></span></a></li>
             <li class="menu-schedule"><a href="schedule.php">Schema</a></li>
             <li class="menu-blandaren"><a href="blandaren.php">Bländaren</a></li>
             <li class="menu-basecamp"><a href="basecamp.php">Basecamp</a></li>
