@@ -22,7 +22,7 @@ $(document).ready(function() {
       $(".secret").fadeIn("slow");
     }
     else { // fel svar
-      $(".secret").append("<p class=message>Responsum dare INPHO, sed in silentio. Vos autem nolo aliis audire loqui!</p>");
+      $(".secret").append("<p class=message>Responsum dare INPHO, sed in silentio. Vos autem nolo aliis audire!</p>");
       $(".secret").append("<h1 class=message>QUOD EST FALSUM</h1>").hide();
       $(".secret").fadeIn("slow");
     }

@@ -27,7 +27,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!--Icon-->
-    <link rel="icon" href="/design/Icon.png" type="image/x-icon" />
+    <link rel="icon" href="/design/Icon.png" type="image/x-icon"/>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css" type="text/css">
