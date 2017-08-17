@@ -13,9 +13,13 @@ if ($_SESSION["admin"])
         if ($_POST["action"] == "delete")
         {
             $query = "SELECT * FROM images WHERE event='" . $name . "'";
-            $result = execQuery($link, $query);
+            $imgresult = execQuery($link, $query);
 
-            if ($result->num_rows == 0)
+            $query = "SELECT * FROM videos WHERE event='" . $name . "'";
+            $vidresult = execQuery($link, $query);
+
+
+            if ($imgresult->num_rows == 0 && $vidresult->num_rows == 0)
             {
                 if ($stmt = $link->prepare("DELETE FROM event WHERE name = '" . $name . "'")) {
                     $stmt->execute();
@@ -26,7 +30,7 @@ if ($_SESSION["admin"])
             }
             else
             {
-                echo "Det finns kvar bilder i \"" . $name . "\". Ta bort alla bilder först!";
+                echo "Det finns kvar bilder eller videos i \"" . $name . "\". Ta bort alla bilder/videos först!";
             }
         }
         else if ($_POST["action"] == "rename")
@@ -36,6 +40,15 @@ if ($_SESSION["admin"])
                 $newname = $_POST["newname"];
 
                 $query = "UPDATE images SET event='" . $newname . "' WHERE event='" . $name . "'";
+                $result = execQuery($link, $query);
+
+                if ($link->error)
+                {
+                    echo $link-error;
+                    exit(1);
+                }
+
+                $query = "UPDATE videos SET event='" . $newname . "' WHERE event='" . $name . "'";
                 $result = execQuery($link, $query);
 
                 if ($link->error)
