@@ -8,7 +8,7 @@
     $imagelargepath = "images/uploads/gallery/large/";
 
     if ($stmt = $link->prepare("UPDATE users SET images_latest_timestamp = NOW() WHERE username = ?")) {
-        $stmt->bind_param('s', $_SESSION['username'];);
+        $stmt->bind_param('s', $_SESSION['username']);
         $stmt->execute();
     }
 
