@@ -17,6 +17,7 @@
       <div class="puzzle-wrap">
         <div class="puzzle">
           <h1 class=puzzle_title>Sabbati problema unum</h1>
+            <p>Find est error.</p>
             <p>Lorem dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </br>
             <input type="text" id="puzzle-answer" placeholder="Responsum" autocorrect="off" />
