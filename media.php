@@ -7,6 +7,11 @@
     $imagethumbpath = "images/uploads/gallery/thumbs/";
     $imagelargepath = "images/uploads/gallery/large/";
 
+    if ($stmt = $link->prepare("UPDATE users SET images_latest_timestamp = NOW() WHERE username = ?")) {
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+    }
+
   ?>
     <title>Mottagningen</title>
     <link rel="stylesheet" href="css/jquery.fancybox.css?v=1" type="text/css">
@@ -79,10 +84,6 @@
 
       </div>
         <?php
-        if ($stmt = $link->prepare("UPDATE users SET images_latest_timestamp = NOW() WHERE username = ?")) {
-            $stmt->bind_param('s', $username);
-            $stmt->execute();
-        }
 
         // Images
         $query = "SELECT * FROM ( SELECT imagename, uploaddate, event, week FROM images UNION SELECT videoid, uploaddate, event, week FROM videos) AS media ORDER BY uploaddate DESC";
