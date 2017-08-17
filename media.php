@@ -12,8 +12,6 @@
         $stmt->execute();
     }
 
-    $seen_latest_images = 1;
-
   ?>
     <title>Mottagningen</title>
     <link rel="stylesheet" href="css/jquery.fancybox.css?v=1" type="text/css">

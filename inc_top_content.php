@@ -44,14 +44,11 @@ $link = connectToDB();
   $stmt->bind_result($uploaddate);
   $stmt->fetch();
 
-  if (!isset($seen_latest_images))
-  {
-      $seen_latest_images = 0;
+  $seen_latest_images = 0;
 
-      if (new DateTime($uploaddate) < new DateTime($images_latest_timestamp))
-      {
-          $seen_latest_images = 1;
-      }
+  if (new DateTime($uploaddate) < new DateTime($images_latest_timestamp) || basename($_SERVER['PHP_SELF']) == "media.php")
+  {
+      $seen_latest_images = 1;
   }
 
 ?>
