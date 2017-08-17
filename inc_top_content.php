@@ -44,11 +44,14 @@ $link = connectToDB();
   $stmt->bind_result($uploaddate);
   $stmt->fetch();
 
-  $seen_latest_images = 0;
-
-  if (new DateTime($uploaddate) > new DateTime($images_latest_timestamp))
+  if (!isset($seen_latest_images))
   {
-      $seen_latest_images = 1;
+      $seen_latest_images = 0;
+
+      if (new DateTime($uploaddate) > new DateTime($images_latest_timestamp))
+      {
+          $seen_latest_images = 1;
+      }
   }
 
 ?>
