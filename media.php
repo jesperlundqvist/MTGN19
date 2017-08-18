@@ -64,7 +64,7 @@
         </div>
 
         <?php
-        $query = "SELECT name FROM event";
+        $query = "SELECT DISTINCT event FROM images ORDER BY uploaddate DESC";
         $result = execQuery($link, $query);
         ?>
         <div class="filter-wrap">
@@ -74,7 +74,7 @@
               <li><a class="button is-checked" data-filter="all">Visa&nbsp;alla</a></li>
               <?php
               while ($event = $result->fetch_object()) {
-                $name = $event->name;
+                $name = $event->event;
                 echo'<li><a class="button" data-filter="'.$name.'">'.$name.'</a></li>';
               }
               ?>
