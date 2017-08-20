@@ -64,7 +64,7 @@
         </div>
 
         <?php
-        $query = "SELECT DISTINCT event FROM images ORDER BY uploaddate DESC";
+        $query = "SELECT DISTINCT event FROM (SELECT uploaddate, event FROM images UNION SELECT uploaddate, event FROM videos) as media ORDER BY uploaddate DESC";
         $result = execQuery($link, $query);
         ?>
         <div class="filter-wrap">
