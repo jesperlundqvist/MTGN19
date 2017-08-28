@@ -54,7 +54,7 @@
             <br/><br>
             Välj vecka
             <select id="week" name="week">
-              <option>Auto</option>
+              <option>Nuvarande vecka</option>
               <option value="33">33</option>
               <option value="34">34</option>
               <option value="35">35</option>
