@@ -1946,10 +1946,6 @@ footer a {
     font-size: 14px;
 }
 
-/*.menu-media > a {
-    margin-top: -7px;
-}*/
-
 @keyframes media-notis {
     0%   {opacity: 1.0;}
     50%  {opacity: 0.2;}
