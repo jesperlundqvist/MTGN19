@@ -18,6 +18,7 @@
         sec_session_start();
       }
       if ($_SESSION['admin']) {
+          $date = date("Y-m-d H:i:s");
         ?>
 
         <div class="form-page">
@@ -40,6 +41,12 @@
             ?>
             </select>
             </div>
+            <br>
+            Datum: (behåll samma format pls)
+            <?php
+            echo'<input id="seldate" class="input_areas" value="'.$date.'" name="seldate" />';
+            ?>
+            <br/>
             <br><br>
 
             <div class="week-select">
@@ -82,9 +89,10 @@
         var event = $("#event").val();
         var week = $("#week").val();
         var videoname = $("#videoname").val();
+        var date = $("#seldate").val();
 
         var pass = true;
-        if (videoname == "" || event == "" || videourl == "") {
+        if (videoname == "" || event == "" || videourl == "" || date == "") {
           $("#info").html("<p style=\"color: red\">Alla fält måste fyllas i.</p>");
           pass = false;
         }
@@ -95,13 +103,13 @@
         }
 
         if (pass) {
-          uploadVideo(videoid, event, week, videoname);
+          uploadVideo(videoid, event, week, videoname, date);
         }
 
       });
     });
 
-    function uploadVideo(videoid, event, week, videoname) {
+    function uploadVideo(videoid, event, week, videoname, date) {
       var uploadURL = "video_upload_process.php";
 
       $.ajax({
@@ -111,7 +119,8 @@
           'videoid': videoid,
           'event': event,
           'week': week,
-          'videoname': videoname
+          'videoname': videoname,
+          'date': date
         },
         success: function(output){
           if(output) {
