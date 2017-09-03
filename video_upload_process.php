@@ -9,7 +9,7 @@ if (isset($_POST['videoid'], $_POST['event'], $_POST['videoname'])) {
   $event = filter_input(INPUT_POST, 'event', FILTER_SANITIZE_STRING);
   $week = filter_input(INPUT_POST, 'week', FILTER_SANITIZE_STRING);
   $videoname = filter_input(INPUT_POST, 'videoname', FILTER_SANITIZE_STRING);
-  $date = date("Y-m-d H:i:s");
+  $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
 
     // Set auto week
   if($week == 'Auto') {
