@@ -56,9 +56,9 @@
               <li><a class="button is-checked" data-filter="all">Visa alla</a>
               <li><a class="button bttn-1" data-filter="33">33</a></li>
               <li><a class="button bttn-2" data-filter="34">34</a></li>
-              <!-- <li><a class="button bttn-3" data-filter="35">35</a></li>
+              <li><a class="button bttn-3" data-filter="35">35</a></li>
               <li><a class="button bttn-4" data-filter="36">36</a></li>
-              <li><a class="button bttn-hide">+</a></li> -->
+              <!-- <li><a class="button bttn-hide">+</a></li> -->
             </ul>
           </div>
         </div>
