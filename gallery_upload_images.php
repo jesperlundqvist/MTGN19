@@ -30,7 +30,7 @@
             Fotograf:
             <select id="photographer" name="photographer">
             <?php
-              $query = "SELECT username, name FROM users WHERE usergroup = 'INPHO' ORDER BY username ASC";
+              $query = "SELECT username, name FROM users WHERE usergroup = 'INPHO' OR username = 'linnea' ORDER BY username ASC";
               $result = execQuery($link, $query);
 
               $username = $_SESSION['username'];
