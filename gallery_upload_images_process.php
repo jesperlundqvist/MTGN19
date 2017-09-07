@@ -13,7 +13,7 @@ if (isset($_FILES['file'], $_POST['photographer'], $_POST['week'],$_POST['event'
   $date = $_POST['seldate'];
 
   // Set auto week
-  if($week == 'Auto') {
+  if($week == 'Nuvarande vecka') {
     setlocale(LC_ALL, 'sv_SE.ISO8859-1');
     $week = date("W");
   }
