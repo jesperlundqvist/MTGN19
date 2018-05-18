@@ -1,17 +1,18 @@
-#import db_interface TODO: skriv db_interface
+import app.db_interface
 
-class News:
-    def __init__(self, author, headline, text, tags):
-        self.author = author
-        self.headline = headline
-        self.text = text
-        self.tags = tags
     
 def as_news(dict):
     #funktion för att konvertera dictionary till nyhetsobjekt
     return News(dict["author"], dict["headline"], 
                 dict["text"], dict["tags"])
 
-def save_to_db(news_obj):
-    #TODO: skriv klart denna
-    return True
+def get_news():
+    return app.db_interface.get_news()
+
+
+def save_to_db(news_dict):
+    succ = app.db_interface.add_news(news_dict)
+    if succ:
+        return True 
+    else:
+         return False

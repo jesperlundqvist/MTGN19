@@ -1,31 +1,23 @@
-from app.webapp import app
+from app.webapp import app as webapp
 from flask import jsonify, request
 import json
 from app import news
 
 
-news_list = [
-    {"headline" : "n0llan ställer till det!", 
-    "text": "wow oh man wow n0llan fuckade upp!",
-    "author": "foppe", "tags":"cool"}
-]
+
+
 
 #Definiera olika URL-er och vad de leder till
-@app.route("/")
+@webapp.route("/")
 def index():
     return "Du har fått igång flask!"
 
-@app.route("/news", methods = ["GET"])
+@webapp.route("/news", methods = ["GET"])
 def get_news():
-    return jsonify(news_list)
+    return jsonify(news.get_news())
 
-@app.route("/news", methods = ["POST", "PUT"])
+@webapp.route("/news", methods = ["POST", "PUT"])
 def add_news():
-    news_list.append(request.json)
-    j_obj = news.as_news(request.json)
-    #TODO: skriva funktionen save to db
-    resp = news.save_to_db(j_obj)
-    if resp:
-        return "Laddade upp artikel skriven av " + request.json["author"] +"\n"
-    else:
-        return "Något gick fel!, en liten fucky-wucky!"
+    
+    resp = news.save_to_db(request.json)
+    return "WOO DET FUNKADE"
