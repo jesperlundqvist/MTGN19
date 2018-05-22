@@ -14,9 +14,20 @@ static_dir = os.path.join(os.getcwd(), "static", "Schmeck")
 @webapp.route("/")
 def index():
     return send_from_directory(static_dir, "index.html")
-@webapp.route("/news", methods = ["GET"])
+
+@webapp.route("/css/<filename>")
+def get_static(filename):
+    return send_from_directory(os.path.join(static_dir, "css"), filename)
+
+
+
+@webapp.route("/news/all")
 def get_news():
-    return jsonify(news.get_news())
+    return jsonify(news.get_news(None))
+
+@webapp.route("/news/<id>")
+def get_news_by_id(id):
+    return jsonify(news.get_news(id))
 
 @webapp.route("/news", methods = ["POST", "PUT"])
 def add_news():

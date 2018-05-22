@@ -6,8 +6,8 @@ def as_news(dict):
     return News(dict["author"], dict["headline"], 
                 dict["text"], dict["tags"])
 
-def get_news():
-    return app.db_interface.get_news()
+def get_news(id):
+    return app.db_interface.get_news(id)
 
 
 def save_to_db(news_dict):
