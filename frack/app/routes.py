@@ -16,10 +16,12 @@ def index():
     return send_from_directory(static_dir, "index.html")
 
 @webapp.route("/css/<filename>")
-def get_static(filename):
+def get_css(filename):
     return send_from_directory(os.path.join(static_dir, "css"), filename)
 
-
+@webapp.route("/js/<filename>")
+def get_js(filename):
+    return send_from_directory(os.path.join(static_dir, "js"), filename)
 
 @webapp.route("/news/all")
 def get_news():
