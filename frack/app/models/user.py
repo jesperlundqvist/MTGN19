@@ -1,12 +1,10 @@
 from sqlalchemy import Column, Integer, String
-from app.database import Base
-from app import app
+from app import db
 
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 
-class User(Base):
-    __tablename__ = 'users'
+class User(db.Model):
     id = Column(Integer, primary_key=True)
     username = Column(String(64), unique=True)
     password_hash = Column(String(64))

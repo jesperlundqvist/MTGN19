@@ -1,25 +1,72 @@
+#Importera moduler
 from app import app
-from flask.json import jsonify
-from flask import render_template, redirect, url_for
+from flask import jsonify, request, send_from_directory
+import json
+from app import db
+import os
+from app.models.news import News
+import app.news_functions as news_functions
+from sqlalchemy import desc
+from app.authentication import requires_auth, requires_auth_token
 
-from app.authentication import *
+
+
+STATIC_DIR = os.path.join(os.getcwd(), "static", "Schmeck")
+
 
 #Definiera olika URL-er och vad de leder till
 @app.route("/")
 def index():
-    return "Du har fått igång flask!"
+    return send_from_directory(STATIC_DIR, "index.html")
 
-@app.route("/login")
-def login():
-    return render_template("login.html")
+#ladda CSS
+@app.route("/css/<filename>")
+def get_css(filename):
+    return send_from_directory(os.path.join(STATIC_DIR, "css"), filename)
 
-@app.route("/init_db")
-def init_db():
-    from app.database import init_db
-    init_db()
-    return "init_db complete"
+#ladda JavaScript
+@app.route("/js/<filename>")
+def get_js(filename):
+    return send_from_directory(os.path.join(STATIC_DIR, "js"), filename)
 
-### API
+#ladda media (bild, film, osv)
+@app.route("/api/media/<file_path>")
+def get_media(file_path):
+    return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
+
+@app.route("/news")
+def news_page():
+    return send_from_directory(STATIC_DIR, "news.html")
+
+@app.route("/news/<id>")
+def news_page_specific(id):
+    return send_from_directory(STATIC_DIR, "news.html")
+
+@app.route("/news/edit/<id>")
+def edit_page(id):
+    return send_from_directory(STATIC_DIR, "edit.html")
+
+@app.route("/api/news/all")
+def get_news():
+    return news_functions.get_all_news()
+
+@app.route("/api/news/<id>")
+def get_news_by_id(id):
+    return get_news_by_id(id), 201
+
+@app.route("/api/news/upload", methods=["POST"])
+def add_news():
+    return news_functions.add_news(request.json), 200
+
+
+@app.route("/api/news/delete/<id>")
+def delete_news(id):
+    return news_functions.delete_news(id), 200
+
+@app.route("/api/news/edit/<id>", methods=["POST"])
+def edit_news(id):
+    return news_functions.edit_news(id, request.json), 201
+
 @app.route('/api/token')
 @requires_auth
 def get_auth_token():
