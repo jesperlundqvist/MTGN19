@@ -1,5 +1,7 @@
 from app.models.news import News
+from app import db
 from sqlalchemy import desc
+from flask import jsonify
 
 def get_all_news():
     news_list = News.query.order_by(desc(News.id)).all()

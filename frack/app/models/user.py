@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from app import db
+from app import app, db
 
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)

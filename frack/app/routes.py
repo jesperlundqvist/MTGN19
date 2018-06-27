@@ -1,6 +1,6 @@
 #Importera moduler
 from app import app
-from flask import jsonify, request, send_from_directory
+from flask import jsonify, request, send_from_directory, g
 import json
 from app import db
 import os
@@ -55,15 +55,18 @@ def get_news_by_id(id):
     return get_news_by_id(id), 201
 
 @app.route("/api/news/upload", methods=["POST"])
+@requires_auth_token
 def add_news():
     return news_functions.add_news(request.json), 200
 
 
 @app.route("/api/news/delete/<id>")
+@requires_auth_token
 def delete_news(id):
     return news_functions.delete_news(id), 200
 
 @app.route("/api/news/edit/<id>", methods=["POST"])
+@requires_auth_token
 def edit_news(id):
     return news_functions.edit_news(id, request.json), 201
 
