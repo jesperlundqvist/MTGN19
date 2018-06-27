@@ -1,0 +1,50 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Mottagningen</title>
+        <meta charset="UTF-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            function login()
+            {
+                var username = document.getElementById("username_field").value;
+                var password = document.getElementById("password_field").value;
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://127.0.0.1:5000/api/token",
+                    dataType: 'json',
+                    username: username,
+                    password: password,
+                    complete: function (xhr, status) {
+                        if (status == "success") {
+                            console.log(xhr);
+                            var token = xhr.responseJSON.token;
+                            sessionStorage.setItem("token", token);
+
+                            $.ajax({
+                                type: "GET",
+                                url: "http://127.0.0.1:5000/api/hemlig",
+                                dataType: 'json',
+                                username: sessionStorage.getItem("token"),
+                                complete: function(xhr) {
+                                    alert(xhr.responseText);
+                                }
+                            });
+                        }
+                        else if (status == "error") {
+                            alert(xhr.statusText);
+                        }
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="text" id="username_field" />
+            <input type="password" id="password_field" />
+            <input type="button" onclick="login()" />
+        </form>
+    </body>
+</html>

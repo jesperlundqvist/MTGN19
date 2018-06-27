@@ -1,12 +1,13 @@
 #Importera moduler
 from app import app
-from flask import jsonify, request, send_from_directory
+from flask import jsonify, request, send_from_directory, g
 import json
 from app import db
 import os
-from app.models import News
+from app.models.news import News
 import app.news_functions as news_functions
 from sqlalchemy import desc
+from app.authentication import requires_auth, requires_auth_token
 
 
 
@@ -54,16 +55,28 @@ def get_news_by_id(id):
     return get_news_by_id(id), 201
 
 @app.route("/api/news/upload", methods=["POST"])
+@requires_auth_token
 def add_news():
     return news_functions.add_news(request.json), 200
 
 
 @app.route("/api/news/delete/<id>")
+@requires_auth_token
 def delete_news(id):
     return news_functions.delete_news(id), 200
 
 @app.route("/api/news/edit/<id>", methods=["POST"])
+@requires_auth_token
 def edit_news(id):
     return news_functions.edit_news(id, request.json), 201
-    
 
+@app.route('/api/token')
+@requires_auth
+def get_auth_token():
+    token = g.user.generate_auth_token()
+    return jsonify({ 'token': token.decode('ascii') })
+
+@app.route("/api/hemlig")
+@requires_auth_token
+def hemlig():
+    return "Välkommen " + g.user.username + "!"
