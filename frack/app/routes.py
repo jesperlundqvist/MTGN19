@@ -46,29 +46,21 @@ def news_page_specific(id):
 def edit_page(id):
     return send_from_directory(STATIC_DIR, "edit.html")
 
-@app.route("/api/news/all")
-def get_news():
-    return news_functions.get_all_news()
-
-@app.route("/api/news/<id>")
-def get_news_by_id(id):
-    return get_news_by_id(id), 201
-
-@app.route("/api/news/upload", methods=["POST"])
+@app.route("/api/news/", methods=["GET", "POST"])
+@app.route("/api/news/<id>", methods=["GET", "DELETE", "PUT"])
 @requires_auth_token
-def add_news():
-    return news_functions.add_news(request.json), 200
-
-
-@app.route("/api/news/delete/<id>")
-@requires_auth_token
-def delete_news(id):
-    return news_functions.delete_news(id), 200
-
-@app.route("/api/news/edit/<id>", methods=["POST"])
-@requires_auth_token
-def edit_news(id):
-    return news_functions.edit_news(id, request.json), 201
+def news_route(id=None):
+    if request.method == "GET":
+        if id == None:
+            return news_functions.get_all_news()
+        else:
+            return news_functions.get_news_by_id(id), 201
+    elif request.method == "POST":
+        return news_functions.add_news(request.json), 200
+    elif request.method == "DELETE":
+        return news_functions.delete_news(id), 200
+    elif request.method == "PUT":
+        return news_functions.edit_news(id, request.json), 201
 
 @app.route('/api/token')
 @requires_auth
