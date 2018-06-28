@@ -27,7 +27,7 @@ def add_news(req_json):
 def delete_news(id):
     News.query.filter(News.id == id).delete()
     db.session.commit()
-    return "Nyhet med ID: " + id +" raderades!"
+    return jsonify({"message": "Nyhet med ID: " + id +" raderades!"})
 
 def edit_news(id, req_json):
     news_item = News.query.get(id)
@@ -36,4 +36,4 @@ def edit_news(id, req_json):
     news_item.text = req_json["text"]
     news_item.tags = req_json["tags"]
     db.session.commit()
-    return "uppdaterade nyhet med ID: " + id
+    return jsonify({"message": "uppdaterade nyhet med ID: " + id})

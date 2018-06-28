@@ -1,5 +1,7 @@
-//Ladda Header + Footer automatiskt
-$( document ).ready(function() {
-    $("#header").load("header.html");
-    $("#footer").load("footer.html");
-})
+$(document).ready(function() {
+    Frack.News.GetAll(function(data) {
+        console.log(data);
+    }, function(error) {
+        console.log(error);
+    });
+});

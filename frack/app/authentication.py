@@ -15,7 +15,7 @@ def check_auth(username_or_token, password, only_accept_token):
     return True
 
 def authenticate():
-    message = {'message': "Requires authentication."}
+    message = {'authError': "Requires authentication."}
     resp = json.jsonify(message)
 
     resp.status_code = 401
@@ -24,11 +24,11 @@ def authenticate():
     return resp
 
 def authenticate_token():
-    message = {'message': "Requires authentication token."}
+    message = {'authError': "Requires authentication token."}
     resp = json.jsonify(message)
 
     resp.status_code = 401
-    resp.headers['WWW-Authenticate'] = 'Basic realm="mtgn"'
+    resp.headers['WWW-Authenticate'] = 'BasicMtgn realm="mtgn"'
 
     return resp
 

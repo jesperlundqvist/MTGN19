@@ -15,9 +15,13 @@ STATIC_DIR = os.path.join(os.getcwd(), "static", "Schmeck")
 
 
 #Definiera olika URL-er och vad de leder till
-@app.route("/")
+@app.route('/')
 def index():
     return send_from_directory(STATIC_DIR, "index.html")
+
+@app.route('/login')
+def login():
+    return send_from_directory(STATIC_DIR, "login.html")
 
 #ladda CSS
 @app.route("/css/<filename>")
