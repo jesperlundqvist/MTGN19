@@ -7,7 +7,7 @@ import os
 from app.models.news import News
 import app.news_functions as news_functions
 from sqlalchemy import desc
-from app.authentication import requires_auth, requires_auth_token
+from app.authentication import requires_auth, requires_auth_token, check_auth
 
 
 
@@ -73,6 +73,10 @@ def news_route(id=None):
 def get_auth_token():
     token = g.user.generate_auth_token()
     return jsonify({ 'token': token.decode('ascii') })
+
+@app.route('/api/checkToken', methods=["POST"])
+def check_token():
+    return jsonify({"valid": check_auth(request.json["token"], "", True)})
 
 @app.route("/api/hemlig")
 @requires_auth_token
