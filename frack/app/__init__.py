@@ -11,5 +11,7 @@ from app.models.news import News
 from app.models.user import User
 db.create_all() #OBS UTAV BARA HELVETE denna ska inte finnas med i prod, den dumpar och skapar en ny databas
 adminUser = User(username="admin", password_hash="inpho")
+testNews = News(headline="Hallå där!", author="INPHO", tags="", text="Här är det lite text!")
 db.session.add(adminUser)
+db.session.add(testNews)
 db.session.commit()
