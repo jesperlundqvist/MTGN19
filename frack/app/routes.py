@@ -35,22 +35,14 @@ def get_js(filename):
 def get_templates(filename):
     return send_from_directory(os.path.join(STATIC_DIR, "templates"), filename)
 
+@app.route("/images/<filename>")
+def get_images(filename):
+    return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
+
 #ladda media (bild, film, osv)
 @app.route("/api/media/<file_path>")
 def get_media(file_path):
     return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
-
-@app.route("/news")
-def news_page():
-    return send_from_directory(STATIC_DIR, "news.html")
-
-@app.route("/news/<id>")
-def news_page_specific(id):
-    return send_from_directory(STATIC_DIR, "news.html")
-
-@app.route("/news/edit/<id>")
-def edit_page(id):
-    return send_from_directory(STATIC_DIR, "edit.html")
 
 @app.route("/api/news/", methods=["GET", "POST"])
 @app.route("/api/news/<id>", methods=["GET", "DELETE", "PUT"])
