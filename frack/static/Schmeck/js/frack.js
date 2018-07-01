@@ -1,6 +1,6 @@
 function GetApiObject(url) {
     return {
-        GetAll: function(callback, error) {
+        GetAll: function(callback) {
             var request = new XMLHttpRequest();
 
             request.open('GET', url, true, sessionStorage.authToken);
@@ -11,10 +11,10 @@ function GetApiObject(url) {
                     callback(data);
                 }
                 else if (request.status == 401) {
-                    window.location.replace("/login");
+                    Frack.Router.navigate("/login");
                 }
                 else {
-                    error(request);
+                    console.error(request);
                 }
             }
 
@@ -32,10 +32,10 @@ function GetApiObject(url) {
                     callback(data);
                 }
                 else if (request.status == 401) {
-                    window.location.replace("/login");
+                    Frack.Router.navigate("/login");
                 }
                 else {
-                    error(request);
+                    console.error(request);
                 }
             }
 
@@ -54,10 +54,10 @@ function GetApiObject(url) {
                     callback(data);
                 }
                 else if (request.status == 401) {
-                    window.location.replace("/login");
+                    Frack.Router.navigate("/login");
                 }
                 else {
-                    error(request);
+                    console.error(request);
                 }
             }
 
@@ -75,10 +75,10 @@ function GetApiObject(url) {
                     callback();
                 }
                 else if (request.status == 401) {
-                    window.location.replace("/login");
+                    Frack.Router.navigate("/login");
                 }
                 else {
-                    error(request);
+                    console.error(request);
                 }
             }
 
@@ -94,10 +94,10 @@ function GetApiObject(url) {
                     callback();
                 }
                 else if (request.status == 401) {
-                    window.location.replace("/login");
+                    Frack.Router.navigate("/login");
                 }
                 else {
-                    error(request);
+                    console.error(request);
                 }
             }
 
@@ -119,8 +119,11 @@ var Frack = {
                 if (callback) {
                     callback();
                 }
-            } else {
-                error(request);
+            }
+            else {
+                if (error) {
+                    error(request);
+                }
             }
         }
 
@@ -131,7 +134,7 @@ var Frack = {
         sessionStorage.clear();
     },
 
-    LoggedIn: function() {
+    HasAuthToken: function() {
         return (sessionStorage.getItem("authKey") != null)
     },
 

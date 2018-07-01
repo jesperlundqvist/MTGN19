@@ -13,16 +13,29 @@ function renderTemplate(selector, url, data) {
 }
 
 $(document).ready(function() {
-    var router = new Navigo();
+    Frack.Router = new Navigo("http://localhost:5000");
 
-    router.on({
-        '': function () {
-            Frack.News.GetAll(function(data) {
-                renderTemplate("#content", "/templates/home.html", {news: data});
+    Frack.Router.on({
+        '/nyhet/:id/': function(params, query) {
+            Frack.News.GetById(params.id, function(data) {
+                renderTemplate("#content", "/templates/article.html", {article: data});
             });
         },
         '/login': function() {
-            renderTemplate("#content", "/templates/login.html");
+            renderTemplate("#page", "/templates/login.html");
         }
-    }).resolve();
+    });
+
+    // Default
+    Frack.Router.on(function() {
+        Frack.News.GetAll(function(data) {
+            renderTemplate("#content", "/templates/home.html", {news: data});
+        });
+    });
+
+    Frack.Router.notFound(function (query) {
+        renderTemplate("#content", "/templates/404.html", {});
+    });
+
+    Frack.Router.resolve();
 });

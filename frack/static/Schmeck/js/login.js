@@ -7,7 +7,7 @@ function login(event)
 
     Frack.Login(username, password,
     function() {
-        window.location.replace("/");
+        Frack.Router.navigate("/");
     },
     function(request) {
         console.log(request);
@@ -19,5 +19,10 @@ function login(event)
 }
 
 $(document).ready(function() {
+    if (Frack.HasAuthToken())
+    {
+        Frack.Router.navigate("/");
+    }
+
     $("#loginForm").submit(login);
 });
