@@ -1,14 +1,13 @@
 function renderTemplate(selector, url, data) {
-    axios({
-        method: "get",
+    $.ajax({
+        method: "GET",
         url: url
-    }).then(function(response) {
-        var source = response.data;
-        var template = Handlebars.compile(source);
+    }).done(function(responseData) {
+        var template = Handlebars.compile(responseData);
 
         $(selector).html(template(data));
-    }).catch(function(error) {
-        console.error(error);
+    }).fail(function(res) {
+        console.error(res);
     });
 }
 
@@ -17,14 +16,14 @@ $(document).ready(function() {
 
     Frack.Router.on({
         '/': function() {
-            Frack.News.GetAll().then(function(response) {
-                renderTemplate("#content", "/templates/home.html", {news: response.data});
+            Frack.News.GetAll().done(function(data) {
+                renderTemplate("#content", "/templates/home.html", {news: data});
             });
         },
 
         '/nyhet/:id/': function(params, query) {
-            Frack.News.GetById(params.id).then(function(response) {
-                renderTemplate("#content", "/templates/article.html", {article: response.data});
+            Frack.News.GetById(params.id).done(function(data) {
+                renderTemplate("#content", "/templates/article.html", {article: data});
             });
         },
         '/login': function() {
