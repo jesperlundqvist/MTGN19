@@ -5,4 +5,4 @@ Sen kan man använda denna token för att göra saker på sidan, tex nå en heml
 ```curl -u <TOKEN>: -i -X GET localhost:5000/api/hemlig```
 
 Eller skriva ett inlägg:  
-```curl -u <TOKEN>: -i -X POST -H "Content-Type: application/json" -d '{"author": "Jesper", "tags": "", "headline": "Rubrik!", "text": "Lite text"}' localhost:5000/api/news/upload```
+```curl -u <TOKEN>: -i -X POST -H "Content-Type: application/json" -d '{"author": "Jesper", "tags": "", "headline": "Rubrik!", "text": "Lite text"}' localhost:5000/api/news/```
