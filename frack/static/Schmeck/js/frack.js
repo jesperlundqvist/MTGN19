@@ -1,141 +1,114 @@
 function GetApiObject(url) {
     return {
-        GetAll: function(callback) {
-            var request = new XMLHttpRequest();
-
-            request.open('GET', url, true, sessionStorage.authToken);
-            request.onload = function () {
-                var data = JSON.parse(this.response);
-
-                if (request.status >= 200 && request.status < 400) {
-                    callback(data);
+        GetAll: function() {
+            return axios({
+                method: "get",
+                url: url,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
                 }
-                else if (request.status == 401) {
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
-                else {
-                    console.error(request);
-                }
-            }
-
-            request.send();
+            });
         },
 
-        GetById: function(id, callback) {
-            var request = new XMLHttpRequest();
-
-            request.open('GET', url + id, true, sessionStorage.authToken);
-            request.onload = function () {
-                var data = JSON.parse(this.response);
-
-                if (request.status >= 200 && request.status < 400) {
-                    callback(data);
+        GetById: function(id) {
+            return axios({
+                method: "get",
+                url: url + id,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
                 }
-                else if (request.status == 401) {
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
-                else {
-                    console.error(request);
-                }
-            }
-
-            request.send();
+            });
         },
 
-        New: function(data, callback) {
-            var request = new XMLHttpRequest();
-
-            request.open('POST', url, true, sessionStorage.authToken);
-            request.setRequestHeader("Content-Type", "application/json");
-
-            request.onreadystatechange = function() {
-                if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                    var data = JSON.parse(this.response);
-                    callback(data);
+        New: function(data) {
+            return axios({
+                method: "post",
+                url: url,
+                data: data,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
                 }
-                else if (request.status == 401) {
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
-                else {
-                    console.error(request);
-                }
-            }
-
-            request.send(JSON.stringify(data));
+            });
         },
 
-        Update: function(id, data, callback) {
-            var request = new XMLHttpRequest();
-
-            request.open('POST', url + id, true, sessionStorage.authToken);
-            request.setRequestHeader("Content-Type", "application/json");
-
-            request.onreadystatechange = function() {
-                if(this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                    callback();
+        Update: function(id, data) {
+            return axios({
+                method: "post",
+                url: url+id,
+                data: data,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
                 }
-                else if (request.status == 401) {
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
-                else {
-                    console.error(request);
-                }
-            }
-
-            request.send(JSON.stringify(data));
+            });
         },
 
-        Delete: function(id, callback) {
-            var request = new XMLHttpRequest();
-
-            request.open('DELETE', url + id, true, sessionStorage.authToken);
-            request.onload = function () {
-                if (request.status >= 200 && request.status < 400) {
-                    callback();
+        Delete: function(id) {
+            return axios({
+                method: "delete",
+                url: url+id,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
                 }
-                else if (request.status == 401) {
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
-                else {
-                    console.error(request);
-                }
-            }
-
-            request.send();
+            });
         }
     }
 }
 
 var Frack = {
-    Login: function(username, password, callback, error) {
-        var request = new XMLHttpRequest();
-
-        request.open('GET', "/api/token", true, username, password);
-        request.onload = function () {
-            var data = JSON.parse(this.response);
-
-            if (request.status >= 200 && request.status < 400) {
-                sessionStorage.authToken = data.token;
-                if (callback) {
-                    callback();
-                }
+    Login: function(username, password) {
+        return axios({
+            method: "get",
+            url: "/api/token",
+            auth: {
+                username: username,
+                password: password
             }
-            else {
-                if (error) {
-                    error(request);
-                }
-            }
-        }
-
-        request.send();
+        }).then(function(response) {
+            sessionStorage.authToken = response.data.token;
+        });
     },
 
     Logout: function() {
-        sessionStorage.clear();
+        sessionStorage.authToken = "0";
     },
 
-    HasAuthToken: function() {
-        return (sessionStorage.getItem("authKey") != null)
+    HasToken: function() {
+        return (sessionStorage.getItem("authToken") != "0")
+    },
+
+    CheckToken: function() {
+        return axios({
+            method: "post",
+            url: "/api/checkToken",
+            data: {
+                token: sessionStorage.authToken
+            }
+        });
     },
 
     News: GetApiObject("/api/news/")
