@@ -10,6 +10,12 @@ function renderTemplate(selector, url, data) {
         console.error(res);
     });
 }
+Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+    if (v1 === v2){
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
 
 $(document).ready(function() {
     Frack.Router = new Navigo("http://localhost:5000");
@@ -19,6 +25,11 @@ $(document).ready(function() {
             Frack.News.GetAll().done(function(data) {
                 renderTemplate("#content", "/templates/home.html", {news: data});
             });
+        },
+        '/media': function(){
+            Frack.Media.GetAll().done(function(data) {
+                renderTemplate("#content", "/templates/media.html", {media : data});
+            })
         },
 
         '/nyhet/:id/': function(params, query) {

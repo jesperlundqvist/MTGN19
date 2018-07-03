@@ -16,8 +16,8 @@ def upload_media(request):
         for uploaded_file in latest_files:
             file_name = uploaded_file.filename
             uploaded_file.save(os.path.join(UPLOAD_FOLDER,file_name))
-            generate_thumbnail(file_name)
-            new_img = Image(filename = uploaded_file.filename,uploaded_by = name,event = event,week = week)
+            thumb = generate_thumbnail(file_name)
+            new_img = Image(filename = uploaded_file.filename,uploaded_by = name,event = event,week = week, thumbnail = thumb)
             db.session.add(new_img)
 
     latest_videos = request.form.getlist("videos")
@@ -47,6 +47,7 @@ def get_media(week_filter = None, event_filter = None, media_type = None, upload
         image_query = image_query.all()
         for result in image_query:
             res_dict = result.as_dictionary()
+            res_dict["type"] = "image"
             output.append(res_dict)
 
     if media_type is None or media_type == "video":
@@ -61,6 +62,7 @@ def get_media(week_filter = None, event_filter = None, media_type = None, upload
         video_query = video_query.all()
         for video_result in video_query:
             res_dict = video_result.as_dictionary()
+            res_dict["type"] = "video"
             output.append(res_dict)
 
     return output
@@ -68,9 +70,12 @@ def get_media(week_filter = None, event_filter = None, media_type = None, upload
 def generate_thumbnail(filename):
     im = Img.open(os.path.join(UPLOAD_FOLDER, filename))
     size = (200, 200) # thumbnail-storleken
+    filename = filename.split(".")[0]
     outfile = os.path.splitext(im.filename)[0]
     try:
         im.thumbnail(size)
         im.save(outfile + "_thumb.jpg", "JPEG")
     except IOError:
         print("en liten fucky wucky")
+
+    return filename + "_thumb.jpg"

@@ -99,5 +99,6 @@ var Frack = {
         });
     },
 
-    News: GetApiObject("/api/news/")
+    News: GetApiObject("/api/news/"),
+    Media: GetApiObject("/api/media")
 };
