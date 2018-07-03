@@ -65,9 +65,22 @@ function GetApiObject(url) {
                     Frack.Router.navigate("/login");
                 }
             });
+        },
+
+        GetByFilter: function(filters){
+            return $.ajax({
+                method: "GET",
+                url: url + "?" +filters,
+                username: sessionStorage.authToken,
+                password: ""
+            }).fail(function (res) {
+                if (res.status == 401) {
+                    Frack.Router.navigate("/login");
+                }
+            });
+            }
         }
     }
-}
 
 var Frack = {
     Login: function(username, password) {

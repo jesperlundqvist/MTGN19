@@ -26,9 +26,22 @@ $(document).ready(function() {
                 renderTemplate("#content", "/templates/home.html", {news: data});
             });
         },
-        '/media': function(){
-            Frack.Media.GetAll().done(function(data) {
-                renderTemplate("#content", "/templates/media.html", {media : data});
+        '/media': function(params, query){
+            console.log(query);
+            if(query == ""){
+                Frack.Media.GetAll().done(function(data) {
+                    renderTemplate("#content", "/templates/media.html", {media : data});
+                })
+            }else{
+                Frack.Media.GetByFilter(query).done(function(data){
+                    renderTemplate("#content", "/templates/media.html", {media : data});
+                })
+            }
+        },
+        '/media/:filter': function(query){
+            console.log(query)
+            Frack.Media.GetByFilter(filters).done(function(data){
+                renderTemplate("#content", "/templates/media.html", {media: data})
             })
         },
 
