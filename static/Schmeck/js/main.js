@@ -22,7 +22,7 @@ $(document).ready(function() {
         }
     });
 
-    Frack.Router = new Navigo("http://localhost:5000");
+    Frack.Router = new Navigo("http://mtgn18.azurewebsites.net/");
 
     Frack.Router.on({
         '/': function() {
