@@ -44,6 +44,40 @@ def get_images(filename):
 def get_media(file_path):
     return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
 
+<<<<<<< HEAD
+=======
+@app.route("/api/media", methods = ["GET", "POST"]) #Hämta media eller ladda upp media 
+def media_path():
+    week_filter = request.args.get("week")
+    event_filter = request.args.get("event")
+    type_filter = request.args.get("type")
+    uploader_filter = request.args.get("uploader")
+    if week_filter is None and event_filter is None and type_filter is None and uploader_filter is None:
+        if request.method == "GET":
+            image_response = image_functions.get_media()
+            return jsonify(image_response), 200
+        if request.method == "POST":
+            image_functions.upload_media(request)
+            return jsonify({"Message":"Bild(er) laddades upp!"}), 200
+    else:
+        image_response = image_functions.get_media(week_filter = week_filter, event_filter = event_filter, media_type = type_filter, uploaded_by=uploader_filter)
+        return jsonify(image_response), 200
+
+
+
+@app.route("/news")
+def news_page():
+    return send_from_directory(STATIC_DIR, "news.html")
+
+@app.route("/news/<id>")
+def news_page_specific(id):
+    return send_from_directory(STATIC_DIR, "news.html")
+
+@app.route("/news/edit/<id>")
+def edit_page(id):
+    return send_from_directory(STATIC_DIR, "edit.html")
+
+>>>>>>> d2c58cc... mer filtrering, automagiska thumbnails, WOW!
 @app.route("/api/news/", methods=["GET", "POST"])
 @app.route("/api/news/<id>", methods=["GET", "DELETE", "PUT"])
 @requires_auth_token
