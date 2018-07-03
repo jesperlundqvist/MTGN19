@@ -13,6 +13,7 @@ function GetApiObject(url) {
             });
         },
 
+        //borde tas bort
         GetById: function(id) {
             return $.ajax({
                 method: "GET",
@@ -43,7 +44,7 @@ function GetApiObject(url) {
         Update: function(id, data) {
             return $.ajax({
                 method: "POST",
-                url: url+id,
+                url: url+"?"+id,
                 data: data,
                 username: sessionStorage.authToken,
                 password: ""
@@ -57,7 +58,7 @@ function GetApiObject(url) {
         Delete: function(id) {
             return $.ajax({
                 method: "DELETE",
-                url: url+id,
+                url: url+"?"+id,
                 username: sessionStorage.authToken,
                 password: ""
             }).fail(function (res) {

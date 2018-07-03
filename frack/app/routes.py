@@ -81,10 +81,10 @@ def news_page_specific(id):
 def edit_page(id):
     return send_from_directory(STATIC_DIR, "edit.html")
 
-@app.route("/api/news/", methods=["GET", "POST"])
-@app.route("/api/news/<id>", methods=["GET", "DELETE", "PUT"])
+@app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT"])
 @requires_auth_token
-def news_route(id=None):
+def news_route():
+    id = request.args.get("id")
     if request.method == "GET":
         if id == None:
             return news_functions.get_all_news()

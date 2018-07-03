@@ -38,15 +38,9 @@ $(document).ready(function() {
                 })
             }
         },
-        '/media/:filter': function(query){
-            console.log(query)
-            Frack.Media.GetByFilter(filters).done(function(data){
-                renderTemplate("#content", "/templates/media.html", {media: data})
-            })
-        },
 
         '/nyhet/:id/': function(params, query) {
-            Frack.News.GetById(params.id).done(function(data) {
+            Frack.News.GetByFilter(params.id).done(function(data) {
                 renderTemplate("#content", "/templates/article.html", {article: data});
             });
         },
