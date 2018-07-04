@@ -61,7 +61,13 @@ def media_path():
         image_response = image_functions.get_media(week_filter = week_filter, event_filter = event_filter, media_type = type_filter, uploaded_by=uploader_filter)
         return jsonify(image_response), 200
 
+@app.route("/api/weeks", methods = ["GET"])
+def get_weeks():
+    return jsonify(image_functions.get_weeks())
 
+@app.route("/api/events", methods = ["GET"])
+def get_events():
+    return jsonify(image_functions.get_events())
 
 @app.route("/news")
 def news_page():

@@ -1,0 +1,93 @@
+<script>
+    // script för att hämta och filtrera media
+    var allMedia;
+    var shownMedia;
+    var weeks;
+    var events;
+    const API_URL = "/api/media";
+    const MEDIA_URL = "/media/";
+    $(document).ready(function(){
+       /*fetch(API_URL).then((response) => response.json())
+       .then((jsondata) => {allMedia = jsondata
+                            shownMedia = allMedia
+                            updateMediaList(shownMedia)});*/
+        fetchData();
+        
+    });
+
+    fetchData = async () => {
+        allMedia =  await fetch(API_URL).then((response) => response.json())
+        .then((jsondata) => {return jsondata});
+        shownMedia = allMedia;
+        updateMediaList(shownMedia)
+
+        weeks = await fetch("/api/weeks").then((response) => response.json())
+        .then((jsondata) => {return jsondata});
+        generateWeekSelector();
+        
+        events = await fetch("/api/events").then((response) => response.json())
+        .then((jsondata) => {return jsondata});
+        generateEventSelector();
+    }
+
+    generateWeekSelector = function(){
+        var weekSelector = $("#week-select");
+        for(var i = 0; i < weeks.length; i++ ){
+            var optionStr = '<option value="'+ weeks[i] +'">'+ weeks[i] +'</option>';
+            weekSelector.append(optionStr);
+        }
+    }
+
+    generateEventSelector = function(){
+        var eventSelector = $("#event-select");
+        for(var i = 0; i < events.length; i++ ){
+            var optionStr = '<option value="'+ events[i] +'">'+ events[i] +'</option>';
+            eventSelector.append(optionStr);
+        }
+    }
+
+    updateMediaList = function(mediaArray){
+        var mediaList = $(".media-list");
+        mediaList.empty();
+        for (var i = 0; i < mediaArray.length; i++){
+            var mediaObj = mediaArray[i];
+            var img = $(('<img id="' + mediaObj.filename +'">'));
+            img.attr("src", MEDIA_URL + mediaObj.thumbnail);
+            mediaList.append(img);
+        }
+    }
+    $("#week-select").change(() => {filterMedia()});
+    $("#event-select").change(() => {filterMedia()})
+
+
+    filterMedia = function(){
+        selectedWeek = $("#week-select option:selected").val();
+        selectedEvent = $("#event-select option:selected").val();
+        shownMedia = allMedia;
+        if (selectedEvent != "all"){
+            shownMedia = allMedia.filter(m => m.event == selectedEvent);
+        }
+        if(selectedWeek != ""){
+            shownMedia = shownMedia.filter(m => m.week == selectedWeek);
+        }
+        updateMediaList(shownMedia);
+    }
+</script>
+
+<body>
+    <div class="filters">
+        <h2>Vecka:</h2>
+        <select id="week-select">
+            <option value="">Visa alla</option>
+        </select>
+        
+        <h2>Event: </h2>
+        <select id="event-select">
+            <option value="all">Visa alla</option>
+        </select>
+    </div>
+    <br>
+    <div class="media-list">
+
+    </div>
+</body>

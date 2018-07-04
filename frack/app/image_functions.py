@@ -1,4 +1,5 @@
 import os
+from sqlalchemy import desc, asc
 from app.models.image import Image
 from app.models.video import Video
 from app import db
@@ -73,9 +74,21 @@ def generate_thumbnail(filename):
     filename = filename.split(".")[0]
     outfile = os.path.splitext(im.filename)[0]
     try:
-        im.thumbnail(size)
+        im = im.resize(size)
         im.save(outfile + "_thumb.jpg", "JPEG")
     except IOError:
         print("en liten fucky wucky")
 
     return filename + "_thumb.jpg"
+
+def get_weeks():
+    output = []
+    for value in db.session.query(Image.week).distinct().order_by(Image.week.asc()):
+        output.append(value[0])
+    return output
+
+def get_events():
+    output = []
+    for value in db.session.query(Image.event).distinct().order_by(Image.week.asc()):
+        output.append(value[0])
+    return output
