@@ -22,6 +22,13 @@ $(document).ready(function() {
         }
     });
 
+    Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+        if (v1 === v2){
+            return options.fn(this);
+        }
+        return options.inverse(this);
+    });
+
     Frack.Router = new Navigo("http://localhost:5000");
 
     Frack.Router.on({
@@ -49,9 +56,19 @@ $(document).ready(function() {
             renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "profiler"});
         },
 
-        '/media': function() {
-            renderTemplate("#content", "/templates/media.html");
+        '/media': function(params, query) {
             renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "media"});
+
+            console.log(query);
+            if(query == ""){
+                Frack.Media.GetAll().done(function(data) {
+                    renderTemplate("#content", "/templates/media.html", {media : data});
+                })
+            }else{
+                Frack.Media.GetByFilter(query).done(function(data){
+                    renderTemplate("#content", "/templates/media.html", {media : data});
+                })
+            }
         },
 
         '/blandaren': function() {

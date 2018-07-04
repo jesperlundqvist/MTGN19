@@ -5,9 +5,8 @@ import json
 from app import db
 import os
 from app.models.news import News
-from app.models.user import User
 import app.news_functions as news_functions
-from sqlalchemy import desc, inspect
+from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
 
 
@@ -45,10 +44,47 @@ def get_images(filename):
 def get_media(file_path):
     return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
 
-@app.route("/api/news/", methods=["GET", "POST"])
-@app.route("/api/news/<id>", methods=["GET", "DELETE", "PUT"])
+@app.route("/api/media", methods = ["GET", "POST"]) #Hämta media eller ladda upp media 
+def media_path():
+    week_filter = request.args.get("week")
+    event_filter = request.args.get("event")
+    type_filter = request.args.get("type")
+    uploader_filter = request.args.get("uploader")
+    if week_filter is None and event_filter is None and type_filter is None and uploader_filter is None:
+        if request.method == "GET":
+            image_response = image_functions.get_media()
+            return jsonify(image_response), 200
+        if request.method == "POST":
+            image_functions.upload_media(request)
+            return jsonify({"Message":"Bild(er) laddades upp!"}), 200
+    else:
+        image_response = image_functions.get_media(week_filter = week_filter, event_filter = event_filter, media_type = type_filter, uploaded_by=uploader_filter)
+        return jsonify(image_response), 200
+
+@app.route("/api/weeks", methods = ["GET"])
+def get_weeks():
+    return jsonify(image_functions.get_weeks())
+
+@app.route("/api/events", methods = ["GET"])
+def get_events():
+    return jsonify(image_functions.get_events())
+
+@app.route("/news")
+def news_page():
+    return send_from_directory(STATIC_DIR, "news.html")
+
+@app.route("/news/<id>")
+def news_page_specific(id):
+    return send_from_directory(STATIC_DIR, "news.html")
+
+@app.route("/news/edit/<id>")
+def edit_page(id):
+    return send_from_directory(STATIC_DIR, "edit.html")
+
+@app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT"])
 @requires_auth_token
-def news_route(id=None):
+def news_route():
+    id = request.args.get("id")
     if request.method == "GET":
         if id == None:
             return news_functions.get_all_news()
@@ -60,45 +96,6 @@ def news_route(id=None):
         return news_functions.delete_news(id), 200
     elif request.method == "PUT":
         return news_functions.edit_news(id, request.json), 201
-
-def object_as_dict(obj):
-    return {c.key: getattr(obj, c.key)
-            for c in inspect(obj).mapper.column_attrs}
-
-@app.route("/api/user/", methods=["GET", "POST"])
-@app.route("/api/user/<id>", methods=["GET", "DELETE", "PUT"])
-def user_route(id=None):
-    if request.method == "GET":
-        if id == None:
-            res_list =[]
-            for user in User.query.all():
-                d = object_as_dict(user)
-                del d["password_hash"]
-                res_list.append(d)
-            return jsonify(res_list)
-        else:
-            return jsonify(object_as_dict(User.query.get(id)))
-    elif request.method == "POST":
-        u = User(admin = req_json["admin"],
-                 description = req_json["description"],
-                 hidden = req_json["hidden"],
-                 n0llegroup_id = req_json["n0llegroup_id"],
-                 profile_picture = req_json["profile_picture"],
-                 q1 = req_json["q1"],
-                 q2 = req_json["q2"],
-                 q3 = req_json["q3"],
-                 user_type_id = req_json["user_type_id"],
-                 username = req_json["username"])
-        db.session.add(u)
-        db.session.commit()
-
-        return jsonify({status: "ok"})
-    elif request.method == "DELETE":
-        User.query.get(id).delete()
-        db.session.commit()
-        return jsonify({status: "ok"})
-    elif request.method == "PUT":
-        return None
 
 @app.route('/api/token')
 @requires_auth
