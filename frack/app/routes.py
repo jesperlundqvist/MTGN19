@@ -44,8 +44,6 @@ def get_images(filename):
 def get_media(file_path):
     return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
 
-<<<<<<< HEAD
-=======
 @app.route("/api/media", methods = ["GET", "POST"]) #Hämta media eller ladda upp media 
 def media_path():
     week_filter = request.args.get("week")
@@ -77,7 +75,6 @@ def news_page_specific(id):
 def edit_page(id):
     return send_from_directory(STATIC_DIR, "edit.html")
 
->>>>>>> d2c58cc... mer filtrering, automagiska thumbnails, WOW!
 @app.route("/api/news/", methods=["GET", "POST"])
 @app.route("/api/news/<id>", methods=["GET", "DELETE", "PUT"])
 @requires_auth_token
