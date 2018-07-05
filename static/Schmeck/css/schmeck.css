@@ -87,6 +87,10 @@ p, a {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     /* Med hamburgermeny */
+    .login-container {
+        width: 100%;
+    }
+
     .bookcover {
         width: 100%;
         padding-left: 0;
@@ -114,6 +118,10 @@ p, a {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     /* Med hambugermeny */
+    .login-container {
+        width: 100%;
+    }
+
     .bookcover {
         width: 100%;
         padding-left: 0;
@@ -142,6 +150,10 @@ p, a {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     /* Utan hamburgermeny */
+    .login-container {
+        width: 100%;
+    }
+
     .bookcover {
         width: 100%;
         padding-left: 8px;
@@ -166,6 +178,10 @@ p, a {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+    .login-container {
+        width: 90%;
+    }
+
     .bookcover {
         width: 90%;
         padding-left: 8px;
@@ -194,6 +210,10 @@ p, a {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+    .login-container {
+        width: 60%;
+    }
+
     .bookcover {
         width: 60%;
         padding-left: 8px;
@@ -238,7 +258,6 @@ p, a {
 
 .login-container {
     margin: auto;
-    width: 50%;
     background: #704926;
     min-height: 100vh;
     padding: 30px 5vw 0 5vw;
