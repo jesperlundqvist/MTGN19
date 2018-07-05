@@ -29,7 +29,7 @@ $(document).ready(function() {
         return options.inverse(this);
     });
 
-    Frack.Router = new Navigo("http://mtgn18.azurewebsites.net/");
+    Frack.Router = new Navigo(window.location.origin);
 
     Frack.Router.on({
         '/': function() {
