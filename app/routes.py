@@ -44,7 +44,7 @@ def get_images(filename):
 def get_media(file_path):
     return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
 
-@app.route("/api/media", methods = ["GET", "POST"]) #Hämta media eller ladda upp media 
+@app.route("/api/media", methods = ["GET", "POST"]) #Hämta media eller ladda upp media
 def media_path():
     week_filter = request.args.get("week")
     event_filter = request.args.get("event")
@@ -81,9 +81,10 @@ def news_page_specific(id):
 def edit_page(id):
     return send_from_directory(STATIC_DIR, "edit.html")
 
-@app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT"])
+@app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT", "OPTIONS"])
 @requires_auth_token
 def news_route():
+    print(request.method)
     id = request.args.get("id")
     if request.method == "GET":
         if id == None:

@@ -1,97 +1,96 @@
 function GetApiObject(url) {
     return {
         GetAll: function() {
-            return $.ajax({
-                method: "GET",
+            return axios({
+                method: 'get',
                 url: url,
-                username: sessionStorage.authToken,
-                password: ""
-            }).fail(function (res) {
-                if (res.status == 401) {
-                    Frack.Router.navigate("/login");
+                withCredentials: true,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
                 }
-            });
-        },
-
-        //borde tas bort
-        GetById: function(id) {
-            return $.ajax({
-                method: "GET",
-                url: url + id,
-                username: sessionStorage.authToken,
-                password: ""
-            }).fail(function (res) {
-                if (res.status == 401) {
+            }).catch(function(error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
             });
         },
 
         New: function(data) {
-            return $.ajax({
-                method: "POST",
+            return axios({
+                method: "post",
                 url: url,
                 data: data,
-                username: sessionStorage.authToken,
-                password: ""
-            }).fail(function (res) {
-                if (res.status == 401) {
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
+                }
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
             });
         },
 
         Update: function(id, data) {
-            return $.ajax({
-                method: "POST",
+            return axios({
+                method: "post",
                 url: url+"?"+id,
                 data: data,
-                username: sessionStorage.authToken,
-                password: ""
-            }).fail(function (res) {
-                if (res.status == 401) {
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
+                }
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
             });
         },
 
         Delete: function(id) {
-            return $.ajax({
-                method: "DELETE",
+            return axios({
+                method: "delete",
                 url: url+"?"+id,
-                username: sessionStorage.authToken,
-                password: ""
-            }).fail(function (res) {
-                if (res.status == 401) {
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
+                }
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
             });
         },
 
-        GetByFilter: function(filters){
-            return $.ajax({
-                method: "GET",
+        GetByFilter: function(filters) {
+            return axios({
+                method: "get",
                 url: url + "?" +filters,
-                username: sessionStorage.authToken,
-                password: ""
-            }).fail(function (res) {
-                if (res.status == 401) {
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
+                }
+            }).catch(function (error) {
+                if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                 }
             });
-            }
         }
     }
+}
 
 var Frack = {
     Login: function(username, password) {
-        return $.ajax({
-            method: "GET",
+        return axios({
+            method: "get",
             url: "/api/token",
-            username: username,
-            password: password
-        }).done(function(data) {
-            sessionStorage.authToken = data.token;
+            auth: {
+                username: username,
+                password: password
+            }
+        }).then(function(res) {
+            sessionStorage.authToken = res.data.token;
         });
     },
 

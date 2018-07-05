@@ -5,10 +5,10 @@ function login(event)
     var username = $("#usernameField").val();
     var password = $("#passwordField").val();
 
-    Frack.Login(username, password).done(function(data) {
+    Frack.Login(username, password).then(function(res) {
         window.location.replace("/");
-    }).fail(function(res) {
-        if (res.status == 401)
+    }).catch(function(error) {
+        if (error.response.status == 401)
         {
             $("#errorField").css("display", "block");
             $("#errorField").text("Fel användarnamn eller lösenord.");

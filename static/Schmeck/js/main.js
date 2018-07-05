@@ -1,14 +1,14 @@
 function renderTemplate(selector, url, data) {
-    $.ajax({
-        method: "GET",
+    axios({
+        method: "get",
         url: url
-    }).done(function(responseData) {
-        var template = Handlebars.compile(responseData);
+    }).then(function(res) {
+        var template = Handlebars.compile(res.data);
 
         $(selector).html(template(data));
         Frack.Router.updatePageLinks();
-    }).fail(function(res) {
-        console.error(res);
+    }).catch(function(error) {
+        console.error(error);
     });
 }
 
@@ -33,15 +33,15 @@ $(document).ready(function() {
 
     Frack.Router.on({
         '/': function() {
-            Frack.News.GetAll().done(function(data) {
-                renderTemplate("#content", "/templates/nyheter.html", {news: data});
+            Frack.News.GetAll().then(function(res) {
+                renderTemplate("#content", "/templates/nyheter.html", {news: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter"});
             });
         },
 
         '/nyhet/:id/': function(params, query) {
-            Frack.News.GetById(params.id).done(function(data) {
-                renderTemplate("#content", "/templates/article.html", {article: data});
+            Frack.News.GetByFilter("id=" + params.id).then(function(res) {
+                renderTemplate("#content", "/templates/article.html", {article: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter"});
             });
         },
@@ -61,12 +61,12 @@ $(document).ready(function() {
 
             console.log(query);
             if(query == ""){
-                Frack.Media.GetAll().done(function(data) {
-                    renderTemplate("#content", "/templates/media.html", {media : data});
+                Frack.Media.GetAll().then(function(res) {
+                    renderTemplate("#content", "/templates/media.html", {media : res.data});
                 })
             }else{
-                Frack.Media.GetByFilter(query).done(function(data){
-                    renderTemplate("#content", "/templates/media.html", {media : data});
+                Frack.Media.GetByFilter(query).then(function(res){
+                    renderTemplate("#content", "/templates/media.html", {media : res.data});
                 })
             }
         },

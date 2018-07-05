@@ -19,7 +19,7 @@ def authenticate():
     resp = json.jsonify(message)
 
     resp.status_code = 401
-    resp.headers['WWW-Authenticate'] = 'Basic realm="mtgn"'
+    resp.headers['WWW-Authenticate'] = 'BasicMtgn realm="mtgn"'
 
     return resp
 
