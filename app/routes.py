@@ -6,6 +6,7 @@ from app import db
 import os
 from app.models.news import News
 import app.news_functions as news_functions
+import app.image_functions as image_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
 
@@ -40,7 +41,7 @@ def get_images(filename):
     return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
 
 #ladda media (bild, film, osv)
-@app.route("/api/media/<file_path>")
+@app.route("/media/<file_path>")
 def get_media(file_path):
     return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
 

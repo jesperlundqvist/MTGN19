@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String
 from app import app, db
 
 class Video(db.Model):
-    id = Column(Integer, primary_key = true)
+    id = Column(Integer, primary_key = True)
     uploaded_by = Column(String(64))
     event = Column(String(256))
     week = Column(Integer)

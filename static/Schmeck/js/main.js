@@ -78,6 +78,9 @@ $(document).ready(function() {
 
         '/login': function() {
             renderTemplate("#page", "/templates/login.html");
+        },
+        '/upload':function() {
+            renderTemplate("#content", "/templates/upload.html")
         }
     });
 
