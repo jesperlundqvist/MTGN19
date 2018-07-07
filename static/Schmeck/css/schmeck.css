@@ -1,15 +1,10 @@
 .title {
-    font-family: alexander-quill, serif;
     text-align: center;
 }
 
 /*.newsitem:nth-of-type(even) {
     text-align: right;
 }*/
-
-.news-title {
-    font-family: alexander-quill, serif;
-}
 
 /*.news-title::first-letter {
     font-size: 200%;
@@ -24,9 +19,13 @@
     font-size: 22px;
 }
 
+h1,h2,h3 {
+    font-family: alexander-quill, serif;
+}
+
 p, a {
-    font-family: mrs-eaves-roman-lining, serif;
-    font-size: 18px;
+    font-family: serif;
+    font-size: 17px;
 }
 
 .bookcover {
@@ -179,11 +178,11 @@ p, a {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .login-container {
-        width: 90%;
+        width: 95%;
     }
 
     .bookcover {
-        width: 90%;
+        width: 95%;
         padding-left: 8px;
     }
 
@@ -211,11 +210,11 @@ p, a {
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .login-container {
-        width: 60%;
+        width: 70%;
     }
 
     .bookcover {
-        width: 60%;
+        width: 70%;
         padding-left: 8px;
     }
 
@@ -233,16 +232,27 @@ p, a {
 }
 
 #hamburger {
+    text-align: center;
     cursor: pointer;
+    position: absolute;
 }
 
 .book-profile {
     width: 150px;
-    height: 150px;
-    background-size: 150%;
-    background-position: 50% 15%;
+    height: auto;
     border: 5px solid white;
-    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-profile-large {
+    width: 150px;
+    height: auto;
+    border: 5px solid white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .instagram-logo, .snapchat-logo {
