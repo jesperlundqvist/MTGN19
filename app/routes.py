@@ -70,22 +70,9 @@ def get_weeks():
 def get_events():
     return jsonify(image_functions.get_events())
 
-@app.route("/news")
-def news_page():
-    return send_from_directory(STATIC_DIR, "news.html")
-
-@app.route("/news/<id>")
-def news_page_specific(id):
-    return send_from_directory(STATIC_DIR, "news.html")
-
-@app.route("/news/edit/<id>")
-def edit_page(id):
-    return send_from_directory(STATIC_DIR, "edit.html")
-
-@app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT", "OPTIONS"])
+@app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT"])
 @requires_auth_token
 def news_route():
-    print(request.method)
     id = request.args.get("id")
     if request.method == "GET":
         if id == None:

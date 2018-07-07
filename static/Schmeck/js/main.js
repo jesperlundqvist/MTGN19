@@ -29,6 +29,21 @@ $(document).ready(function() {
         return options.inverse(this);
     });
 
+    Handlebars.registerHelper('formatDate', function(date) {
+        var d = new Date(date);
+
+        var str = d.toLocaleDateString("sv-SE", {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        return new Handlebars.SafeString(str);
+    });
+
     Frack.Router = new Navigo(window.location.origin);
 
     Frack.Router.on({

@@ -2,6 +2,7 @@
 {{#each news}}
 <div class="newsitem">
     <a href="/nyhet/{{this.id}}" data-navigo><h3 class="news-title">{{this.headline}}</h2></a>
+    <p>Av {{this.author.type.name}}-{{this.author.name}} | {{formatDate this.timestamp}}</p>
     <p class="news-text">{{{this.text}}}</p>
 </div>
 {{/each}}
