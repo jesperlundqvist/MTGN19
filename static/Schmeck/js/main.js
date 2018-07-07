@@ -55,6 +55,8 @@ $(document).ready(function() {
     Frack.Router.on({
         '/': function() {
             Frack.News.GetAll().then(function(res) {
+                preloadTemplate("/templates/article.html");
+                preloadTemplate("/templates/sidebar.html");
                 renderTemplate("#content", "/templates/nyheter.html", {news: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
             });
@@ -75,6 +77,8 @@ $(document).ready(function() {
         },
 
         '/profiler': function() {
+            preloadTemplate("/templates/profiler.html");
+            preloadTemplate("/templates/sidebar.html");
             Frack.User.GetAll().then(function(res) {
                 var users = res.data;
                 var n0llan = {};
@@ -98,6 +102,8 @@ $(document).ready(function() {
         },
 
         '/profiler/:username': function(params, query) {
+            preloadTemplate("/templates/profil.html");
+            preloadTemplate("/templates/sidebar.html");
             Frack.User.GetByFilter("username=" + params.username).then(function(res) {
                 renderTemplate("#content", "/templates/profil.html", {user: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
@@ -106,8 +112,8 @@ $(document).ready(function() {
 
         '/media': function(params, query) {
             renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "media", user: Frack.CurrentUser});
+            preloadTemplate("/templates/media.html");
 
-            console.log(query);
             if(query == ""){
                 Frack.Media.GetAll().then(function(res) {
                     renderTemplate("#content", "/templates/media.html", {media : res.data});
@@ -142,6 +148,8 @@ $(document).ready(function() {
         },
 
         '/admin/hantera_nyheter': function() {
+            preloadTemplate("/templates/manageposts.html");
+            preloadTemplate("/templates/sidebar.html");
             Frack.News.GetAll().then(function(res) {
                 renderTemplate("#content", "/templates/manageposts.html", {news: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
@@ -149,6 +157,8 @@ $(document).ready(function() {
         },
 
         '/admin/redigera_nyhet/:id': function(params) {
+            preloadTemplate("/templates/editpost.html");
+            preloadTemplate("/templates/sidebar.html");
             Frack.News.GetByFilter("id=" + params.id).then(function(res) {
                 renderTemplate("#content", "/templates/editpost.html", {article: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
