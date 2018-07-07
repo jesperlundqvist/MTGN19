@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from app import app, db
 import hashlib
 from os import urandom
+from flask import jsonify
 
 from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
@@ -14,6 +15,9 @@ class UserType(db.Model):
 
     users = relationship("User", back_populates="user_type")
 
+    def __init__(self, name):
+        self.name = name
+
 class N0lleGroup(db.Model):
     __tablename__ = "n0llegroup"
     id = Column(Integer, primary_key=True)
@@ -21,9 +25,19 @@ class N0lleGroup(db.Model):
 
     users = relationship("User", back_populates="n0llegroup")
 
+    def __init__(self, name):
+        self.name = name
+
+    def to_dict(self):
+        group = {}
+        group["id"] = self.id
+        group["name"] = self.name
+        return group
+
 class User(db.Model):
     id = Column(Integer, primary_key=True)
     username = Column(String(64), unique=True)
+    name = Column(String(64))
     password_hash = Column(String(512)) # Använd set_password!
     password_salt = Column(String(256)) # Använd set_password!
 
@@ -33,13 +47,21 @@ class User(db.Model):
     n0llegroup_id = Column(Integer, ForeignKey('n0llegroup.id')) # Någon av nØllan, KPH, ARR, INPHO, LEK, VRAQUE, RSA, ÖPH
     n0llegroup = relationship("N0lleGroup", back_populates="users")
 
-    admin = Column(Boolean()) # Electus + INPHO
-    hidden = Column(Boolean()) # FusknØllan och VRAQUE som inte joinat ännu måste gömmas
-    profile_picture = Column(String(64))
-    q1 = Column(String())
-    q2 = Column(String())
-    q3 = Column(String())
-    description = Column(String())
+    admin = Column(Boolean(), default=False) # Electus + INPHO
+    hidden = Column(Boolean(), default=False) # FusknØllan och VRAQUE som inte joinat ännu måste gömmas
+    profile_picture = Column(String(64), default="/images/default.png")
+    q1 = Column(String(), default="")
+    q2 = Column(String(), default="")
+    q3 = Column(String(), default="")
+    description = Column(String(), default="")
+
+    def __init__(self, username, name, password, user_type, n0llegroup=None):
+        self.username = username
+        self.name = name
+        self.user_type = user_type
+        self.n0llegroup = n0llegroup
+
+        self.set_password(password)
 
     def set_password(self, password):
         self.password_salt = urandom(256).hex()
@@ -61,6 +83,26 @@ class User(db.Model):
         password_hash = m.hexdigest()
 
         return (password_hash == self.password_hash)
+
+    def to_dict(self):
+        user = {}
+        user["id"] = self.id
+        user["username"] = self.username
+        user["name"] = self.name
+        user["type"] = { "id": self.user_type.id, "name": self.user_type.name }
+        if (self.n0llegroup):
+            user["n0llegroup"] = { "id": self.n0llegroup.id, "name": self.n0llegroup.name }
+        user["admin"] = self.admin
+        user["hidden"] = self.hidden
+        user["profile_picture"] = self.profile_picture
+        user["description"] = self.description
+        user["q1"] = self.q1
+        user["q2"] = self.q2
+        user["q3"] = self.q3
+        return user
+
+    def to_json(self):
+        return jsonify(self.to_dict())
 
     @staticmethod
     def verify_auth_token(token):

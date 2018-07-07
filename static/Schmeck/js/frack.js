@@ -4,14 +4,9 @@ function GetApiObject(url) {
             return axios({
                 method: 'get',
                 url: url,
-                withCredentials: true,
                 auth: {
                     username: sessionStorage.authToken,
                     password: ""
-                }
-            }).catch(function(error) {
-                if (error.response.status == 401) {
-                    Frack.Router.navigate("/login");
                 }
             });
         },
@@ -25,25 +20,17 @@ function GetApiObject(url) {
                     username: sessionStorage.authToken,
                     password: ""
                 }
-            }).catch(function (error) {
-                if (error.response.status == 401) {
-                    Frack.Router.navigate("/login");
-                }
             });
         },
 
         Update: function(id, data) {
             return axios({
-                method: "post",
-                url: url+"?"+id,
+                method: "put",
+                url: url+"?id="+id,
                 data: data,
                 auth: {
                     username: sessionStorage.authToken,
                     password: ""
-                }
-            }).catch(function (error) {
-                if (error.response.status == 401) {
-                    Frack.Router.navigate("/login");
                 }
             });
         },
@@ -51,14 +38,10 @@ function GetApiObject(url) {
         Delete: function(id) {
             return axios({
                 method: "delete",
-                url: url+"?"+id,
+                url: url+"?id="+id,
                 auth: {
                     username: sessionStorage.authToken,
                     password: ""
-                }
-            }).catch(function (error) {
-                if (error.response.status == 401) {
-                    Frack.Router.navigate("/login");
                 }
             });
         },
@@ -70,10 +53,6 @@ function GetApiObject(url) {
                 auth: {
                     username: sessionStorage.authToken,
                     password: ""
-                }
-            }).catch(function (error) {
-                if (error.response.status == 401) {
-                    Frack.Router.navigate("/login");
                 }
             });
         }
@@ -91,6 +70,7 @@ var Frack = {
             }
         }).then(function(res) {
             sessionStorage.authToken = res.data.token;
+            return Frack.UpdateCurrentUser();
         });
     },
 
@@ -102,16 +82,22 @@ var Frack = {
         return (sessionStorage.getItem("authToken") != "0")
     },
 
-    CheckToken: function() {
-        return $.ajax({
-            method: "POST",
-            url: "/api/checkToken",
-            data: {
-                token: sessionStorage.authToken
+    UpdateCurrentUser: function() {
+        return axios({
+            method: "get",
+            url: "/api/currentUser",
+            auth: {
+                username: sessionStorage.authToken,
+                password: ""
             }
+        }).then(function(res) {
+            Frack.CurrentUser = res.data;
         });
     },
 
+    CurrentUser: null,
+
     News: GetApiObject("/api/news/"),
-    Media: GetApiObject("/api/media/")
+    Media: GetApiObject("/api/media/"),
+    User: GetApiObject("/api/user/")
 };

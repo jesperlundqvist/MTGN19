@@ -1,8 +1,10 @@
 <div class="sidebar">
     <div class="text-center">
-        <div style="background-image: url('/images/joppe.jpg');" class="book-profile"></div>
-        <h3 class="title">Jesper-nØllan</h3>
-        <p>Magi-Karparna</p>
+        <a href="/profiler/{{user.username}}" data-navigo>
+            <img src="{{user.profile_picture}}" class="book-profile" />
+            <h3 class="title">{{user.name}}</h3>
+        </a>
+        <p>{{user.n0llegroup.name}}</p>
     </div>
     <ul class="nav nav-pills flex-column menubar">
         <li class="nav-item">

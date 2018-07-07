@@ -7,10 +7,9 @@ import os
 from app.models.news import News
 import app.news_functions as news_functions
 import app.image_functions as image_functions
+import app.user_functions as user_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
-
-
 
 STATIC_DIR = os.path.join(os.getcwd(), "static", "Schmeck")
 
@@ -85,6 +84,26 @@ def news_route():
         return news_functions.delete_news(id), 200
     elif request.method == "PUT":
         return news_functions.edit_news(id, request.json), 201
+
+@app.route("/api/user/", methods=["GET", "POST", "DELETE", "PUT"])
+@requires_auth_token
+def user_route():
+    if request.method == "GET":
+        if len(request.args) > 0:
+            return user_functions.get_user_by_filter(request.args)
+        else:
+            return user_functions.get_all_users()
+    elif request.method == "POST":
+        return user_functions.add_user(request.json)
+    elif request.method == "DELETE":
+        return user_functions.delete_user(request.args)
+    elif request.method == "PUT":
+        return user_functions.edit_user(request.args, request.json)
+
+@app.route("/api/currentUser/", methods=["GET"])
+@requires_auth_token
+def current_user():
+    return g.user.to_json()
 
 @app.route('/api/token')
 @requires_auth
