@@ -22,6 +22,11 @@
         <li class="nav-item">
             <a class="nav-link {{active currentPage 'blandaren'}}" href="/blandaren" data-navigo>Bländaren</a>
         </li>
+        {{#if user.admin}}
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'admin'}}" href="/admin" data-navigo>Admin</a>
+        </li>
+        {{/if}}
     </ul>
 
     <div style="flex-grow: 1;"></div>

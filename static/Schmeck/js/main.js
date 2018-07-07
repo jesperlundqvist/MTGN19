@@ -133,14 +133,47 @@ $(document).ready(function() {
 
         '/blandaren': function() {
             renderTemplate("#content", "/templates/blandaren.html");
-            renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "blandaren"});
+            renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "blandaren", user: Frack.CurrentUser});
+        },
+
+        '/admin': function() {
+            if (Frack.CurrentUser.admin)
+            {
+                renderTemplate("#content", "/templates/admin.html");
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            }
+            else {
+                alert("Nej, här får du inte vara.");
+                Frack.Router.navigate("/");
+            }
+        },
+
+        '/admin/skapa_nyhet': function() {
+            renderTemplate("#content", "/templates/newpost.html");
+            renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+        },
+
+        '/admin/hantera_nyheter': function() {
+            Frack.News.GetAll().then(function(res) {
+                renderTemplate("#content", "/templates/manageposts.html", {news: res.data});
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            });
+        },
+
+        '/admin/redigera_nyhet/:id': function(params) {
+            Frack.News.GetByFilter("id=" + params.id).then(function(res) {
+                renderTemplate("#content", "/templates/editpost.html", {article: res.data});
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
+            });
         },
 
         '/login': function() {
             renderTemplate("#page", "/templates/login.html");
         },
-        '/upload':function() {
-            renderTemplate("#content", "/templates/upload.html")
+
+        '/admin/upload':function() {
+            renderTemplate("#content", "/templates/upload.html");
+            renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
         }
     });
 
