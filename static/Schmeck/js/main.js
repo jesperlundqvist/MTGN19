@@ -1,17 +1,3 @@
-function renderTemplate(selector, url, data) {
-    axios({
-        method: "get",
-        url: url
-    }).then(function(res) {
-        var template = Handlebars.compile(res.data);
-
-        $(selector).html(template(data));
-        Frack.Router.updatePageLinks();
-    }).catch(function(error) {
-        console.error(error);
-    });
-}
-
 $(document).ready(function() {
     Handlebars.registerHelper('active', function(variable, value) {
         if (variable == value) {
@@ -75,6 +61,8 @@ $(document).ready(function() {
         },
 
         '/nyhet/:id/': function(params, query) {
+            preloadTemplate("/templates/article.html");
+            preloadTemplate("/templates/sidebar.html");
             Frack.News.GetByFilter("id=" + params.id).then(function(res) {
                 renderTemplate("#content", "/templates/article.html", {article: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});

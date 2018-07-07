@@ -85,7 +85,7 @@ var Frack = {
     UpdateCurrentUser: function() {
         return axios({
             method: "get",
-            url: "/api/currentUser",
+            url: "/api/currentUser/",
             auth: {
                 username: sessionStorage.authToken,
                 password: ""
@@ -97,7 +97,47 @@ var Frack = {
 
     CurrentUser: null,
 
+    TemplateCache: {},
+
     News: GetApiObject("/api/news/"),
     Media: GetApiObject("/api/media/"),
     User: GetApiObject("/api/user/")
 };
+
+function preloadTemplate(url) {
+    if (!(url in Frack.TemplateCache))
+    {
+        axios({
+            method: "get",
+            url: url
+        }).then(function(res) {
+            var template = Handlebars.compile(res.data);
+            Frack.TemplateCache[url] = template;
+        }).catch(function(error) {
+            console.error(error);
+        });
+    }
+}
+
+function renderTemplate(selector, url, data) {
+    if (!(url in Frack.TemplateCache))
+    {
+        axios({
+            method: "get",
+            url: url
+        }).then(function(res) {
+            var template = Handlebars.compile(res.data);
+
+            $(selector).html(template(data));
+            Frack.Router.updatePageLinks();
+
+            Frack.TemplateCache[url] = template;
+        }).catch(function(error) {
+            console.error(error);
+        });
+    }
+    else {
+        $(selector).html(Frack.TemplateCache[url](data));
+        Frack.Router.updatePageLinks();
+    }
+}
