@@ -40,9 +40,11 @@
                 <input id="input_hidden_{{id}}" type="checkbox" {{inlineBool 'checked' hidden}} />
             </div>
 
-            <label class="btn btn-primary btn-sm">
-                Välj ny profilbild <input type="file" style="display: none;" id="input_picture_{{id}}">
-            </label>
+            <div>
+                <label for="input_picture_{{id}}" class="">Ny profilbild: </label>
+                <br />
+                <input type="file" id="input_picture_{{id}}">
+            </div>
 
             <br />
             <div class="d-flex w-100 justify-content-between">
@@ -105,15 +107,37 @@
             }
         }
 
-        if ($("#input_picture_" + id).prop('files'))
+        var profilePicutureRequest = [];
+
+        if ($("#input_picture_" + id).prop('files').length > 0)
         {
             var file = $("#input_picture_" + id).prop('files')[0];
-            /* TODO */
+            var formData = new FormData();
+            formData.append("image", file);
+
+            profilePicutureRequest.push(axios({
+                method: "post",
+                url: "/api/upload_profile_picture/",
+                data: formData,
+                auth: {
+                    username: sessionStorage.authToken,
+                    password: ""
+                }
+            }).catch(function(error) {
+                console.error(error);
+            }));
         }
 
-        Frack.User.Update(id, data).then(function (res) {
-            $("#input_alert_success_" + id).show();
-            $("#input_alert_success_" + id).text("Ändringar är sparade!");
+        axios.all(profilePicutureRequest).then(function(responses) {
+            if (responses.length > 0) {
+                $("#input_picture_" + id).val("");
+                data["profile_picture"] = responses[0].data.url;
+            }
+
+            Frack.User.Update(id, data).then(function (res) {
+                $("#input_alert_success_" + id).show();
+                $("#input_alert_success_" + id).text("Ändringar är sparade!");
+            });
         });
     }
 

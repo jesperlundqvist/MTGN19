@@ -1,6 +1,15 @@
 from app.models.user import User, UserType, N0lleGroup
 from app import db
 from flask import jsonify, g
+import os, uuid
+
+def upload_profile_picture(image):
+    original_filename, extension = os.path.splitext(image.filename)
+    filename = str(uuid.uuid4()) + extension
+    path = os.path.join("images", "profiles", filename)
+    local_path = os.path.join(os.getcwd(), "static", "Schmeck", path)
+    image.save(local_path)
+    return "/" + path
 
 ## USERS
 def get_all_users():

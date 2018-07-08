@@ -36,8 +36,13 @@ def get_templates(filename):
     return send_from_directory(os.path.join(STATIC_DIR, "templates"), filename)
 
 @app.route("/images/<filename>")
-def get_images(filename):
+def get_profile_images(filename):
     return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
+
+@app.route("/images/profiles/<filename>")
+def get_images(filename):
+    return send_from_directory(os.path.join(STATIC_DIR, "images", "profiles"), filename)
+
 
 #ladda media (bild, film, osv)
 @app.route("/media/<file_path>")
@@ -129,6 +134,19 @@ def user_group_route():
         return user_functions.delete_group(request.args)
     elif request.method == "PUT":
         return user_functions.edit_group(request.args, request.json)
+
+@app.route("/api/upload_profile_picture/", methods=["POST"])
+@requires_auth_token
+def profile_picture_route():
+    if g.user.admin:
+        if "image" in request.files:
+            image = request.files["image"]
+            url = user_functions.upload_profile_picture(image)
+            return jsonify({"url": url})
+        else:
+            return jsonify({"message": "invalid"}), 400
+    else:
+        return jsonify({"message": "unauthorized"}), 401
 
 @app.route("/api/currentUser/", methods=["GET"])
 @requires_auth_token
