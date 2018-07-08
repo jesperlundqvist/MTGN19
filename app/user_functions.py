@@ -2,6 +2,7 @@ from app.models.user import User, UserType, N0lleGroup
 from app import db
 from flask import jsonify, g
 
+## USERS
 def get_all_users():
     user_list = User.query.all()
     res_list = []
@@ -24,7 +25,7 @@ def add_user(data):
     if g.user.admin:
         n0llegroup = None
 
-        if data.get("n0llegroup_id"):
+        if "n0llegroup_id" in data:
             n0llegroup = N0lleGroup.query.get(data["n0llegroup_id"])
 
         u = User(data["username"], data["name"], data["password"], UserType.query.get(data["type_id"]), n0llegroup)
@@ -50,31 +51,135 @@ def edit_user(filter, data):
     user_count = users.count()
     for user in users:
         if g.user.admin or g.user.id == user.id:
-            if data.get("username"):
+            if "username" in data:
                 user.username = data["username"]
-            if data.get("name"):
+            if "name" in data:
                 user.name = data["name"]
-            if data.get("password"):
+            if "password" in data:
                 user.set_password(data["password"])
-            if data.get("type_id") and g.user.admin:
-                user.user_type_id = UserType.query.get(data["type_id"])
-            if data.get("n0llegroup_id") and g.user.admin:
-                user.n0llegroup_id = N0lleGroup.query.get(data["n0llegroup_id"])
-            if data.get("admin") and g.user.admin:
+            if "type_id" in data and g.user.admin:
+                user.user_type = UserType.query.get(data["type_id"])
+            if "n0llegroup_id" in data and g.user.admin:
+                user.n0llegroup = N0lleGroup.query.get(data["n0llegroup_id"])
+            if "admin" in data and g.user.admin:
                 user.admin = data["admin"]
-            if data.get("hidden") and g.user.admin:
+            if "hidden" in data and g.user.admin:
                 user.hidden = data["hidden"]
-            if data.get("profile_picture"):
+            if "profile_picture" in data:
                 user.profile_picture = data["profile_picture"]
-            if data.get("description"):
+            if "description" in data:
                 user.description = data["description"]
-            if data.get("q1"):
+            if "q1" in data:
                 user.q1 = data["q1"]
-            if data.get("q2"):
+            if "q2" in data:
                 user.q2 = data["q2"]
-            if data.get("q3"):
+            if "q3" in data:
                 user.q3 = data["q3"]
         else:
             return jsonify({"message": "unauthorized"}), 401
     db.session.commit()
     return jsonify({"count": user_count}), 200
+
+## TYPES
+def get_all_types():
+    type_list = UserType.query.all()
+    res_list = []
+    for type in type_list:
+        res_list.append(type.to_dict())
+    return jsonify(res_list)
+
+def get_type_by_filter(filter):
+    type_list = UserType.query.filter_by(**filter.to_dict()).all()
+
+    if len(type_list) == 1:
+        return jsonify(type_list[0].to_dict())
+
+    res_list = []
+    for type in type_list:
+        res_list.append(type.to_dict())
+    return jsonify(res_list)
+
+def add_type(data):
+    if g.user.admin:
+        t = UserType(data["name"])
+        db.session.add(t)
+        db.session.commit()
+
+        return jsonify({"type_id": t.id}), 200
+    else:
+        return jsonify({"message": "unauthorized"}), 401
+
+def delete_type(filter):
+    if g.user.admin:
+        types = UserType.query.filter_by(**filter.to_dict())
+        type_count = types.count()
+        types.delete()
+        db.session.commit()
+        return jsonify({"count": type_count}), 200
+    else:
+        return jsonify({"message": "unauthorized"}), 401
+
+def edit_type(filter, data):
+    types = UserType.query.filter_by(**filter.to_dict())
+    type_count = types.count()
+    for type in types:
+        if g.user.admin:
+            if "name" in data:
+                type.name = data["name"]
+        else:
+            return jsonify({"message": "unauthorized"}), 401
+    db.session.commit()
+    return jsonify({"count": type_count}), 200
+
+
+## N0LLEGROUPS
+
+def get_all_groups():
+    group_list = N0lleGroup.query.all()
+    res_list = []
+    for group in group_list:
+        res_list.append(group.to_dict())
+    return jsonify(res_list)
+
+def get_group_by_filter(filter):
+    group_list = N0lleGroup.query.filter_by(**filter.to_dict()).all()
+
+    if len(group_list) == 1:
+        return jsonify(group_list[0].to_dict())
+
+    res_list = []
+    for group in group_list:
+        res_list.append(group.to_dict())
+    return jsonify(res_list)
+
+def add_group(data):
+    if g.user.admin:
+        group = N0lleGroup(data["name"])
+        db.session.add(group)
+        db.session.commit()
+
+        return jsonify({"group_id": group.id}), 200
+    else:
+        return jsonify({"message": "unauthorized"}), 401
+
+def delete_group(filter):
+    if g.user.admin:
+        groups = N0lleGroup.query.filter_by(**filter.to_dict())
+        group_count = groups.count()
+        groups.delete()
+        db.session.commit()
+        return jsonify({"count": group_count}), 200
+    else:
+        return jsonify({"message": "unauthorized"}), 401
+
+def edit_group(filter, data):
+    groups = N0lleGroup.query.filter_by(**filter.to_dict())
+    group_count = groups.count()
+    for group in groups:
+        if g.user.admin:
+            if "name" in data:
+                group.name = data["name"]
+        else:
+            return jsonify({"message": "unauthorized"}), 401
+    db.session.commit()
+    return jsonify({"count": group_count}), 200

@@ -100,6 +100,36 @@ def user_route():
     elif request.method == "PUT":
         return user_functions.edit_user(request.args, request.json)
 
+@app.route("/api/user_type/", methods=["GET", "POST", "DELETE", "PUT"])
+@requires_auth_token
+def user_type_route():
+    if request.method == "GET":
+        if len(request.args) > 0:
+            return user_functions.get_type_by_filter(request.args)
+        else:
+            return user_functions.get_all_types()
+    elif request.method == "POST":
+        return user_functions.add_type(request.json)
+    elif request.method == "DELETE":
+        return user_functions.delete_type(request.args)
+    elif request.method == "PUT":
+        return user_functions.edit_type(request.args, request.json)
+
+@app.route("/api/n0llegroup/", methods=["GET", "POST", "DELETE", "PUT"])
+@requires_auth_token
+def user_group_route():
+    if request.method == "GET":
+        if len(request.args) > 0:
+            return user_functions.get_group_by_filter(request.args)
+        else:
+            return user_functions.get_all_groups()
+    elif request.method == "POST":
+        return user_functions.add_group(request.json)
+    elif request.method == "DELETE":
+        return user_functions.delete_group(request.args)
+    elif request.method == "PUT":
+        return user_functions.edit_group(request.args, request.json)
+
 @app.route("/api/currentUser/", methods=["GET"])
 @requires_auth_token
 def current_user():

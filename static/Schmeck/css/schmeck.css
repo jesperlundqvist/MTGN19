@@ -57,7 +57,7 @@ p, a {
 
 .bookcontent {
     outline: 1px solid #b2b2b2;
-    flex: 1;
+    overflow-x: hidden;
 
     padding: 20px;
 }
@@ -99,6 +99,10 @@ p, a {
         margin-left: 0;
     }
 
+    .bookcontent {
+        width: 100%;
+    }
+
     .bookcontent-left {
         display: none;
     }
@@ -128,6 +132,10 @@ p, a {
 
     .bookpage {
         margin-left: 0;
+    }
+
+    .bookcontent {
+        width: 100%;
     }
 
     .bookcontent-left {
@@ -160,6 +168,10 @@ p, a {
 
     .bookpage {
         margin-left: 2px;
+    }
+
+    .bookcontent {
+        width: 50%;
     }
 
     .bookcontent-left {

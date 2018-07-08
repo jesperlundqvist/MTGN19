@@ -8,6 +8,24 @@ $(document).ready(function() {
         }
     });
 
+    Handlebars.registerHelper('selected', function(variable, value) {
+        if (variable == value) {
+            return new Handlebars.SafeString('selected');
+        }
+        else {
+            return '';
+        }
+    });
+
+    Handlebars.registerHelper('inlineBool', function(ret, bool) {
+        if (bool) {
+            return new Handlebars.SafeString(ret);
+        }
+        else {
+            return '';
+        }
+    });
+
     Handlebars.registerHelper('ifCond', function(v1, v2, options) {
         if (v1 === v2){
             return options.fn(this);
@@ -83,11 +101,17 @@ $(document).ready(function() {
                 var users = res.data;
                 var n0llan = {};
                 var phos = {};
+
                 users.forEach(function(user) {
                     if (!user.hidden) {
                         if (user.type.name == "nØllan") {
-                            n0llan[user.n0llegroup.name] = n0llan[user.n0llegroup.name] || [];
-                            n0llan[user.n0llegroup.name].push(user);
+                            if (user.n0llegroup) {
+                                n0llan[user.n0llegroup.name] = n0llan[user.n0llegroup.name] || [];
+                                n0llan[user.n0llegroup.name].push(user);
+                            }
+                            else {
+                                console.log("Ogiltig nØllan \"" + user.username + "\". Har ingen nØllegrupp.");
+                            }
                         }
                         else {
                             phos[user.type.name] = phos[user.type.name] || [];
@@ -95,7 +119,7 @@ $(document).ready(function() {
                         }
                     }
                 });
-
+                
                 renderTemplate("#content", "/templates/profiler.html", {n0llan: n0llan, phos: phos});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
             });
@@ -156,12 +180,46 @@ $(document).ready(function() {
             });
         },
 
-        '/admin/redigera_nyhet/:id': function(params) {
-            preloadTemplate("/templates/editpost.html");
+        '/admin/skapa_anvandare': function() {
+            var requests = [Frack.UserType.GetAll(), Frack.N0lleGroup.GetAll()];
+            axios.all(requests).then(function(res) {
+                types = res[0].data;
+                groups = res[1].data;
+
+                renderTemplate("#content", "/templates/createuser_simple.html", {
+                    user_types: types,
+                    n0llegroups: groups
+                });
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            });
+        },
+
+        '/admin/hantera_anvandare': function() {
+            preloadTemplate("/templates/profiler.html");
             preloadTemplate("/templates/sidebar.html");
-            Frack.News.GetByFilter("id=" + params.id).then(function(res) {
-                renderTemplate("#content", "/templates/editpost.html", {article: res.data});
-                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
+
+            var requests = [Frack.UserType.GetAll(), Frack.N0lleGroup.GetAll(), Frack.User.GetAll()];
+            axios.all(requests).then(function(res) {
+                types = res[0].data;
+                groups = res[1].data;
+                users = res[2].data;
+
+                renderTemplate("#content", "/templates/manageusers.html", {
+                    users: users,
+                    user_types: types,
+                    n0llegroups: groups
+                });
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+
+            });
+        },
+
+        '/admin/hantera_n0llegrupper': function() {
+            preloadTemplate("/templates/managen0llegroups.html");
+            preloadTemplate("/templates/sidebar.html");
+            Frack.N0lleGroup.GetAll().then(function(res) {
+                renderTemplate("#content", "/templates/managen0llegroups.html", {n0llegroups: res.data});
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             });
         },
 
