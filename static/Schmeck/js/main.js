@@ -119,7 +119,7 @@ $(document).ready(function() {
                         }
                     }
                 });
-                
+
                 renderTemplate("#content", "/templates/profiler.html", {n0llan: n0llan, phos: phos});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
             });
@@ -219,6 +219,15 @@ $(document).ready(function() {
             preloadTemplate("/templates/sidebar.html");
             Frack.N0lleGroup.GetAll().then(function(res) {
                 renderTemplate("#content", "/templates/managen0llegroups.html", {n0llegroups: res.data});
+                renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            });
+        },
+
+        '/admin/hantera_typer': function() {
+            preloadTemplate("/templates/manageusertypes.html");
+            preloadTemplate("/templates/sidebar.html");
+            Frack.UserType.GetAll().then(function(res) {
+                renderTemplate("#content", "/templates/manageusertypes.html", {types: res.data});
                 renderTemplate("#sidebar", "/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             });
         },
