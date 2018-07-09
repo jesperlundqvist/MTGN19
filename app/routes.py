@@ -11,7 +11,7 @@ import app.user_functions as user_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
 
-STATIC_DIR = os.path.join(os.getcwd(), "static", "Schmeck")
+STATIC_DIR = os.path.join(os.getcwd(), "static")
 
 
 #Definiera olika URL-er och vad de leder till
