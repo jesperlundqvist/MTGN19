@@ -49,6 +49,7 @@
             <br />
             <div class="d-flex w-100 justify-content-between">
                 <button type="button" class="btn btn-primary btn-sm" onclick="saveUser({{id}});">Spara</button>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="userResetPassword({{id}});">Återställ lösenord</button>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="removeUser({{id}});">Ta bort</button>
             </div>
 
@@ -148,5 +149,14 @@
                 $("#user_" + id).remove();
             });
         }
+    }
+
+    function userResetPassword(id) {
+        var newPassword = "potatis";
+
+        Frack.User.Update(id, { password: newPassword }).then(function(res) {
+            $("#input_alert_success_" + id).show();
+            $("#input_alert_success_" + id).text("Nytt lösenord är \"" + newPassword + "\"!");
+        });
     }
 </script>
