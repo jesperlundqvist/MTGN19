@@ -44,8 +44,8 @@ class User(db.Model):
     id = Column(Integer, primary_key=True)
     username = Column(String(64), unique=True)
     name = Column(String(64))
-    password_hash = Column(String(512)) # Använd set_password!
-    password_salt = Column(String(256)) # Använd set_password!
+    password_hash = Column(String(1024)) # Använd set_password!
+    password_salt = Column(String(1024)) # Använd set_password!
 
     user_type_id = Column(Integer, ForeignKey('usertype.id')) # Någon av nØllan, KPH, ARR, INPHO, LEK, VRAQUE, RSA, ÖPH
     user_type = relationship("UserType", back_populates="users")
@@ -56,10 +56,10 @@ class User(db.Model):
     admin = Column(Boolean(), default=False) # Electus + INPHO
     hidden = Column(Boolean(), default=False) # FusknØllan och VRAQUE som inte joinat ännu måste gömmas
     profile_picture = Column(String(64), default="/images/profiles/default.png")
-    q1 = Column(String(), default="")
-    q2 = Column(String(), default="")
-    q3 = Column(String(), default="")
-    description = Column(String(), default="")
+    q1 = Column(String(1024), default="")
+    q2 = Column(String(1024), default="")
+    q3 = Column(String(1024), default="")
+    description = Column(String(1024), default="")
 
     def __init__(self, username, name, password, user_type, n0llegroup=None):
         self.username = username
