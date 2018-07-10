@@ -71,6 +71,7 @@ p, a {
 .bookcontent-right
 {
     background: linear-gradient(to right, #b2b2b2 0%, #f9f0e8 2%);
+    max-width: 70%;
 }
 
 .sidebar {
@@ -353,4 +354,25 @@ p, a {
 
 #snapcode-link-kph, #snapcode-link-inpho, #snapcode-link-arr {
     cursor: pointer;
+}
+
+.media-thumbnail{
+    max-height: 200px;
+    max-width: 200px;
+    background-color: #a5a5a5;
+}
+
+.active-media{
+    height: 720px;
+}
+
+.media-list{
+    overflow-x: scroll;
+    white-space: nowrap;   
+}
+
+iframe{
+    width:100%;
+    height: 56.25%;
+    background: red;
 }

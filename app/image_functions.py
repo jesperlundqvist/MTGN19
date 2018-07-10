@@ -22,12 +22,13 @@ def upload_media(request):
             db.session.add(new_img)
 
     latest_videos = request.form.getlist("videos")
-    print(latest_videos == None)
     if latest_videos is not None:
         for video in latest_videos:
-            new_vid = Video(video_link = video, uploaded_by = name,
+            embed_link, thumbnail = handle_video(video)
+            new_vid = Video(video_link = embed_link, uploaded_by = name,
             event = event,
-            week = week)
+            week = week,
+            thumbnail = thumbnail)
             db.session.add(new_vid)
 
 
@@ -83,12 +84,26 @@ def generate_thumbnail(filename):
 
 def get_weeks():
     output = []
-    for value in db.session.query(Image.week).distinct().order_by(Image.week.asc()):
+    q1 = db.session.query(Image.week)
+    q2 = db.session.query(Video.week)
+    q3 = q1.union(q2)
+    for value in q3.distinct():
         output.append(value[0])
     return output
 
 def get_events():
     output = []
-    for value in db.session.query(Image.event).distinct().order_by(Image.week.asc()):
+    q1 = db.session.query(Image.event)
+    q2 = db.session.query(Video.event)
+    q3 = q1.union(q2)
+    for value in q3.distinct():
         output.append(value[0])
     return output
+
+def handle_video(video_link):
+    video_id = video_link.split("v=")[1]
+    print(video_id)
+    embed_link = "youtube.com/embed/" + video_id
+    thumbnail = "http://img.youtube.com/vi/" + video_id + "/maxresdefault.jpg"
+
+    return embed_link, thumbnail
