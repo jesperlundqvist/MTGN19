@@ -356,6 +356,7 @@ p, a {
     cursor: pointer;
 }
 
+/* MEDIA */
 .media-thumbnail{
     max-height: 200px;
     max-width: 200px;
@@ -375,4 +376,13 @@ iframe{
     width:100%;
     height: 56.25%;
     background: red;
+}
+
+.week-select-button, .event-select-button, .type-button {
+    background-color: #f9f0e8;
+    border: 1px solid black;
+}
+
+.active-selection{
+    background-color: #fff19b;
 }
