@@ -30,7 +30,7 @@ p, a {
 
 .bookcover {
     margin: auto;
-    height: 100%;
+    height: 100vh;
     background-color: #704926;
     padding-right: 8px;
     padding-top: 8px;
@@ -51,13 +51,14 @@ p, a {
 }
 
 .bookpage-middle {
-    min-height: 100vh;
     display: flex;
 }
 
 .bookcontent {
+    height: 100%;
     outline: 1px solid #b2b2b2;
     overflow-x: hidden;
+    overflow-y: scroll;
 
     padding: 20px;
 }
@@ -73,14 +74,36 @@ p, a {
     background: linear-gradient(to right, #b2b2b2 0%, #f9f0e8 2%);
 }
 
+#left-content, #right-content, #sidebar {
+    height: 100%;
+}
+
 .sidebar {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar > {
     flex: 1;
+}
+
+.sponsors {
+    width: 100%;
+    display: flex;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sponsor-img {
+    width: auto;
+    height: 35px;
+    margin: 10px;
+    /*border: 1px solid lightgray;
+    padding: 5px;
+    background-color: white;*/
 }
 
 /* Extra small devices (phones, 600px and down) */
