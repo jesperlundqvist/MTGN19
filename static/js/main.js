@@ -266,6 +266,11 @@ $(document).ready(function() {
             renderTemplate("#page", "/static/templates/login.html");
         },
 
+        '/logout': function() {
+            Frack.Logout();
+            Frack.Router.navigate("/");
+        },
+
         '/admin/upload':function() {
             renderTemplate("#content", "/static/templates/upload.html");
             renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
