@@ -117,7 +117,6 @@ p, a {
     .bookcover {
         width: 100%;
         height: auto;
-        min-height: 100vh;
         padding-left: 0;
     }
 
@@ -127,6 +126,7 @@ p, a {
 
     .bookcontent {
         width: 100%;
+        min-height: 100vh;
         overflow-y: visible;
     }
 
@@ -153,7 +153,6 @@ p, a {
     .bookcover {
         width: 100%;
         height: auto;
-        min-height: 100vh;
         padding-left: 0;
     }
 
@@ -163,6 +162,7 @@ p, a {
 
     .bookcontent {
         width: 100%;
+        min-height: 100vh;
         overflow-y: visible;
     }
 
