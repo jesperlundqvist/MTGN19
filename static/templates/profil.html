@@ -11,7 +11,13 @@
 <center><i>{{user.n0llegroup.name}}</i></center>
 {{/if}}
 
-<br>
+<br />
+
+{{#if isCurrent}}
+<a href="/profiler/{{user.username}}/redigera" data-navigo>Redigera profil</a>
+<br />
+<br />
+{{/if}}
 
 <p>{{user.description}}</p>
 

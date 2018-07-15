@@ -129,8 +129,31 @@ $(document).ready(function() {
             preloadTemplate("/static/templates/profil.html");
             preloadTemplate("/static/templates/sidebar.html");
             Frack.User.GetByFilter("username=" + params.username).then(function(res) {
-                renderTemplate("#content", "/static/templates/profil.html", {user: res.data});
+                var isCurrent = false;
+
+                if (res.data.id == Frack.CurrentUser.id)
+                {
+                    isCurrent = true;
+                }
+
+                renderTemplate("#content", "/static/templates/profil.html", {user: res.data, isCurrent: isCurrent});
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
+            });
+        },
+
+        '/profiler/:username/redigera': function(params, query) {
+            preloadTemplate("/static/templates/redigeraprofil.html");
+            preloadTemplate("/static/templates/sidebar.html");
+            Frack.User.GetByFilter("username=" + params.username).then(function(res) {
+                if (Frack.CurrentUser.id == res.data.id)
+                {
+                    renderTemplate("#content", "/static/templates/redigeraprofil.html", {user: res.data});
+                    renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
+                }
+                else
+                {
+                    renderTemplate("#page", "/static/templates/403.html");
+                }
             });
         },
 
@@ -161,8 +184,7 @@ $(document).ready(function() {
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             }
             else {
-                alert("Nej, här får du inte vara.");
-                Frack.Router.navigate("/");
+                renderTemplate("#page", "/static/templates/403.html");
             }
         },
 
@@ -210,7 +232,6 @@ $(document).ready(function() {
                     n0llegroups: groups
                 });
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
-
             });
         },
 
