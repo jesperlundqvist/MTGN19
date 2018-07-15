@@ -201,6 +201,7 @@ p, a {
     .bookcontent {
         width: 50%;
         overflow-y: scroll;
+        min-height: 0;
     }
 
     .bookcontent-left {
