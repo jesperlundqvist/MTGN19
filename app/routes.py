@@ -21,38 +21,41 @@ STATIC_DIR = os.path.join(os.getcwd(), "static")
 def index(path):
     return send_from_directory(STATIC_DIR, "index.html")
 
-#ladda CSS
-@app.route("/css/<filename>")
-def get_css(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "css"), filename)
 
-#ladda JavaScript
-@app.route("/js/<filename>")
-def get_js(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "js"), filename)
+# På servern är det bättre att en "riktig" web server som Nginx sköter statiska filer
+if app.config["DEBUG"]:
+    #ladda CSS
+    @app.route("/css/<filename>")
+    def get_css(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "css"), filename)
 
-#ladda templates
-@app.route("/templates/<filename>")
-def get_templates(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "templates"), filename)
+    #ladda JavaScript
+    @app.route("/js/<filename>")
+    def get_js(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "js"), filename)
 
-@app.route("/images/<filename>")
-def get_profile_images(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
+    #ladda templates
+    @app.route("/templates/<filename>")
+    def get_templates(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "templates"), filename)
 
-@app.route("/images/profiles/<filename>")
-def get_images(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "images", "profiles"), filename)
+    @app.route("/images/<filename>")
+    def get_profile_images(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
+
+    @app.route("/images/profiles/<filename>")
+    def get_images(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "images", "profiles"), filename)
 
 
-#ladda media (bild, film, osv)
-@app.route("/media/<file_path>")
-def get_media(file_path):
-    return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
+    #ladda media (bild, film, osv)
+    @app.route("/media/<file_path>")
+    def get_media(file_path):
+        return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
 
-@app.route("/blandaren/<file_path>")
-def get_blandaren(file_path):
-    return send_from_directory(os.path.join(STATIC_DIR, "blandaren"), file_path)
+    @app.route("/blandaren/<file_path>")
+    def get_blandaren(file_path):
+        return send_from_directory(os.path.join(STATIC_DIR, "blandaren"), file_path)
 
 @app.route("/api/blandaren", methods = ["GET", "POST"])
 def blandar_route():
