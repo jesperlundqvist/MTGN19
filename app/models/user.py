@@ -55,7 +55,7 @@ class User(db.Model):
 
     admin = Column(Boolean(), default=False) # Electus + INPHO
     hidden = Column(Boolean(), default=False) # FusknØllan och VRAQUE som inte joinat ännu måste gömmas
-    profile_picture = Column(String(64), default="/images/profiles/default.png")
+    profile_picture = Column(String(64), default="/static/images/profiles/default.png")
     q1 = Column(String(1024), default="")
     q2 = Column(String(1024), default="")
     q3 = Column(String(1024), default="")

@@ -13,21 +13,21 @@ $(function(){
     $("#snapcode-link-inpho").click(function(e) {
         $("#snapcode-modal").fadeIn();
         $("#snapcode-modal-description").text("inphosnap");
-        $("#snapcode-modal-img").attr("src", "/images/inphosnap.png");
+        $("#snapcode-modal-img").attr("src", "/static/images/inphosnap.png");
         e.stopPropagation();
     });
 
     $("#snapcode-link-arr").click(function(e) {
         $("#snapcode-modal").fadeIn();
         $("#snapcode-modal-description").text("arrsnap");
-        $("#snapcode-modal-img").attr("src", "/images/arrsnap.png");
+        $("#snapcode-modal-img").attr("src", "/static/images/arrsnap.png");
         e.stopPropagation();
     });
 
     $("#snapcode-link-kph").click(function(e) {
         $("#snapcode-modal").fadeIn();
         $("#snapcode-modal-description").text("kphsnap");
-        $("#snapcode-modal-img").attr("src", "/images/kphsnap.png");
+        $("#snapcode-modal-img").attr("src", "/static/images/kphsnap.png");
         e.stopPropagation();
     });
 });

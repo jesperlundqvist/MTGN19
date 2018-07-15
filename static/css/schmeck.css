@@ -223,7 +223,7 @@ p, a {
     }
 
     body {
-        background: url("/images/bg.jpg");
+        background: url("/static/images/bg.jpg");
     }
 
     .bookpage {
@@ -255,7 +255,7 @@ p, a {
     }
 
     body {
-        background: url("/images/bg.jpg");
+        background: url("/static/images/bg.jpg");
     }
 
     .bookpage {
@@ -404,7 +404,7 @@ p, a {
 
 .media-list{
     overflow-x: scroll;
-    white-space: nowrap;   
+    white-space: nowrap;
 }
 
 iframe{

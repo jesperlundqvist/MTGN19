@@ -45,7 +45,7 @@ if app.config["DEBUG"]:
     hasten = N0lleGroup(name="Trojanska Häztääen")
 
     joppe = User("joppe", "Joppe", "potatis", userTypeInpho, magikarparna)
-    joppe.profile_picture = "/images/profiles/joppe.jpg"
+    joppe.profile_picture = "/static/images/profiles/joppe.jpg"
     joppe.admin = True
     joppe.description = "🦌🦌🦌"
     joppe.q1 = "Om valet står mellan choklad och inte choklad så är det egentligen inget val!"
@@ -53,18 +53,18 @@ if app.config["DEBUG"]:
     joppe.q3 = "Joppus"
 
     jespern0llan = User("jesper-n0llan", "Jesper-nØllan", "potatis", userTypeN0llan, magikarparna)
-    jespern0llan.profile_picture = "/images/profiles/jespern0llan.jpg"
+    jespern0llan.profile_picture = "/static/images/profiles/jespern0llan.jpg"
     jespern0llan.description = "Åh vad kul att börja på Medieteknik!"
     jespern0llan.q1 = "Ja, absolut!"
     jespern0llan.q2 = "Båt båt båt?"
     jespern0llan.q3 = "Nej, aldrig!"
 
     fredrikn0llan = User("fredrik-n0llan", "Fredrik-nØllan", "potatis", userTypeN0llan, krangligaKrabban)
-    fredrikn0llan.profile_picture = "/images/profiles/foppe.jpg"
+    fredrikn0llan.profile_picture = "/static/images/profiles/foppe.jpg"
     olivern0llan = User("oliver-n0llan", "Oliver-nØllan", "potatis", userTypeN0llan, magikarparna)
-    olivern0llan.profile_picture = "/images/profiles/shin.jpg"
+    olivern0llan.profile_picture = "/static/images/profiles/shin.jpg"
     samueln0llan = User("samuel-n0llan", "Samuel-nØllan", "potatis", userTypeN0llan, hasten)
-    samueln0llan.profile_picture = "/images/profiles/kraft.jpg"
+    samueln0llan.profile_picture = "/static/images/profiles/kraft.jpg"
 
     testNews = News(headline="Första inlägget", author=joppe, tags="", text="Här är det lite text!")
     dag1News = News(headline="Välkommen nØllan!", author=adminUser, tags="", text="Dag 1 är redan slut och vi hoppas att ni har haft en toppenstart tillsammans med oss!<br><br>Vi hoppas att ni ska trivas här hos oss på Medieteknik och att ni ser fram emot Mottagningen.<br><br>Under morgondagen vankas det gasque så passa på att komma till Gasquevettet där VRAQUE kommer lära er allt om hur man gasquear.<br><br>Tagga Välkomstgasque i morgon!")
