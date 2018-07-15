@@ -123,6 +123,7 @@ p, a {
     }
 
     .bookcontent {
+        padding-top: 45px;
         width: 100%;
     }
 
@@ -262,8 +263,12 @@ p, a {
 }
 
 #hamburger {
-    font-size: 25px;
+    left: 25px;
+    top: 20px;
+    font-size: 30px;
     cursor: pointer;
+    position: fixed;
+    z-index: 1000;
 }
 
 .book-profile {
