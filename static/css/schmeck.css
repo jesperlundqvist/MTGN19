@@ -59,6 +59,7 @@ p, a {
     outline: 1px solid #b2b2b2;
     overflow-x: hidden;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 
     padding: 20px;
 }
