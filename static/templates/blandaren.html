@@ -1,1 +1,33 @@
+<script>
+    var allDocuments;
+    var API_URL = "/api/blandaren"
+    var DOC_URL = "/blandaren/"
+
+    $(document).ready(function(){
+        fetchData();
+    })
+
+    fetchData = async() => {
+        allDocuments = await fetch(API_URL).then((response) => response.json())
+        .then((jsonData) => {return jsonData});
+        console.log("alla dokument" + allDocuments)
+        updateDocumentList( allDocuments);
+    }
+
+    updateDocumentList = function(documentArray){
+        console.log(typeof(documentArray));
+        var documentContainer = $(".document-container");
+        for (var i = 0; i < documentArray.length; i++){
+            var docObj = documentArray[i];
+            console.log(documentArray[i]);
+            var link = $(('<a>'))
+            link.attr("href", DOC_URL + docObj.filename)
+            link.text(docObj.filename);
+            documentContainer.append(link);
+        }
+    }
+</script>
 <h1 class="title">Bländaren</h1>
+<div class="document-container">
+
+</div>

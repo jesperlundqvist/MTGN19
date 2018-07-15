@@ -4,8 +4,11 @@
     var shownMedia;
     var weeks;
     var events;
-    const API_URL = "/api/media";
-    const MEDIA_URL = "/media/";
+    var API_URL = "/api/media";
+    var MEDIA_URL = "/media/";
+    var weekFilter = "all";
+    var eventFilter = "all";
+    var typeFilter = "all";
     $(document).ready(function(){
        /*fetch(API_URL).then((response) => response.json())
        .then((jsondata) => {allMedia = jsondata
@@ -19,31 +22,88 @@
         allMedia =  await fetch(API_URL).then((response) => response.json())
         .then((jsondata) => {return jsondata});
         shownMedia = allMedia;
-        updateMediaList(shownMedia)
+        updateMediaList(shownMedia);
+        
 
         weeks = await fetch("/api/weeks").then((response) => response.json())
         .then((jsondata) => {return jsondata});
-        generateWeekSelector();
-        
+        generateWeekButtons();
+        $("#week-all").addClass("active-selection");
+
         events = await fetch("/api/events").then((response) => response.json())
         .then((jsondata) => {return jsondata});
-        generateEventSelector();
+        generateEventButtons();
+        $("#event-all").addClass("active-selection");
+
+        $("#type-all").addClass("active-selection");
     }
 
-    generateWeekSelector = function(){
-        var weekSelector = $("#week-select");
-        for(var i = 0; i < weeks.length; i++ ){
-            var optionStr = '<option value="'+ weeks[i] +'">'+ weeks[i] +'</option>';
-            weekSelector.append(optionStr);
+    generateWeekButtons = function(){
+        var weekDiv = $(".week-buttons");
+        var selectAllBtn = $(('<button>'));
+            selectAllBtn.text("Alla")
+            selectAllBtn.attr("id", "week-all");
+            selectAllBtn.attr("class", "week-select-button");
+            selectAllBtn.attr("onclick", "setWeekFilter('all')");
+            weekDiv.append(selectAllBtn);
+        for (var i = 0; i < weeks.length; i++){
+            var buttonStr = $(('<button>'));
+            buttonStr.text( weeks[i]);
+            buttonStr.attr("id", weeks[i]);
+            buttonStr.attr("class", "week-select-button");
+            buttonStr.attr("onclick", "setWeekFilter(" + weeks[i]+ ")");
+            weekDiv.append(buttonStr);
+        }
+    }
+    generateEventButtons = function(){
+        var weekDiv = $(".event-buttons");
+        var selectAllBtn = $(('<button>'));
+            selectAllBtn.text("Alla")
+            selectAllBtn.attr("id", "event-all");
+            selectAllBtn.attr("class", "event-select-button");
+            selectAllBtn.attr("onclick", "setEventFilter('all')");
+            weekDiv.append(selectAllBtn);
+        for (var i = 0; i < events.length; i++){
+            var buttonStr = $(('<button>'));
+            buttonStr.text( events[i]);
+            buttonStr.attr("id", events[i]);
+            buttonStr.attr("class", "event-select-button");
+            buttonStr.attr("onclick", "setEventFilter('" + events[i]+ "')");
+            weekDiv.append(buttonStr);
         }
     }
 
-    generateEventSelector = function(){
-        var eventSelector = $("#event-select");
-        for(var i = 0; i < events.length; i++ ){
-            var optionStr = '<option value="'+ events[i] +'">'+ events[i] +'</option>';
-            eventSelector.append(optionStr);
+    setWeekFilter = function(week){
+       $(".week-select-button").removeClass("active-selection");
+        weekFilter = week;
+        if(week === "all"){
+            $("#week-all").addClass("active-selection");
+        }else{
+            $("#"+week).addClass("active-selection");
         }
+        filterMedia();
+    }
+
+    setEventFilter = function(event){
+        $(".event-select-button").removeClass("active-selection");
+        eventFilter = event;
+        if(event === "all"){
+            $("#event-all").addClass("active-selection");
+        }else{
+            $("#"+event).addClass("active-selection");
+        }
+        filterMedia();
+    }
+
+    setTypeFilter = function(type){
+        $(".type-button").removeClass("active-selection");
+        typeFilter = type;
+        if(type === "all"){
+            $("#type-all").addClass("active-selection");
+        }else{
+            $("#type-"+type).addClass("active-selection");
+        }
+        filterMedia();
     }
 
     updateMediaList = function(mediaArray){
@@ -51,24 +111,83 @@
         mediaList.empty();
         for (var i = 0; i < mediaArray.length; i++){
             var mediaObj = mediaArray[i];
+<<<<<<< HEAD
+            if (mediaObj.type === "image"){
+                var img = $(('<img id="' + mediaObj.filename +'">'));
+                img.attr("src", MEDIA_URL + mediaObj.thumbnail);
+                img.attr("class", "media-thumbnail");
+            }
+            if(mediaObj.type === "video"){
+                console.log(mediaObj)
+                var img = $(('<img id="' + mediaObj.video_link + '">'))
+                img.attr("src", mediaObj.thumbnail);
+                img.attr("class", "media-thumbnail");
+            }   
+=======
+<<<<<<< Updated upstream
             var img = $(('<img id="' + mediaObj.filename +'">'));
             img.attr("src", MEDIA_URL + mediaObj.thumbnail);
+>>>>>>> bytte dropdown mot knappar
             mediaList.append(img);
         }
     }
     $("#week-select").change(() => {filterMedia()});
     $("#event-select").change(() => {filterMedia()})
+<<<<<<< HEAD
+=======
+=======
+            if (mediaObj.type === "image"){
+                var img = $(('<img id="' + mediaObj.filename +'">'));
+                img.attr("src", MEDIA_URL + mediaObj.thumbnail);
+                img.attr("class", "media-thumbnail");
+            }
+            if(mediaObj.type === "video"){
+                var img = $(('<img id="' + mediaObj.video_link + '">'))
+                img.attr("src", mediaObj.thumbnail);
+                img.attr("class", "media-thumbnail");
+            }   
+            mediaList.append(img);
+        }
+    }
+>>>>>>> bytte dropdown mot knappar
+    $(".media-list").on('click', '.media-thumbnail', (event) => updateActiveMedia(event.target.id))
+    updateActiveMedia = function(mediaId){
+        console.log(JSON.stringify(mediaId));
+        var content = allMedia.find(m => m.filename === mediaId || m.video_link === mediaId);
+        $(".active-media").empty();
+        if(content.type === "video"){
+            var iframe = $(('<iframe id="active">'));
+            iframe.attr("src", "http://" + content.video_link);
+            iframe.attr("frameborder", "0");
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> bytte dropdown mot knappar
 
+            $(".active-media").append(iframe);
+        }
+        if(content.type === "image"){
+            var img = $(('<img>'));
+            img.attr("src", MEDIA_URL + content.filename);
+            img.attr("height", $(".active-media").height());
+            img.attr("width", $(".media-container").width())
+            $(".active-media").append(img);
+        }
+    }
 
     filterMedia = function(){
-        selectedWeek = $("#week-select option:selected").val();
-        selectedEvent = $("#event-select option:selected").val();
+        selectedWeek = weekFilter;
+        selectedEvent = eventFilter;
+        selectedType = typeFilter;
         shownMedia = allMedia;
         if (selectedEvent != "all"){
             shownMedia = allMedia.filter(m => m.event == selectedEvent);
         }
-        if(selectedWeek != ""){
+        if(selectedWeek != "all"){
             shownMedia = shownMedia.filter(m => m.week == selectedWeek);
+        }
+        if(selectedType != "all"){
+            shownMedia = shownMedia.filter(m => m.type == selectedType);
         }
         updateMediaList(shownMedia);
     }
@@ -77,17 +196,26 @@
 <body>
     <div class="filters">
         <h2>Vecka:</h2>
-        <select id="week-select">
-            <option value="">Visa alla</option>
-        </select>
+        <div class="week-buttons">
+
+        </div>
         
         <h2>Event: </h2>
-        <select id="event-select">
-            <option value="all">Visa alla</option>
-        </select>
+        <div class="event-buttons">
+
+        </div>
+        <h2>Mediatyp: </h2>
+        <div class="type-buttons">
+            <button onclick="setTypeFilter('all')" id="type-all"class="type-button">Alla</button>
+            <button onclick="setTypeFilter('image')" id="type-image" class="type-button">Bild</button>
+            <button onclick="setTypeFilter('video')" id="type-video" class="type-button">Video</button>
+        </div>
     </div>
     <br>
     <div class="media-list">
+
+    </div>
+    <div class="active-media">
 
     </div>
 </body>
