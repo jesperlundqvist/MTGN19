@@ -5,7 +5,7 @@ from app.models.video import Video
 from app import db
 from PIL import Image as Img
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(),"static","Schmeck","media")
+UPLOAD_FOLDER = os.path.join(os.getcwd(),"static","media")
 
 def upload_media(request):
     latest_files = request.files.getlist("files")
