@@ -305,7 +305,7 @@ p, a {
 
 .login-container {
     margin: auto;
-    background: #704926;
+    background: /*url("/static/images/login_bg.jpg")*/ #704926;
     min-height: 100vh;
     padding: 30px 5vw 0 5vw;
 
