@@ -2,11 +2,13 @@
 <script src="/js/pdf.worker.js"></script>
 <script>
     PDFJS.workerSrc = "/js/pdf.worker.js";
+    var pdfWorker = new PDFJS.PDFWorker();
     var allDocuments;
     var API_URL = "/api/blandaren"
     var DOC_URL = "/blandaren/"
 
     $(document).ready(function () {
+        console.log(pdfWorker);
         fetchData();
     })
 
@@ -21,7 +23,7 @@
         for (var i = 0; i < documentArray.length; i++) {
             var docObj = documentArray[i];
             pdf_file = docObj.filename;
-            PDFJS.getDocument(DOC_URL + pdf_file).then(function (pdf) {
+            PDFJS.getDocument({url:DOC_URL + pdf_file, worker: pdfWorker}).then(function (pdf) {
                 pdf.getPage(1).then(function (page) {
                     var viewport = page.getViewport(0.5);
                     var canvas = document.createElement('canvas');
@@ -42,6 +44,7 @@
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
                         // Create image from canvas
                         var img_src = canvas.toDataURL();
+                        canvas.remove();
                         var $img = $("<img>")
                             .attr("src", img_src);
 
@@ -49,15 +52,18 @@
                             "name": pdf_file,
                             "pages": pdf.pdfInfo.numPages
                         };
+                        $img.click(() => {
+                            window.location = DOC_URL + pdf_file;
+                        })
 
-                        var $thumb = $("<div>")
+                        /*var $thumb = $("<div>")
                             .attr("class", "thumb")
                             .append($img)
                             .click(() => {
                                 window.location = DOC_URL + pdf_file
-                            });
-                        $thumb.appendTo(".document-container");
-                        canvas.remove();
+                            });*/
+                        documentContainer.append($img)
+                        //canvas.remove();
                     })
                 })
             })
