@@ -1,29 +1,66 @@
+<script src="/js/pdf.js"></script>
+<script src="/js/pdf.worker.js"></script>
 <script>
+    PDFJS.workerSrc = "/js/pdf.worker.js";
     var allDocuments;
     var API_URL = "/api/blandaren"
     var DOC_URL = "/blandaren/"
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         fetchData();
     })
 
-    fetchData = async() => {
+    fetchData = async () => {
         allDocuments = await fetch(API_URL).then((response) => response.json())
-        .then((jsonData) => {return jsonData});
-        console.log("alla dokument" + allDocuments)
-        updateDocumentList( allDocuments);
+            .then((jsonData) => { return jsonData });
+        updateDocumentList(allDocuments);
     }
 
-    updateDocumentList = function(documentArray){
-        console.log(typeof(documentArray));
+    updateDocumentList = function (documentArray) {
         var documentContainer = $(".document-container");
-        for (var i = 0; i < documentArray.length; i++){
+        for (var i = 0; i < documentArray.length; i++) {
             var docObj = documentArray[i];
-            console.log(documentArray[i]);
-            var link = $(('<a>'))
-            link.attr("href", DOC_URL + docObj.filename)
-            link.text(docObj.filename);
-            documentContainer.append(link);
+            pdf_file = docObj.filename;
+            PDFJS.getDocument(DOC_URL + pdf_file).then(function (pdf) {
+                pdf.getPage(1).then(function (page) {
+                    var viewport = page.getViewport(0.5);
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    var renderContext = {
+                        canvasContext: ctx,
+                        viewport: viewport
+                    };
+                    console.log("renderar..")
+                    page.render(renderContext).promise.then(() => {
+                        // Draw behind current content
+                        ctx.globalCompositeOperation = "destination-over";
+                        // Set background color
+                        ctx.fillStyle = "#fff";
+                        // Draw on entire canvas
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        // Create image from canvas
+                        var img_src = canvas.toDataURL();
+                        var $img = $("<img>")
+                            .attr("src", img_src);
+
+                        var file_details = {
+                            "name": pdf_file,
+                            "pages": pdf.pdfInfo.numPages
+                        };
+
+                        var $thumb = $("<div>")
+                            .attr("class", "thumb")
+                            .append($img)
+                            .click(() => {
+                                window.location = DOC_URL + pdf_file
+                            });
+                        $thumb.appendTo(".document-container");
+                        canvas.remove();
+                    })
+                })
+            })
         }
     }
 </script>
