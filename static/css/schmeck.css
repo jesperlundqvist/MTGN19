@@ -185,7 +185,11 @@ p, a {
 @media only screen and (min-width: 768px) {
     /* Utan hamburgermeny */
     .login-container {
-        width: 100%;
+        width: 768px;
+    }
+
+    body {
+        background: url("/static/images/bg.jpg");
     }
 
     .bookcover {
@@ -219,10 +223,6 @@ p, a {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .login-container {
-        width: 95%;
-    }
-
     .bookcover {
         width: 95%;
         padding-left: 8px;
@@ -251,10 +251,6 @@ p, a {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .login-container {
-        width: 80%;
-    }
-
     .bookcover {
         width: 80%;
         padding-left: 8px;
