@@ -5,7 +5,7 @@
     var weeks;
     var events;
     var API_URL = "/api/media";
-    var MEDIA_URL = "/media/";
+    var MEDIA_URL = "/static/media/";
     var weekFilter = "all";
     var eventFilter = "all";
     var typeFilter = "all";
@@ -15,7 +15,7 @@
                             shownMedia = allMedia
                             updateMediaList(shownMedia)});*/
         fetchData();
-        
+
     });
 
     fetchData = async () => {
@@ -23,7 +23,7 @@
         .then((jsondata) => {return jsondata});
         shownMedia = allMedia;
         updateMediaList(shownMedia);
-        
+
 
         weeks = await fetch("/api/weeks").then((response) => response.json())
         .then((jsondata) => {return jsondata});
@@ -148,8 +148,8 @@
             img.attr("src", MEDIA_URL + content.filename);
             //img.attr("height", $(".active-media").height());
             //img.attr("width", $(".media-container").width());
-            
-            
+
+
             $(".active-media").append(anchor);
             $(".lightbox").attr("id", content.filename + "-lightbox");
             img.appendTo(".anchor-link, .lightbox");
@@ -180,7 +180,7 @@
         <div class="week-buttons">
 
         </div>
-        
+
         <h2>Event: </h2>
         <div class="event-buttons">
 
