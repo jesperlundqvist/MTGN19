@@ -1,15 +1,38 @@
 from app.models.user import User, UserType, N0lleGroup
 from app import db
+from PIL import Image as Img
 from flask import jsonify, g
 import os, uuid
 
-def upload_profile_picture(image):
+def upload_profile_picture(image, username):
+    ALLOWED_EXTENTIONS = ['.png', '.jpg', '.jpeg'] 
     original_filename, extension = os.path.splitext(image.filename)
     filename = str(uuid.uuid4()) + extension
-    path = os.path.join("static", "images", "profiles", filename)
-    local_path = os.path.join(os.getcwd(), path)
-    image.save(local_path)
-    return "/" + path
+    if extension in ALLOWED_EXTENTIONS:
+        path = os.path.join("static", "images", "profiles", filename)
+        local_path = os.path.join(os.getcwd(), path)
+        user = User.query.filter(User.username == username).first()
+        print(user)
+        image.save(local_path)
+        user.profile_picture = resize_profile_picture(local_path, filename)
+        db.session.add(user)
+        db.session.commit()
+        url = "/" + path
+        return jsonify({"url": url})
+    else:
+        return jsonify({"message": "invalid file type"}),401
+
+def resize_profile_picture(filePath, filename):
+    im = Img.open(filePath)
+    size = (512, 512) # thumbnail-storleken
+    filename = filename.split(".")[0]
+    outfile = os.path.splitext(im.filename)[0]
+    try:
+        im.thumbnail(size)
+        im.save(outfile , "JPEG")
+    except IOError:
+        print("en liten fucky wucky")
+    return  outfile + ".jpg"
 
 ## USERS
 def get_all_users():

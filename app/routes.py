@@ -153,14 +153,14 @@ def user_group_route():
     elif request.method == "PUT":
         return user_functions.edit_group(request.args, request.json)
 
-@app.route("/api/upload_profile_picture/", methods=["POST"])
+@app.route("/api/upload_profile_picture/<username>", methods=["POST"])
 @requires_auth_token
-def profile_picture_route():
+def profile_picture_route(username):
     if g.user.admin:
         if "image" in request.files:
             image = request.files["image"]
-            url = user_functions.upload_profile_picture(image)
-            return jsonify({"url": url})
+            res = user_functions.upload_profile_picture(image, username)
+            return res
         else:
             return jsonify({"message": "invalid"}), 400
     else:
