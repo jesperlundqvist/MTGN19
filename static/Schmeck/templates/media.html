@@ -111,7 +111,6 @@
         mediaList.empty();
         for (var i = 0; i < mediaArray.length; i++){
             var mediaObj = mediaArray[i];
-<<<<<<< HEAD
             if (mediaObj.type === "image"){
                 var img = $(('<img id="' + mediaObj.filename +'">'));
                 img.attr("src", MEDIA_URL + mediaObj.thumbnail);
@@ -122,56 +121,38 @@
                 var img = $(('<img id="' + mediaObj.video_link + '">'))
                 img.attr("src", mediaObj.thumbnail);
                 img.attr("class", "media-thumbnail");
-            }   
-=======
-<<<<<<< Updated upstream
-            var img = $(('<img id="' + mediaObj.filename +'">'));
-            img.attr("src", MEDIA_URL + mediaObj.thumbnail);
->>>>>>> bytte dropdown mot knappar
-            mediaList.append(img);
-        }
-    }
-    $("#week-select").change(() => {filterMedia()});
-    $("#event-select").change(() => {filterMedia()})
-<<<<<<< HEAD
-=======
-=======
-            if (mediaObj.type === "image"){
-                var img = $(('<img id="' + mediaObj.filename +'">'));
-                img.attr("src", MEDIA_URL + mediaObj.thumbnail);
-                img.attr("class", "media-thumbnail");
             }
-            if(mediaObj.type === "video"){
-                var img = $(('<img id="' + mediaObj.video_link + '">'))
-                img.attr("src", mediaObj.thumbnail);
-                img.attr("class", "media-thumbnail");
-            }   
             mediaList.append(img);
         }
     }
->>>>>>> bytte dropdown mot knappar
     $(".media-list").on('click', '.media-thumbnail', (event) => updateActiveMedia(event.target.id))
     updateActiveMedia = function(mediaId){
         console.log(JSON.stringify(mediaId));
         var content = allMedia.find(m => m.filename === mediaId || m.video_link === mediaId);
         $(".active-media").empty();
+        $(".lightbox").empty();
         if(content.type === "video"){
             var iframe = $(('<iframe id="active">'));
             iframe.attr("src", "http://" + content.video_link);
             iframe.attr("frameborder", "0");
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> bytte dropdown mot knappar
 
             $(".active-media").append(iframe);
         }
         if(content.type === "image"){
+            var anchor = $(('<a>'));
+            anchor.attr( "href", "#" + content.filename + "-lightbox");
+            anchor.attr("class", "anchor-link");
+
             var img = $(('<img>'));
+            img.attr("class", "active-image");
             img.attr("src", MEDIA_URL + content.filename);
-            img.attr("height", $(".active-media").height());
-            img.attr("width", $(".media-container").width())
-            $(".active-media").append(img);
+            //img.attr("height", $(".active-media").height());
+            //img.attr("width", $(".media-container").width());
+            
+            
+            $(".active-media").append(anchor);
+            $(".lightbox").attr("id", content.filename + "-lightbox");
+            img.appendTo(".anchor-link, .lightbox");
         }
     }
 
@@ -218,4 +199,8 @@
     <div class="active-media">
 
     </div>
+
+    <a href="#_" class="lightbox">
+
+    </a>
 </body>
