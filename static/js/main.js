@@ -104,6 +104,7 @@ $(document).ready(function() {
 
                 users.forEach(function(user) {
                     if (!user.hidden) {
+                        user["portrait_rot"] = (user.id + user.name.charCodeAt(0)) % 10 - 5;
                         if (user.type.name == "nØllan") {
                             if (user.n0llegroup) {
                                 n0llan[user.n0llegroup.name] = n0llan[user.n0llegroup.name] || [];
