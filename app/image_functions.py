@@ -3,10 +3,9 @@ from sqlalchemy import desc, asc
 from app.models.image import Image
 from app.models.video import Video
 from app import db
-from app.config import basedir
 from PIL import Image as Img
 
-UPLOAD_FOLDER = os.path.join(os.getcwd(),"static","Schmeck","media")
+UPLOAD_FOLDER = os.path.join(os.getcwd(),"static","media")
 
 def upload_media(request):
     latest_files = request.files.getlist("files")
@@ -39,7 +38,7 @@ def get_media(week_filter = None, event_filter = None, media_type = None, upload
     output = []
     if media_type is None or media_type == "image":
         image_query = Image.query.filter()
-        
+
         if week_filter is not None:
             image_query = image_query.filter(Image.week == week_filter)
         if event_filter is not None:

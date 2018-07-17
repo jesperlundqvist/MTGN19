@@ -12,7 +12,7 @@ import app.document_functions as document_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
 
-STATIC_DIR = os.path.join(os.getcwd(), "static", "Schmeck")
+STATIC_DIR = os.path.join(os.getcwd(), "static")
 
 
 #Definiera olika URL-er och vad de leder till
@@ -21,33 +21,41 @@ STATIC_DIR = os.path.join(os.getcwd(), "static", "Schmeck")
 def index(path):
     return send_from_directory(STATIC_DIR, "index.html")
 
-#ladda CSS
-@app.route("/css/<filename>")
-def get_css(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "css"), filename)
 
-#ladda JavaScript
-@app.route("/js/<filename>")
-def get_js(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "js"), filename)
+# På servern är det bättre att en "riktig" web server som Nginx sköter statiska filer
+if app.config["DEBUG"]:
+    #ladda CSS
+    @app.route("/static/css/<filename>")
+    def get_css(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "css"), filename)
 
-#ladda templates
-@app.route("/templates/<filename>")
-def get_templates(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "templates"), filename)
+    #ladda JavaScript
+    @app.route("/static/js/<filename>")
+    def get_js(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "js"), filename)
 
-@app.route("/images/<filename>")
-def get_images(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
+    #ladda templates
+    @app.route("/static/templates/<filename>")
+    def get_templates(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "templates"), filename)
 
-#ladda media (bild, film, osv)
-@app.route("/media/<file_path>")
-def get_media(file_path):
-    return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
+    @app.route("/static/images/<filename>")
+    def get_profile_images(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
 
-@app.route("/blandaren/<file_path>")
-def get_blandaren(file_path):
-    return send_from_directory(os.path.join(STATIC_DIR, "blandaren"), file_path)
+    @app.route("/static/images/profiles/<filename>")
+    def get_images(filename):
+        return send_from_directory(os.path.join(STATIC_DIR, "images", "profiles"), filename)
+
+
+    #ladda media (bild, film, osv)
+    @app.route("/static/media/<file_path>")
+    def get_media(file_path):
+        return send_from_directory(os.path.join(STATIC_DIR, "media"), file_path)
+
+    @app.route("/static/blandaren/<file_path>")
+    def get_blandaren(file_path):
+        return send_from_directory(os.path.join(STATIC_DIR, "blandaren"), file_path)
 
 @app.route("/api/blandaren", methods = ["GET", "POST"])
 def blandar_route():
@@ -114,6 +122,49 @@ def user_route():
         return user_functions.delete_user(request.args)
     elif request.method == "PUT":
         return user_functions.edit_user(request.args, request.json)
+
+@app.route("/api/user_type/", methods=["GET", "POST", "DELETE", "PUT"])
+@requires_auth_token
+def user_type_route():
+    if request.method == "GET":
+        if len(request.args) > 0:
+            return user_functions.get_type_by_filter(request.args)
+        else:
+            return user_functions.get_all_types()
+    elif request.method == "POST":
+        return user_functions.add_type(request.json)
+    elif request.method == "DELETE":
+        return user_functions.delete_type(request.args)
+    elif request.method == "PUT":
+        return user_functions.edit_type(request.args, request.json)
+
+@app.route("/api/n0llegroup/", methods=["GET", "POST", "DELETE", "PUT"])
+@requires_auth_token
+def user_group_route():
+    if request.method == "GET":
+        if len(request.args) > 0:
+            return user_functions.get_group_by_filter(request.args)
+        else:
+            return user_functions.get_all_groups()
+    elif request.method == "POST":
+        return user_functions.add_group(request.json)
+    elif request.method == "DELETE":
+        return user_functions.delete_group(request.args)
+    elif request.method == "PUT":
+        return user_functions.edit_group(request.args, request.json)
+
+@app.route("/api/upload_profile_picture/<username>", methods=["POST"])
+@requires_auth_token
+def profile_picture_route(username):
+    if g.user.admin:
+        if "image" in request.files:
+            image = request.files["image"]
+            res = user_functions.upload_profile_picture(image, username)
+            return res
+        else:
+            return jsonify({"message": "invalid"}), 400
+    else:
+        return jsonify({"message": "unauthorized"}), 401
 
 @app.route("/api/currentUser/", methods=["GET"])
 @requires_auth_token

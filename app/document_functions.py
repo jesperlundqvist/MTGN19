@@ -4,7 +4,7 @@ from app.models.blandaren import Document
 from app import db
 
 
-SAVE_FOLDER = os.path.join(os.getcwd(), "static", "Schmeck", "blandaren")
+SAVE_FOLDER = os.path.join(os.getcwd(), "static", "blandaren")
 
 def upload_document(request):
     files = request.files.getlist("files")

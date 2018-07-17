@@ -1,0 +1,37 @@
+<a href="/profiler" data-navigo>Tillbaka till alla profiler</a>
+<br>
+<img src="{{user.profile_picture}}" class="book-profile-large" />
+<h1 class="title">{{user.name}}</h1>
+
+{{#unlessCond user.type.name "nØllan"}}
+<center><i>{{user.type.name}}</i></center>
+{{/unlessCond}}
+
+{{#if user.n0llegroup}}
+<center><i>{{user.n0llegroup.name}}</i></center>
+{{/if}}
+
+<br />
+
+{{#if isCurrent}}
+<a href="/profiler/{{user.username}}/redigera" data-navigo>Redigera profil</a>
+<br />
+<br />
+{{/if}}
+
+<p>{{user.description}}</p>
+
+{{#if user.q1}}
+<h3>Fråga 1?</h3>
+<p>{{user.q1}}</p>
+{{/if}}
+
+{{#if user.q2}}
+<h3>Fråga 2?</h3>
+<p>{{user.q2}}</p>
+{{/if}}
+
+{{#if user.q3}}
+<h3>Fråga 3?</h3>
+<p>{{user.q3}}</p>
+{{/if}}

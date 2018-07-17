@@ -1,0 +1,44 @@
+<div class="sidebar">
+    <div class="text-center">
+        <a href="/profiler/{{user.username}}" data-navigo>
+            <img src="{{user.profile_picture}}" class="book-profile" />
+            <h3 class="title">{{user.name}}</h3>
+        </a>
+        <p>{{user.n0llegroup.name}}</p>
+    </div>
+    <ul class="nav nav-pills flex-column menubar">
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'nyheter'}}" href="/" data-navigo>Nyheter</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'schema'}}" href="/schema" data-navigo>Schema</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'profiler'}}" href="/profiler" data-navigo>Profiler</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'media'}}" href="/media" data-navigo>Bilder och videor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'blandaren'}}" href="/blandaren" data-navigo>Bländaren</a>
+        </li>
+        {{#if user.admin}}
+        <li class="nav-item">
+            <a class="nav-link {{active currentPage 'admin'}}" href="/admin" data-navigo>Admin</a>
+        </li>
+        {{/if}}
+        <li class="nav-item">
+            <a class="nav-link" href="/logout" data-navigo>Logga ut</a>
+        </li>
+    </ul>
+
+    <div class="sponsors">
+        <a href="https://www.sverigesingenjorer.se/" target="_blank"><img src="/static/images/sverigesingenjörer.png" class="sponsor-img" /></a>
+        <a href="https://cygni.se/" target="_blank"><img src="/static/images/cygni.png" class="sponsor-img" /></a>
+        <a href="" target="_blank"><img src="/static/images/comviq_logo.png" class="sponsor-img" /></a>
+        <a href="" target="_blank"><img src="/static/images/ericsson_logo.png" class="sponsor-img" /></a>
+        <a href="" target="_blank"><img src="/static/images/viaplay_logo.png" class="sponsor-img" /></a>
+        <a href="" target="_blank"><img src="/static/images/nl_logo.png" class="sponsor-img" /></a>
+        <a href="" target="_blank"><img src="/static/images/bontouch_logo.png" class="sponsor-img" /></a>
+    </div>
+</div>

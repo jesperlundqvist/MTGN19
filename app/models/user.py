@@ -18,6 +18,12 @@ class UserType(db.Model):
     def __init__(self, name):
         self.name = name
 
+    def to_dict(self):
+        type = {}
+        type["id"] = self.id
+        type["name"] = self.name
+        return type
+
 class N0lleGroup(db.Model):
     __tablename__ = "n0llegroup"
     id = Column(Integer, primary_key=True)
@@ -38,22 +44,22 @@ class User(db.Model):
     id = Column(Integer, primary_key=True)
     username = Column(String(64), unique=True)
     name = Column(String(64))
-    password_hash = Column(String(512)) # Använd set_password!
-    password_salt = Column(String(256)) # Använd set_password!
+    password_hash = Column(String(1024)) # Använd set_password!
+    password_salt = Column(String(1024)) # Använd set_password!
 
     user_type_id = Column(Integer, ForeignKey('usertype.id')) # Någon av nØllan, KPH, ARR, INPHO, LEK, VRAQUE, RSA, ÖPH
     user_type = relationship("UserType", back_populates="users")
 
-    n0llegroup_id = Column(Integer, ForeignKey('n0llegroup.id')) # Någon av nØllan, KPH, ARR, INPHO, LEK, VRAQUE, RSA, ÖPH
+    n0llegroup_id = Column(Integer, ForeignKey('n0llegroup.id'))
     n0llegroup = relationship("N0lleGroup", back_populates="users")
 
     admin = Column(Boolean(), default=False) # Electus + INPHO
     hidden = Column(Boolean(), default=False) # FusknØllan och VRAQUE som inte joinat ännu måste gömmas
-    profile_picture = Column(String(64), default="/images/default.png")
-    q1 = Column(String(), default="")
-    q2 = Column(String(), default="")
-    q3 = Column(String(), default="")
-    description = Column(String(), default="")
+    profile_picture = Column(String(64), default="/static/images/profiles/default.png")
+    q1 = Column(String(1024), default="")
+    q2 = Column(String(1024), default="")
+    q3 = Column(String(1024), default="")
+    description = Column(String(1024), default="")
 
     def __init__(self, username, name, password, user_type, n0llegroup=None):
         self.username = username
