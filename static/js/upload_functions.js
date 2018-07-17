@@ -56,6 +56,8 @@ uploadDocument = function(){
         data: form_data,
         contentType: false,
         processData: false,
-       
+        success: function () {
+            window.location.href= "/blandaren";
+        }
     })
 };
