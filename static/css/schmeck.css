@@ -6,12 +6,30 @@
     text-align: right;
 }*/
 
-/*.news-title::first-letter {
-    font-size: 200%;
-}*/
+.news-container {
+}
+
+.newsitem {
+    background-color: white;
+    border: 1px solid lightgray;
+    padding: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 26px rgba(0,0,0,0.1);
+}
+
+.newsitem:hover {
+}
+
+.news-title {
+}
 
 .news-text::first-letter {
     font-size: 200%;
+}
+
+.news-subtitle {
+    font-style: italic;
 }
 
 .menubar {
@@ -20,12 +38,27 @@
 }
 
 h1,h2,h3 {
-    font-family: alexander-quill, serif;
+    font-family: mrs-eaves-roman-lining, serif;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 42px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 32px;
+    font-weight: 400;
 }
 
 p, a {
-    font-family: serif;
-    font-size: 17px;
+    font-family: mrs-eaves-roman-lining, serif;
+    font-size: 18px;
 }
 
 .bookcover {
@@ -47,7 +80,7 @@ p, a {
     padding-top: 1px;
     padding-bottom: 1px;
 
-    background-color: #f9f0e8;
+    background-color: #fffcf9 /*#f9f0e8*/;
 }
 
 .bookpage-middle {
@@ -67,12 +100,12 @@ p, a {
 .bookcontent-left
 {
     padding-right: 25px;
-    background: linear-gradient(to right, #f9f0e8 98%, #b2b2b2 100%);
+    background: linear-gradient(to right, #fffcf9 98%, #b2b2b2 100%);
 }
 
 .bookcontent-right
 {
-    background: linear-gradient(to right, #b2b2b2 0%, #f9f0e8 2%);
+    background: linear-gradient(to right, #b2b2b2 0%, #fffcf9 2%);
 }
 
 #left-content, #right-content, #sidebar {
@@ -140,6 +173,12 @@ p, a {
 
     #hamburger {
         display: block;
+    }
+
+    .newsitem {
+        padding: 10px;
+        margin-left: -10px;
+        margin-right: -10px;
     }
 }
 
@@ -278,18 +317,24 @@ p, a {
     width: 150px;
     height: auto;
     border: 5px solid white;
+    outline: 1px solid lightgray;
     display: block;
     margin-left: auto;
     margin-right: auto;
+
+    box-shadow: 0px 0px 26px rgba(0,0,0,0.2);
 }
 
 .book-profile-large {
     width: 150px;
     height: auto;
     border: 5px solid white;
+    outline: 1px solid lightgray;
     display: block;
     margin-left: auto;
     margin-right: auto;
+
+    box-shadow: 0px 0px 26px rgba(0,0,0,0.2);
 }
 
 .instagram-logo, .snapchat-logo {
@@ -317,7 +362,6 @@ p, a {
 
 .login-header {
     color: #ffeece;
-    text-shadow: 0 1px 1px #fff;
 }
 
 #usernameField, #passwordField {
@@ -331,7 +375,7 @@ p, a {
 }
 
 #loginForm > .form-group > label {
-    font-family: alexander-quill, sans-serif;
+    font-family: mrs-eaves-roman-lining, serif;
 }
 
 
