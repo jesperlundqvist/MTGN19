@@ -107,6 +107,8 @@ $(document).ready(function() {
                         user["portrait_rot"] = (user.id + user.name.charCodeAt(0)) % 10 - 5;
                         if (user.type.name == "nØllan") {
                             if (user.n0llegroup) {
+                                user["portrait_rot"] = (user.id + user.name.charCodeAt(0)) % 10 - 5;
+
                                 n0llan[user.n0llegroup.name] = n0llan[user.n0llegroup.name] || [];
                                 n0llan[user.n0llegroup.name].push(user);
                             }
