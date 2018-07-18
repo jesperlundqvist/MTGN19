@@ -91,7 +91,7 @@ p, a {
     height: 100%;
     outline: 1px solid #b2b2b2;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
     padding: 20px;
@@ -243,7 +243,7 @@ p, a {
 
     .bookcontent {
         width: 50%;
-        overflow-y: scroll;
+        overflow-y: auto;
         min-height: 0;
     }
 
