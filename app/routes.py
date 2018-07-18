@@ -11,6 +11,7 @@ import app.user_functions as user_functions
 import app.document_functions as document_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
+import uuid
 
 STATIC_DIR = os.path.join(os.getcwd(), "static")
 
@@ -56,6 +57,10 @@ if app.config["DEBUG"]:
     @app.route("/static/blandaren/<file_path>")
     def get_blandaren(file_path):
         return send_from_directory(os.path.join(STATIC_DIR, "blandaren"), file_path)
+
+    @app.route("/static/uploads/<file_path>")
+    def get_uploads(file_path):
+        return send_from_directory(os.path.join(STATIC_DIR, "uploads"), file_path)
 
 @app.route("/api/blandaren", methods = ["GET", "POST"])
 def blandar_route():
@@ -161,6 +166,24 @@ def profile_picture_route(username):
             image = request.files["image"]
             res = user_functions.upload_profile_picture(image, username)
             return res
+        else:
+            return jsonify({"message": "invalid"}), 400
+    else:
+        return jsonify({"message": "unauthorized"}), 401
+
+@app.route("/api/upload_file/", methods=["POST"])
+@requires_auth_token
+def upload_file_route():
+    if g.user.admin:
+        if "file" in request.files:
+            f = request.files["file"]
+            original_filename, extension = os.path.splitext(f.filename)
+            filename = str(uuid.uuid4()) + extension
+            path = os.path.join("static", "uploads", filename)
+            local_path = os.path.join(os.getcwd(), path)
+
+            f.save(local_path)
+            return jsonify({"url": "/" + path})
         else:
             return jsonify({"message": "invalid"}), 400
     else:
