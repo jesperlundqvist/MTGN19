@@ -37,22 +37,22 @@
     font-size: 22px;
 }
 
-h1,h2,h3 {
+h1,h2,h3,h4 {
     font-family: mrs-eaves-roman-lining, serif;
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 44px;
     font-weight: 700;
 }
 
 h2 {
-    font-size: 42px;
+    font-size: 34px;
     font-weight: 400;
 }
 
 h3 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 400;
 }
 
