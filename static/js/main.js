@@ -229,7 +229,7 @@ $(document).ready(function() {
         },
 
         '/basecamp':function(){
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "media", user: Frack.CurrentUser});
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "basecamp", user: Frack.CurrentUser});
             renderTemplate("#content", "/static/templates/basecamp.html");
         },
 
@@ -284,6 +284,7 @@ $(document).ready(function() {
             renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
         },
         '/admin/upload_blandaren':function() {
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             renderTemplate("#content", "/static/templates/blandaren_upload.html");
         }
     });
