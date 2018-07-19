@@ -1,11 +1,13 @@
 <script>
-    PDFJS.workerSrc = "/js/pdf.worker.js";
-    var pdfWorker = new PDFJS.PDFWorker();
+    PDFJS.workerSrc = "/static/js/pdf.worker.js";
+    
     var allDocuments;
+    var pdfWorker;
     var API_URL = "/api/blandaren"
     var DOC_URL = "/static/blandaren/"
 
     $(document).ready(function () {
+        pdfWorker = new PDFJS.PDFWorker();
         console.log(pdfWorker);
         fetchData();
     })

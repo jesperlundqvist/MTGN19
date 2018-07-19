@@ -228,6 +228,11 @@ $(document).ready(function() {
             });
         },
 
+        '/basecamp':function(){
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "media", user: Frack.CurrentUser});
+            renderTemplate("#content", "/static/templates/basecamp.html");
+        },
+
         '/admin/hantera_anvandare': function() {
             preloadTemplate("/static/templates/profiler.html");
             preloadTemplate("/static/templates/sidebar.html");
