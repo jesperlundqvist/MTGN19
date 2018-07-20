@@ -221,7 +221,7 @@ p, a {
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 850px) {
     /* Utan hamburgermeny */
     .login-container {
         width: 768px;
@@ -263,7 +263,7 @@ p, a {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .bookcover {
-        width: 95%;
+        width: 100%;
         padding-left: 8px;
     }
 
