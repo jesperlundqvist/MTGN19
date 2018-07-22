@@ -9,7 +9,6 @@ import base64
 SAVE_FOLDER = os.path.join(os.getcwd(), "static", "blandaren")
 
 def upload_document(request):
-    print("function was called")
     files = request.files.getlist("files")
     
     if files is not None:
@@ -21,7 +20,6 @@ def upload_document(request):
             thumbnail = request.form["thumbnail"]
             with open(os.path.join(SAVE_FOLDER, thumb_name), "wb") as fh:
                 fh.write(base64.b64decode(thumbnail))
-
             document.save(os.path.join(SAVE_FOLDER, filename))
             new_doc = Document(filename = filename, thumbnail = thumb_name)
             db.session.add(new_doc)
