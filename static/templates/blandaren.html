@@ -22,52 +22,17 @@
         var documentContainer = $(".document-container");
         documentContainer.empty();
         for (var i = 0; i < documentArray.length; i++) {
+
             var docObj = documentArray[i];
-            pdf_file = docObj.filename;
-            PDFJS.getDocument({url:DOC_URL + pdf_file, worker: pdfWorker}).then(function (pdf) {
-                pdf.getPage(1).then(function (page) {
-                    var viewport = page.getViewport(0.5);
-                    var canvas = document.createElement('canvas');
-                    var ctx = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-                    var renderContext = {
-                        canvasContext: ctx,
-                        viewport: viewport
-                    };
-                    console.log("renderar..")
-                    page.render(renderContext).promise.then(() => {
-                        // Draw behind current content
-                        ctx.globalCompositeOperation = "destination-over";
-                        // Set background color
-                        ctx.fillStyle = "#fff";
-                        // Draw on entire canvas
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        // Create image from canvas
-                        var img_src = canvas.toDataURL();
-                        canvas.remove();
-                        var $img = $("<img>")
-                            .attr("src", img_src);
+            console.log(docObj)
+            var img = $(('<img>'));
+            img.attr("src", DOC_URL + docObj.thumbnail);
 
-                        var file_details = {
-                            "name": pdf_file,
-                            "pages": pdf.pdfInfo.numPages
-                        };
-                        $img.click(() => {
-                            window.location = DOC_URL + pdf_file;
-                        })
+            img.on("click", () =>{
+                window.location = DOC_URL + docObj.filename;
+            });
 
-                        /*var $thumb = $("<div>")
-                            .attr("class", "thumb")
-                            .append($img)
-                            .click(() => {
-                                window.location = DOC_URL + pdf_file
-                            });*/
-                        documentContainer.append($img)
-                        //canvas.remove();
-                    })
-                })
-            })
+            documentContainer.append(img)
         }
     }
 </script>
