@@ -1,3 +1,5 @@
+const baseUrl = window.location.origin;
+
 uploadMedia = function() {
     // funktion för uppladning av bilder till servern
     var outputData = [];
@@ -51,7 +53,7 @@ uploadDocument = function(){
     }
 
     $.ajax({
-        url: "/api/blandaren",
+        url: baseUrl + "/api/blandaren",
         type: "POST",
         data: form_data,
         contentType: false,
