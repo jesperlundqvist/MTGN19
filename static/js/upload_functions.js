@@ -56,6 +56,9 @@ uploadDocument = function(){
         data: form_data,
         contentType: false,
         processData: false,
+        beforeSend: function(jqXHR, settings) {
+            console.log(settings.url);
+          },
         success: function () {
             window.location.href= "/blandaren";
         }
