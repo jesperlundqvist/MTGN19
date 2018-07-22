@@ -1,4 +1,4 @@
-const baseUrl = window.location.origin;
+var baseUrl = window.location.origin;
 
 uploadMedia = function() {
     // funktion för uppladning av bilder till servern
@@ -28,11 +28,14 @@ uploadMedia = function() {
     }
     console.log(form_data.get("videos"));
     $.ajax({
-        url: "/api/media",
+        url: baseUrl + "/api/media",
         type: "POST",
         data: form_data,
         contentType: false, 
         processData:false,
+        beforeSend: function(jqXHR, settings) {
+            console.log(settings.url);
+          },
         success: function(){
             window.location.href = "/media";
         }
