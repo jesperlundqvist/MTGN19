@@ -1,4 +1,4 @@
-var baseUrl = window.location.origin;
+
 
 uploadMedia = function() {
     // funktion för uppladning av bilder till servern
@@ -28,14 +28,11 @@ uploadMedia = function() {
     }
     console.log(form_data.get("videos"));
     $.ajax({
-        url: baseUrl + "/api/media",
+        url:"/api/media",
         type: "POST",
         data: form_data,
         contentType: false, 
         processData:false,
-        beforeSend: function(jqXHR, settings) {
-            console.log(settings.url);
-          },
         success: function(){
             window.location.href = "/media";
         }
@@ -56,14 +53,12 @@ uploadDocument = function(){
     }
 
     $.ajax({
-        url: baseUrl + "/api/blandaren",
+        url:"/api/blandaren",
         type: "POST",
         data: form_data,
         contentType: false,
         processData: false,
-        beforeSend: function(jqXHR, settings) {
-            console.log(settings.url);
-          },
+       
         success: function () {
             window.location.href= "/blandaren";
         }
