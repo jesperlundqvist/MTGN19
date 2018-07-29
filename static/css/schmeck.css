@@ -449,7 +449,10 @@ p, a {
 }
 
 .media-list{
-    overflow-x: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    overflow-y: scroll;
     white-space: nowrap;
 }
 
