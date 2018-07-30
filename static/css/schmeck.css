@@ -457,9 +457,13 @@ p, a {
 }
 
 iframe{
-    min-height: 480px;
-    width:89%;
-    height: 56.25%;
+    max-height: 1080px;
+    max-width: 1920px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width: 72%;
+    height: 80%;
+    
     background: red;
 }
 
