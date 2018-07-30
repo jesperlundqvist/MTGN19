@@ -127,10 +127,10 @@
     }
     $(".media-list").on('click', '.media-thumbnail', (event) => updateActiveMedia(event.target.id))
     updateActiveMedia = function(mediaId){
-        console.log(JSON.stringify(mediaId));
         var content = allMedia.find(m => m.filename === mediaId || m.video_link === mediaId);
-        $(".active-media").empty();
+        //$(".active-media").empty();
         $(".lightbox").empty();
+        console.log($(".lightbox"))
         if(content.type === "video"){
             var iframe = $(('<iframe id="active">'));
             iframe.attr("src", "http://" + content.video_link);
@@ -150,9 +150,10 @@
             //img.attr("width", $(".media-container").width());
 
 
-            $(".active-media").append(anchor);
+            //$(".active-media").append(anchor);
             $(".lightbox").attr("id", content.filename + "-lightbox");
-            img.appendTo(".anchor-link, .lightbox");
+            img.appendTo(".lightbox");
+            $(".lightbox").css("display", "block")
         }
     }
 
@@ -196,11 +197,15 @@
     <div class="media-list">
 
     </div>
-    <div class="active-media">
+    <!--<div class="active-media">
 
     </div>
 
     <a href="#_" class="lightbox">
 
-    </a>
+    </a>-->
+
+    <div class="lightbox" onclick="$('.lightbox').css('display', 'none')">
+
+    </div>
 </body>
