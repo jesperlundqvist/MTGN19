@@ -498,8 +498,9 @@ iframe{
 
 .lightbox img{
     max-width: 90%;
-    max-height: 90%;
-    margin-top: 2%;
+    max-height: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .lightbox:target{
