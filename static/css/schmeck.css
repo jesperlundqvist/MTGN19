@@ -457,7 +457,8 @@ p, a {
 }
 
 iframe{
-    width:100%;
+    min-height: 480px;
+    width:89%;
     height: 56.25%;
     background: red;
 }

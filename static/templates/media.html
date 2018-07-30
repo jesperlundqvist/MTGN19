@@ -136,7 +136,8 @@
             iframe.attr("src", "http://" + content.video_link);
             iframe.attr("frameborder", "0");
 
-            $(".active-media").append(iframe);
+            $(".lightbox").append(iframe);
+            $(".lightbox").css("display", "block");
         }
         if(content.type === "image"){
             var anchor = $(('<a>'));
@@ -173,6 +174,10 @@
         }
         updateMediaList(shownMedia);
     }
+    function clearLightbox(){
+        $(".lightbox").css("display", "none");
+        $(".lightbox").empty();
+    }
 </script>
 
 <body>
@@ -205,7 +210,7 @@
 
     </a>-->
 
-    <div class="lightbox" onclick="$('.lightbox').css('display', 'none')">
+    <div class="lightbox" onclick="clearLightbox()">
 
     </div>
 </body>
