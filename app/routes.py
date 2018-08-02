@@ -72,7 +72,7 @@ def blandar_route():
         print(document_response)
         return jsonify(document_response), 200
 
-@app.route("/api/media", methods = ["GET", "POST"]) #Hämta media eller ladda upp media
+@app.route("/api/media", methods = ["GET", "POST", "DELETE"]) #Hämta media eller ladda upp media
 def media_path():
     week_filter = request.args.get("week")
     event_filter = request.args.get("event")
@@ -85,6 +85,9 @@ def media_path():
         if request.method == "POST":
             image_functions.upload_media(request)
             return jsonify({"Message":"Bild(er) laddades upp!"}), 200
+        if request.method == "DELETE":
+            image_functions.delete_media(request)
+            return jsonify({"Message":"Media raderades!"}), 200
     else:
         image_response = image_functions.get_media(week_filter = week_filter, event_filter = event_filter, media_type = type_filter, uploaded_by=uploader_filter)
         return jsonify(image_response), 200

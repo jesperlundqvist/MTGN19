@@ -318,7 +318,7 @@ $(document).ready(function() {
 
             if(query == ""){
                 Frack.Media.GetAll().then(function(res) {
-                    renderTemplate("#content", "/static/templates/media.html", {media : res.data});
+                    renderTemplate("#content", "/static/templates/media.html", {media : res.data, user: Frack.CurrentUser});
                 })
             }else{
                 Frack.Media.GetByFilter(query).then(function(res){
@@ -380,6 +380,11 @@ $(document).ready(function() {
             });
         },
 
+        '/basecamp':function(){
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "basecamp", user: Frack.CurrentUser});
+            renderTemplate("#content", "/static/templates/basecamp.html");
+        },
+
         '/admin/hantera_anvandare': function() {
             preloadTemplate("/static/templates/profiler.html");
             preloadTemplate("/static/templates/sidebar.html");
@@ -431,6 +436,7 @@ $(document).ready(function() {
             renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
         },
         '/admin/upload_blandaren':function() {
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             renderTemplate("#content", "/static/templates/blandaren_upload.html");
         }
     });
