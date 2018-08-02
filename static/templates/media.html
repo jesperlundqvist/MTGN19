@@ -9,114 +9,120 @@
     var weekFilter = "all";
     var eventFilter = "all";
     var typeFilter = "all";
-    $(document).ready(function(){
-       /*fetch(API_URL).then((response) => response.json())
-       .then((jsondata) => {allMedia = jsondata
-                            shownMedia = allMedia
-                            updateMediaList(shownMedia)});*/
+    var deleteMode = false;
+    var deletionSelection = {
+        "images": [],
+        "videos": []
+    };
+    $(document).ready(function () {
+        /*fetch(API_URL).then((response) => response.json())
+        .then((jsondata) => {allMedia = jsondata
+                             shownMedia = allMedia
+                             updateMediaList(shownMedia)});*/
         fetchData();
 
     });
 
     fetchData = async () => {
-        allMedia =  await fetch(API_URL).then((response) => response.json())
-        .then((jsondata) => {return jsondata});
+        allMedia = await fetch(API_URL).then((response) => response.json())
+            .then((jsondata) => { return jsondata });
         shownMedia = allMedia;
         updateMediaList(shownMedia);
 
 
         weeks = await fetch("/api/weeks").then((response) => response.json())
-        .then((jsondata) => {return jsondata});
+            .then((jsondata) => { return jsondata });
         generateWeekButtons();
         $("#week-all").addClass("active-selection");
 
         events = await fetch("/api/events").then((response) => response.json())
-        .then((jsondata) => {return jsondata});
+            .then((jsondata) => { return jsondata });
         generateEventButtons();
         $("#event-all").addClass("active-selection");
 
         $("#type-all").addClass("active-selection");
+
     }
 
-    generateWeekButtons = function(){
+    generateWeekButtons = function () {
         var weekDiv = $(".week-buttons");
         var selectAllBtn = $(('<button>'));
-            selectAllBtn.text("Alla")
-            selectAllBtn.attr("id", "week-all");
-            selectAllBtn.attr("class", "week-select-button");
-            selectAllBtn.attr("onclick", "setWeekFilter('all')");
-            weekDiv.append(selectAllBtn);
-        for (var i = 0; i < weeks.length; i++){
+        selectAllBtn.text("Alla")
+        selectAllBtn.attr("id", "week-all");
+        selectAllBtn.attr("class", "week-select-button");
+        selectAllBtn.attr("onclick", "setWeekFilter('all')");
+        weekDiv.append(selectAllBtn);
+        for (var i = 0; i < weeks.length; i++) {
             var buttonStr = $(('<button>'));
-            buttonStr.text( weeks[i]);
+            buttonStr.text(weeks[i]);
             buttonStr.attr("id", weeks[i]);
             buttonStr.attr("class", "week-select-button");
-            buttonStr.attr("onclick", "setWeekFilter(" + weeks[i]+ ")");
+            buttonStr.attr("onclick", "setWeekFilter(" + weeks[i] + ")");
             weekDiv.append(buttonStr);
         }
     }
-    generateEventButtons = function(){
+    generateEventButtons = function () {
         var weekDiv = $(".event-buttons");
         var selectAllBtn = $(('<button>'));
-            selectAllBtn.text("Alla")
-            selectAllBtn.attr("id", "event-all");
-            selectAllBtn.attr("class", "event-select-button");
-            selectAllBtn.attr("onclick", "setEventFilter('all')");
-            weekDiv.append(selectAllBtn);
-        for (var i = 0; i < events.length; i++){
+        selectAllBtn.text("Alla")
+        selectAllBtn.attr("id", "event-all");
+        selectAllBtn.attr("class", "event-select-button");
+        selectAllBtn.attr("onclick", "setEventFilter('all')");
+        weekDiv.append(selectAllBtn);
+        for (var i = 0; i < events.length; i++) {
             var buttonStr = $(('<button>'));
-            buttonStr.text( events[i]);
+            buttonStr.text(events[i]);
             buttonStr.attr("id", events[i]);
             buttonStr.attr("class", "event-select-button");
-            buttonStr.attr("onclick", "setEventFilter('" + events[i]+ "')");
+            buttonStr.attr("onclick", "setEventFilter('" + events[i] + "')");
             weekDiv.append(buttonStr);
         }
     }
 
-    setWeekFilter = function(week){
-       $(".week-select-button").removeClass("active-selection");
+    setWeekFilter = function (week) {
+        $(".week-select-button").removeClass("active-selection");
         weekFilter = week;
-        if(week === "all"){
+        if (week === "all") {
             $("#week-all").addClass("active-selection");
-        }else{
-            $("#"+week).addClass("active-selection");
+        } else {
+            $("#" + week).addClass("active-selection");
         }
         filterMedia();
     }
 
-    setEventFilter = function(event){
+    setEventFilter = function (event) {
         $(".event-select-button").removeClass("active-selection");
         eventFilter = event;
-        if(event === "all"){
+        if (event === "all") {
             $("#event-all").addClass("active-selection");
-        }else{
-            $("#"+event).addClass("active-selection");
+        } else {
+            $("#" + event).addClass("active-selection");
         }
         filterMedia();
     }
 
-    setTypeFilter = function(type){
+    setTypeFilter = function (type) {
         $(".type-button").removeClass("active-selection");
         typeFilter = type;
-        if(type === "all"){
+        if (type === "all") {
             $("#type-all").addClass("active-selection");
-        }else{
-            $("#type-"+type).addClass("active-selection");
+        } else {
+            $("#type-" + type).addClass("active-selection");
         }
         filterMedia();
     }
 
-    updateMediaList = function(mediaArray){
+    updateMediaList = function (mediaArray) {
         var mediaList = $(".media-list");
         mediaList.empty();
-        for (var i = 0; i < mediaArray.length; i++){
+        for (var i = 0; i < mediaArray.length; i++) {
             var mediaObj = mediaArray[i];
-            if (mediaObj.type === "image"){
-                var img = $(('<img id="' + mediaObj.filename +'">'));
+            if (mediaObj.type === "image") {
+                var img = $(('<img id="' + mediaObj.filename + '">'));
                 img.attr("src", MEDIA_URL + mediaObj.thumbnail);
                 img.attr("class", "media-thumbnail");
             }
-            if(mediaObj.type === "video"){
+            if (mediaObj.type === "video") {
                 console.log(mediaObj)
                 var img = $(('<img id="' + mediaObj.video_link + '">'))
                 img.attr("src", mediaObj.thumbnail);
@@ -125,13 +131,18 @@
             mediaList.append(img);
         }
     }
-    $(".media-list").on('click', '.media-thumbnail', (event) => updateActiveMedia(event.target.id))
-    updateActiveMedia = function(mediaId){
+    $(".media-list").on('click', '.media-thumbnail', (event) => {
+        if (!deleteMode) { updateActiveMedia(event.target.id); } else {
+            changeDeletionSelection(event.target.id);
+            console.log(event.target.id)
+        }
+    })
+    updateActiveMedia = function (mediaId) {
         var content = allMedia.find(m => m.filename === mediaId || m.video_link === mediaId);
         //$(".active-media").empty();
         $(".lightbox").empty();
         console.log($(".lightbox"))
-        if(content.type === "video"){
+        if (content.type === "video") {
             var iframe = $(('<iframe id="active">'));
             iframe.attr("src", "http://" + content.video_link);
             iframe.attr("frameborder", "0");
@@ -139,9 +150,9 @@
             $(".lightbox").append(iframe);
             $(".lightbox").css("display", "block");
         }
-        if(content.type === "image"){
+        if (content.type === "image") {
             var anchor = $(('<a>'));
-            anchor.attr( "href", "#" + content.filename + "-lightbox");
+            anchor.attr("href", "#" + content.filename + "-lightbox");
             anchor.attr("class", "anchor-link");
 
             var img = $(('<img>'));
@@ -158,58 +169,103 @@
         }
     }
 
-    filterMedia = function(){
+    filterMedia = function () {
         selectedWeek = weekFilter;
         selectedEvent = eventFilter;
         selectedType = typeFilter;
         shownMedia = allMedia;
-        if (selectedEvent != "all"){
+        if (selectedEvent != "all") {
             shownMedia = allMedia.filter(m => m.event == selectedEvent);
         }
-        if(selectedWeek != "all"){
+        if (selectedWeek != "all") {
             shownMedia = shownMedia.filter(m => m.week == selectedWeek);
         }
-        if(selectedType != "all"){
+        if (selectedType != "all") {
             shownMedia = shownMedia.filter(m => m.type == selectedType);
         }
         updateMediaList(shownMedia);
     }
-    function clearLightbox(){
+    function clearLightbox() {
         $(".lightbox").css("display", "none");
         $(".lightbox").empty();
+    }
+
+    function toggleDeleteMode() {
+        deleteMode = !deleteMode;
+        if (deleteMode){
+            $("#delete-btn").text("Avbryt");
+            var sendBtn = $(('<button>'))
+                .attr("class", "delete-btn")
+                .attr("onclick", "sendDelete()")
+                .attr("id", "send-btn")
+                .text("Radera");
+            $(".delete-menu").append(sendBtn);
+        } else{
+            $("#send-btn").remove();
+            $("#delete-btn").text("Radera bilder");
+        }
+    }
+
+    function changeDeletionSelection(mediaId) {
+        var mediaObj = allMedia.find(m => m.filename === mediaId || m.video_link);
+        var selection = $(document.getElementById(mediaId));
+        if (mediaObj.type === "image") {
+            var idx = deletionSelection["images"].indexOf(mediaObj);
+            if (idx === -1) {
+                deletionSelection["images"].push(mediaObj);
+                selection.addClass("deletion-selected");
+            }
+            else { deletionSelection["images"].splice(idx); selection.removeClass("deletion-selected"); }
+        }
+        if (mediaObj.type === "video") {
+            var idx = deletionSelection["videos"].indexOf(mediaObj);
+            if (idx === -1) {
+                deletionSelection["videos"].push(mediaObj);
+                selection.addClass("deletion-selected");
+            } else { deletionSelection["videos"].splice(idx); selection.removeClass("deletion-selected"); }
+        }
+    }
+
+    async function sendDelete(){
+        console.log(JSON.stringify(deletionSelection))
+        await fetch(API_URL, {
+            method: "DELETE",
+            headers:{
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify(deletionSelection)
+        }).then(() => location.reload())
+
     }
 </script>
 
 <body>
     <div class="filters">
+
         <h2>Vecka:</h2>
         <div class="week-buttons">
 
         </div>
 
-        <h2>Event: </h2>
+        <h2>Event:</h2>
         <div class="event-buttons">
 
         </div>
-        <h2>Mediatyp: </h2>
+        <h2>Mediatyp:</h2>
         <div class="type-buttons">
-            <button onclick="setTypeFilter('all')" id="type-all"class="type-button">Alla</button>
+            <button onclick="setTypeFilter('all')" id="type-all" class="type-button">Alla</button>
             <button onclick="setTypeFilter('image')" id="type-image" class="type-button">Bild</button>
             <button onclick="setTypeFilter('video')" id="type-video" class="type-button">Video</button>
         </div>
+        {{#if user.admin}}
+        <div class="delete-menu">
+            <button id="delete-btn"  class="delete-btn" onclick="toggleDeleteMode()">Radera media</button>    </div>
+        {{/if}}
     </div>
     <br>
     <div class="media-list">
 
     </div>
-    <!--<div class="active-media">
-
-    </div>
-
-    <a href="#_" class="lightbox">
-
-    </a>-->
-
     <div class="lightbox" onclick="clearLightbox()">
 
     </div>

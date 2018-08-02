@@ -166,7 +166,7 @@ $(document).ready(function() {
 
             if(query == ""){
                 Frack.Media.GetAll().then(function(res) {
-                    renderTemplate("#content", "/static/templates/media.html", {media : res.data});
+                    renderTemplate("#content", "/static/templates/media.html", {media : res.data, user: Frack.CurrentUser});
                 })
             }else{
                 Frack.Media.GetByFilter(query).then(function(res){

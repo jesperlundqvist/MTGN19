@@ -467,7 +467,7 @@ iframe{
     background: red;
 }
 
-.week-select-button, .event-select-button, .type-button {
+.week-select-button, .event-select-button, .type-button, .delete-btn {
     background-color: #f9f0e8;
     border: 1px solid black;
 }
@@ -507,4 +507,27 @@ iframe{
     outline: none;
 
     display: block;
+}
+
+.deletion-selected{
+    padding: 2%;
+    background: white;
+}
+
+.loader{
+    border: 16px solid #a5a5a5;
+    border-top: 16px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% {transform:  rotate(360deg);}
+}
+
+.upload-status{
+    
 }

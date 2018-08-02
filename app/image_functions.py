@@ -68,6 +68,33 @@ def get_media(week_filter = None, event_filter = None, media_type = None, upload
 
     return output
 
+def delete_media(request):
+    imgs_to_delete = request.json["images"]
+    vids_to_delete = request.json["videos"]
+
+    if len(imgs_to_delete) is not 0:
+        id_list = []
+        for image in imgs_to_delete:
+            id_list.append(image["id"])
+        print(id_list)
+
+        q = Image.query.filter()
+        q = q.filter(Image.id.in_(id_list)).all()
+        for resp in q:
+            db.session.delete(resp)
+        db.session.commit()
+
+    if len(vids_to_delete) is not 0:
+        video_id_list = []
+        for video in vids_to_delete:
+            video_id_list.append(video["id"])
+
+        v = Video.query.filter()
+        v = v.filter(Video.id.in_(video_id_list)).all()
+        for resp in v:
+            db.session.delete(resp)
+        db.session.commit()
+
 def generate_thumbnail(filename):
     im = Img.open(os.path.join(UPLOAD_FOLDER, filename))
     size = (200, 200) # thumbnail-storleken

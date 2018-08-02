@@ -49,6 +49,9 @@ uploadDocument = function () {
         var file = files[j];
         form_data.append("files", file, file.name);
     }
+    $(".lightbox").css("display", "flex")
+    .css("justify-content", "center")
+    .css("align-items", "center");
 
     generateThumbNail(files, form_data)
 
@@ -60,7 +63,7 @@ function generateThumbNail(fileList, form_data) {
     PDFJS.workerSrc = "/static/js/pdf.worker.js";
     var pdfWorker = new PDFJS.PDFWorker();
     var DOC_URL = "/static/blandaren/"
-
+    $(".upload-status").text("Skapar thumbnail..")
     for (var i = 0; i < fileList.length; i++) {
         var docObj = fileList[i];
         var fileReader = new FileReader();
@@ -90,6 +93,8 @@ function generateThumbNail(fileList, form_data) {
                         var img_src = canvas.toDataURL("image/png");
                         img_src = img_src.split(",")[1];
                         form_data.append("thumbnail", img_src)
+                        $(".upload-status").empty();
+                        $(".upload-status").text("Laddar upp..")
                         $.ajax({
                             url: "/api/blandaren",
                             type: "POST",
