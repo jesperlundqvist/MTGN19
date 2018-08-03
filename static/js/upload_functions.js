@@ -27,7 +27,7 @@ uploadMedia = function () {
         form_data.append("videos", link);
     }
     $.ajax({
-        url: "/api/media",
+        url: "/api/media/",
         type: "POST",
         data: form_data,
         contentType: false,

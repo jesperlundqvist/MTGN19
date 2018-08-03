@@ -55,6 +55,17 @@ $(document).ready(function() {
         return new Handlebars.SafeString(str);
     });
 
+    Handlebars.registerHelper('formatTime', function(date) {
+        var d = new Date(date);
+
+        var str = d.toLocaleTimeString("sv-SE", {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        return new Handlebars.SafeString(str);
+    });
+
     Handlebars.registerHelper('toWeekDay', function(num) {
         var str = "";
 
@@ -102,6 +113,9 @@ $(document).ready(function() {
         return ISOweekStart;
     }
 
+    var browserKey = 'AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk';
+    var calendarid = "67o81suoslm4i02r6kr9vldek4@group.calendar.google.com"; // Mottagningen 2018
+
     Frack.Router = new Navigo(window.location.origin);
 
     Frack.Router.hooks({
@@ -119,6 +133,58 @@ $(document).ready(function() {
 
     Frack.Router.on({
         '/': function() {
+            preloadTemplate("/static/templates/idag.html");
+            preloadTemplate("/static/templates/sidebar.html");
+
+            var dailyMessageReq = axios({
+                method: 'get',
+                url: "/api/dailymessage"
+            });
+
+            var startQuery = new Date();
+            var endQuery = new Date();
+            startQuery.setUTCHours(0);
+            endQuery.setUTCHours(23, 59);
+
+            var eventReq = axios({
+                method: "get",
+                url: "https://www.googleapis.com/calendar/v3/calendars/" + calendarid + "/events",
+                params: {
+                    key: browserKey,
+                    orderBy: "startTime",
+                    singleEvents: true,
+                    timeMin: startQuery,
+                    timeMax: endQuery
+                }
+            });
+
+            var todayStr = new Date().toLocaleDateString("sv-SE", {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long'
+            });
+
+            todayStr = todayStr.charAt(0).toUpperCase() + todayStr.substr(1);
+
+            var requests = [Frack.News.GetAll(), Frack.Media.GetAll(), dailyMessageReq, eventReq];
+            axios.all(requests).then(function(res) {
+                var news = res[0].data;
+                var media = res[1].data;
+                var dailyMessage = res[2].data.message;
+                var events = res[3].data.items;
+
+                var latestNews = news.reduce(function(prev, current) {
+                    return (new Date(prev.timestamp) > new Date(current.timestamp)) ? prev : current
+                });
+
+                var latestMedia = media.splice(media.length-3); // Behöver göras bättre
+
+                renderTemplate("#content", "/static/templates/idag.html", {todayStr: todayStr, dailyMessage: dailyMessage, latestNews: latestNews, latestMedia: latestMedia, events: events});
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "idag", user: Frack.CurrentUser});
+            });
+        },
+
+        '/nyheter': function() {
             preloadTemplate("/static/templates/article.html");
             preloadTemplate("/static/templates/sidebar.html");
             Frack.News.GetAll().then(function(res) {
@@ -127,7 +193,7 @@ $(document).ready(function() {
             });
         },
 
-        '/nyhet/:id/': function(params, query) {
+        '/nyheter/:id/': function(params, query) {
             preloadTemplate("/static/templates/article.html");
             preloadTemplate("/static/templates/sidebar.html");
             Frack.News.GetByFilter("id=" + params.id).then(function(res) {
@@ -149,9 +215,6 @@ $(document).ready(function() {
         },
 
         '/schema/:week': function(params) {
-            var browserKey = 'AIzaSyC-0HQfVbXdEjF52aCm6rK9UMIrWglIskk';
-            var calendarid = "67o81suoslm4i02r6kr9vldek4@group.calendar.google.com"; // Mottagningen 2018
-
             preloadTemplate("/static/templates/schema.html");
             preloadTemplate("/static/templates/sidebar.html");
 

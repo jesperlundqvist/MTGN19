@@ -106,7 +106,7 @@ loadScript("https://cdn.quilljs.com/1.3.6/quill.js", function() {
         e.preventDefault();
 
         Frack.News.New({headline: $("#titleeditor").val(), text: quill.container.firstChild.innerHTML, tags: ""}).then(function(res) {
-            Frack.Router.navigate("/nyhet/" + res.data.id);
+            Frack.Router.navigate("/nyheter/" + res.data.id);
         });
     };
 });

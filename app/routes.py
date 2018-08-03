@@ -12,6 +12,7 @@ import app.document_functions as document_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
 import uuid
+from app.daily_message import get_daily_messange_json
 
 STATIC_DIR = os.path.join(os.getcwd(), "static")
 
@@ -72,7 +73,7 @@ def blandar_route():
         print(document_response)
         return jsonify(document_response), 200
 
-@app.route("/api/media", methods = ["GET", "POST", "DELETE"]) #Hämta media eller ladda upp media
+@app.route("/api/media/", methods = ["GET", "POST", "DELETE"]) #Hämta media eller ladda upp media
 def media_path():
     week_filter = request.args.get("week")
     event_filter = request.args.get("event")
@@ -191,6 +192,10 @@ def upload_file_route():
             return jsonify({"message": "invalid"}), 400
     else:
         return jsonify({"message": "unauthorized"}), 401
+
+@app.route("/api/dailymessage", methods=["GET"])
+def get_daily_message():
+    return get_daily_messange_json()
 
 @app.route("/api/currentUser/", methods=["GET"])
 @requires_auth_token
