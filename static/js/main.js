@@ -119,9 +119,9 @@ $(document).ready(function() {
 
     Frack.Router.on({
         '/': function() {
+            preloadTemplate("/static/templates/article.html");
+            preloadTemplate("/static/templates/sidebar.html");
             Frack.News.GetAll().then(function(res) {
-                preloadTemplate("/static/templates/article.html");
-                preloadTemplate("/static/templates/sidebar.html");
                 renderTemplate("#content", "/static/templates/nyheter.html", {news: res.data});
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
             });
