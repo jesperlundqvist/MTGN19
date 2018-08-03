@@ -80,9 +80,12 @@
         $("body").css("overflow", "hidden");
     });
 
-    $(".schedule-popup").click(function() {
-        $(".schedule-popup").hide();
-        $("body").css("overflow", "initial");
+    $(document).click(function(e) {
+        if ($(e.target).has($(".schedule-popup-box")).length != 0)
+        {
+            $(".schedule-popup").hide();
+            $("body").css("overflow", "initial");
+        }
     });
 
     // Scrolla till dagens dag ifall det finns en sådan
