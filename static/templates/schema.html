@@ -22,7 +22,7 @@
         <div class="schedule-week-change"></div>
     {{/if}}
 </h2>
-<div class="schedule-week">
+<div class="schedule">
     <div class="schedule-time-column">
         <p class="schedule-time">08:00</p>
         <p class="schedule-time">09:00</p>
@@ -42,15 +42,16 @@
         <p class="schedule-time">23:00</p>
         <p class="schedule-time">00:00</p>
     </div>
+    <div class="schedule-week">
     {{#each this}}
         <div>
             {{#ifCond ../../currentDay @key}}
                 <h3 class="schedule-current-day">{{toWeekDay @key}}</h3>
+                <div class="schedule-day schedule-day-today">
             {{else}}
                 <h3>{{toWeekDay @key}}</h3>
+                <div class="schedule-day">
             {{/ifCond}}
-
-            <div class="schedule-day">
                 {{#each this}}
                     <div class="schedule-filler" style="height: {{topPosition}}px;">
                     </div>
@@ -62,6 +63,7 @@
             </div>
         </div>
     {{/each}}
+    </div>
 </div>
 {{/each}}
 
@@ -85,11 +87,22 @@
 
     // Scrolla till dagens dag ifall det finns en sådan
     if ($(".schedule-current-day").length) {
-        $('.schedule-week').scrollLeft($(".schedule-current-day").offset().left - $(".schedule-week").offset().left - 60);
+        $('.schedule-week').scrollLeft($(".schedule-current-day").offset().left - $(".schedule-week").offset().left - 5);
     }
 </script>
 
 <style>
+
+.schedule {
+    display: flex;
+}
+
+.schedule-current-day {
+}
+
+.schedule-day.schedule-day-today {
+    box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.4);
+}
 
 .schedule-week-change {
     font-size: 32px;
@@ -136,8 +149,6 @@
 }
 
 .schedule-time-column {
-    left: 0;
-    position: sticky;
     padding-top: 25px;
     padding-right: 10px;
     background-color: #fffcf9;
