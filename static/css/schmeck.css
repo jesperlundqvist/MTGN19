@@ -439,6 +439,7 @@ p, a {
 /* MEDIA */
 .media-thumbnail{
     background-size: cover;
+    background-position: center;
     width: 200px;
     height: 200px;
     background-color: #a5a5a5;
