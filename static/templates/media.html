@@ -1,4 +1,5 @@
 <script>
+    /*
     // script för att hämta och filtrera media
     var allMedia;
     var shownMedia;
@@ -15,11 +16,11 @@
         "videos": []
     };
     $(document).ready(function () {
-        /*fetch(API_URL).then((response) => response.json())
-        .then((jsondata) => {allMedia = jsondata
-                             shownMedia = allMedia
-                             updateMediaList(shownMedia)});*/
-        fetchData();
+        //fetch(API_URL).then((response) => response.json())
+        //.then((jsondata) => {allMedia = jsondata
+        //                     shownMedia = allMedia
+        //                     updateMediaList(shownMedia)});
+        //fetchData();
 
     });
 
@@ -187,7 +188,6 @@
     }
     function clearLightbox() {
         $(".lightbox").css("display", "none");
-        $(".lightbox").empty();
     }
 
     function toggleDeleteMode() {
@@ -238,37 +238,152 @@
             body: JSON.stringify(deletionSelection)
         }).then(() => location.reload())
 
-    }
+    }*/
 </script>
 
-<body>
-    <div class="filters">
+<div class="filters">
 
-        <h2>Vecka:</h2>
-        <div class="week-buttons">
-
-        </div>
-
-        <h2>Event:</h2>
-        <div class="event-buttons">
-
-        </div>
-        <h2>Mediatyp:</h2>
-        <div class="type-buttons">
-            <button onclick="setTypeFilter('all')" id="type-all" class="type-button">Alla</button>
-            <button onclick="setTypeFilter('image')" id="type-image" class="type-button">Bild</button>
-            <button onclick="setTypeFilter('video')" id="type-video" class="type-button">Video</button>
-        </div>
-        {{#if user.admin}}
-        <div class="delete-menu">
-            <button id="delete-btn"  class="delete-btn" onclick="toggleDeleteMode()">Radera media</button>    </div>
-        {{/if}}
-    </div>
-    <br>
-    <div class="media-list">
+    <h2>Vecka:</h2>
+    <div class="week-buttons">
 
     </div>
-    <div class="lightbox" onclick="clearLightbox()">
+
+    <h2>Event:</h2>
+    <div class="event-buttons">
 
     </div>
-</body>
+    <h2>Mediatyp:</h2>
+    <div class="type-buttons">
+        <button onclick="setTypeFilter('all')" id="type-all" class="type-button">Alla</button>
+        <button onclick="setTypeFilter('image')" id="type-image" class="type-button">Bild</button>
+        <button onclick="setTypeFilter('video')" id="type-video" class="type-button">Video</button>
+    </div>
+    {{#if user.admin}}
+    <div class="delete-menu">
+        <button id="delete-btn"  class="delete-btn" onclick="toggleDeleteMode()">Radera media</button>
+    </div>
+    {{/if}}
+</div>
+<br>
+
+<div class="media-list">
+{{#each media}}
+    <div
+        id="media-thumbnail-{{type}}{{id}}"
+        class="media-thumbnail"
+        style="background-image: url('{{thumbnail}}'); transform: rotate({{rot}}deg);"
+        data-filename="{{filename}}"
+        data-video="{{video_link}}"
+        data-type="{{type}}"
+        data-week="{{week}}"
+        data-event="{{event}}"
+        data-previd="{{previd}}"
+        data-nextid="{{nextid}}"
+    >
+        {{#ifCond type "video"}}
+        <img src="/static/images/play_icon.png" class="media-play-icon" />
+        {{/ifCond}}
+    </div>
+{{/each}}
+</div>
+
+<div class="lightbox">
+    <div class="lightbox-left-button" onclick="prevImage();">&#x2039;</div>
+    <div class="lightbox-x">&#x2716;</div>
+    <img id="lightbox-image" class="active-image" />
+    <iframe id="lightbox-video" type="text/html" frameborder="0" allowfullscreen></iframe>
+    <div class="lightbox-right-button" onclick="nextImage();">&#x203a;</div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".media-thumbnail").click(function(e) {
+            var elem = e.target;
+            updateLightboxFromElem(elem);
+        });
+    });
+
+    $(window).resize(function() {
+        $("#lightbox-video").width($(document).width()*0.9);
+        $("#lightbox-video").height(($("#lightbox-video").width()/16)*9);
+    });
+
+    $(document).on('click', function(event) {
+        if ($(event.target).has('.lightbox-left-button, #lightbox-image, .lightbox-right-button').length) {
+            $(".lightbox").css("display", "none");
+            $("#lightbox-image").attr("src", "");
+            $("#lightbox-video").attr("src", "");
+        }
+    });
+
+    $(".lightbox-x").click(function() {
+        $(".lightbox").css("display", "none");
+        $("#lightbox-image").attr("src", "");
+        $("#lightbox-video").attr("src", "");
+    })
+
+    $(document).keypress(function(e) {
+        if (e.keyCode == 27) {
+            // Escape
+            $(".lightbox").css("display", "none");
+            $("#lightbox-image").attr("src", "");
+            $("#lightbox-video").attr("src", "");
+        } else if (e.keyCode == 37) {
+            // Left arrow
+            prevImage();
+        } else if (e.keyCode == 39) {
+            // Right arrow
+            nextImage();
+        }
+    });
+
+    function updateLightboxFromElem(elem) {
+        var previd = elem.dataset.previd;
+        var nextid = elem.dataset.nextid;
+
+        $(".lightbox-left-button, .lightbox-right-button").show();
+
+        $(".lightbox").data("previd", previd);
+        $(".lightbox").data("nextid", nextid);
+
+        if (previd == -1) {
+            $(".lightbox-left-button").hide();
+        }
+
+        if (nextid == -1) {
+            $(".lightbox-right-button").hide();
+        }
+
+        if (elem.dataset.type == "image") {
+            $("#lightbox-video").attr("src", "");
+            $("#lightbox-image").attr("src", elem.dataset.filename);
+
+            $("#lightbox-image").show();
+            $("#lightbox-video").hide();
+        } else if (elem.dataset.type == "video") {
+            $("#lightbox-video").attr("src", "http://" + elem.dataset.video + "?autoplay=0&rel=0&showinfo=0&modestbranding=1");
+
+            $("#lightbox-video").width($(document).width()*0.9);
+            $("#lightbox-video").height(($("#lightbox-video").width()/16)*9);
+
+            $("#lightbox-video").show();
+            $("#lightbox-image").hide();
+        }
+        $(".lightbox").css("display", "flex");
+    }
+
+    function updateLightBoxFromId(id) {
+        var sel = $("#media-thumbnail-" + id);
+        if (sel.length > 0) {
+            updateLightboxFromElem(sel[0]);
+        }
+    }
+
+    function prevImage() {
+        updateLightBoxFromId($(".lightbox").data("previd"));
+    }
+
+    function nextImage() {
+        updateLightBoxFromId($(".lightbox").data("nextid"));
+    }
+</script>

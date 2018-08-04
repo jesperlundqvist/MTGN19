@@ -379,15 +379,18 @@ $(document).ready(function() {
             renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "media", user: Frack.CurrentUser});
             preloadTemplate("/static/templates/media.html");
 
-            if(query == ""){
-                Frack.Media.GetAll().then(function(res) {
-                    renderTemplate("#content", "/static/templates/media.html", {media : res.data, user: Frack.CurrentUser});
-                })
-            }else{
-                Frack.Media.GetByFilter(query).then(function(res){
-                    renderTemplate("#content", "/static/templates/media.html", {media : res.data});
-                })
-            }
+            Frack.Media.GetAll().then(function(res) {
+                var media = res.data;
+
+                media.forEach(function (elem, index) {
+                    elem["rot"] = elem.thumbnail.charCodeAt(elem.thumbnail.length-5) % 5 - 2;
+
+                    elem["previd"] = media[index-1] ? media[index-1].type + media[index-1].id : -1;
+                    elem["nextid"] = media[index+1] ? media[index+1].type + media[index+1].id : -1;
+                });
+
+                renderTemplate("#content", "/static/templates/media.html", {media: media, user: Frack.CurrentUser});
+            });
         },
 
         '/blandaren': function() {
