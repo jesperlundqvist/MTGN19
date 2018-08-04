@@ -111,21 +111,6 @@ def delete_media(request):
             db.session.delete(resp)
         db.session.commit()
 
-def generate_thumbnail(filename):
-    im = Img.open(os.path.join(UPLOAD_FOLDER, filename))
-    #aspect_ratio = im.shape[1] / im.shape[0]
-
-    size = (200, 200) # thumbnail-storleken
-    filename = filename.split(".")[0]
-    outfile = os.path.splitext(im.filename)[0]
-    try:
-        im = im.resize(size)
-        im.save(outfile + "_thumb.jpg", "JPEG")
-    except IOError:
-        print("en liten fucky wucky")
-
-    return filename + "_thumb.jpg"
-
 def get_weeks():
     output = []
     q1 = db.session.query(Image.week)
