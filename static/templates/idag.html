@@ -23,11 +23,13 @@
 
 <div class="newsitem">
     <h2>Nya bilder</h2>
+    <a href="/media" data-navigo>
     <div class="simple-media-viewer">
         {{#each latestMedia}}
-            <img src="{{thumbnail}}" />
+            <img src="{{thumbnail}}" style="width:200px; height: 200px;" />
         {{/each}}
     </div>
+    </a>
 </div>
 
 <style>
