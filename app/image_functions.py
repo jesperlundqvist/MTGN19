@@ -4,6 +4,7 @@ from app.models.image import Image
 from app.models.video import Video
 from app import db
 from PIL import Image as Img
+import uuid
 
 UPLOAD_FOLDER = os.path.join(os.getcwd(),"static","media")
 
@@ -14,10 +15,25 @@ def upload_media(request):
     week = request.form.get("week")
     if latest_files is not None:
         for uploaded_file in latest_files:
-            file_name = uploaded_file.filename
-            uploaded_file.save(os.path.join(UPLOAD_FOLDER,file_name))
-            thumb = generate_thumbnail(file_name)
-            new_img = Image(filename = uploaded_file.filename,uploaded_by = name,event = event,week = week, thumbnail = thumb)
+            original_filename, extension = os.path.splitext(uploaded_file.filename)
+
+            # Spara orginalet
+            filename = str(uuid.uuid4()) + extension ## Generera ett unikt filnamn så att det inte blir krockar
+            path = os.path.join("static", "images", "profiles", filename)
+            local_path = os.path.join(os.getcwd(), path)
+            uploaded_file.save(local_path)
+
+            # Skapa en thumbnail
+            thumb = Img.open(local_path)
+            filename_thumb = str(uuid.uuid4()) + extension
+
+            path_thumb = os.path.join("static", "images", "profiles", filename_thumb)
+            local_path_thumb = os.path.join(os.getcwd(), path_thumb)
+
+            thumb.thumbnail([400, 400])
+            thumb.save(local_path_thumb)
+
+            new_img = Image(filename = path, uploaded_by = name,event = event, week = week, thumbnail = path_thumb)
             db.session.add(new_img)
 
     latest_videos = request.form.getlist("videos")
@@ -97,6 +113,8 @@ def delete_media(request):
 
 def generate_thumbnail(filename):
     im = Img.open(os.path.join(UPLOAD_FOLDER, filename))
+    #aspect_ratio = im.shape[1] / im.shape[0]
+
     size = (200, 200) # thumbnail-storleken
     filename = filename.split(".")[0]
     outfile = os.path.splitext(im.filename)[0]

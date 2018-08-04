@@ -438,9 +438,12 @@ p, a {
 
 /* MEDIA */
 .media-thumbnail{
-    max-height: 200px;
-    max-width: 200px;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
     background-color: #a5a5a5;
+
+    cursor: pointer;
 }
 
 .active-media{
@@ -463,7 +466,7 @@ iframe{
     margin-bottom: 10%;
     width: 72%;
     height: 80%;
-    
+
     background: red;
 }
 
@@ -529,5 +532,5 @@ iframe{
 }
 
 .upload-status{
-    
+
 }
