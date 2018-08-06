@@ -381,6 +381,8 @@ $(document).ready(function() {
 
             Frack.Media.GetAll().then(function(res) {
                 var media = res.data;
+                var events = [];
+                var weeks = [];
 
                 media.forEach(function (elem, index) {
                     elem["rot"] = elem.thumbnail.charCodeAt(elem.thumbnail.length-5) % 5 - 2;
@@ -389,7 +391,7 @@ $(document).ready(function() {
                     elem["nextid"] = media[index+1] ? media[index+1].type + media[index+1].id : -1;
                 });
 
-                renderTemplate("#content", "/static/templates/media.html", {media: media, user: Frack.CurrentUser});
+                renderTemplate("#content", "/static/templates/media.html", {media: media, events: events, weeks: weeks, user: Frack.CurrentUser});
             });
         },
 
@@ -398,7 +400,6 @@ $(document).ready(function() {
             preloadTemplate("/static/templates/blandaren.html");
 
             Frack.Blandaren.GetAll().then(function(res) {
-                console.log(res);
                 renderTemplate("#content", "/static/templates/blandaren.html", {blandaren: res.data});
             });
         },
