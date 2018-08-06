@@ -27,7 +27,6 @@ def upload_media(request):
 
             local_path = os.path.join(os.getcwd(), path)
             img.save(local_path)
-            print("KUK")
 
             # Skapa en thumbnail
             thumb = Img.open(local_path)

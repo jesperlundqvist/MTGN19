@@ -60,11 +60,12 @@ def add_user(data):
         if "n0llegroup_id" in data:
             n0llegroup = N0lleGroup.query.get(data["n0llegroup_id"])
 
+
         u = User(data["username"], data["name"], data["password"], UserType.query.get(data["type_id"]), n0llegroup)
         db.session.add(u)
         db.session.commit()
 
-        return jsonify({"user_id": u.id}), 200
+        return jsonify({"usr_id": u.id}), 200
     else:
         return jsonify({"message": "unauthorized"}), 401
 

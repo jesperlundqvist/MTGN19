@@ -183,10 +183,13 @@ def upload_file_route():
             f = request.files["file"]
             original_filename, extension = os.path.splitext(f.filename)
             filename = str(uuid.uuid4()) + extension
-            path = os.path.join("static", "uploads", filename)
+            path = os.path.join("static", "images", "profiles", filename)
             local_path = os.path.join(os.getcwd(), path)
-
+            id = request.args.get("id")
+            print(id)
             f.save(local_path)
+           
+
             return jsonify({"url": "/" + path})
         else:
             return jsonify({"message": "invalid"}), 400
