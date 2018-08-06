@@ -1,6 +1,9 @@
 <h1 class="title">Bländaren</h1>
 <div class="document-container">
 {{#each blandaren}}
-    <a href="/static/blandaren/{{filename}}"><img src="/static/blandaren/{{thumbnail}}" /></a>
+    <div class="document-blandare">
+    <a href="/static/blandaren/{{filename}}"><img src="/static/blandaren/{{thumbnail}}" class="image-hover"/></a>
+    <div class="document-text-container" ><h2 class="title">REPLACE ME</h2></div>
+    </div>
 {{/each}}
 </div>

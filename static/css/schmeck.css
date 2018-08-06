@@ -32,6 +32,30 @@
     font-style: italic;
 }
 
+.document-blandare:hover .image-hover {
+    opacity: 0.5;
+}
+
+.document-text-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    justify-content: center;
+    
+}
+
+.document-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image-hover {
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+
 .menubar {
     font-family: mrs-eaves-roman-lining, serif;
     font-size: 22px;
