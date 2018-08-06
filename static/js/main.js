@@ -394,8 +394,13 @@ $(document).ready(function() {
         },
 
         '/blandaren': function() {
-            renderTemplate("#content", "/static/templates/blandaren.html");
             renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "blandaren", user: Frack.CurrentUser});
+            preloadTemplate("/static/templates/blandaren.html");
+
+            Frack.Blandaren.GetAll().then(function(res) {
+                console.log(res);
+                renderTemplate("#content", "/static/templates/blandaren.html", {blandaren: res.data});
+            });
         },
 
         '/admin': function() {

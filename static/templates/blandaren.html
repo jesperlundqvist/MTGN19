@@ -1,42 +1,6 @@
-<script>
-    PDFJS.workerSrc = "/static/js/pdf.worker.js";
-    
-    var allDocuments;
-    var pdfWorker;
-    var API_URL = "/api/blandaren"
-    var DOC_URL = "/static/blandaren/"
-
-    $(document).ready(function () {
-        pdfWorker = new PDFJS.PDFWorker();
-        console.log(pdfWorker);
-        fetchData();
-    })
-
-    fetchData = async () => {
-        allDocuments = await fetch(API_URL).then((response) => response.json())
-            .then((jsonData) => { return jsonData });
-        updateDocumentList(allDocuments);
-    }
-
-    updateDocumentList = function (documentArray) {
-        var documentContainer = $(".document-container");
-        documentContainer.empty();
-        for (var i = 0; i < documentArray.length; i++) {
-
-            var docObj = documentArray[i];
-            console.log(docObj)
-            var img = $(('<img>'));
-            img.attr("src", DOC_URL + docObj.thumbnail);
-
-            img.on("click", () =>{
-                window.location = DOC_URL + docObj.filename;
-            });
-
-            documentContainer.append(img)
-        }
-    }
-</script>
 <h1 class="title">Bländaren</h1>
 <div class="document-container">
-
+{{#each blandaren}}
+    <a href="/static/blandaren/{{filename}}"><img src="/static/blandaren/{{thumbnail}}" /></a>
+{{/each}}
 </div>
