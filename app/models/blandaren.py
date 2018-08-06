@@ -5,6 +5,7 @@ class Document(db.Model):
     id = Column(Integer, primary_key = True)
     filename = Column(String(64))
     thumbnail = Column(String(256))
+    title = Column(String(256))
 
     def as_dictionary(self):
         doc_dict = {
