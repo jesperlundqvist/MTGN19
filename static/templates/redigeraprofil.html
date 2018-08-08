@@ -29,13 +29,39 @@
     <input type="text" class="form-control" value="{{user.q3}}" id="user_form_q3"/>
 
     <br />
+
+    <h3>Nytt lösenord</h3>
+    <input type="password" class="form-control" id="user_form_password"/>
+
+    <h3>Bekräfta nytt lösenord</h3>
+    <input type="password" class="form-control" id="user_form_password_verify"/>
+
+    <br />
     <input type="submit" class="btn btn-primary" value="Spara"/>
 </form>
+<br />
 
 <script>
     var form = document.querySelector('#user_edit_form');
     form.onsubmit = function(e) {
         e.preventDefault();
+
+        var pw = $("#user_form_password").val();
+        if (pw == $("#user_form_password_verify").val()) {
+            Frack.User.Update({{user.id}}, {
+                description: $("#user_form_description").val(),
+                q1: $("#user_form_q1").val(),
+                q2: $("#user_form_q2").val(),
+                q3: $("#user_form_q3").val(),
+                password: pw
+            }).then(function(res) {
+                Frack.Router.navigate("/profiler/{{user.username}}");
+            });
+        }
+        else {
+            alert("Lösenorden matchar inte!");
+            return;
+        }
 
         Frack.User.Update({{user.id}}, {
             description: $("#user_form_description").val(),
