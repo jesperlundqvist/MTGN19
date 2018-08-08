@@ -38,8 +38,6 @@ if app.config["DEBUG"]:
     adminUser = User("admin", "Admin", "hamburgare23", userTypeInpho)
     adminUser.admin = True
     adminUser.hidden = True
-
-    db.session.add(adminUser)
     """
     magikarparna = N0lleGroup(name="Magi-Karparna")
     krangligaKrabban = N0lleGroup(name="Krångliga Krabban")
@@ -57,10 +55,11 @@ if app.config["DEBUG"]:
     testNews = News(headline="Första inlägget", author=joppe, tags="", text="Här är det lite text!")
     dag1News = News(headline="Välkommen nØllan!", author=adminUser, tags="", text="Dag 1 är redan slut och vi hoppas att ni har haft en toppenstart tillsammans med oss!<br><br>Vi hoppas att ni ska trivas här hos oss på Medieteknik och att ni ser fram emot Mottagningen.<br><br>Under morgondagen vankas det gasque så passa på att komma till Gasquevettet där VRAQUE kommer lära er allt om hur man gasquear.<br><br>Tagga Välkomstgasque i morgon!")
     """
+    """
     db.session.add(adminUser)
 
     db.session.add(joppe)
     db.session.add(testNews)
     db.session.add(dag1News)
-
+    """
     db.session.commit()
