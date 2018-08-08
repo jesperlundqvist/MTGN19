@@ -11,7 +11,6 @@ UPLOAD_FOLDER = os.path.join(os.getcwd(),"static","media")
 
 def upload_media(request):
     latest_files = request.files.getlist("files")
-    name = request.form.get("uploadedby")
     event = request.form.get("event")
     week = request.form.get("week")
     if latest_files is not None:
@@ -38,17 +37,15 @@ def upload_media(request):
             thumb.thumbnail([400, 400])
             thumb.save(local_path_thumb)
 
-
-
-            new_img = Image(filename = path, uploaded_by = name,event = event, week = week, thumbnail = path_thumb)
+            new_img = Image(filename = path, event_id = event, week = week, thumbnail = path_thumb)
             db.session.add(new_img)
 
     latest_videos = request.form.getlist("videos")
     if latest_videos is not None:
         for video in latest_videos:
             embed_link, thumbnail = handle_video(video)
-            new_vid = Video(video_link = embed_link, uploaded_by = name,
-            event = event,
+            new_vid = Video(video_link = embed_link,
+            event_id = event,
             week = week,
             thumbnail = thumbnail)
             db.session.add(new_vid)
@@ -98,7 +95,7 @@ def delete_media(request):
     if len(imgs_to_delete) is not 0:
         id_list = []
         for image in imgs_to_delete:
-            id_list.append(image["id"])
+            id_list.append(image)
         print(id_list)
 
         q = Image.query.filter()
@@ -110,7 +107,7 @@ def delete_media(request):
     if len(vids_to_delete) is not 0:
         video_id_list = []
         for video in vids_to_delete:
-            video_id_list.append(video["id"])
+            video_id_list.append(video)
 
         v = Video.query.filter()
         v = v.filter(Video.id.in_(video_id_list)).all()
@@ -135,7 +132,7 @@ def get_events():
     for value in q3.distinct():
         output.append(value[0])
     return output
-    
+
 
 def handle_video(video_link):
     video_id = video_link.split("v=")[1]

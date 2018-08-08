@@ -104,7 +104,8 @@ var Frack = {
     User: GetApiObject("/api/user/"),
     UserType: GetApiObject("/api/user_type/"),
     N0lleGroup: GetApiObject("/api/n0llegroup/"),
-    Blandaren: GetApiObject("/api/blandaren")
+    Blandaren: GetApiObject("/api/blandaren"),
+    Event: GetApiObject("/api/event/")
 };
 
 function preloadTemplate(url) {

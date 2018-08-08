@@ -5,7 +5,6 @@ uploadMedia = function () {
     var outputData = [];
     var fileSelect = document.getElementById("files");
     var files = fileSelect.files;
-    var name = $("#name").val(); // den som laddar upp bilderna
     var week = $("#week").val(); // veckan bilden togs
     var event = $("#event").val(); // eventet bilden togs under
     var links = $("#videos").val();
@@ -17,7 +16,6 @@ uploadMedia = function () {
         var file = files[i];
         form_data.append("files", file, file.name)
     }
-    form_data.append("uploadedby", name);
     form_data.append("week", week);
     form_data.append("event", event);
 
@@ -26,6 +24,7 @@ uploadMedia = function () {
         var link = linkList[j];
         form_data.append("videos", link);
     }
+
     $.ajax({
         url: "/api/media/",
         type: "POST",

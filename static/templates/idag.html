@@ -21,16 +21,18 @@
     <p class="news-subtitle">Av {{latestNews.author.type.name}}-{{latestNews.author.name}}<br />{{formatDate latestNews.timestamp}}</p>
 </div>
 
+{{#if latestMedia.length}}
 <div class="newsitem">
     <h2>Nya bilder</h2>
     <a href="/media" data-navigo>
     <div class="simple-media-viewer">
         {{#each latestMedia}}
-            <img src="{{thumbnail}}" style="width:200px; height: 200px;" />
+            <img src="{{thumbnail}}" class="simple-media-thumbnail" />
         {{/each}}
     </div>
     </a>
 </div>
+{{/if}}
 
 <style>
     .simple-schedule {
@@ -47,7 +49,18 @@
     }
 
     .simple-media-viewer {
+        display: flex;
+        flex-flow: wrap;
+    }
 
+    .simple-media-thumbnail {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+
+        border: 5px solid white;
+        outline: 1px solid lightgray;
+        margin: 5px;
     }
 
     /*.simple-schedule-item:hover {

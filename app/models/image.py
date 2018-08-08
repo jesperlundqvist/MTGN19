@@ -1,26 +1,23 @@
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from app import db
 
 class Image(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    filename = db.Column(db.String(256))
-    uploaded_by = db.Column(db.String(64))
-    week = db.Column(db.Integer)
-    event = db.Column(db.String(256))
-    upload_date = db.Column(db.Date)
-    thumbnail = db.Column(db.String(264))
+    id = Column(Integer, primary_key=True)
+    filename = Column(String(512))
+    thumbnail = Column(String(512))
+    week = Column(Integer)
 
-    def __repr__(self):
-        return '<Bild uppladdad av {}>'.format(self.uploaded_by)
-    
+    event_id = Column(Integer, ForeignKey('event.id'))
+    event = relationship("Event", back_populates="images")
+
     def as_dictionary(self):
         image_dict = {
             "id" : self.id,
             "filename":self.filename,
-            "uploaded_by": self.uploaded_by,
+            "thumbnail": self.thumbnail,
             "week": self.week,
-            "event": self.event,
-            "upload_date": self.upload_date,
-            "thumbnail": self.thumbnail
+            "event": self.event.to_dict()
         }
 
         return image_dict

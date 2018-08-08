@@ -9,6 +9,7 @@ import app.news_functions as news_functions
 import app.image_functions as image_functions
 import app.user_functions as user_functions
 import app.document_functions as document_functions
+import app.event_functions as event_functions
 from sqlalchemy import desc
 from app.authentication import requires_auth, requires_auth_token, check_auth
 import uuid
@@ -93,13 +94,21 @@ def media_path():
         image_response = image_functions.get_media(week_filter = week_filter, event_filter = event_filter, media_type = type_filter, uploaded_by=uploader_filter)
         return jsonify(image_response), 200
 
-@app.route("/api/weeks", methods = ["GET"])
-def get_weeks():
-    return jsonify(image_functions.get_weeks())
+@app.route("/api/event/", methods=["GET", "POST", "DELETE", "PUT"])
+@requires_auth_token
+def event_route():
+    if request.method == "GET":
+        if len(request.args) > 0:
+            return event_functions.get_event_by_filter(request.args)
+        else:
+            return event_functions.get_all_events()
+    elif request.method == "POST":
+        return event_functions.add_event(request.json)
+    elif request.method == "DELETE":
+        return event_functions.delete_event(request.args)
+    elif request.method == "PUT":
+        return event_functions.edit_event(request.args, request.json)
 
-@app.route("/api/events", methods = ["GET"])
-def get_events():
-    return jsonify(image_functions.get_events())
 
 @app.route("/api/news/", methods=["GET", "POST", "DELETE", "PUT"])
 @requires_auth_token
@@ -188,7 +197,7 @@ def upload_file_route():
             id = request.args.get("id")
             print(id)
             f.save(local_path)
-           
+
 
             return jsonify({"url": "/" + path})
         else:

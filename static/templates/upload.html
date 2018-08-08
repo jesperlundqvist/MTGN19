@@ -7,9 +7,16 @@
 <h2>Videor: (separera med ",")</h2><br>
 <input id="videos" type="text"><br>
 <h2>Vecka</h2><br>
-<input id="week" type="number"><br>
-<h2>Event:</h2><br>
-<input id="event" type="text"><br>
-<h2>Uppladdad av: </h2><br>
-<input id="name" type="text">
+<select id="week">
+    <option value="33">33</option>
+    <option value="34">34</option>
+    <option value="35">35</option>
+    <option value="36">36</option>
+</select><br>
+<h2>Event</h2><br>
+<select id="event">
+    {{#each events}}
+        <option value="{{id}}">{{name}}</option>
+    {{/each}}
+</select><br>
 <button onclick="uploadMedia()">Ladda upp</button>

@@ -41,7 +41,7 @@
     flex-wrap: wrap;
     justify-content: end;
     justify-content: center;
-    
+
 }
 
 .document-container {
@@ -598,9 +598,10 @@ p, a {
     display: block;
 }
 
-.deletion-selected{
-    padding: 2%;
-    background: white;
+.deletion-selected {
+    width: 150px;
+    height: 150px;
+    margin: 25px;
 }
 
 .loader{

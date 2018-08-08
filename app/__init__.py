@@ -11,6 +11,7 @@ from app import routes
 if app.config["DEBUG"]:
     from app.models.news import News
     from app.models.user import User, UserType, N0lleGroup
+    from app.models.event import Event
     from app.models.video import Video
     from app.models.image import Image
     db.drop_all()

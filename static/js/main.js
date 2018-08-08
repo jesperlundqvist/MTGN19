@@ -177,7 +177,7 @@ $(document).ready(function() {
                     return (new Date(prev.timestamp) > new Date(current.timestamp)) ? prev : current
                 });
 
-                var latestMedia = media.splice(media.length-3); // Behöver göras bättre
+                var latestMedia = media.splice(media.length-2); // Behöver göras bättre
 
                 renderTemplate("#content", "/static/templates/idag.html", {todayStr: todayStr, dailyMessage: dailyMessage, latestNews: latestNews, latestMedia: latestMedia, events: events});
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "idag", user: Frack.CurrentUser});
@@ -389,6 +389,18 @@ $(document).ready(function() {
 
                     elem["previd"] = media[index-1] ? media[index-1].type + media[index-1].id : -1;
                     elem["nextid"] = media[index+1] ? media[index+1].type + media[index+1].id : -1;
+
+                    var firstWithEvent = events.length == 0 || !events.some(function (element) {
+                        return element.id === elem.event.id;
+                    });
+
+                    if (firstWithEvent) {
+                        events.push(elem.event);
+                    }
+
+                    if (!weeks.includes(elem.week)) {
+                        weeks.push(elem.week);
+                    }
                 });
 
                 renderTemplate("#content", "/static/templates/media.html", {media: media, events: events, weeks: weeks, user: Frack.CurrentUser});
@@ -504,12 +516,26 @@ $(document).ready(function() {
         },
 
         '/admin/upload':function() {
-            renderTemplate("#content", "/static/templates/upload.html");
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            preloadTemplate("/static/templates/upload.html");
+            preloadTemplate("/static/templates/sidebar.html");
+            Frack.Event.GetAll().then(function(res) {
+                renderTemplate("#content", "/static/templates/upload.html", {events: res.data});
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            });
         },
+
         '/admin/upload_blandaren':function() {
             renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             renderTemplate("#content", "/static/templates/blandaren_upload.html");
+        },
+
+        '/admin/event':function() {
+            preloadTemplate("/static/templates/event.html");
+            preloadTemplate("/static/templates/sidebar.html");
+            Frack.Event.GetAll().then(function(res) {
+                renderTemplate("#content", "/static/templates/event.html", {events: res.data});
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            });
         }
     });
 
