@@ -621,3 +621,12 @@ p, a {
 .upload-status{
 
 }
+
+.foppe-btn{
+    color: white;
+    background-color: hotpink;
+    float:center;
+    text-decoration: none;
+    border:none;
+    display: inline-block;
+}

@@ -21,6 +21,26 @@
 
 <p>{{user.description}}</p>
 
+{{#ifCond user.name "Foppe"}}
+<script>
+    var skoj = false;
+    function funfunfunction(){
+        if (!skoj){
+            $('body, .title, h3, p, a').css("color", "hotpink");
+            $('body, .title, h3, p, a').css("font-family", "Comic Sans MS");
+            $('.foppe-btn').text("HJÄLP");
+            skoj = !skoj;
+        }else{
+            $('body, .title, h3, p, a').css("font-family", "");
+            $('body, .title, h3, p, a').css("color", "");
+            $(".foppe-btn").text("KLICKA HÄR")
+            skoj = !skoj;
+        }
+    }
+</script>
+<button class="foppe-btn" onclick="funfunfunction()">KLICKA HÄR</button>
+{{/ifCond}}
+
 {{#if user.q1}}
 <h3>Sagoslott eller pepparkakshus?</h3>
 <p>{{user.q1}}</p>
