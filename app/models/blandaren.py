@@ -11,6 +11,7 @@ class Document(db.Model):
         doc_dict = {
             "id": self.id,
             "filename":self.filename,
-            "thumbnail":self.thumbnail 
+            "thumbnail":self.thumbnail,
+            "title": self.title
         }
         return doc_dict

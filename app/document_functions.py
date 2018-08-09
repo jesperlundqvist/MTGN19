@@ -18,10 +18,12 @@ def upload_document(request):
             print(filename)
             thumb_name = filename.split(".")[0] +".png"
             thumbnail = request.form["thumbnail"]
+            print(request.form["title"], file=sys.stdout)
+            title = request.form["title"]
             with open(os.path.join(SAVE_FOLDER, thumb_name), "wb") as fh:
                 fh.write(base64.b64decode(thumbnail))
             document.save(os.path.join(SAVE_FOLDER, filename))
-            new_doc = Document(filename = filename, thumbnail = thumb_name)
+            new_doc = Document(filename = filename, thumbnail = thumb_name, title=title)
             db.session.add(new_doc)
     db.session.commit()
     sys.stdout.flush()

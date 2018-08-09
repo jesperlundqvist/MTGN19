@@ -61,7 +61,8 @@ uploadDocument = function () {
 function generateThumbNail(fileList, form_data) {
     PDFJS.workerSrc = "/static/js/pdf.worker.js";
     var pdfWorker = new PDFJS.PDFWorker();
-    var DOC_URL = "/static/blandaren/"
+    var DOC_URL = "/static/blandaren/";
+    var title = $("#blandar_title").val();
     $(".upload-status").text("Skapar thumbnail..")
     for (var i = 0; i < fileList.length; i++) {
         var docObj = fileList[i];
@@ -92,6 +93,7 @@ function generateThumbNail(fileList, form_data) {
                         var img_src = canvas.toDataURL("image/png");
                         img_src = img_src.split(",")[1];
                         form_data.append("thumbnail", img_src)
+                        form_data.append("title", title)
                         $(".upload-status").empty();
                         $(".upload-status").text("Laddar upp..")
                         $.ajax({
