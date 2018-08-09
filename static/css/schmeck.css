@@ -569,7 +569,7 @@ p, a {
     padding: 20px;
     cursor: pointer;
 
-    opacity: 0.5;
+    opacity: 0.8;
     transition: 0.3s;
 
     font-size: 32px;
@@ -630,4 +630,3 @@ p, a {
     border:none;
     display: inline-block;
 }
-
