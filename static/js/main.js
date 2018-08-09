@@ -403,6 +403,19 @@ $(document).ready(function() {
                     }
                 });
 
+                // Sortera efter senaste event
+                media.sort(function(a, b) {
+                    if (new Date(a.event.datetime) > new Date(b.event.datetime)) {
+                        return -1;
+                    }
+
+                    if (new Date(a.event.datetime) < new Date(b.event.datetime)) {
+                        return 1;
+                    }
+
+                    return 0;
+                });
+
                 renderTemplate("#content", "/static/templates/media.html", {media: media, events: events, weeks: weeks, user: Frack.CurrentUser});
             });
         },
@@ -533,6 +546,10 @@ $(document).ready(function() {
             preloadTemplate("/static/templates/event.html");
             preloadTemplate("/static/templates/sidebar.html");
             Frack.Event.GetAll().then(function(res) {
+                res.data.forEach(function (elem) {
+                    elem["datetime"] = new Date(elem["datetime"]).toISOString().substring(0,16).replace("T", " ");
+                });
+
                 renderTemplate("#content", "/static/templates/event.html", {events: res.data});
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
             });

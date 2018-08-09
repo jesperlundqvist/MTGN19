@@ -1,6 +1,7 @@
 from app.models.event import Event
 from app import db
 from flask import jsonify, g
+from datetime import datetime
 
 def get_all_events():
     type_list = Event.query.all()
@@ -22,11 +23,12 @@ def get_event_by_filter(filter):
 
 def add_event(data):
     if g.user.admin:
-        t = Event(data["name"])
+        dt = datetime.strptime(data["datetime"], "%Y-%m-%d %H:%M")
+        t = Event(data["name"], dt)
         db.session.add(t)
         db.session.commit()
 
-        return jsonify({"type_id": t.id}), 200
+        return jsonify({"event_id": t.id}), 200
     else:
         return jsonify({"message": "unauthorized"}), 401
 
