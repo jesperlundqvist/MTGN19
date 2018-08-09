@@ -55,3 +55,19 @@
 <h3>Det var en gång...?</h3>
 <p>{{user.q3}}</p>
 {{/if}}
+
+{{#ifCond user.type.name "RSA"}}
+<link href="https://fonts.googleapis.com/css?family=Stardos+Stencil" rel="stylesheet">
+<style>
+
+    .bookcontent-right{
+        background: black !important;
+        color: white !important;
+        
+    }
+
+    p, h3{
+        font-family: "Stardos Stencil" !important;
+    }
+</style>
+{{/ifCond}}

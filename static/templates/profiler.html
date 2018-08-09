@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css?family=Stardos+Stencil" rel="stylesheet">
 <h1 class="title">Profiler</h1>
 {{#each n0llan}}
     <h2>{{@key}}</h2>
@@ -17,7 +18,7 @@
     <div class="user-profile-card-container">
     {{#each this}}
         {{#unless this.hidden}}
-        <a href="/profiler/{{this.username}}" class="user-profile-card" style="transform: rotate({{this.portrait_rot}}deg)" data-navigo><img src="{{this.profile_picture}}" class="user-profile-card-image" />{{this.name}}</a>
+        <a href="/profiler/{{this.username}}" class="user-profile-card {{#ifCond this.type.name 'RSA'}} rsa-profile-card {{/ifCond}}"  style="transform: rotate({{this.portrait_rot}}deg)" data-navigo><img src="{{this.profile_picture}}" class="user-profile-card-image" />{{this.name}}</a>
         {{/unless}}
     {{/each}}
     </div>
@@ -29,6 +30,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .rsa-profile-card{
+        background-color: black !important;
+        border: 5px solid black !important;
+        color: white !important;
+        font-family: "Stardos Stencil" !important;
     }
 
     .user-profile-card {
