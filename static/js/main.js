@@ -175,7 +175,7 @@ $(document).ready(function() {
 
                 var latestNews = news.reduce(function(prev, current) {
                     return (new Date(prev.timestamp) > new Date(current.timestamp)) ? prev : current
-                });
+                }, 0);
 
                 var latestMedia = media.splice(media.length-2); // Behöver göras bättre
 
