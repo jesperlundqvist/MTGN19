@@ -14,7 +14,7 @@
 <hr />
 
 {{#each phos}}
-    <h2>{{@key}}</h2>
+    <h2 class="{{#ifCond @key 'RSA'}} rsa-profile-header {{/ifCond}}">{{@key}}</h2>
     <div class="user-profile-card-container">
     {{#each this}}
         {{#unless this.hidden}}
@@ -35,9 +35,17 @@
     .rsa-profile-card{
         background-color: black !important;
         border: 5px solid black !important;
+        outline-color: black !important;
         color: white !important;
         font-family: "Stardos Stencil" !important;
         text-transform: uppercase !important;
+    }
+
+    .rsa-profile-header {
+        font-family: "Stardos Stencil" !important;
+        background-color: black;
+        color: white;
+        text-align: center;
     }
 
     .user-profile-card {
