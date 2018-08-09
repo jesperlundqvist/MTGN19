@@ -12,7 +12,7 @@
 {{/if}}
 
 <br />
-
+{{#unlessCond user.type.name "RSA"}}
 {{#if isCurrent}}
 <a href="/profiler/{{user.username}}/redigera" data-navigo>Redigera profil</a>
 <br />
@@ -55,6 +55,7 @@
 <h3>Det var en gång...?</h3>
 <p>{{user.q3}}</p>
 {{/if}}
+{{/unlessCond}}
 
 {{#ifCond user.type.name "RSA"}}
 <link href="https://fonts.googleapis.com/css?family=Stardos+Stencil" rel="stylesheet">
@@ -65,8 +66,21 @@
         color: white !important;
         font-family: "Stardos Stencil" !important;
     }
-    .bookcontent-right h1, .bookcontent-right h3, .bookcontent-right p{
+    .bookcontent-right h1, .bookcontent-right h3, .bookcontent-right p, .bookcontent-right a{
         font-family: "Stardos Stencil" !important;
+        color: white !important;
+    }
+    .bookcontent-right h1{
+        text-align: center;
+    }
+
+    .bookcontent-right .title{
+        text-transform: uppercase;
+    }
+
+    .bookcontent-right i {
+        text-transform: uppercase;
     }
 </style>
+<h1>RSA SER ALLT</h1>
 {{/ifCond}}
