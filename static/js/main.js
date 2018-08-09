@@ -387,6 +387,10 @@ $(document).ready(function() {
                 media.forEach(function (elem, index) {
                     elem["rot"] = elem.thumbnail.charCodeAt(elem.thumbnail.length-5) % 5 - 2;
 
+                    if (elem.type.name == "RSA") {
+                        elem["rot"] = 0;
+                    }
+
                     elem["previd"] = media[index-1] ? media[index-1].type + media[index-1].id : -1;
                     elem["nextid"] = media[index+1] ? media[index+1].type + media[index+1].id : -1;
 
