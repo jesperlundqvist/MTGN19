@@ -14,13 +14,15 @@
 <hr />
 
 {{#each phos}}
-    <h2 class="{{#ifCond @key 'RSA'}} rsa-profile-header {{/ifCond}}">{{@key}}</h2>
-    <div class="user-profile-card-container">
-    {{#each this}}
-        {{#unless this.hidden}}
-        <a href="/profiler/{{this.username}}" class="user-profile-card {{#ifCond this.type.name 'RSA'}} rsa-profile-card {{/ifCond}}"  style="transform: rotate({{this.portrait_rot}}deg)" data-navigo><img src="{{this.profile_picture}}" class="user-profile-card-image" />{{this.name}}</a>
-        {{/unless}}
-    {{/each}}
+    <div class="{{#ifCond @key 'RSA'}} rsa-profile-container {{/ifCond}}">
+        <h2 class="{{#ifCond @key 'RSA'}} rsa-profile-header {{/ifCond}}">{{@key}}</h2>
+        <div class="user-profile-card-container">
+        {{#each this}}
+            {{#unless this.hidden}}
+            <a href="/profiler/{{this.username}}" class="user-profile-card {{#ifCond this.type.name 'RSA'}} rsa-profile-card {{/ifCond}}"  style="transform: rotate({{this.portrait_rot}}deg)" data-navigo><img src="{{this.profile_picture}}" class="user-profile-card-image" />{{this.name}}</a>
+            {{/unless}}
+        {{/each}}
+        </div>
     </div>
 {{/each}}
 
@@ -35,7 +37,6 @@
     .rsa-profile-card{
         background-color: black !important;
         border: 5px solid black !important;
-        outline-color: black !important;
         color: white !important;
         font-family: "Stardos Stencil" !important;
         text-transform: uppercase !important;
@@ -43,9 +44,12 @@
 
     .rsa-profile-header {
         font-family: "Stardos Stencil" !important;
-        background-color: black;
         color: white;
         text-align: center;
+    }
+
+    .rsa-profile-container {
+        background-color: black;
     }
 
     .user-profile-card {
