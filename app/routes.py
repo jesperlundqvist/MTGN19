@@ -19,9 +19,14 @@ STATIC_DIR = os.path.join(os.getcwd(), "static")
 
 
 #Definiera olika URL-er och vad de leder till
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def index(path):
+@app.route('/')
+def index():
+    return send_from_directory(STATIC_DIR, "greeting.html")
+
+
+@app.route('/hemsidan', defaults={'path': ''})
+@app.route('/hemsidan/<path:path>')
+def index_site(path):
     return send_from_directory(STATIC_DIR, "index.html")
 
 
