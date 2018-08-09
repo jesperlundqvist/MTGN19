@@ -232,7 +232,7 @@ $(document).ready(function() {
             var endQuery = new Date(startQuery);
             endQuery.setUTCDate(endQuery.getUTCDate() + 7);
 
-            var currentDay = undefined;
+            var currentDay = -1;
             var today = new Date();
             if (today > startQuery && today < endQuery) {
                 currentDay = today.getUTCDay();
