@@ -6,7 +6,7 @@ function login(event)
     var password = $("#passwordField").val();
 
     Frack.Login(username, password).then(function(res) {
-        window.location.replace("/");
+        window.location.replace("/hemsidan");
     }).catch(function(error) {
         if (error.response.status == 401)
         {
