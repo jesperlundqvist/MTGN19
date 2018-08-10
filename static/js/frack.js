@@ -134,6 +134,7 @@ function renderTemplate(selector, url, data) {
 
             $(selector).html(template(data));
             Frack.Router.updatePageLinks();
+            $("#page").show();
 
             Frack.TemplateCache[url] = template;
         }).catch(function(error) {
@@ -143,5 +144,6 @@ function renderTemplate(selector, url, data) {
     else {
         $(selector).html(Frack.TemplateCache[url](data));
         Frack.Router.updatePageLinks();
+        $("#page").show();
     }
 }
