@@ -274,7 +274,7 @@ $(document).ready(function() {
                     }
 
                     var diff = new Date(new Date(ev.end.dateTime) - new Date(ev.start.dateTime));
-                    ev["height"] = Math.round(diff.getUTCHours() * eventSizeMultiplier + (diff.getUTCMinutes()/60 * eventSizeMultiplier));
+                    ev["height"] = Math.round(diff.getUTCHours() * eventSizeMultiplier + (diff.getUTCMinutes()/60 * eventSizeMultiplier)) - 8;
 
                     ev["duration_str"] =
                     start.toLocaleDateString("sv-SE", {
