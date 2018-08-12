@@ -128,7 +128,7 @@ function renderTemplate(selector, url, data) {
     {
         axios({
             method: "get",
-            url: url
+            url: url + "?v1"
         }).then(function(res) {
             var template = Handlebars.compile(res.data);
 
