@@ -19,21 +19,10 @@ STATIC_DIR = os.path.join(os.getcwd(), "static")
 
 
 #Definiera olika URL-er och vad de leder till
-@app.route('/')
-def index_greeting():
-    return send_from_directory(STATIC_DIR, "greeting.html")
-
-
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def index(path):
     return send_from_directory(STATIC_DIR, "index.html")
-
-@app.route('/hemsidan', defaults={'path': ''})
-@app.route('/hemsidan/<path:path>')
-def index_site(path):
-    return send_from_directory(STATIC_DIR, "index.html")
-
 
 # På servern är det bättre att en "riktig" web server som Nginx sköter statiska filer
 if app.config["DEBUG"]:

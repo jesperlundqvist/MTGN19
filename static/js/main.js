@@ -132,7 +132,7 @@ $(document).ready(function() {
     });
 
     Frack.Router.on({
-        '/hemsidan': function() {
+        '/': function() {
             preloadTemplate("/static/templates/idag.html");
             preloadTemplate("/static/templates/sidebar.html");
 
