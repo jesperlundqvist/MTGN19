@@ -316,6 +316,7 @@ $(document).ready(function() {
                 var users = res.data;
                 var n0llan = {};
                 var phos = {};
+                var rsa = [];
 
                 users.forEach(function(user) {
                     if (!user.hidden) {
@@ -331,18 +332,18 @@ $(document).ready(function() {
                                 console.log("Ogiltig nØllan \"" + user.username + "\". Har ingen nØllegrupp.");
                             }
                         }
-                        else {
+                        else if(user.type.name !== "RSA") {
                             phos[user.type.name] = phos[user.type.name] || [];
                             phos[user.type.name].push(user);
-                        }
-
-                        if (user.type.name == "RSA") {
+                        }else{
                             user["portrait_rot"] = 0;
+                            rsa.push(user);
                         }
                     }
                 });
+                console.log(rsa);
 
-                renderTemplate("#content", "/static/templates/profiler.html", {n0llan: n0llan, phos: phos});
+                renderTemplate("#content", "/static/templates/profiler.html", {n0llan: n0llan, phos: phos, rsa: rsa});
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
             });
         },
