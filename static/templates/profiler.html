@@ -25,6 +25,16 @@
         </div>
     </div>
 {{/each}}
+    <div class="rsa-profile-container">
+        <h2 class=" rsa-profile-header">RSA</h2>
+        <div class="user-profile-card-container">
+        {{#each rsa}}
+            
+            <a href="/profiler/{{this.username}}" class="user-profile-card {{#ifCond this.type.name 'RSA'}} rsa-profile-card {{/ifCond}}"  style="transform: rotate({{this.portrait_rot}}deg)" data-navigo><img src="{{this.profile_picture}}" class="user-profile-card-image" />{{this.name}}</a>
+            
+        {{/each}}
+        </div>
+    </div>
 
 
 <style>
@@ -40,6 +50,7 @@
         color: white !important;
         font-family: "Stardos Stencil" !important;
         text-transform: uppercase !important;
+        font-weight: bold;
     }
 
     .rsa-profile-header {

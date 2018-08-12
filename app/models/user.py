@@ -77,7 +77,7 @@ class User(db.Model):
         m.update(saltedPassword)
         self.password_hash = m.hexdigest()
 
-    def generate_auth_token(self, expiration = 600):
+    def generate_auth_token(self, expiration = 2700):
         s = Serializer(app.config['SECRET_KEY'], expires_in = expiration)
         return s.dumps({ 'id': self.id })
 
