@@ -113,7 +113,7 @@ function preloadTemplate(url) {
     {
         axios({
             method: "get",
-            url: url
+            url: url + "?v1"
         }).then(function(res) {
             var template = Handlebars.compile(res.data);
             Frack.TemplateCache[url] = template;
