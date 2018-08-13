@@ -12,13 +12,13 @@
 {{/if}}
 
 <br />
-{{#unlessCond user.type.name "RSA"}}
+
 {{#if isCurrent}}
 <a href="/profiler/{{user.username}}/redigera" data-navigo>Redigera profil</a>
 <br />
 <br />
 {{/if}}
-
+{{#unlessCond user.type.name "RSA"}}
 <p>{{user.description}}</p>
 
 {{#ifCond user.name "Foppe"}}
