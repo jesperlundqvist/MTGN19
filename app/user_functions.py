@@ -29,9 +29,11 @@ def resize_profile_picture(filePath, filename):
     outfile = os.path.splitext(im.filename)[0]
     try:
         im.thumbnail(size)
-        im.save(outfile , "JPEG")
+        im.save(outfile +".jpg")
     except IOError:
-        print("en liten fucky wucky")
+        print("en liten fuck wucky")
+
+    print(outfile)
     return  outfile + ".jpg"
 
 ## USERS
