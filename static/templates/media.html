@@ -45,6 +45,7 @@
         data-nextid="{{nextid}}"
     >
         {{#ifCond type "video"}}
+
         <img src="/static/images/play_icon.png" class="media-play-icon" />
         {{/ifCond}}
     </div>
@@ -240,7 +241,7 @@
             $("#lightbox-image").show();
             $("#lightbox-video").hide();
         } else if (elem.dataset.type == "video") {
-            $("#lightbox-video").attr("src", "http://" + elem.dataset.video + "?autoplay=0&rel=0&showinfo=0&modestbranding=1");
+            $("#lightbox-video").attr("src", "https://" + elem.dataset.video + "?autoplay=0&rel=0&showinfo=0&modestbranding=1");
 
             $("#lightbox-video").width($(document).width()*0.9);
             $("#lightbox-video").height(($("#lightbox-video").width()/16)*9);
