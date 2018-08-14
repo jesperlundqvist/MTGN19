@@ -630,3 +630,7 @@ p, a {
     border:none;
     display: inline-block;
 }
+
+#content img {
+    max-width: 100%;
+}
