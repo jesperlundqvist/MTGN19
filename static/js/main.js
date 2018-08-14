@@ -276,6 +276,9 @@ $(document).ready(function() {
                     var diff = new Date(new Date(ev.end.dateTime) - new Date(ev.start.dateTime));
                     ev["height"] = Math.round(diff.getUTCHours() * eventSizeMultiplier + (diff.getUTCMinutes()/60 * eventSizeMultiplier)) - 8;
 
+                    ev["fromTime"] = start.toLocaleTimeString("sv-SE", {"hour": "2-digit", "minute": "2-digit"});
+                    ev["toTime"] = end.toLocaleTimeString("sv-SE", {"hour": "2-digit", "minute": "2-digit"});
+
                     ev["duration_str"] =
                     start.toLocaleDateString("sv-SE", {
                         weekday: 'long',
@@ -283,7 +286,7 @@ $(document).ready(function() {
                         month: 'long',
                         day: 'numeric'
                     }) + ", " +
-                    start.toLocaleTimeString("sv-SE", {"hour": "2-digit", "minute": "2-digit"}) + " - " + end.toLocaleTimeString("sv-SE", {"hour": "2-digit", "minute": "2-digit"});
+                    ev["fromTime"] + " - " + ev["toTime"];
 
                     weeks[week] = weeks[week] || [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
                     weeks[week][day] = weeks[week][day] || [];
