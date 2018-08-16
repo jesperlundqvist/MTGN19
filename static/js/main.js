@@ -478,8 +478,9 @@ $(document).ready(() => {
             preloadTemplate("/static/templates/editpost.html");
             preloadTemplate("/static/templates/sidebar.html");
             Frack.News.GetByFilter("id=" + params.id).then(function (res) {
-                console.log(res);
-                renderTemplate("#content", "/static/templates/editpost.html", { article: res.data });
+                console.log(res.data);
+                var arg_data = {article: res.data};
+                renderTemplate("#content", "/static/templates/editpost.html", arg_data);
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
             });
         },
