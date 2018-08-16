@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(() => {
     Handlebars.registerHelper('active', function (variable, value) {
         if (variable == value) {
             return new Handlebars.SafeString('active');
@@ -478,7 +478,9 @@ $(document).ready(function () {
             preloadTemplate("/static/templates/editpost.html");
             preloadTemplate("/static/templates/sidebar.html");
             Frack.News.GetByFilter("id=" + params.id).then(function (res) {
-                renderTemplate("#content", "/static/templates/editpost.html", { article: res.data });
+                renderTemplate("#content", 
+                "/static/templates/editpost.html",
+                { article: res.data });
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
             });
         },
