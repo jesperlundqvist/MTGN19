@@ -477,11 +477,10 @@ $(document).ready(() => {
         '/admin/redigera_nyhet/:id': function (params) {
             preloadTemplate("/static/templates/editpost.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.News.GetByFilter("id=" + params.id).then(function (res) {
-                console.log(res.data);
-                var arg_data = {article: res.data};
-                renderTemplate("#content", "/static/templates/editpost.html", arg_data);
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
+            Frack.News.GetByFilter("id=" + params.id).then((res) => {
+             var arg_data = {article: res.data};
+            renderTemplate("#content", "/static/templates/editpost.html", arg_data);
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
             });
         },
 
