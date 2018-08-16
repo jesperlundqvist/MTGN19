@@ -1,7 +1,60 @@
+<script>
+
+    function createForwardButton(username){
+        var btn = $(('<btn>'));
+        var link = $(('<a>'));
+
+        link.attr("href", "/profiler/" + username);
+        
+        btn.attr("class", "next-button btn-primary");
+        link.text("nästa profil");
+        btn.append(link);
+        $("#content").append(btn);
+    }
+
+    function createBackWardButton(username){
+        var btn = $(('<btn>'));
+        var link = $(('<a>'));
+
+        link.attr("href", "/profiler/" + username);
+        
+        btn.attr("class", "prev-button btn-primary");
+        link.text("förra profilen");
+        btn.append(link);
+        $("#content").append(btn);
+    }
+
+    if (sessionStorage.getItem("usernames")){
+        var last = false;
+        var first = false;
+        var memes = sessionStorage.getItem("usernames");
+        memes = memes.split(",");
+        var idx = memes.indexOf("{{ user.username }}");
+        console.log(idx);
+        if (idx > 0){
+            prevUsername = memes[idx-1];
+            console.log(prevUsername)
+            createBackWardButton(prevUsername)
+        }else{
+            first = true;
+        }
+        if (idx < memes.length - 1){
+            nextUsername = memes[idx + 1];
+            console.log(nextUsername);
+            createForwardButton(nextUsername);
+            
+        }else{
+            last = true;
+        }
+
+    }
+</script>
+
 <a href="/profiler" data-navigo>Tillbaka till alla profiler</a>
 <br>
 <img src="{{user.profile_picture}}" class="book-profile-large" />
 <h1 class="title">{{user.name}}</h1>
+
 
 {{#unlessCond user.type.name "nØllan"}}
 <center><i>{{user.type.name}}</i></center>

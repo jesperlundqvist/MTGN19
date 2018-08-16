@@ -320,6 +320,7 @@ $(document).ready(function() {
                 var n0llan = {};
                 var phos = {};
                 var rsa = [];
+                var allProfiles = [];
 
                 users.forEach(function(user) {
                     if (!user.hidden) {
@@ -344,8 +345,23 @@ $(document).ready(function() {
                         }
                     }
                 });
-                console.log(rsa);
+                for (var n0llegroup in n0llan){
+                    var user_array = n0llan[n0llegroup];
+                    user_array.forEach((user) => {
+                        allProfiles.push(user.username);
+                    });
+                }
+                for (var phosgrupp in phos) {
+                    phos[phosgrupp].forEach((user) => {
+                        allProfiles.push(user.username);
+                    })
+                }
 
+                rsa.forEach((rsa) => {
+                    allProfiles.push(rsa.username);
+                })
+                
+                sessionStorage.setItem("usernames", allProfiles);
                 renderTemplate("#content", "/static/templates/profiler.html", {n0llan: n0llan, phos: phos, rsa: rsa});
                 renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
             });
