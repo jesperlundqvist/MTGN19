@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    Handlebars.registerHelper('active', function(variable, value) {
+$(document).ready(function () {
+    Handlebars.registerHelper('active', function (variable, value) {
         if (variable == value) {
             return new Handlebars.SafeString('active');
         }
@@ -8,7 +8,7 @@ $(document).ready(function() {
         }
     });
 
-    Handlebars.registerHelper('selected', function(variable, value) {
+    Handlebars.registerHelper('selected', function (variable, value) {
         if (variable == value) {
             return new Handlebars.SafeString('selected');
         }
@@ -17,7 +17,7 @@ $(document).ready(function() {
         }
     });
 
-    Handlebars.registerHelper('inlineBool', function(ret, bool) {
+    Handlebars.registerHelper('inlineBool', function (ret, bool) {
         if (bool) {
             return new Handlebars.SafeString(ret);
         }
@@ -26,21 +26,21 @@ $(document).ready(function() {
         }
     });
 
-    Handlebars.registerHelper('ifCond', function(v1, v2, options) {
-        if (v1 === v2){
+    Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+        if (v1 === v2) {
             return options.fn(this);
         }
         return options.inverse(this);
     });
 
-    Handlebars.registerHelper('unlessCond', function(v1, v2, options) {
-        if (v1 !== v2){
+    Handlebars.registerHelper('unlessCond', function (v1, v2, options) {
+        if (v1 !== v2) {
             return options.fn(this);
         }
         return options.inverse(this);
     });
 
-    Handlebars.registerHelper('formatDate', function(date) {
+    Handlebars.registerHelper('formatDate', function (date) {
         var d = new Date(date);
 
         var str = d.toLocaleDateString("sv-SE", {
@@ -55,7 +55,7 @@ $(document).ready(function() {
         return new Handlebars.SafeString(str);
     });
 
-    Handlebars.registerHelper('formatTime', function(date) {
+    Handlebars.registerHelper('formatTime', function (date) {
         var d = new Date(date);
 
         var str = d.toLocaleTimeString("sv-SE", {
@@ -66,7 +66,7 @@ $(document).ready(function() {
         return new Handlebars.SafeString(str);
     });
 
-    Handlebars.registerHelper('toWeekDay', function(num) {
+    Handlebars.registerHelper('toWeekDay', function (num) {
         var str = "";
 
         if (num == 6) {
@@ -93,11 +93,11 @@ $(document).ready(function() {
         d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
         // Set to nearest Thursday: current date + 4 - current day number
         // Make Sunday's day number 7
-        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+        d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
         // Get first day of year
-        var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+        var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
         // Calculate full weeks to nearest Thursday
-        var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+        var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
         // Return week number
         return weekNo;
     }
@@ -119,10 +119,10 @@ $(document).ready(function() {
     Frack.Router = new Navigo(window.location.origin);
 
     Frack.Router.hooks({
-        before: function(done, params) {
-            Frack.UpdateCurrentUser().then(function() {
+        before: function (done, params) {
+            Frack.UpdateCurrentUser().then(function () {
                 done();
-            }).catch(function(error) {
+            }).catch(function (error) {
                 if (error.response.status == 401) {
                     Frack.Router.navigate("/login");
                     done();
@@ -132,7 +132,7 @@ $(document).ready(function() {
     });
 
     Frack.Router.on({
-        '/': function() {
+        '/': function () {
             preloadTemplate("/static/templates/idag.html");
             preloadTemplate("/static/templates/sidebar.html");
 
@@ -167,38 +167,38 @@ $(document).ready(function() {
             todayStr = todayStr.charAt(0).toUpperCase() + todayStr.substr(1);
 
             var requests = [Frack.News.GetAll(), Frack.Media.GetAll(), dailyMessageReq, eventReq];
-            axios.all(requests).then(function(res) {
+            axios.all(requests).then(function (res) {
                 var news = res[0].data;
                 var media = res[1].data;
                 var dailyMessage = res[2].data.message;
                 var events = res[3].data.items;
 
-                var latestNews = news.reduce(function(prev, current) {
+                var latestNews = news.reduce(function (prev, current) {
                     return (new Date(prev.timestamp) > new Date(current.timestamp)) ? prev : current
                 }, 0);
 
-                var latestMedia = media.splice(media.length-2); // Behöver göras bättre
+                var latestMedia = media.splice(media.length - 2); // Behöver göras bättre
 
-                renderTemplate("#content", "/static/templates/idag.html", {todayStr: todayStr, dailyMessage: dailyMessage, latestNews: latestNews, latestMedia: latestMedia, events: events});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "idag", user: Frack.CurrentUser});
+                renderTemplate("#content", "/static/templates/idag.html", { todayStr: todayStr, dailyMessage: dailyMessage, latestNews: latestNews, latestMedia: latestMedia, events: events });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "idag", user: Frack.CurrentUser });
             });
         },
 
-        '/nyheter': function() {
+        '/nyheter': function () {
             preloadTemplate("/static/templates/article.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.News.GetAll().then(function(res) {
-                renderTemplate("#content", "/static/templates/nyheter.html", {news: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
+            Frack.News.GetAll().then(function (res)  {
+                renderTemplate("#content", "/static/templates/nyheter.html", { news: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
             });
         },
 
-        '/nyheter/:id/': function(params, query) {
+        '/nyheter/:id/': function (params, query) {
             preloadTemplate("/static/templates/article.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.News.GetByFilter("id=" + params.id).then(function(res) {
-                renderTemplate("#content", "/static/templates/article.html", {article: res.data, isAdmin: Frack.CurrentUser.admin});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
+            Frack.News.GetByFilter("id=" + params.id).then(function (res) {
+                renderTemplate("#content", "/static/templates/article.html", { article: res.data, isAdmin: Frack.CurrentUser.admin });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
             });
         },
 
@@ -214,7 +214,7 @@ $(document).ready(function() {
             Frack.Router.navigate('/schema/' + currentWeek);
         },
 
-        '/schema/:week': function(params) {
+        '/schema/:week': function (params) {
             preloadTemplate("/static/templates/schema.html");
             preloadTemplate("/static/templates/sidebar.html");
 
@@ -254,7 +254,7 @@ $(document).ready(function() {
                     timeMin: startQuery,
                     timeMax: endQuery
                 }
-            }).then(function(res) {
+            }).then(function (res) {
                 var events = res.data.items;
                 var weeks = {};
 
@@ -274,19 +274,19 @@ $(document).ready(function() {
                     }
 
                     var diff = new Date(new Date(ev.end.dateTime) - new Date(ev.start.dateTime));
-                    ev["height"] = Math.round(diff.getUTCHours() * eventSizeMultiplier + (diff.getUTCMinutes()/60 * eventSizeMultiplier)) - 8;
+                    ev["height"] = Math.round(diff.getUTCHours() * eventSizeMultiplier + (diff.getUTCMinutes() / 60 * eventSizeMultiplier)) - 8;
 
-                    ev["fromTime"] = start.toLocaleTimeString("sv-SE", {"hour": "2-digit", "minute": "2-digit"});
-                    ev["toTime"] = end.toLocaleTimeString("sv-SE", {"hour": "2-digit", "minute": "2-digit"});
+                    ev["fromTime"] = start.toLocaleTimeString("sv-SE", { "hour": "2-digit", "minute": "2-digit" });
+                    ev["toTime"] = end.toLocaleTimeString("sv-SE", { "hour": "2-digit", "minute": "2-digit" });
 
                     ev["duration_str"] =
-                    start.toLocaleDateString("sv-SE", {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    }) + ", " +
-                    ev["fromTime"] + " - " + ev["toTime"];
+                        start.toLocaleDateString("sv-SE", {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        }) + ", " +
+                        ev["fromTime"] + " - " + ev["toTime"];
 
                     weeks[week] = weeks[week] || [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
                     weeks[week][day] = weeks[week][day] || [];
@@ -295,34 +295,34 @@ $(document).ready(function() {
                     var i = weeks[week][day].length - 1;
 
                     if (i == 0) {
-                        weeks[week][day][i]["topPosition"] = Math.round(start.getUTCHours() * eventSizeMultiplier + (start.getUTCMinutes()/60 * eventSizeMultiplier));
+                        weeks[week][day][i]["topPosition"] = Math.round(start.getUTCHours() * eventSizeMultiplier + (start.getUTCMinutes() / 60 * eventSizeMultiplier));
                         weeks[week][day][i]["topPosition"] -= 6 * eventSizeMultiplier; // Börja varje dag kl 8
                     }
                     else {
-                        var prevEventEnd = new Date(weeks[week][day][i-1].end.dateTime);
+                        var prevEventEnd = new Date(weeks[week][day][i - 1].end.dateTime);
                         var diffToPrevious = new Date(new Date(ev.start.dateTime) - prevEventEnd);
-                        weeks[week][day][i]["topPosition"] = Math.round(diffToPrevious.getUTCHours() * eventSizeMultiplier + (diffToPrevious.getUTCMinutes()/60 * eventSizeMultiplier));
+                        weeks[week][day][i]["topPosition"] = Math.round(diffToPrevious.getUTCHours() * eventSizeMultiplier + (diffToPrevious.getUTCMinutes() / 60 * eventSizeMultiplier));
                     }
                 });
 
-                renderTemplate("#content", "/static/templates/schema.html", {weeks: weeks, prevWeek: prevWeek, nextWeek: nextWeek, currentDay: currentDay});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "schema", user: Frack.CurrentUser});
-            }).catch(function(error) {
+                renderTemplate("#content", "/static/templates/schema.html", { weeks: weeks, prevWeek: prevWeek, nextWeek: nextWeek, currentDay: currentDay });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "schema", user: Frack.CurrentUser });
+            }).catch(function (error) {
                 console.error(error);
             });
         },
 
-        '/profiler': function() {
+        '/profiler': function () {
             preloadTemplate("/static/templates/profiler.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.User.GetAll().then(function(res) {
+            Frack.User.GetAll().then(function (res) {
                 var users = res.data;
                 var n0llan = {};
                 var phos = {};
                 var rsa = [];
                 var allProfiles = [];
 
-                users.forEach(function(user) {
+                users.forEach(function (user) {
                     if (!user.hidden) {
                         user["portrait_rot"] = (user.id + user.name.charCodeAt(0)) % 10 - 5;
                         if (user.type.name == "nØllan") {
@@ -336,16 +336,16 @@ $(document).ready(function() {
                                 console.log("Ogiltig nØllan \"" + user.username + "\". Har ingen nØllegrupp.");
                             }
                         }
-                        else if(user.type.name !== "RSA") {
+                        else if (user.type.name !== "RSA") {
                             phos[user.type.name] = phos[user.type.name] || [];
                             phos[user.type.name].push(user);
-                        }else{
+                        } else {
                             user["portrait_rot"] = 0;
                             rsa.push(user);
                         }
                     }
                 });
-                for (var n0llegroup in n0llan){
+                for (var n0llegroup in n0llan) {
                     var user_array = n0llan[n0llegroup];
                     user_array.forEach((user) => {
                         allProfiles.push(user.username);
@@ -360,59 +360,56 @@ $(document).ready(function() {
                 rsa.forEach((rsa) => {
                     allProfiles.push(rsa.username);
                 })
-                
+
                 sessionStorage.setItem("usernames", allProfiles);
-                renderTemplate("#content", "/static/templates/profiler.html", {n0llan: n0llan, phos: phos, rsa: rsa});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
+                renderTemplate("#content", "/static/templates/profiler.html", { n0llan: n0llan, phos: phos, rsa: rsa });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "profiler", user: Frack.CurrentUser });
             });
         },
 
-        '/profiler/:username': function(params, query) {
+        '/profiler/:username': function (params, query) {
             preloadTemplate("/static/templates/profil.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.User.GetByFilter("username=" + params.username).then(function(res) {
+            Frack.User.GetByFilter("username=" + params.username).then(function (res) {
                 var isCurrent = false;
 
-                if (res.data.id == Frack.CurrentUser.id)
-                {
+                if (res.data.id == Frack.CurrentUser.id) {
                     isCurrent = true;
                 }
 
-                renderTemplate("#content", "/static/templates/profil.html", {user: res.data, isCurrent: isCurrent});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
+                renderTemplate("#content", "/static/templates/profil.html", { user: res.data, isCurrent: isCurrent });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "profiler", user: Frack.CurrentUser });
             });
         },
 
-        '/profiler/:username/redigera': function(params, query) {
+        '/profiler/:username/redigera': function (params, query) {
             preloadTemplate("/static/templates/redigeraprofil.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.User.GetByFilter("username=" + params.username).then(function(res) {
-                if (Frack.CurrentUser.id == res.data.id)
-                {
-                    renderTemplate("#content", "/static/templates/redigeraprofil.html", {user: res.data});
-                    renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "profiler", user: Frack.CurrentUser});
+            Frack.User.GetByFilter("username=" + params.username).then(function (res) {
+                if (Frack.CurrentUser.id == res.data.id) {
+                    renderTemplate("#content", "/static/templates/redigeraprofil.html", { user: res.data });
+                    renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "profiler", user: Frack.CurrentUser });
                 }
-                else
-                {
+                else {
                     renderTemplate("#page", "/static/templates/403.html");
                 }
             });
         },
 
-        '/media': function(params, query) {
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "media", user: Frack.CurrentUser});
+        '/media': function (params, query) {
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "media", user: Frack.CurrentUser });
             preloadTemplate("/static/templates/media.html");
 
-            Frack.Media.GetAll().then(function(res) {
+            Frack.Media.GetAll().then(function (res) {
                 var media = res.data;
                 var events = [];
                 var weeks = [];
 
                 media.forEach(function (elem, index) {
-                    elem["rot"] = elem.thumbnail.charCodeAt(elem.thumbnail.length-5) % 5 - 2;
+                    elem["rot"] = elem.thumbnail.charCodeAt(elem.thumbnail.length - 5) % 5 - 2;
 
-                    elem["previd"] = media[index-1] ? media[index-1].type + media[index-1].id : -1;
-                    elem["nextid"] = media[index+1] ? media[index+1].type + media[index+1].id : -1;
+                    elem["previd"] = media[index - 1] ? media[index - 1].type + media[index - 1].id : -1;
+                    elem["nextid"] = media[index + 1] ? media[index + 1].type + media[index + 1].id : -1;
 
                     var firstWithEvent = events.length == 0 || !events.some(function (element) {
                         return element.id === elem.event.id;
@@ -428,7 +425,7 @@ $(document).ready(function() {
                 });
 
                 // Sortera efter senaste event
-                media.sort(function(a, b) {
+                media.sort(function (a, b) {
                     if (new Date(a.event.datetime) > new Date(b.event.datetime)) {
                         return -1;
                     }
@@ -440,56 +437,55 @@ $(document).ready(function() {
                     return 0;
                 });
 
-                renderTemplate("#content", "/static/templates/media.html", {media: media, events: events, weeks: weeks, user: Frack.CurrentUser});
+                renderTemplate("#content", "/static/templates/media.html", { media: media, events: events, weeks: weeks, user: Frack.CurrentUser });
             });
         },
 
-        '/blandaren': function() {
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "blandaren", user: Frack.CurrentUser});
+        '/blandaren': function () {
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "blandaren", user: Frack.CurrentUser });
             preloadTemplate("/static/templates/blandaren.html");
 
-            Frack.Blandaren.GetAll().then(function(res) {
-                renderTemplate("#content", "/static/templates/blandaren.html", {blandaren: res.data});
+            Frack.Blandaren.GetAll().then(function (res) {
+                renderTemplate("#content", "/static/templates/blandaren.html", { blandaren: res.data });
             });
         },
 
-        '/admin': function() {
-            if (Frack.CurrentUser.admin)
-            {
+        '/admin': function () {
+            if (Frack.CurrentUser.admin) {
                 renderTemplate("#content", "/static/templates/admin.html");
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             }
             else {
                 renderTemplate("#page", "/static/templates/403.html");
             }
         },
 
-        '/admin/skapa_nyhet': function() {
+        '/admin/skapa_nyhet': function () {
             renderTemplate("#content", "/static/templates/newpost.html");
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
         },
 
-        '/admin/hantera_nyheter': function() {
+        '/admin/hantera_nyheter': function () {
             preloadTemplate("/static/templates/manageposts.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.News.GetAll().then(function(res) {
-                renderTemplate("#content", "/static/templates/manageposts.html", {news: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            Frack.News.GetAll().then(function (res)  {
+                renderTemplate("#content", "/static/templates/manageposts.html", { news: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         },
 
-        '/admin/redigera_nyhet/:id': function(params) {
+        '/admin/redigera_nyhet/:id': function (params) {
             preloadTemplate("/static/templates/editpost.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.News.GetByFilter("id=" + params.id).then(function(res) {
-                renderTemplate("#content", "/static/templates/editpost.html", {article: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "nyheter", user: Frack.CurrentUser});
+            Frack.News.GetByFilter("id=" + params.id).then(function (res) {
+                renderTemplate("#content", "/static/templates/editpost.html", { article: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "nyheter", user: Frack.CurrentUser });
             });
         },
 
-        '/admin/skapa_anvandare': function() {
+        '/admin/skapa_anvandare': function () {
             var requests = [Frack.UserType.GetAll(), Frack.N0lleGroup.GetAll()];
-            axios.all(requests).then(function(res) {
+            axios.all(requests).then(function (res) {
                 types = res[0].data;
                 groups = res[1].data;
 
@@ -497,21 +493,21 @@ $(document).ready(function() {
                     user_types: types,
                     n0llegroups: groups
                 });
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         },
 
-        '/basecamp':function(){
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "basecamp", user: Frack.CurrentUser});
+        '/basecamp': function () {
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "basecamp", user: Frack.CurrentUser });
             renderTemplate("#content", "/static/templates/basecamp.html");
         },
 
-        '/admin/hantera_anvandare': function() {
+        '/admin/hantera_anvandare': function () {
             preloadTemplate("/static/templates/profiler.html");
             preloadTemplate("/static/templates/sidebar.html");
 
             var requests = [Frack.UserType.GetAll(), Frack.N0lleGroup.GetAll(), Frack.User.GetAll()];
-            axios.all(requests).then(function(res) {
+            axios.all(requests).then(function (res) {
                 types = res[0].data;
                 groups = res[1].data;
                 users = res[2].data;
@@ -521,61 +517,61 @@ $(document).ready(function() {
                     user_types: types,
                     n0llegroups: groups
                 });
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         },
 
-        '/admin/hantera_n0llegrupper': function() {
+        '/admin/hantera_n0llegrupper': function () {
             preloadTemplate("/static/templates/managen0llegroups.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.N0lleGroup.GetAll().then(function(res) {
-                renderTemplate("#content", "/static/templates/managen0llegroups.html", {n0llegroups: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            Frack.N0lleGroup.GetAll().then(function (res)  {
+                renderTemplate("#content", "/static/templates/managen0llegroups.html", { n0llegroups: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         },
 
-        '/admin/hantera_typer': function() {
+        '/admin/hantera_typer': function () {
             preloadTemplate("/static/templates/manageusertypes.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.UserType.GetAll().then(function(res) {
-                renderTemplate("#content", "/static/templates/manageusertypes.html", {types: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            Frack.UserType.GetAll().then(function (res)  {
+                renderTemplate("#content", "/static/templates/manageusertypes.html", { types: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         },
 
-        '/login': function() {
+        '/login': function () {
             renderTemplate("#page", "/static/templates/login.html");
         },
 
-        '/logout': function() {
+        '/logout': function () {
             Frack.Logout();
             Frack.Router.navigate("/");
         },
 
-        '/admin/upload':function() {
+        '/admin/upload': function () {
             preloadTemplate("/static/templates/upload.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.Event.GetAll().then(function(res) {
-                renderTemplate("#content", "/static/templates/upload.html", {events: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+            Frack.Event.GetAll().then(function (res)  {
+                renderTemplate("#content", "/static/templates/upload.html", { events: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         },
 
-        '/admin/upload_blandaren':function() {
-            renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+        '/admin/upload_blandaren': function () {
+            renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             renderTemplate("#content", "/static/templates/blandaren_upload.html");
         },
 
-        '/admin/event':function() {
+        '/admin/event': function () {
             preloadTemplate("/static/templates/event.html");
             preloadTemplate("/static/templates/sidebar.html");
-            Frack.Event.GetAll().then(function(res) {
+            Frack.Event.GetAll().then(function (res)  {
                 res.data.forEach(function (elem) {
-                    elem["datetime"] = new Date(elem["datetime"]).toISOString().substring(0,16).replace("T", " ");
+                    elem["datetime"] = new Date(elem["datetime"]).toISOString().substring(0, 16).replace("T", " ");
                 });
 
-                renderTemplate("#content", "/static/templates/event.html", {events: res.data});
-                renderTemplate("#sidebar", "/static/templates/sidebar.html", {currentPage: "admin", user: Frack.CurrentUser});
+                renderTemplate("#content", "/static/templates/event.html", { events: res.data });
+                renderTemplate("#sidebar", "/static/templates/sidebar.html", { currentPage: "admin", user: Frack.CurrentUser });
             });
         }
     });
