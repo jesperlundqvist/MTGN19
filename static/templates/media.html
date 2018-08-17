@@ -241,6 +241,12 @@
             $("#lightbox-image").show();
             $("#lightbox-video").hide();
         } else if (elem.dataset.type == "video") {
+            // utifall det blir knas med &feature=youtu.be
+
+            if ( elem.dataset.video.includes("&feature=youtu.be")){
+                elem.dataset.video = elem.dataset.video.split("&")[0];
+            }
+
             $("#lightbox-video").attr("src", "https://" + elem.dataset.video);
 
             $("#lightbox-video").width($(document).width()*0.9);
