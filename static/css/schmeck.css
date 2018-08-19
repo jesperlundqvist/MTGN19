@@ -630,3 +630,22 @@ p, a {
     border:none;
     display: inline-block;
 }
+
+#content img {
+    max-width: 100%;
+}
+
+.next-button{
+    padding: 1%;
+    float: right;
+}
+
+.next-button a, .prev-button a{
+    color: white;
+    text-decoration: none;
+}
+
+.prev-button{
+    padding: 1%;
+    float: left;
+}

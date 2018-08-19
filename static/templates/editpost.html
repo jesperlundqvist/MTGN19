@@ -68,6 +68,7 @@ loadScript("https://cdn.quilljs.com/1.3.6/quill.js", function() {
     });
 
     quill.clipboard.dangerouslyPasteHTML("{{{article.text}}}");
+    console.log('{{article.text}}')
 
     var noll_button = document.querySelector('.ql-noll');
     noll_button.innerHTML = "<span style='color:#444; font-weight: bold;'>Ø</span>"
@@ -107,8 +108,8 @@ loadScript("https://cdn.quilljs.com/1.3.6/quill.js", function() {
     form.onsubmit = function(e) {
         e.preventDefault();
 
-        Frack.News.Update({{article.id}}, {headline: $("#titleeditor").val(), text: quill.container.firstChild.innerHTML, tags: ""}).then(function(res) {
-            Frack.Router.navigate("/nyheter/" + {{article.id}});
+        Frack.News.Update('{{article.id}}', {headline: $("#titleeditor").val(), text: quill.container.firstChild.innerHTML, tags: ""}).then(function(res) {
+            Frack.Router.navigate("/nyheter/" + '{{article.id}}');
         });
     };
 });
