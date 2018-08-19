@@ -20,6 +20,18 @@ def get_daily_messange_json():
         message = "Kl 9 idag kommer ni få träffa och lära känna vårt klubbmästeri, MKM! Idag kan ni också lämna matlådan hemma då Sveriges Ingenjörer bjuder på lunchföreläsning. På eftermiddagen tar vi det lungt med lite Phika på philt!"
     elif month == 8 and day == 18:
         message = "Idag är det dags för Neverland-gasquen! Vi träffas i META kl 15!"
+    elif month == 8 and day == 20:
+        message = "Idag är det Sektionens dag! Under dagen kommer ni få chansen att se allt det roliga och viktiga som sektionen gör förutom mottagningen! Ni kommer också få skriva en tenta i nØllekunskap och dagen avslutas med Medieklassikern."
+    elif month == 8 and day == 21:
+        message = "Under dagen kommer ni få fokusera på att plugga intromatte. Ifall något känns oklart, ta chansen att fråga på pluggstugan!"
+    elif month == 8 and day == 22:
+        message = "På förmiddagen kommer ni få se vad kåren gör! Studentkåren är för alla studenter på KTH, till skillnad från sektionen som bara är för medianer. På eftermiddagen är det BBR! Oömma kläder rekommenderas!"
+    elif month == 8 and day == 23:
+        message = "Idag har ARR ett event för er! Det vill ni inte missa. På kvällen kommer METAspexet hålla ett spex för er! Men vad är ens ett spex? Gå på nØllespexet för att få veta!"
+    elif month == 8 and day == 24:
+        message = "På morgonen är det dags för tenta i intromatte! Senare kommer INPHO hålla ett event för er och efter det är det dags att åka iväg till Stugan! Lycka till på tentan!"
+    elif month == 8 and day == 26:
+        message = "Idag kommer ni få träffa vårt kära Data! Tillsammans kommer vi ha en picknick med dem i Rålambhovsparken!"
     elif month == 9 and day == 8:
         message = "nØllan vill inte missa nØg."
     elif month >= 9 and day >= 9:
