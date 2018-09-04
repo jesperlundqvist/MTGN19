@@ -131,6 +131,8 @@ $(document).ready(() => {
         }
     });
 
+    $("#n0g-popup").css("display", "flex");
+
     Frack.Router.on({
         '/': function () {
             preloadTemplate("/static/templates/idag.html");
@@ -541,6 +543,8 @@ $(document).ready(() => {
         },
 
         '/login': function () {
+            $("#n0g-popup").css("display", "none");
+            $("#n0g-header").css("display", "none");
             renderTemplate("#page", "/static/templates/login.html");
         },
 
