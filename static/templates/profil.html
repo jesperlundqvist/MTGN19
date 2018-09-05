@@ -53,7 +53,15 @@
 <a href="/profiler" data-navigo>Tillbaka till alla profiler</a>
 <br>
 <img src="{{user.profile_picture}}" class="book-profile-large" />
+{{#unlessCond user.name "Lovisa"}}
 <h1 class="title">{{user.name}}</h1>
+{{/unlessCond}}
+
+{{#ifCond user.name "Lovisa"}}
+<div class="title">
+<img src="/static/images/lovisa.gif" class="gif-name"/>
+</div>
+{{/ifCond}}
 
 
 {{#unlessCond user.type.name "nØllan"}}
