@@ -131,8 +131,6 @@ $(document).ready(() => {
         }
     });
 
-    $("#n0g-popup").css("display", "flex");
-
     Frack.Router.on({
         '/': function () {
             preloadTemplate("/static/templates/idag.html");
