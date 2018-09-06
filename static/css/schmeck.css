@@ -622,6 +622,11 @@ p, a {
 
 }
 
+@font-face {
+    font-family: ComicSans;
+    src: url("/static/images/comicsans.ttf");
+}
+
 .foppe-btn{
     color: white;
     background-color: hotpink;
