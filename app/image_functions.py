@@ -137,7 +137,9 @@ def get_events():
 def handle_video(video_link):
     video_id = video_link.split("v=")[1]
     print(video_id)
+    if "&feature=youtu.be" in video_id:
+        video_id = video_id.split("&")[0]
     embed_link = "youtube.com/embed/" + video_id
-    thumbnail = "https://img.youtube.com/vi/" + video_id + "/maxresdefault.jpg"
+    thumbnail = "https://img.youtube.com/vi/" + video_id + "/default.jpg"
 
     return embed_link, thumbnail
