@@ -622,6 +622,11 @@ p, a {
 
 }
 
+@font-face {
+    font-family: ComicSans;
+    src: url("/static/images/comicsans.ttf");
+}
+
 .foppe-btn{
     color: white;
     background-color: hotpink;
@@ -650,6 +655,9 @@ p, a {
     float: left;
 }
 
+.gif-name{
+    max-height: 10em;
+}
 #n0g-popup {
     position: fixed;
     top: 0;
