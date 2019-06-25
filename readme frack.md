@@ -57,7 +57,7 @@ i kommandotolken. Om du använder windows ska du istället skriva
 
 Sedan behöver du bara skriva
 
-```flask run```
+```python frack.py```
 
 i kommandotolken för att starta din lokala testserver, som kommer köras på den address som visas i kommandofönstret.
 
