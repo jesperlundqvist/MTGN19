@@ -21,6 +21,7 @@ function App() {
         <Switch>
           <ProtectedRoute path="/" exact component={Home} />
           <ProtectedRoute path="/profiler" exact component={Profiles} />
+          <ProtectedRoute path="/profiler/:user" exact component={Profiles} />
           <ProtectedRoute path="/schema" exact component={Schedule} />
           <ProtectedRoute path="/nyheter" exact component={News} />
           <ProtectedRoute path="/admin" exact component={Admin} />
