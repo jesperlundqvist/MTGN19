@@ -6,6 +6,9 @@ class Admin extends Component {
     return (
       <div>
         <h1 className="view_header">Admin</h1>
+        <div>
+          <h3>Frågan är om vi ska ha kvar det här eller göra om?</h3>
+        </div>
       </div>
     );
   }
