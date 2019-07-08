@@ -34,7 +34,13 @@ class Navigation extends Component {
     if (this.state.navOpen === true) {
       return (
         <div className='navigationBar'>
-          <div className='profil'></div>
+          <div className='profil'>
+            {//Här ska "id kortet" vara med den inloggades profil
+            }
+            <h3 className="agent_title">SECRET AGENT</h3>
+            <h6>Subject: </h6>
+            <h6>Organisation: </h6>
+          </div>
           {this.Links.map((l, i) => {
             let linkClass = "linkClosed link";
             if (l.url === this.props.location.pathname)

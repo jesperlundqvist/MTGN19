@@ -5,7 +5,10 @@ class Admin extends Component {
   render() {
     return (
       <div>
-        <h1>Admin</h1>
+        <h1 className="view_header">Admin</h1>
+        <div>
+          <h3>Frågan är om vi ska ha kvar det här eller göra om?</h3>
+        </div>
       </div>
     );
   }
