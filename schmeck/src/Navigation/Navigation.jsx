@@ -20,7 +20,7 @@ class Navigation extends Component {
   };
 
   onOpenHndler = (state) => {
-    this.setState({ navOpen: state});
+    this.setState({ navOpen: state });
   };
 
   createButton = () => {
@@ -38,8 +38,10 @@ class Navigation extends Component {
             {//Här ska "id kortet" vara med den inloggades profil
             }
             <h3 className="agent_title">SECRET AGENT</h3>
-            <h6>Subject: </h6>
-            <h6>Organisation: </h6>
+            <div className="info_id">
+              <h6 className="sub_id">Subject: </h6>
+              <h6 className="sub_id">Organisation: </h6>
+            </div>
           </div>
           {this.Links.map((l, i) => {
             let linkClass = "linkClosed link";
