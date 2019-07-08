@@ -11,6 +11,7 @@ import Navigation from './Navigation/Navigation';
 import Blandaren from './Blandaren/Blandaren'
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login/Login';
+import Footer from './Footer/Footer';
 
 function App() {
   console.log(sessionStorage.getItem("authToken"))
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       <Router>     
         <Route path="/" component={Navigation} />
+        <Route path="/" component={Footer} />
         <Switch>
           <ProtectedRoute path="/" exact component={Home} />
           <ProtectedRoute path="/profiler" exact component={Profiles} />

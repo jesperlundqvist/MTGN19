@@ -5,7 +5,7 @@ class Profiles extends Component {
   render() {
     return (
       <div>
-        <h1>Profiles</h1>
+        <h1 className="view_header">Profiles</h1>
       </div>
     );
   }

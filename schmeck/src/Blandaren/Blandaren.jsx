@@ -5,7 +5,7 @@ class Blandaren extends Component {
   render() {
     return (
       <div>
-        <h1>Blandaren</h1>
+        <h1 className="view_header" >Blandaren</h1>
       </div>
     );
   }

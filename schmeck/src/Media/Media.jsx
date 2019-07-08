@@ -5,7 +5,7 @@ class Media extends Component {
   render() {
     return (
       <div>
-        <h1>Media</h1>
+        <h1 className="view_header">Media</h1>
       </div>
     );
   }
