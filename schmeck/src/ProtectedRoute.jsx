@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-//import Frack from "./Frack"
+import Frack from "./Frack"
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={props => {
-        if (true) {//Frack.HasToken()) {
+        if (Frack.HasToken()) {
           return <Component {...props} />;
         } else {
           return <Redirect to="/Login" />

@@ -1,27 +1,3 @@
-/*class Frack{
-    
-    isLogin = false;
-
-    login(name, pass) {
-        if (name === 'hej1' && pass === '1234') {
-            this.isLogin = true;
-            return true;
-        }
-        return false;
-    }
-
-    logout(){
-        this.isLogin = false;
-    }
-
-    HasToken() {
-        return this.isLogin;
-    }
-    
-}
-
-export default new Frack();*/
-
 import axios from 'axios';
 
 function GetApiObject(url) {

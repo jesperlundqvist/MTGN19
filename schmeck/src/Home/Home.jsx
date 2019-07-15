@@ -6,7 +6,7 @@ class Home extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <div className="page">
         <h1 className="view_header">Home</h1>
         <div>
           <h3 className="subtitle">Vad har du på hjärtat lådan</h3> 

@@ -4,7 +4,7 @@ class Admin extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <div className="page">
         <h1 className="view_header">Admin</h1>
         <div>
           <h3>Frågan är om vi ska ha kvar det här eller göra om?</h3>

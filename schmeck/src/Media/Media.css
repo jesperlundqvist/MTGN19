@@ -1,0 +1,14 @@
+.checkbox {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: center;
+    font-size: 25px;
+    height: 30px;
+}
+
+.checkbox-contaner {
+    background: #fff;
+}
