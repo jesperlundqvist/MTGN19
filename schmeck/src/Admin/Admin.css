@@ -1,0 +1,27 @@
+.links {
+    color: black;
+    text-decoration: none;
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    border: #999999 2px solid;
+    margin: 1%;
+}
+
+.admin_links {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 80%;
+    width: 50%;
+    margin: auto
+}
+
+.long_link {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
