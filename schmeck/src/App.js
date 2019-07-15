@@ -12,18 +12,20 @@ import Blandaren from './Blandaren/Blandaren'
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login/Login';
 import Footer from './Footer/Footer';
+import Profile from './Profile/Profile'
+import Frack from './Frack';
 
 function App() {
-  console.log(sessionStorage.getItem("authToken"))
+  console.log("hej")
+  Frack.UpdateCurrentUser().catch((res) =>  {Frack.Logout();})
   return (
     <div className="App">
       <Router>     
-        <Route path="/" component={Navigation} />
-        <Route path="/" component={Footer} />
+        <Route path="/" component={Navigation} />  
         <Switch>
           <ProtectedRoute path="/" exact component={Home} />
+          <ProtectedRoute path="/profiler/:user" exact component={Profile} />
           <ProtectedRoute path="/profiler" exact component={Profiles} />
-          <ProtectedRoute path="/profiler/:user" exact component={Profiles} />
           <ProtectedRoute path="/schema" exact component={Schedule} />
           <ProtectedRoute path="/nyheter" exact component={News} />
           <ProtectedRoute path="/admin" exact component={Admin} />
@@ -32,6 +34,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="*" render={() => <h1>Page not found</h1>}/>
         </Switch>
+        <Route path="/" component={Footer} />
       </Router>
     </div>
   );

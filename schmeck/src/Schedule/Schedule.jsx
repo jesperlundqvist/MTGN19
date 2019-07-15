@@ -5,7 +5,7 @@ class Schedule extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <div className="page">
         <h1 className="view_header">Schedule</h1>
       </div>
     );

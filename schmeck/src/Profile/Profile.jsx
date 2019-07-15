@@ -5,7 +5,7 @@ class Profile extends Component {
   state = {};
   render() {
     return (
-      <div className='profile-page'>
+      <div className='profile-pagev page'>
         <div className='profile-contaner'>
           <div className='profile-box'>
             <div className='profile-top-img'>

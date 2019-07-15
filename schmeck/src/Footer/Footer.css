@@ -1,4 +1,6 @@
-.navigation {
+.footer {
     display: flex;
     flex-direction: column-reverse;
+    background: #179167;
+    width: 100%;
 }

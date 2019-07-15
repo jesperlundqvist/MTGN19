@@ -3,21 +3,27 @@ import Frack from "./../Frack";
 import "./Login.css";
 
 class Login extends Component {
-  state = { isLogdin: false };
+  state = { isLogdin: false,
+  loginFail: false };
 
   clickHndeler = event => {
     event.preventDefault();
+    this.setState({loginFail : false})
     console.log(event.target.password.value);
     Frack.Login(event.target.username.value, event.target.password.value).then(
       res => {
-        sessionStorage.authToken = res.data.token;
+        sessionStorage.authToken = res.data.token;     
+        console.log(Frack.HasToken());
+        if (Frack.HasToken()) {
+          this.accessGranted("/");
+        }
         return Frack.UpdateCurrentUser();
       }
-    );
-    console.log(Frack.HasToken());
-    if (Frack.HasToken()) {
-      this.accessGranted("/");
-    }
+    ).catch(error => {
+      console.log('error')
+      this.setState({loginFail : true})
+    });
+
   };
 
   sleep(ms) {
@@ -46,7 +52,8 @@ class Login extends Component {
           </label>
           <input name='password' type='password' />
           <br />
-          <input type='submit' title='login' />
+          {this.state.loginFail ? <h1 className='login-fail'>Access Denied</h1> : null}
+          <input type='submit' value='logga in' />
         </form>
       );
     }
