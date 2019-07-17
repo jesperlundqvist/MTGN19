@@ -17,6 +17,14 @@ class Navigation extends Component {
 
   ];
 
+
+  /*componentDidUpdate() {
+    Frack.UpdateCurrentUser().catch((error) => {
+      Frack.Logout();
+      this.props.history.push(`/login`);
+    });
+  }*/
+
   onClickHndler = url => {
     this.props.history.push(url);
     this.setState({ navOpen: false });

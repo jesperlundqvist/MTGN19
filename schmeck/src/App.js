@@ -28,7 +28,7 @@ function App() {
           <ProtectedRoute path="/profiler" exact component={Profiles} />
           <ProtectedRoute path="/schema" exact component={Schedule} />
           <ProtectedRoute path="/nyheter" exact component={News} />
-          <ProtectedRoute path="/admin" exact component={Admin} />
+          <ProtectedRoute path="/admin" exact adminOnly={true} component={Admin} />
           <ProtectedRoute path="/media" exact component={Media} />
           <ProtectedRoute path="/blandaren" exact component={Blandaren} />
           <Route path="/login" component={Login} />

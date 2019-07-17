@@ -54,13 +54,14 @@
     text-decoration: none;
     color: #000;
     margin: auto;
-    
 }
 
 .navigation-profil {
+    background: #fff;
+    background-image: url("https://t3.ftcdn.net/jpg/02/54/39/96/240_F_254399631_pUTcCHnvHx6ggIDNk6yCsLHRu4Ckm0ZR.jpg");
+    background-size: cover;
     margin: 20px;
     padding: 2% 0;
-    background: #fff;
     width: 100% - 40px;
     height: 150px;
     border-radius: 20px;
@@ -68,16 +69,20 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 20% 80%;
     border: #000 1px solid;
-    
 }
 
 .navigation-profil h6,p {
     text-align: left;
 }
 
+.navigation-profil h6 {
+    border-bottom: #000 1px solid; 
+}
+
 .navigation-profil img {
     height: 90%;
     width: 90%;
+    border: #333 1px solid; 
 }
 
 .agent-title {

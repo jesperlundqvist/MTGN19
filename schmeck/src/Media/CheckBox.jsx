@@ -4,10 +4,10 @@ import './Media.css'
 const CheckBox = props => {
     console.log(props.check)
   return (
-    <button className="checkbox" onClick={() => props.clickHandeler(props.index)}>
+    <button className="checkbox" onClick={() => props.clickHandeler(props.index, props.type)}>
       <svg
-        width='30px'
-        height='30px'
+        width='30'
+        height='30'
         viewBox='0 0 160 160'
         style={{
           fillRule: "evenodd",
@@ -35,7 +35,7 @@ const CheckBox = props => {
             <g transform='matrix(1.26472,0,0,1.26472,-842.439,-1262.27)'>
               <path
                 d='M2602,741.936C2602,741.936 2538.78,796.077 2504.69,867.103C2496.98,872.767 2487.14,880.214 2481.07,885.103C2467.26,844.653 2452.3,821.403 2444.62,828.074C2472.97,803.459 2477.22,812.414 2491.51,845.686C2515.2,795.78 2579.33,744.891 2597.12,736.936L2602,741.936Z'
-                style={((props.check) ? {fill:'rgba(43,92,211,1)'} : {fill:'rgba(43,92,211,0)'})}
+                style={((props.check) ? {fill:'rgba(254,0,0,1)'} : {fill:'rgba(43,92,211,0)'})}
               />
             </g>
           </g>
