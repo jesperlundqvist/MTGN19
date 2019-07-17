@@ -31,7 +31,7 @@ class Navigation extends Component {
   };
 
   onOpenHndler = (state) => {
-    this.setState({ navOpen: state});
+    this.setState({ navOpen: state });
   };
 
   LogoutHndler = () => {

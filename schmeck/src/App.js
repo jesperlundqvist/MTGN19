@@ -14,6 +14,12 @@ import Login from './Login/Login';
 import Footer from './Footer/Footer';
 import Profile from './Profile/Profile'
 import Frack from './Frack';
+import Anvandare from './Admin/hantera_anvandare'
+import Anvandartyper from './Admin/hantera_anvandartyper'
+import HanteraBlandaren from './Admin/hantera_blandaren'
+import HanteraMedia from './Admin/hantera_media'
+import Inlagg from './Admin/inlagg'
+import HanteraNollegrupp from './Admin/hantera_nollegrupper'
 
 function App() {
   console.log("hej")
@@ -31,6 +37,14 @@ function App() {
           <ProtectedRoute path="/admin" exact adminOnly={true} component={Admin} />
           <ProtectedRoute path="/media" exact component={Media} />
           <ProtectedRoute path="/blandaren" exact component={Blandaren} />
+
+          <ProtectedRoute path="/admin/anvandare" exact component={Anvandare} />
+          <ProtectedRoute path="/admin/anvandartyper" exact component={Anvandartyper} />
+          <ProtectedRoute path="/admin/blandaren" exact component={HanteraBlandaren} />
+          <ProtectedRoute path="/admin/media" exact component={HanteraMedia} />
+          <ProtectedRoute path="/admin/inlagg" exact component={Inlagg} />
+          <ProtectedRoute path="/admin/n0llegrupper" exact component={HanteraNollegrupp} />
+
           <Route path="/login" component={Login} />
           <Route path="*" render={() => <h1>Page not found</h1>}/>
         </Switch>
