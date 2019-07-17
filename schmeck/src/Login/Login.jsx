@@ -3,27 +3,28 @@ import Frack from "./../Frack";
 import "./Login.css";
 
 class Login extends Component {
-  state = { isLogdin: false,
-  loginFail: false };
+  state = { isLogdin: false, loginFail: false };
 
   clickHndeler = event => {
     event.preventDefault();
-    this.setState({loginFail : false})
-    console.log(event.target.password.value);
-    Frack.Login(event.target.username.value, event.target.password.value).then(
-      res => {
-        sessionStorage.authToken = res.data.token;     
-        console.log(Frack.HasToken());
+    this.setState({ loginFail: false });
+    Frack.Login(event.target.username.value, event.target.password.value)
+      .then(res => {
+        sessionStorage.authToken = res.data.token;
         if (Frack.HasToken()) {
-          this.accessGranted("/");
+          console.log(this.props.location.url)
+          if (this.props.location.url) {
+            this.accessGranted(this.props.location.url);
+          } else {
+            this.accessGranted("/");
+          }
         }
         return Frack.UpdateCurrentUser();
-      }
-    ).catch(error => {
-      console.log('error')
-      this.setState({loginFail : true})
-    });
-
+      })
+      .catch(error => {
+        console.log("error");
+        this.setState({ loginFail: true });
+      });
   };
 
   sleep(ms) {
@@ -45,14 +46,16 @@ class Login extends Component {
             Username:
             <br />
           </label>
-          <input name='username' type='text' autoComplete='off'/> <br />
+          <input name='username' type='text' autoComplete='off' /> <br />
           <label>
             Password:
             <br />
           </label>
           <input name='password' type='password' />
           <br />
-          {this.state.loginFail ? <h1 className='login-fail'>Access Denied</h1> : null}
+          {this.state.loginFail ? (
+            <h1 className='login-fail'>Access Denied</h1>
+          ) : null}
           <input type='submit' value='logga in' />
         </form>
       );

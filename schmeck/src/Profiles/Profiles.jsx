@@ -25,7 +25,7 @@ class Profiles extends Component {
 
   showUser = (userType, group) => (
     <React.Fragment key={userType}>
-      <h1 className='group-divider'>{userType}</h1>
+      <h2 className='group-divider'>{userType}</h2>
       {this.state.profiles.map((profile, i) => {
         if (this.isUserShown(userType, group, profile)) {
           return (
@@ -44,14 +44,15 @@ class Profiles extends Component {
   );
 
   isUserShown = (userType, group, profile) => {
+    console.log(profile, userType, group)
     if (profile.hidden === true) {
       return false;
     }
-    if (group === null && profile.type.name === userType) {
+    if (group !== "nØllan" && profile.type.name === userType) {
       return true;
     }
-    if (group === "nØllan" && profile.n0llegroup) {
-      if (group === "nØllan" && profile.n0llegroup.name === userType) {
+    if (profile.n0llegroup) {
+      if ( profile.type.name === "nØllan" && profile.n0llegroup.name === userType) {
         return true;
       }
     }

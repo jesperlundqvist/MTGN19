@@ -1,6 +1,10 @@
 .footer {
-    display: flex;
-    flex-direction: column-reverse;
-    background: #179167;
-    width: 100%;
+border-top: #179167 20px solid;
+    background: #fff;
+    width: 100% -20px;
+    padding: 10px;
+}
+
+.footer-linck {
+    margin: 10px;
 }
