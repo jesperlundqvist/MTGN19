@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Frack from "./../Frack";
+import axios from "axios";
 import "./Admin.css"
 class Anvandare extends Component {
     state = {
@@ -9,7 +10,15 @@ class Anvandare extends Component {
         currentUser: "",
     };
 
-    componentDidMount() {
+    update_user = "";
+    password = "lösenord1";
+
+    /*componentWillUpdate = () => {
+        
+    }*/
+
+    componentDidMount = () => {
+
         Frack.UserType.GetAll().then(res => {
             console.log("usertypes: ", res.data)
             this.setState({ types: res.data });
@@ -18,138 +27,147 @@ class Anvandare extends Component {
             console.log("n0llegroups: ", res.data)
             this.setState({ n0llegroup: res.data });
         });
+
         Frack.User.GetAll().then(res => {
             console.log("Users: ", res.data)
             this.setState({ users: res.data });
         });
+
+
     }
 
-    changeHandler(e) {
+    componentDidUpdate = () => {
+        console.log("Kör component did update")
+        this.handle_usersHTML()
+    }
+
+    /*changeHandler(e) {
         
         console.log(e.target.id, ": ", e.target.value)
         //this.setState({ });
-    }
+    }*/
 
-    submitNewUser(e) {
+    submitNewUser = (e) => {
         e.preventDefault()
         let name = e.target.username.value
-
-
-
-        if (e.target.usertype.value == "1") {
-            name += "-nØllan";
+        console.log(e.target.usertype.value)
+        if (e.target.n0llegroup.value == '-1' && e.target.usertype.value == 1) {
+            alert("n0llan tillhör ingen n0llegrupp och n0llan är vilsen utan den!")
         }
+        else {
 
-        console.log("Username: ", name.toLowerCase())
-        console.log("Usertype: ", e.target.usertype.value)
-        console.log("n0llegroup: ", e.target.n0llegroup.value)
+            if (e.target.usertype.value == "1") {
+                name += "-nØllan";
+            }
 
-        var data = {
-            name: name,
-            username: name.toLowerCase(),
-            password: "potatis",
-            type_id: e.target.usertype.value
-        };
-        if (e.target.n0llegroup.value != -1) {
-            data["n0llegroup_id"] = e.target.n0llegroup.value;
+            console.log("Username: ", name.toLowerCase())
+            console.log("Usertype: ", e.target.usertype.value)
+            console.log("n0llegroup: ", e.target.n0llegroup.value)
+            var Password = "lösenord1"; //Ska detta göras om?
+            var data = {
+                name: name,
+                username: name.toLowerCase(),
+                password: Password,
+                type_id: e.target.usertype.value
+            };
+            if (e.target.n0llegroup.value != -1) {
+                data["n0llegroup_id"] = e.target.n0llegroup.value;
+            }
+            Frack.User.New(data).then((res) => {
+                alert("Skapat ny användare. ", res.data);
+                Frack.User.GetAll().then(res => {
+                    console.log("Users: ", res.data)
+                    this.setState({ users: res.data });
+                })
+
+            })
         }
-        Frack.User.New(data).then(function (res) {
-            console.log("Skapat ny användare. ", res.data);
-            //$("#createdUserAlert").show();
-            //$("#createdUserAlert").text("Skapade användare " + username + "!");
-            //$("#input_name").val("");
-        });
     }
 
 
-    saveAllUsers() {
+    saveAllUsers = () => {
         console.log("SaveAllUsers")
         this.state.users.map((user) => {
             this.saveUser(user)
         })
     }
 
-    saveUser(user) {
-        console.log("SaveUser: ")
-        console.log(user)
-
-        //$("#input_alert_success_" + id).hide();
-
-        /*
+    saveUser = (user) => {
+        user.preventDefault();
+        var id = user.target.username.id
+        console.log("n0llegrupp: ", user.target.n0llegrupp.value)
         var data = {
-            username: user.username,
-            name: user.name,
-            type_id: ,
-            admin: $("#input_admin_" + id).is(':checked'),
-            hidden: $("#input_hidden_" + id).is(':checked')
+            username: user.target.username.value,
+            name: user.target.name.value,
+            type_id: user.target.type.value,
+            admin: user.target.admin.checked,
+            hidden: user.target.hidden.checked,
         };
-
-        if ($("#input_n0llegroup_" + id).val() != -1)
-        {
-            data["n0llegroup_id"] = $("#input_n0llegroup_" + id).val();
+        if (user.target.n0llegrupp.value != '-1') {
+            data["n0llegroup_id"] = user.target.n0llegrupp.value;
         }
-        else
-        {
-            if ($("#input_type_" + id + " option:selected").text() == "nØllan")
-            {
-                if (!confirm("nØllan \"" + data.username + "\" har ingen nØllegrupp! Är du säker på att det ska vara så?"))
-                {
-                    return;
-                }
+        else {
+            if (user.target.type.value == 1) {
+                alert("OBS! n0llan tillhör ingen n0llegrupp!")
             }
         }
 
         var profilePicutureRequest = [];
 
-        if ($("#input_picture_" + id).prop('files').length > 0)
-        {
-            var file = $("#input_picture_" + id).prop('files')[0];
+        if (user.target.file.value.length > 0) {
+            var file = user.target.file.files[0];
             var formData = new FormData();
             formData.append("image", file);
 
             profilePicutureRequest.push(axios({
                 method: "post",
-                url: "/api/upload_profile_picture/" + data.username,
+                url: "http://localhost:5000/api/upload_profile_picture/" + user.target.username.value,
                 data: formData,
                 auth: {
                     username: sessionStorage.authToken,
                     password: ""
                 }
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.error(error);
             }));
         }
 
-        axios.all(profilePicutureRequest).then(function(responses) {
+        axios.all(profilePicutureRequest).then((responses) => {
             if (responses.length > 0) {
                 //$("#input_picture_" + id).val("");
-                data["profile_picture"] = responses[0].data.url;
+                //data["profile_picture"] = responses[0].data.url;
+                console.log(responses)
             }
 
-            Frack.User.Update(id, data).then(function (res) {
+            Frack.User.Update(id, data).then((res) => {
+                alert("Ändringar sparade!")
                 //$("#input_alert_success_" + id).show();
                 //$("#input_alert_success_" + id).text("Ändringar är sparade!");
+
+                Frack.User.GetAll().then(res => {
+                    console.log("Users: ", res.data)
+                    this.setState({ users: res.data });
+                })
             });
-        });*/
+        })
+
     }
 
-    removeUser(id) {
-        console.log("Remove user: ")
-        console.log(id)
-        //let id = e.target.value;
-        /*if (confirm("Är du säker på att du vill ta bort användaren?"))
-        {
-            Frack.User.Delete(id).then(function(res) {
-                /*$("#user_" + id).remove();
-            });
-        }*/
+    removeUser = (id) => {
+        Frack.User.Delete(id).then((res) => {
+            alert("User was successfully deleted")
+            Frack.User.GetAll().then(res => {
+                console.log("Users: ", res.data)
+                this.setState({ users: res.data });
+            })
+        })
+
+        /* }*/
     }
 
-    userResetPassword(id) {
-        console.log("reset password: ")
-        console.log(id)
+    userResetPassword = (id) => {
         //let id = e.target.value;
-        var newPassword = "lösenord1";
+        var newPassword = "lösenord1"; //Ska detta göras om?
 
         Frack.User.Update(id, { password: newPassword }).then(function (res) {
             /*$("#input_alert_success_" + id).show();
@@ -157,14 +175,79 @@ class Anvandare extends Component {
         });
     }
 
+    handle_usersHTML = () => {
+        //Form(HTML) för att uppdatera användare
+        this.update_user =
+            <div className="admin_block">
+                <h1 className="view_header">Hantera användare</h1>
+                <div className="admin_container" id="user_list">
+
+                    {this.state.users.map((user) => {
+                        return (
+                            <div className="user_block">
+                                <img className="prof_pic_admin" src={user.profile_picture} alt="" />
+                                <form onSubmit={this.saveUser} >
+                                    <div className="" id={user.id} key={user.id} className="user_grid">
+
+
+                                        <label className="form_label">Användarnamn: </label>
+                                        <input type="text" name="username" id={`${user.id}`}  defaultValue={user.username} onBlur={this.changeHandler} />
+
+                                        <label className="form_label">Namn: </label>
+                                        <input type="text" id={`input_name${user.id}`} name="name"  defaultValue={user.name} onBlur={this.changeHandler} />
+
+                                        <label className="form_label">Typ: </label>
+                                        <select name="type" id={`input_type_${user.id}`} defaultValue={user.type.id}>
+                                            {this.state.types.map((type) => {
+                                                return (<option key={type.id} value={type.id}>{type.name}</option>)
+                                            })}
+                                        </select>
+
+                                        <label className="form_label">nØllegrupp: </label>
+
+                                        <select name="n0llegrupp" id={`input_n0llegroup_${user.id}`} defaultValue={(user.n0llegroup) ? (user.n0llegroup.id) : "-1"}>
+                                            <option value="-1">Ingen</option>
+                                            {this.state.n0llegroup.map((group) => {
+                                                return (<option key={group.id} value={group.id}>{group.name}</option>)
+                                            })}
+                                        </select>
+
+                                        <label className="form_label">Admin: </label>
+                                        <input name="admin" id={`input_admin_${user.id}`} type="checkbox" defaultChecked={user.admin} />
+
+                                        <label className="form_label">Dold: </label>
+                                        <input name="hidden" id={`input_hidden_${user.id}`} type="checkbox" defaultChecked={user.hidden} />
+
+                                        <label className="form_label">Ny profilbild: </label>
+
+                                        <input name="file" type="file" id={`input_picture_${user.id}`} />
+
+
+
+
+                                        <br />
+                                        <div className="buttons">
+                                            <input type="submit" value="Spara" />
+                                            <button type="button" className="btn btn-secondary btn-sm" onClick={() => this.userResetPassword(user.id)}>Återställ lösenord</button>
+                                            <button type="button" className="btn btn-secondary btn-sm" value={user.id} onClick={() => this.removeUser(user.id)}>Ta bort</button>
+                                        </div></div>
+                                </form>
+                            </div>
+                        )
+                    })
+                    }
+                </div>
+            </div>
+    }
+
     render() {
+        this.handle_usersHTML()
         //Form(HTML) för att skapa användare
         var create_user = <div className="admin_block">
             <h1 className="view_header">Skapa användare</h1>
-            <form className="form-group" onSubmit={this.submitNewUser}>
+            <form className="form-group user_block" onSubmit={this.submitNewUser}>
                 <label className="form_label">Namn: </label>
                 <input type="text" className="form-control" placeholder="Namn" name="username" />
-                <br />
                 <label className="form_label">Användartyp: </label>
                 <select className="form-control" name="usertype">
 
@@ -173,7 +256,6 @@ class Anvandare extends Component {
                     })}
 
                 </select>
-                <br />
                 <label className="form_label">nØllegrupp: </label>
                 <select className="form-control" name="n0llegroup">
                     <option value="-1">Ingen</option>
@@ -182,89 +264,17 @@ class Anvandare extends Component {
                     })}
 
                 </select>
-                <br />
-                <input type="submit" className="btn btn-primary" value="Skapa ny användare" />
+                <br/>
+                <input type="submit" className="buttons" value="Skapa ny användare" />
             </form>
         </div>
 
-        //Form(HTML) för att uppdatera användare
-        var update_user =
-            <div className="admin_block">
-                <h1 className="view_header">Hantera användare</h1>
-                <ul class="list-group" id="user_list">
 
-                    {this.state.users.map((user) => {
-                        return (
-                            
-                                <li class="list-group-item flex-column align-items-start" id={user.id}>
-                                    <form onSubmit={() => this.saveUser(user)}>
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <label class="form_label">Användarnamn: </label>
-                                        <input type="text" id={`input_username_${user.id}`} class="inline_user_edit_input" defaultValue={user.username} onBlur={this.changeHandler}/>
-                                    </div>
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <label class="form_label">Namn: </label>
-                                        <input type="text" id={`input_name${user.id}`} class="inline_user_edit_input" defaultValue={user.name} onBlur={this.changeHandler}/>
-                                    </div>
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <label class="form_label">Typ: </label>
-                                        <select id={`input_type_${user.id}`}>
-                                            {this.state.types.map((type) => {
-                                                return (<option key={type.id} value={type.id}>{type.name}</option>)
-                                            })}
-                                        </select>
-                                    </div>
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <label class="form_label">nØllegrupp: </label>
-                                        <select id={`input_n0llegroup_${user.id}`}>
-                                            <option value="-1">Ingen</option>
-                                            {this.state.n0llegroup.map((group) => {
-                                                return (<option key={group.id} value={group.id}>{group.name}</option>)
-                                            })}
-                                        </select>
-                                    </div>
-
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <label class="form_label">Admin: </label>
-                                        <input id={`input_admin_${user.id}`} type="checkbox" />
-                                    </div>
-
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <label class="form_label">Dold: </label>
-                                        <input id={`input_hidden_${user.id}`} type="checkbox" />
-                                    </div>
-
-                                    <div>
-                                        <label class="form_label">Ny profilbild: </label>
-                                        <br />
-                                        <input type="file" id={`input_picture_${user.id}`} />
-                                    </div>
-
-                                    <br />
-
-                                    <div class="d-flex w-100 justify-content-between">
-                                    <input type="submit" class="btn btn-primary btn-sm" value={user.id} onClick={() => this.saveUser(user)}>Spara</input>
-                                    <button type="button" class="btn btn-secondary btn-sm" value={user.id} onClick={() => this.userResetPassword(user)}>Återställ lösenord</button>
-                                    <button type="button" class="btn btn-secondary btn-sm" value={user.id} onClick={() => this.removeUser(user)}>Ta bort</button>
-                                </div>
-
-                                </form>
-                                <br />
-                                <div id={`input_alert_success_${user.id}`} class="alert alert-success" role="alert" />
-                            </li>
-                        )
-                    })
-                    }
-                </ul>
-                <br />
-                <button type="button" class="btn btn-primary" onClick={this.saveAllUsers}>Spara alla ändringar</button>
-            </div>
 
         return (
             <div className="page">
                 {create_user}
-                {update_user
-                }
+                {this.update_user}
             </div>
         );
     }
