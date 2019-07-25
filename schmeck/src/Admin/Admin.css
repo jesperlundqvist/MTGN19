@@ -16,12 +16,46 @@
 .admin_container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-width: 80%;
-    width: 50%;
-    margin: auto
+}
+
+@media (max-width: 1150px) {
+    .admin_container {
+        grid-template-columns: 1fr;
+    }
 }
 
 .long_link {
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+.form_label {
+    color: white;
+}
+
+.admin_block {
+    margin-bottom: 5%;
+}
+
+.user_block {
+    background-color: #9999997e;
+    padding: 5px;
+    margin: 1%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.user_grid {
+ 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.buttons {
+    margin-top: 15px;
+}
+
+.prof_pic_admin {
+    height: 80%
 }
