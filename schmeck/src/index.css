@@ -3,6 +3,13 @@
   padding: 0px;
 }
 
+@font-face {
+  font-family: 'tw';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/static/images/TravelingTypewriter.ttf');
+}
+
 body {
   background: rgb(51, 7, 7);
   background-image: url("https://wallpaperbro.com/img/434513.jpg");
@@ -11,22 +18,37 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 0px;
+  /*font-family: tw;*/
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.typewriter-font {
+  font-family: tw;
 }
 
 code {
-  font-family: monospace, source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New";
+  /*font-family: monospace, source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New";*/
 }
 
 .page {
   padding: 40px 30px;
   min-height: 100vh;
   width: 100% - 60px;
+}
+
+@media(max-width: 780px){
+  .page {
+    padding: 40px 15px;
+    min-height: 100vh;
+    width: 100% - 30px;
+  }
+  
 }
 
 .view_header {

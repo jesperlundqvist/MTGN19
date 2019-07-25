@@ -9,10 +9,11 @@ class Blandaren extends Component {
 
   componentDidMount() {
     Frack.Blandaren.GetAll().then((res) => {
-      this.setState({
-        Blandaren: res.data
-      })
-    })
+      this.setState({Blandaren: res.data});
+    }).catch((errer) => {
+      Frack.Logout();
+      this.props.history.push('/login');
+    });
   }
 
   render() {

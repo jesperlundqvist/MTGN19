@@ -5,9 +5,8 @@ const CheckBox = props => {
     console.log(props.check)
   return (
     <button className="checkbox" onClick={() => props.clickHandeler(props.index, props.type)}>
-      <svg
-        width='30'
-        height='30'
+      <svg className="checkbox-box"
+        
         viewBox='0 0 160 160'
         style={{
           fillRule: "evenodd",

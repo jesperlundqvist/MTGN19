@@ -2,37 +2,115 @@
   padding: 40px 50px;
 }
 
+.profile-text-divider {
+  padding: 2%;
+  border-bottom: #000 1px solid;
+}
+
+.profile-box input[type="password"], .profile-box input[type="text"] {
+  background: #fff;
+  border: none;
+  border-bottom: #000 1px solid;
+  align-content: left;
+
+}
+
+.profile-box input[type="text"] {
+  width: 100%;
+}
+
+.profile-button-contaner {
+  display: grid;
+  width: 100%;
+  /*justify-content: space-between;*/
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2% 0%;
+}
+
+.profile-button-1 {
+  width: 50%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.profile-button-2 {
+  display: flex;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+.profile-button-3 {
+  width: 50%;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  margin-left: 50%
+}
+
+.profile-button {
+  /*position: fixed;
+  rihgt: 0px;
+  transform-origin: center center;
+  width: 5%;
+  top: 50%;*/
+  font-size: 15px;
+  padding: 5px;
+  background: none;
+  border: none;
+  border: #000 1px solid;
+  z-index: 1;
+  border-radius: 2px; 
+}
+
+.prev-button {
+  /*position: fixed;
+  left: 0px;
+  transform-origin: center center;
+  width: 5%;
+  top: 50%;*/
+  height: 30px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  border: #000 1px solid;
+  z-index: 1;
+  border-radius: 20%; 
+}
+
 .profile-contaner {
+  width: 80%;
+  max-width: 800px;
   margin: auto;
   padding: 10px 20px 30px 20px;
   border-radius: 10px;
   background: #b98d44;
-  min-height: 1500px;
-  max-width: 1000px;
+  min-height: 1000px;
 }
 
 .profile-box {
-  padding: 20px 20px 30px 20px;
+  padding: 0px 20px 30px 20px;
   min-height: 1500px;
   background: #fff;
 }
 
 .profile-top-img {
-  padding: 20px 20px 30px 20px;
-  display: flex;
+  /*display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between;*/
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 300px;
 }
 
 .profile-top-img img {
-  width: 40%;
-  height: 40%;
+  /*width: 40%;
+  height: 40%;*/
 }
 
 .profile-img {
-  width: 45%;
+  /*width: 45%;
   padding: 10px 10px 20px 10px;
-  border: #000 solid 1px;
+  border: #000 solid 1px;*/
 }
 
 .profile-box h4 {
@@ -55,5 +133,10 @@
 
   .profile-box {
     min-height: 400px;
+  }
+
+  .profile-page {
+    padding: 20px 0px 0px 0px;
+    
   }
 }

@@ -6,8 +6,8 @@ class ProfileButton extends Component {
   render() {
     return (
       <button
-        className='profiles-button'
-        onClick={() => this.props.clickHandeler(this.props.userName)}>
+        className='profiles-button typewriter-font'
+        onClick={() => this.props.clickHandeler(this.props.index ,this.props.userName)}>
         <svg
           width='100%'
           height='100%'
@@ -89,7 +89,7 @@ class ProfileButton extends Component {
                 />
               </g>
               <g transform='matrix(1,0,0,1,-979.033,-34.836)'>
-                <text x='1480px' y='885px' dominantBaseline="middle" textAnchor="middle" style={{ fontSize: "60px" }}>
+                <text x='1480px' y='885px' dominantBaseline="middle" textAnchor="middle" style={{ fontSize: "60px"}}>
                   {this.props.name}
                 </text>
               </g>

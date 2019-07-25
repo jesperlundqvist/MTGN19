@@ -25,6 +25,11 @@ class Navigation extends Component {
     });
   }*/
 
+  onClickProfile = () => {
+    this.props.history.push(`/profiler/${Frack.CurrentUser.username}`);
+    this.setState({ navOpen: false });
+  }
+
   onClickHndler = url => {
     this.props.history.push(url);
     this.setState({ navOpen: false });
@@ -57,7 +62,7 @@ class Navigation extends Component {
     if (this.state.navOpen === true) {
       return (
         <div className='navigationBar'>
-          <div className='navigation-profil'>
+          <div onClick={this.onClickProfile} className='navigation-profil'>
             {//Här ska "id kortet" vara med den inloggades profil
             }
             <h3 className="agent-title">SECRET AGENT</h3>
@@ -70,9 +75,9 @@ class Navigation extends Component {
             <img src={Frack.CurrentUser.profile_picture} alt=""/>
           </div>
           {this.Links.map((l, i) => {
-            let linkClass = "linkClosed link";
+            let linkClass = "linkClosed link typewriter-font";
             if (l.url === this.props.location.pathname)
-              linkClass = "linkOpen link";
+              linkClass = "linkOpen link typewriter-font";
             if (Frack.CurrentUser.admin !== true && l.text === this.Links[this.Links.length-1].text) {
               return null;
             }
@@ -86,7 +91,7 @@ class Navigation extends Component {
             );
           })}
           <button
-                className="linkClosed link"
+                className="linkClosed link typewriter-font"
                 onClick={() => this.LogoutHndler()}>
                 <p className='link-text'>logga ut</p>
               </button>
@@ -96,8 +101,12 @@ class Navigation extends Component {
   };
 
   render() {
+    let classes = 'navigation'
+    if (this.state.navOpen) {
+      classes = 'navigation navigation-open'
+    }
     return (
-      <div className='navigation'>
+      <div className={classes}>
         {this.createNavigation()}
         {this.createButton()}
       </div>
