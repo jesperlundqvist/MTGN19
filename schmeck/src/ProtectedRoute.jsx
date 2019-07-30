@@ -3,9 +3,10 @@ import { Route, Redirect } from "react-router-dom";
 import Frack from "./Frack";
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-  /*Frack.UpdateCurrentUser().catch(() => {
+  Frack.UpdateCurrentUser().catch(() => {
     Frack.Logout();
-  })*/
+  })
+  console.log(Frack.HasToken())
   return (
     <Route
       {...rest}

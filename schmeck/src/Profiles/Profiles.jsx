@@ -4,74 +4,78 @@ import Frack from "./../Frack";
 import "./Profiles.css";
 
 class Profiles extends Component {
-  state = { profiles: [], types: [], n0llegroup: [] };
+  state = { profiles: [] };
 
   componentDidMount() {
+    //window.scrollTo(0, 0);
     Frack.User.GetAll().then(res => {
       console.log(res);
-      this.setState({ profiles: res.data });
-    });
-    Frack.UserType.GetAll().then(res => {
-      this.setState({ types: res.data });
-    });
-    Frack.N0lleGroup.GetAll().then(res => {
-      this.setState({ n0llegroup: res.data });
-    });
+      const profiles = res.data;
+      profiles.sort((a, b) => this.sortUsers(a,b))
+      this.setState({ profiles: profiles});
+    }).catch((errer) => {
+      Frack.Logout();
+      this.props.history.push('/login');
+    });;
   }
 
-  clickHandeler = url => {
-    this.props.history.push(`/profiler/${url}`);
+  clickHandeler = (index, userName) => {
+    console.log(index)
+    this.props.history.push({pathname:`/profiler/${userName}`, state:{profiles:this.state.profiles, index:index}});
   };
 
-  showUser = (userType, group) => (
-    <React.Fragment key={userType}>
-      <h2 className='group-divider'>{userType}</h2>
-      {this.state.profiles.map((profile, i) => {
-        if (this.isUserShown(userType, group, profile)) {
-          return (
-            <ProfileButton
-              key={profile.id}
-              name={profile.name}
-              userName={profile.username}
-              userImg={profile.profile_picture}
-              clickHandeler={this.clickHandeler}
-            />
-          );
-        }
-        return null;
-      })}
-    </React.Fragment>
-  );
-
-  isUserShown = (userType, group, profile) => {
-    console.log(profile, userType, group)
-    if (profile.hidden === true) {
-      return false;
+  sortUsers = (a, b) => {
+    const group = ['nØllan', 'KPH','INPHO','ARR','LEK', 'ÖPH', 'VRAQUE', 'RSA']
+    if (a.hidden !== b.hidden) {
+      return( a.hidden - b.hidden)
     }
-    if (group !== "nØllan" && profile.type.name === userType) {
-      return true;
+    if (group.indexOf(a.type.name) !== group.indexOf(b.type.name)) {
+      return (group.indexOf(a.type.name) - group.indexOf(b.type.name))
     }
-    if (profile.n0llegroup) {
-      if ( profile.type.name === "nØllan" && profile.n0llegroup.name === userType) {
-        return true;
+    if (a.n0llegroup && b.n0llegroup) {
+      if (a.n0llegroup.name !== b.n0llegroup.name) {
+        return(a.n0llegroup.name - b.n0llegroup.name)
       }
     }
-    return false;
-  };
+    return 0;
+  }
 
   render() {
+    //console.log(this.state.types)
+    const { profiles } = this.state;
+    if (profiles.length === 1) {
+      return null
+    }
+    
+    console.log(profiles)
     return (
       <div className='page'>
         <h1 className='view_header'>Profiles</h1>
         <div className='profiles-contaner'>
-          {this.state.n0llegroup.map(element => {
-            return this.showUser(element.name, "nØllan");
-          })}
-          {this.state.types.map(element => {
-            if (element.name !== "nØllan") {
-              return this.showUser(element.name, null);
+          {profiles.map((profile, i) => {
+            if (!profile.hidden) {
+              if (i === 0) {
+                return (<React.Fragment key={i}>
+                  {(profile.type.name ==='nØllan') ? <h2 className="media-divider">{`${profile.n0llegroup.name}`}</h2> : <h2 className="media-divider">{`${profile.type.name}`}</h2>}
+                  <ProfileButton key={profile.id} index={i} name={profile.name} userName={profile.username} userImg={profile.profile_picture} clickHandeler={this.clickHandeler} />
+                </React.Fragment>)
+              } 
+              console.log(profiles[i-1].type.name, profile.type.name)
+              if (profiles[i-1].type.name !== profile.type.name || (profile.type.name ==='nØllan' && profiles[i-1].n0llegroup.name !== profile.n0llegroup.name)) {
+                return (<React.Fragment key={i}>
+                  {(profile.type.name ==='nØllan') ? <h2 className="media-divider">{`${profile.n0llegroup.name}`}</h2> : <h2 className="media-divider">{`${profile.type.name}`}</h2>}
+                  <ProfileButton key={profile.id} index={i} name={profile.name} userName={profile.username} userImg={profile.profile_picture} clickHandeler={this.clickHandeler} />
+                </React.Fragment>)
+              }
+              return (<ProfileButton key={profile.id} index={i} name={profile.name} userName={profile.username} userImg={profile.profile_picture} clickHandeler={this.clickHandeler} />);
+            }
+            if (profiles[i-1].type.name !== profile.type.name || (profile.type.name ==='nØllan' && profiles[i-1].n0llegroup.name !== profile.n0llegroup.name)) {
+              return (<React.Fragment key={i}>
+                {(profile.type.name ==='nØllan') ? <h2 className="media-divider">{`${profile.n0llegroup.name}`}</h2> : <h2 className="media-divider">{`${profile.type.name}`}</h2>}
+              </React.Fragment>)
             }
             return null;
+
           })}
         </div>
       </div>

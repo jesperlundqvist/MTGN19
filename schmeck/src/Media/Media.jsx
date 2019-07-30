@@ -4,6 +4,13 @@ import Frack from "./../Frack";
 import "./Media.css";
 import MediaImg from "./MediaImg";
 
+import Lightbox from 'lightbox-react';
+import 'lightbox-react/style.css'; 
+
+import Iframe from 'react-iframe';
+
+
+
 class Media extends Component {
   //Check if the user is admin, if --> they can upload and delete
   state = {
@@ -20,9 +27,13 @@ class Media extends Component {
         { text: "Video", engText: "video", check: true }
       ]
     ],
+    photoIndex: 0,
+    isOpenLite: false,
     isOpen: false,
     medias: []
   };
+
+  images = [];
 
   checkboxHandler = (index, type) => {
     let check = this.state.check;
@@ -40,11 +51,32 @@ class Media extends Component {
       }
       check[1] = events;
       this.setState({ check: check });
+    }).catch((errer) => {
+      Frack.Logout();
+      this.props.history.push('/login');
     });
     Frack.Media.GetAll().then(res => {
-      console.log(res);
+      //console.log(res);
       this.setState({ medias: res.data });
     });
+   
+  }
+
+  checkboxShow = (index, box) => {
+    if (index === 0 || index === 1) {
+      var found = this.state.medias.find((media) => {
+        if (index === 0) {
+          return (media.week === box.text)
+        } else if (index === 1) {
+          return (media.event.name === box.text)
+        }
+        return false;
+      })
+      if (!found) {
+        return false;
+      }
+    }
+    return true;
   }
 
   createCheckType = (index, type) => {
@@ -53,6 +85,9 @@ class Media extends Component {
         <h4 className='type-checkbox-text'>{type}</h4>
         <div className='type-checkbox-contaner'>
           {this.state.check[index].map((box, i) => {
+            if (!this.checkboxShow(index, box)) {
+              return null;
+            }
             return (
               <CheckBox
                 key={i}
@@ -77,12 +112,6 @@ class Media extends Component {
           if (this.state.check[i][j].check && this.state.check[i][j].text === img.week) {
             show = true;
           }
-          console.log(
-            show,
-            this.state.check[i][j].text === img.week,
-            this.state.check[i][j].text,
-            img.week
-          );
         } else if (i === 1) {
           if (this.state.check[i][j].check && this.state.check[i][j].text === img.event.name) {
             show = true;
@@ -91,15 +120,8 @@ class Media extends Component {
           if (this.state.check[i][j].check && this.state.check[i][j].engText === img.type) {
             show = true;
           }
-          console.log(
-            show,
-            this.state.check[i][j].engText === img.type,
-            this.state.check[i][j].engText,
-            img.type
-          );
         }
       }
-      console.log(show);
       if (show === false) {
         return show;
       }
@@ -111,35 +133,111 @@ class Media extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
+  openLightBox = (index) => {
+    this.setState({ isOpenLite: true, photoIndex: index})
+  }
+
+  createImages = (media) => {
+    if (media.type === "video") {
+      this.images.push(<iframe title={media.id} src={'https://' + media.video_link} position="absolute" width="100%" height="100%" styles={{height: "25px"}}/>)
+    } else {
+      this.images.push('/' + media.filename)
+    }
+  }
+
+  sortMedia = (a, b) => {
+    console.log(a,b)
+    console.log(a.week)
+    if (a.week !== b.week) {
+      console.log("week")
+      return (a.week - b.week);
+    }
+    if (a.event.datetime !== b.event.datetime) {
+      console.log("datetime")
+      return (Date.parse(a.event.datetime) - Date.parse(b.event.datetime))
+    }
+    if (a.event.name !== b.event.name) {
+      console.log("name")
+      return (a.event.name - b.event.name)
+    }
+    return 0;
+  }
+
   render() {
-    //console.log(this.state.check);
+    this.images = []
+    const { photoIndex, isOpenLite, medias } = this.state;
+    medias.sort((a,b) => {return this.sortMedia(a,b)});
+
     return (
       <div className='page'>
+        {/*checkbox*/}
         <div className='checkbox-contaner'>
           <h1 className='view_header'>Media</h1>
-          <button className='media-button' onClick={this.filterButtonHandeler}>
-            {(!this.state.isOpen) ? <h3>▼ Filter</h3> : <h3>▶ Filter</h3>}
-          </button>
+          <div  className= {!this.state.isOpen ? "checkbox-type-contaner" : "checkbox-type-contaner checkbox-type-contaner-open"} >
           {this.state.isOpen ? (
             <React.Fragment>
               {this.createCheckType(0, "Vecka:")}
               {this.createCheckType(1, "Event:")}
-              {this.createCheckType(2, "Mediatyp:")}{" "}
+              {this.createCheckType(2, "Mediatyp:")}
             </React.Fragment>
           ) : null}
+          </div>
+          <div className='media-button-contaner'>
+          <button className='media-button' onClick={this.filterButtonHandeler}>
+           {(!this.state.isOpen) ? <h2>▼ Filter</h2> : <h2>▲ Filter</h2>}
+          </button>
+          </div>
         </div>
+        {/*media*/}
         <div className='media-grid'>
-          {this.state.medias.map((media, i) => {
+          {medias.map((media, i) => {
             if (this.showImg(media)) {
-              console.log(media, 'hej');
-              return <MediaImg key={i} media={media} />;
+              this.createImages(media)
+              if (i === 0) {
+                return (<React.Fragment key={i}>
+                  <h2 className="media-divider">{`v.${media.week}`}</h2>
+                  <MediaImg index={i} media={media} onClickHandeler={this.openLightBox} />
+                </React.Fragment>)
+              } 
+              if (medias[i-1].week !== media.week) {
+                return (<React.Fragment key={i}>
+                  <h2 className="media-divider">{`v.${media.week}`}</h2>
+                  <MediaImg index={i} media={media} onClickHandeler={this.openLightBox} />
+                </React.Fragment>)
+              }
+              
+              return (<MediaImg key={i} index={i} media={media} onClickHandeler={this.openLightBox} />);
             }
             return null;
           })}
+        </div>
+        {/*Lightbox*/}
+        <div>
+        {isOpenLite && (
+          <Lightbox
+            mainSrc={this.images[photoIndex]}
+            nextSrc={this.images[(photoIndex + 1) % this.images.length]}
+            prevSrc={this.images[(photoIndex + this.images.length - 1) % this.images.length]}
+            onCloseRequest={() => this.setState({ isOpenLite: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + this.images.length - 1) % this.images.length,
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % this.images.length,
+              })
+            }
+          />
+        )}
         </div>
       </div>
     );
   }
 }
+
+
+
 
 export default Media;

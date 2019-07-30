@@ -98,6 +98,13 @@ var Frack = {
         });
     },
 
+    getCurrentUser: function() {
+        if (Frack.CurrentUser === null) {
+            return Frack.UpdateCurrentUser()
+        }
+        return Frack.CurrentUser
+    },
+
     CurrentUser: null,
 
     TemplateCache: {},

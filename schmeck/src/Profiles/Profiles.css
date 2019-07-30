@@ -12,8 +12,12 @@
     background-color: Transparent;
     border: none;
     cursor:pointer;
+    transition: 0.2s transform;
 }
 
+.profiles-button:hover {
+    transform: scale(1.15)
+}
 
 @media(min-width: 1130px){
     .profiles-contaner {

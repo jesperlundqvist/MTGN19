@@ -3,7 +3,8 @@ import Frack from "./../Frack";
 import "./Login.css";
 
 class Login extends Component {
-  state = { isLogdin: false, loginFail: false };
+  state = { isLogdin: false, loginFail: false, accessestext: ""};
+  accessestext = "Access Granted"
 
   clickHndeler = event => {
     event.preventDefault();
@@ -33,7 +34,11 @@ class Login extends Component {
 
   accessGranted = async url => {
     this.setState({ isLogdin: true });
-    await this.sleep(1000);
+    for (let i = 0; i < this.accessestext.length +1; i++){
+      this.setState({accessestext: this.accessestext.substr(0,i)})
+      await this.sleep(50);
+    }
+    await this.sleep(500);
     this.props.history.push(url);
   };
 
@@ -60,7 +65,7 @@ class Login extends Component {
         </form>
       );
     }
-    return <h1>Access Granted</h1>;
+    return <h1>{this.state.accessestext}</h1>;
   };
 
   render() {
