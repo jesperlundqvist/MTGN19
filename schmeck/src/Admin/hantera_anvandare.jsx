@@ -13,10 +13,6 @@ class Anvandare extends Component {
     update_user = "";
     password = "lösenord1";
 
-    /*componentWillUpdate = () => {
-        
-    }*/
-
     componentDidMount = () => {
 
         Frack.UserType.GetAll().then(res => {
@@ -41,12 +37,6 @@ class Anvandare extends Component {
         this.handle_usersHTML()
     }
 
-    /*changeHandler(e) {
-        
-        console.log(e.target.id, ": ", e.target.value)
-        //this.setState({ });
-    }*/
-
     submitNewUser = (e) => {
         e.preventDefault()
         let name = e.target.username.value
@@ -66,7 +56,7 @@ class Anvandare extends Component {
             console.log("Username: ", username.toLowerCase())
             console.log("Usertype: ", e.target.usertype.value)
             console.log("n0llegroup: ", e.target.n0llegroup.value)
-            var Password = "lösenord1"; //Ska detta göras om?
+            var Password = this.password; //Ska detta göras om?
             var data = {
                 name: name,
                 username: username,
@@ -145,15 +135,12 @@ class Anvandare extends Component {
 
         axios.all(profilePicutureRequest).then((responses) => {
             if (responses.length > 0) {
-                //$("#input_picture_" + id).val("");
-                //data["profile_picture"] = responses[0].data.url;
+                data["profile_picture"] = responses[0].data.url;
                 console.log(responses)
             }
 
             Frack.User.Update(id, data).then((res) => {
                 alert("Ändringar sparade!")
-                //$("#input_alert_success_" + id).show();
-                //$("#input_alert_success_" + id).text("Ändringar är sparade!");
 
                 Frack.User.GetAll().then(res => {
                     console.log("Users: ", res.data)
@@ -172,17 +159,13 @@ class Anvandare extends Component {
                 this.setState({ users: res.data });
             })
         })
-
-        /* }*/
     }
 
     userResetPassword = (id) => {
-        //let id = e.target.value;
-        var newPassword = "lösenord1"; //Ska detta göras om?
-
-        Frack.User.Update(id, { password: newPassword }).then(function (res) {
-            /*$("#input_alert_success_" + id).show();
-            $("#input_alert_success_" + id).text("Nytt lösenord är \"" + newPassword + "\"!");*/
+        var newPassword = this.password; //Ska detta göras om?
+        
+        Frack.User.Update(id, { password: newPassword }).then((res) => {
+            alert("Nollställt lösenord till: " + newPassword)
         });
     }
 

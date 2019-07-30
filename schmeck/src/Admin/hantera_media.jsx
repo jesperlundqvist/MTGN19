@@ -15,7 +15,7 @@ class HanteraMedia extends Component {
 
     uploadMedia = (e) => {
         e.preventDefault();
-        console.log(e.target.files.files.length)
+        console.log(e.target.files.files)
         // funktion för uppladning av bilder till servern
 
         var files = e.target.files.files;
@@ -40,113 +40,90 @@ class HanteraMedia extends Component {
         }
 
         Frack.Media.New(form_data).then((res) => {
+            console.log(res)
             alert("Media was successfully uploaded")
         })
 
         console.log("Uppladdning klart!")
 
-        /*$.ajax({
-            url: "/api/media/",
-            type: "POST",
-            data: form_data,
-            contentType: false,
-            processData: false,
-            success: function () {
-                window.location.href = "/media";
-            }
-        })*/
     };
 
 
-        /*
-        function newType() {
-        var name = $("#new_type_name").val();
-        var date = $("#new_type_date").val();
 
-        Frack.Event.New({name: name, datetime: date}).then(function (res) {
-            $("#new_alert_success").show();
-            $("#new_alert_success").text("Skapade nytt event!");
+    newType = (event) => {
+        event.preventDefault()
+
+        var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+        var name = event.target.name.value
+        var date = event.target.date.value
+        let timestamp = new Date(Date.parse(date));
+        timestamp = timestamp.toLocaleDateString('sv-SV', options)
+
+        console.log(timestamp)
+        Frack.Event.New({ name: name, datetime: timestamp }).then((res) => {
+            alert("Skapade nytt event " + name)
 
             var id = res.data.event_id;
 
-            $("#type_list").append(`
-
-                <li class="list-group-item" id="type_${id}">
-                    <div class="d-flex w-100 justify-content-between">
-                        <label for="input_name_${id}" class="inline_type_edit_label">Namn: </label>
-                        <input type="text" id="input_name_${id}" class="inline_type_edit_input" value="${name}" />
-                    </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <label for="input_date_${id}" class="inline_type_edit_label">Datum/tid: </label>
-                        <input type="text" id="input_date_${id}" class="inline_type_edit_input" value="${date}" />
-                    </div>
-                    <br />
-                    <div class="d-flex w-100 justify-content-between">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="saveType(${id});">Spara</button>
-                        <button type="button" class="btn btn-secondary btn-sm" onclick="removeType(${id});">Ta bort</button>
-                    </div>
-                    <div id="input_alert_success_${id}" class="alert alert-success" role="alert" style="margin-top: 5px;display:none;"></div>
-                </li>
-
-                `);
         });
     }
+    saveType = (event) => {
+        event.preventDefault()
+        var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+        
+        
+        var name = event.target.name.value
+        var date = event.target.date.value
+        var id = event.target.id;
 
-    function saveType(id) {
+        let timestamp = new Date(Date.parse(date));
+        timestamp = timestamp.toLocaleDateString('sv-SV', options)
+        console.log("Timestamp: ", timestamp)
+        console.log("Date: ", date)
+
         var data = {
-            name: $("#input_name_" + id).val(),
-            datetime: $("#input_date_" + id).val()
+            name: name,
+            datetime: timestamp
         };
 
-        Frack.Event.Update(id, data).then(function (res) {
-            $("#input_alert_success_" + id).show();
-            $("#input_alert_success_" + id).text("Ändringar är sparade!");
+       Frack.Event.Update(id, data).then((res) => {
+           console.log(res)
+           alert("Ändringar sparade!")
         });
     }
-
-    function removeType(id) {
-        if (confirm("Är du säker på att du vill ta bort eventet? Ifall det finns bilder/videor kvar på detta event så kan saker gå sönder."))
-        {
-            Frack.Event.Delete(id).then(function(res) {
-                $("#type_" + id).remove();
-            });
+    /*
+        function removeType(id) {
+            if (confirm("Är du säker på att du vill ta bort eventet? Ifall det finns bilder/videor kvar på detta event så kan saker gå sönder."))
+            {
+                Frack.Event.Delete(id).then(function(res) {
+                    $("#type_" + id).remove();
+                });
+            }
         }
-    }
-*/
+    */
 
     render() {
 
         var events = <div>
             <ul class="list-group" id="type_list">
                 {this.state.events.map((event) => {
-                    var mnths = {
-                        Jan: "01",
-                        Feb: "02",
-                        Mar: "03",
-                        Apr: "04",
-                        May: "05",
-                        Jun: "06",
-                        Jul: "07",
-                        Aug: "08",
-                        Sep: "09",
-                        Oct: "10",
-                        Nov: "11",
-                        Dec: "12"
-                    },
-                        date = event.datetime.split(" ");
+                    console.log("event id: ", event.id)
 
-                    var str = [date[3], mnths[date[2]], date[1]].join("-");
-                    console.log(date)
-                    console.log(str)
+                    var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+                    var date = event.datetime
+                    console.log(event.datetime)
+                    let timestamp = new Date(Date.parse(date));
+                    timestamp = timestamp.toLocaleDateString('sv-SV', options)
+                    console.log(timestamp)
 
                     return (
-                        <form onSubmit="saveType({{id}});">
+                        <form onSubmit={this.saveType} key={event.id} id={event.id}>
 
-                            <label className="form_label" key={event.id}>Namn: </label>
+                            <label className="form_label" >Namn: </label>
                             <input type="text" name="name" defaultValue={event.name} />
 
                             <label className="form_label">Datum/tid: </label>
-                            <input type="text" name="date" defaultValue={event.datetime} />
+                            <input type="text" name="date" defaultValue={timestamp} />
 
                             <input type="submit" value="Spara" />
                             <button type="button" onClick="removeType({{id}});">Ta bort</button>
@@ -155,15 +132,15 @@ class HanteraMedia extends Component {
                     )
                 })}
             </ul>
-            <h2 className="view_header">Nytt event</h2>
-            <form class="form-control">
+            <h2 className="view_header" >Nytt event</h2>
+            <form className="form-control" onSubmit={this.newType}>
                 <label className="form_label">Namn: </label>
-                <input type="text" id="new_type_name" class="form-control" />
+                <input type="text" name="name" className="form-control" />
 
                 <label className="form_label">Datum/tid: </label>
-                <input type="datetime-local" id="new_type_date" class="form-control" />
+                <input type="datetime-local" name="date" className="form-control" />
 
-                <input type="submit" class="btn btn-primary" onclick="event.preventDefault(); newType();" value="Skapa" />
+                <input type="submit" value="Skapa" />
             </form>
 
         </div>
