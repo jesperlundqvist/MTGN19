@@ -23,7 +23,7 @@ class Anvandartyper extends Component {
         Frack.UserType.New({name: name}).then(function (res) {
            alert("Skapat ny typ!")
     
-            var id = res.data.type_id;
+           // var id = res.data.type_id;
             
 
             /*$("#type_list").append(`

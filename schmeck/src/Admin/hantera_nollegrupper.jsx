@@ -23,7 +23,7 @@ class HanteraNollegrupp extends Component {
             //$("#new_alert_success").text("Skapade ny nØllegrupp!");
             console.log("Created group")
 
-            var id = res.data.group_id;
+           // var id = res.data.group_id;
 
             /*$("#n0llegroup_list").append(`
     

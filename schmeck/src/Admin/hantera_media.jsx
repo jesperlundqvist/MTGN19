@@ -17,14 +17,13 @@ class HanteraMedia extends Component {
         e.preventDefault();
         console.log(e.target.files.files.length)
         // funktion för uppladning av bilder till servern
-        var outputData = [];
 
         var files = e.target.files.files;
         var week = e.target.week.value // veckan bilden togs
         var event = e.target.event.value // eventet bilden togs under
         var links = e.target.videos.value;
         var linkList = links.split(",");
-        linkList = linkList.filter(v => v != "");
+        linkList = linkList.filter(v => v !== "");
         var form_data = new FormData();
 
         for (var i = 0; i < files.length; i++) {

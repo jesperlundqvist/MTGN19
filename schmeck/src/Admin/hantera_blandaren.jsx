@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+//import axios from "axios";
 import "./Admin.css"
 class HanteraBlandaren extends Component {
     state = {};
@@ -19,8 +19,8 @@ class HanteraBlandaren extends Component {
     uploadDocument = (event) => {
         event.preventDefault()
         console.log(event.target.blandar_title.value)
-        var files = event.target.file.files;
-        var form_data = new FormData();
+        //var files = event.target.file.files;
+        //var form_data = new FormData();
         /*
                 for (var j = 0; j < files.length; j++) {
                     var file = files[j];
@@ -111,7 +111,7 @@ class HanteraBlandaren extends Component {
                 <input type="submit" value="Ladda upp" />
             </form>
             <div className="lightbox">
-                <h2 className="upload-status"></h2>
+                <h2 className="upload-status">gfeh</h2>
                 <div className="loader"></div>
             </div>
         </div>

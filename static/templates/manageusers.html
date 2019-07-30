@@ -116,9 +116,11 @@
             var formData = new FormData();
             formData.append("image", file);
 
+            var usID = id;
+
             profilePicutureRequest.push(axios({
                 method: "post",
-                url: "/api/upload_profile_picture/" + data.username,
+                url: "/api/upload_profile_picture/" + usID,
                 data: formData,
                 auth: {
                     username: sessionStorage.authToken,

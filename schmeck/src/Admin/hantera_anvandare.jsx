@@ -50,26 +50,30 @@ class Anvandare extends Component {
     submitNewUser = (e) => {
         e.preventDefault()
         let name = e.target.username.value
+        let username = e.target.username.value
         console.log(e.target.usertype.value)
+        // eslint-disable-next-line
         if (e.target.n0llegroup.value == '-1' && e.target.usertype.value == 1) {
             alert("n0llan tillhör ingen n0llegrupp och n0llan är vilsen utan den!")
         }
         else {
-
+// eslint-disable-next-line
             if (e.target.usertype.value == "1") {
                 name += "-nØllan";
+                username += "-nollan";
             }
-
-            console.log("Username: ", name.toLowerCase())
+            username = username.toLowerCase();
+            console.log("Username: ", username.toLowerCase())
             console.log("Usertype: ", e.target.usertype.value)
             console.log("n0llegroup: ", e.target.n0llegroup.value)
             var Password = "lösenord1"; //Ska detta göras om?
             var data = {
                 name: name,
-                username: name.toLowerCase(),
+                username: username,
                 password: Password,
                 type_id: e.target.usertype.value
             };
+            // eslint-disable-next-line
             if (e.target.n0llegroup.value != -1) {
                 data["n0llegroup_id"] = e.target.n0llegroup.value;
             }
@@ -87,6 +91,7 @@ class Anvandare extends Component {
 
     saveAllUsers = () => {
         console.log("SaveAllUsers")
+        // eslint-disable-next-line
         this.state.users.map((user) => {
             this.saveUser(user)
         })
@@ -103,10 +108,12 @@ class Anvandare extends Component {
             admin: user.target.admin.checked,
             hidden: user.target.hidden.checked,
         };
+        // eslint-disable-next-line
         if (user.target.n0llegrupp.value != '-1') {
             data["n0llegroup_id"] = user.target.n0llegrupp.value;
         }
         else {
+            // eslint-disable-next-line
             if (user.target.type.value == 1) {
                 alert("OBS! n0llan tillhör ingen n0llegrupp!")
             }
@@ -116,18 +123,22 @@ class Anvandare extends Component {
 
         if (user.target.file.value.length > 0) {
             var file = user.target.file.files[0];
+            console.log(file)
+            console.log(file)
             var formData = new FormData();
             formData.append("image", file);
-
+            console.log(formData);
+        
             profilePicutureRequest.push(axios({
                 method: "post",
-                url: "http://localhost:5000/api/upload_profile_picture/" + user.target.username.value,
+                url: `/api/upload_profile_picture/${id}`,
                 data: formData,
                 auth: {
                     username: sessionStorage.authToken,
                     password: ""
                 }
             }).catch(function (error) {
+                console.log("Här blev det fel")
                 console.error(error);
             }));
         }
@@ -187,7 +198,7 @@ class Anvandare extends Component {
                             <div className="user_block">
                                 <img className="prof_pic_admin" src={user.profile_picture} alt="" />
                                 <form onSubmit={this.saveUser} >
-                                    <div className="" id={user.id} key={user.id} className="user_grid">
+                                    <div id={user.id} key={user.id} className="user_grid">
 
 
                                         <label className="form_label">Användarnamn: </label>
