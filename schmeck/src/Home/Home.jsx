@@ -26,9 +26,6 @@ class Home extends Component {
   }
 
   render() {
-    if (this.state.newNews.length === 0) {
-      return null
-    }
     let news = this.state.newNews[0];
     let newImg = this.state.newImg.slice(this.state.newImg.length-5 ,this.state.newImg.length-1);
     newImg.reverse()
@@ -52,10 +49,11 @@ class Home extends Component {
         <div>
           <h3 className="subtitle">Nyheter</h3>
           {/*Senaste nyheter som lagts upp?*/}
-          <div className="news-contaner">
+          {(this.state.newNews.length !== 0) ?
+          <div className="news-contaner"> 
             <h2 className="news-heder"> {news.headline} </h2>
-            <div className="news-text" dangerouslySetInnerHTML={{ __html: news.text }} />
-          </div>
+            <div className="news-text" dangerouslySetInnerHTML={{ __html: news.text }} /> 
+          </div> : null}
           <h3 className="subtitle">Nya bilder</h3>
           <div className='media-grid'>
             { newImg.map((media, i) => {

@@ -26,6 +26,9 @@ class Profiles extends Component {
 
   sortUsers = (a, b) => {
     const group = ['nØllan', 'KPH','INPHO','ARR','LEK', 'ÖPH', 'VRAQUE', 'RSA']
+    if (a.hidden !== b.hidden) {
+      return( a.hidden - b.hidden)
+    }
     if (group.indexOf(a.type.name) !== group.indexOf(b.type.name)) {
       return (group.indexOf(a.type.name) - group.indexOf(b.type.name))
     }

@@ -139,7 +139,7 @@ class Media extends Component {
 
   createImages = (media) => {
     if (media.type === "video") {
-      this.images.push(<Iframe src={'https://' + media.video_link} position="absolute" width="100%" height="100%" styles={{height: "25px"}}/>)
+      this.images.push(<iframe title={media.id} src={'https://' + media.video_link} position="absolute" width="100%" height="100%" styles={{height: "25px"}}/>)
     } else {
       this.images.push('/' + media.filename)
     }

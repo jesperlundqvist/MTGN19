@@ -34,7 +34,7 @@ class Login extends Component {
 
   accessGranted = async url => {
     this.setState({ isLogdin: true });
-    for (let i = 0; i < this.accessestext.length; i++){
+    for (let i = 0; i < this.accessestext.length +1; i++){
       this.setState({accessestext: this.accessestext.substr(0,i)})
       await this.sleep(50);
     }
