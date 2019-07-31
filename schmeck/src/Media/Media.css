@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.delete-media {
+    background: red;
+}
+
 .checkbox-type-contaner {
     transform-origin: top center;
     background: #eff;
