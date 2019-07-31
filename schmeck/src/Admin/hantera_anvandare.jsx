@@ -16,16 +16,13 @@ class Anvandare extends Component {
     componentDidMount = () => {
 
         Frack.UserType.GetAll().then(res => {
-            console.log("usertypes: ", res.data)
             this.setState({ types: res.data });
         });
         Frack.N0lleGroup.GetAll().then(res => {
-            console.log("n0llegroups: ", res.data)
             this.setState({ n0llegroup: res.data });
         });
 
         Frack.User.GetAll().then(res => {
-            console.log("Users: ", res.data)
             this.setState({ users: res.data });
         });
 
@@ -33,7 +30,6 @@ class Anvandare extends Component {
     }
 
     componentDidUpdate = () => {
-        console.log("Kör component did update")
         this.handle_usersHTML()
     }
 
@@ -41,22 +37,19 @@ class Anvandare extends Component {
         e.preventDefault()
         let name = e.target.username.value
         let username = e.target.username.value
-        console.log(e.target.usertype.value)
         // eslint-disable-next-line
         if (e.target.n0llegroup.value == '-1' && e.target.usertype.value == 1) {
             alert("n0llan tillhör ingen n0llegrupp och n0llan är vilsen utan den!")
         }
         else {
-// eslint-disable-next-line
+            // eslint-disable-next-line
             if (e.target.usertype.value == "1") {
                 name += "-nØllan";
                 username += "-nollan";
             }
             username = username.toLowerCase();
-            console.log("Username: ", username.toLowerCase())
-            console.log("Usertype: ", e.target.usertype.value)
-            console.log("n0llegroup: ", e.target.n0llegroup.value)
-            var Password = this.password; //Ska detta göras om?
+
+            var Password = this.password; 
             var data = {
                 name: name,
                 username: username,
@@ -67,10 +60,10 @@ class Anvandare extends Component {
             if (e.target.n0llegroup.value != -1) {
                 data["n0llegroup_id"] = e.target.n0llegroup.value;
             }
+            //Uppdaterar frontenden
             Frack.User.New(data).then((res) => {
                 alert("Skapat ny användare. ", res.data);
                 Frack.User.GetAll().then(res => {
-                    console.log("Users: ", res.data)
                     this.setState({ users: res.data });
                 })
 
@@ -78,19 +71,9 @@ class Anvandare extends Component {
         }
     }
 
-
-    saveAllUsers = () => {
-        console.log("SaveAllUsers")
-        // eslint-disable-next-line
-        this.state.users.map((user) => {
-            this.saveUser(user)
-        })
-    }
-
     saveUser = (user) => {
         user.preventDefault();
         var id = user.target.username.id
-        console.log("n0llegrupp: ", user.target.n0llegrupp.value)
         var data = {
             username: user.target.username.value,
             name: user.target.name.value,
@@ -113,12 +96,9 @@ class Anvandare extends Component {
 
         if (user.target.file.value.length > 0) {
             var file = user.target.file.files[0];
-            console.log(file)
-            console.log(file)
             var formData = new FormData();
             formData.append("image", file);
-            console.log(formData);
-        
+
             profilePicutureRequest.push(axios({
                 method: "post",
                 url: `/api/upload_profile_picture/${id}`,
@@ -128,7 +108,6 @@ class Anvandare extends Component {
                     password: ""
                 }
             }).catch(function (error) {
-                console.log("Här blev det fel")
                 console.error(error);
             }));
         }
@@ -136,14 +115,12 @@ class Anvandare extends Component {
         axios.all(profilePicutureRequest).then((responses) => {
             if (responses.length > 0) {
                 data["profile_picture"] = responses[0].data.url;
-                console.log(responses)
             }
 
             Frack.User.Update(id, data).then((res) => {
                 alert("Ändringar sparade!")
 
                 Frack.User.GetAll().then(res => {
-                    console.log("Users: ", res.data)
                     this.setState({ users: res.data });
                 })
             });
@@ -151,22 +128,29 @@ class Anvandare extends Component {
 
     }
 
-    removeUser = (id) => {
-        Frack.User.Delete(id).then((res) => {
-            alert("User was successfully deleted")
-            Frack.User.GetAll().then(res => {
-                console.log("Users: ", res.data)
-                this.setState({ users: res.data });
+    removeUser = (user) => {
+        var id = user.id
+        if (window.confirm('Är du säker på att du vill ta bort användaren?')) {
+            //Uppdaterar backenden
+            Frack.User.Delete(id).then((res) => {
+                //Uppdaterar frontenden
+                const new_users = this.state.users;
+                const i = new_users.indexOf(user)
+                new_users.splice(i, 1)
+                this.setState({ users: new_users })
             })
-        })
+        }
     }
 
     userResetPassword = (id) => {
-        var newPassword = this.password; //Ska detta göras om?
-        
-        Frack.User.Update(id, { password: newPassword }).then((res) => {
-            alert("Nollställt lösenord till: " + newPassword)
-        });
+        var newPassword = this.password;
+
+        if (window.confirm('Är du säker på att du vill nollställa lösenordet?')) {
+            //Uppdaterar backenden
+            Frack.User.Update(id, { password: newPassword }).then((res) => {
+                alert("Nollställt lösenord till: " + newPassword)
+            })
+        };
     }
 
     handle_usersHTML = () => {
@@ -178,20 +162,19 @@ class Anvandare extends Component {
 
                     {this.state.users.map((user) => {
                         return (
-                            <div className="user_block">
+                            <div className="user_block" key={user.id}>
                                 <img className="prof_pic_admin" src={user.profile_picture} alt="" />
                                 <form onSubmit={this.saveUser} >
-                                    <div id={user.id} key={user.id} className="user_grid">
-
+                                    <div id={user.id}  className="user_grid">
 
                                         <label className="form_label">Användarnamn: </label>
-                                        <input type="text" name="username" id={`${user.id}`}  defaultValue={user.username} onBlur={this.changeHandler} />
+                                        <input type="text" name="username" id={`${user.id}`} defaultValue={user.username}/>
 
                                         <label className="form_label">Namn: </label>
-                                        <input type="text" id={`input_name${user.id}`} name="name"  defaultValue={user.name} onBlur={this.changeHandler} />
+                                        <input type="text" name="name" defaultValue={user.name}/>
 
                                         <label className="form_label">Typ: </label>
-                                        <select name="type" id={`input_type_${user.id}`} defaultValue={user.type.id}>
+                                        <select name="type"  defaultValue={user.type.id}>
                                             {this.state.types.map((type) => {
                                                 return (<option key={type.id} value={type.id}>{type.name}</option>)
                                             })}
@@ -199,7 +182,7 @@ class Anvandare extends Component {
 
                                         <label className="form_label">nØllegrupp: </label>
 
-                                        <select name="n0llegrupp" id={`input_n0llegroup_${user.id}`} defaultValue={(user.n0llegroup) ? (user.n0llegroup.id) : "-1"}>
+                                        <select name="n0llegrupp" defaultValue={(user.n0llegroup) ? (user.n0llegroup.id) : "-1"}>
                                             <option value="-1">Ingen</option>
                                             {this.state.n0llegroup.map((group) => {
                                                 return (<option key={group.id} value={group.id}>{group.name}</option>)
@@ -207,23 +190,20 @@ class Anvandare extends Component {
                                         </select>
 
                                         <label className="form_label">Admin: </label>
-                                        <input name="admin" id={`input_admin_${user.id}`} type="checkbox" defaultChecked={user.admin} />
+                                        <input name="admin" type="checkbox" defaultChecked={user.admin} />
 
                                         <label className="form_label">Dold: </label>
-                                        <input name="hidden" id={`input_hidden_${user.id}`} type="checkbox" defaultChecked={user.hidden} />
+                                        <input name="hidden" type="checkbox" defaultChecked={user.hidden} />
 
                                         <label className="form_label">Ny profilbild: </label>
 
                                         <input name="file" type="file" id={`input_picture_${user.id}`} />
 
-
-
-
                                         <br />
                                         <div className="buttons">
-                                            <input type="submit" value="Spara" />
-                                            <button type="button" className="btn btn-secondary btn-sm" onClick={() => this.userResetPassword(user.id)}>Återställ lösenord</button>
-                                            <button type="button" className="btn btn-secondary btn-sm" value={user.id} onClick={() => this.removeUser(user.id)}>Ta bort</button>
+                                            <input type="submit" className="btn" value="Spara" />
+                                            <button type="button" className="btn" onClick={() => this.userResetPassword(user.id)}>Återställ lösenord</button>
+                                            <button type="button" className="btn" value={user.id} onClick={() => this.removeUser(user)}>Ta bort</button>
                                         </div></div>
                                 </form>
                             </div>
@@ -258,7 +238,7 @@ class Anvandare extends Component {
                     })}
 
                 </select>
-                <br/>
+                <br />
                 <input type="submit" className="buttons" value="Skapa ny användare" />
             </form>
         </div>

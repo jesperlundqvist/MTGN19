@@ -4,17 +4,14 @@ import Frack from "./../Frack";
 import "./Admin.css"
 
 class HanteraBlandaren extends Component {
-    state = {};
-
-
-    deleteBlandaren(data) {
-        /*Frack.Blandaren.Delete(data)*/
-    }
-
+    state = {
+        status: "LOADED"
+    };
 
     uploadDocument = (event) => {
         event.preventDefault()
-        console.log(event.target.blandar_title.value)
+        this.setState({ status: "LOADING" })
+
         var files = event.target.file.files;
         var form_data = new FormData();
 
@@ -25,8 +22,6 @@ class HanteraBlandaren extends Component {
         this.generateThumbNail(files, form_data, event.target.blandar_title.value)
 
     };
-
-
 
     generateThumbNail = (fileList, form_data, title) => {
 
@@ -69,10 +64,11 @@ class HanteraBlandaren extends Component {
                             form_data.append("title", title)
                             console.log("Laddar upp..")
                             Frack.Blandaren.New(form_data).then((res) => {
-                                console.log(res)
-                                alert("Bländaren was successfully uploaded")
+                                this.setState({ status: "LOADED" })
+                                //alert("Bländaren was successfully uploaded")
+                                this.props.history.push('/blandaren')
                             })
-                    
+
                         })
                     })
                 })
@@ -84,27 +80,38 @@ class HanteraBlandaren extends Component {
 
     render() {
 
-        var blandaren = <div>
-            <h1 className="view_header">Ladda upp bländaren</h1>
-            <h2 className="form_label">Filer:</h2>
-            <br />
-            <form onSubmit={this.uploadDocument}>
-                <input type="file" name="file" />
-                <br />
-                <input type="text" name="blandar_title" defaultValue="Insert name..." />
-                <br />
+        switch (this.state.status) {
+            case "LOADING":
+                //Loading bar
+                html = <div><img src='https://media3.giphy.com/media/pK4av7uBK3I4M/giphy.gif' alt="boohoo" className="img-responsive" /></div>;
+                break;
+            case "LOADED":
+                //What's seen when not loading
+                var html = <div>
+                    <h1 className="view_header">Ladda upp bländaren</h1>
+                    <h2 className="form_label">Filer:</h2>
+                    <br />
+                    <form onSubmit={this.uploadDocument}>
+                        <input type="file" name="file" />
+                        <br />
+                        <input type="text" name="blandar_title" defaultValue="Insert name..." />
+                        <br />
 
-                <input type="submit" value="Ladda upp" />
-            </form>
-            <div className="lightbox">
-                <h2 className="upload-status">gfeh</h2>
-                <div className="loader"></div>
-            </div>
-        </div>
+                        <input type="submit" value="Ladda upp" />
+                    </form>
+                </div>
+                break;
+            default:
+                html = <b>Failed to load data, please try again.</b>;
+                break;
+        }
+
+
 
         return (
             <div className="page">
-                {blandaren}
+                {this.loader}
+                {html}
 
             </div>
         );

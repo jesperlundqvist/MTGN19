@@ -1,51 +1,64 @@
-import React, { Component } from "react";
+import React, { Component, Redirect } from "react";
 import Frack from "./../Frack";
 import "./Admin.css"
 class HanteraMedia extends Component {
     state = {
-        events: []
+        events: [],
+        status: "LOADING"
     };
+
+    events = "";
 
     componentDidMount() {
         Frack.Event.GetAll().then(res => {
-            console.log("events: ", res.data)
             this.setState({ events: res.data });
         });
+
+        this.setState({ status: "LOADED" })
+    }
+
+    componentDidUpdate = () => {
+        //this.update_events()
+
     }
 
     uploadMedia = (e) => {
         e.preventDefault();
-        console.log(e.target.files.files)
-        // funktion för uppladning av bilder till servern
-
-        var files = e.target.files.files;
-        var week = e.target.week.value // veckan bilden togs
-        var event = e.target.event.value // eventet bilden togs under
-        var links = e.target.videos.value;
-        var linkList = links.split(",");
-        linkList = linkList.filter(v => v !== "");
-        var form_data = new FormData();
-
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            form_data.append("files", file, file.name)
+        if (e.target.event.value.length > 0) {
+        this.setState({ status: "LOADING" })
+            // funktion för uppladning av bilder till servern
+            var files = e.target.files.files;
+            var week = e.target.week.value // veckan bilden togs
+            var event = e.target.event.value // eventet bilden togs under
+            var links = e.target.videos.value;
+            var linkList = links.split(",");
+            linkList = linkList.filter(v => v !== "");
+            var form_data = new FormData();
+    
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                form_data.append("files", file, file.name)
+            }
+            form_data.append("week", week);
+            form_data.append("event", event);
+    
+    
+            for (var j = 0; j < linkList.length; j++) {
+                var link = linkList[j];
+                form_data.append("videos", link);
+            }
+    
+            Frack.Media.New(form_data).then((res) => {
+                this.setState({ status: "LOADED" })
+                this.props.history.push('/media')
+            })
+    
         }
-        form_data.append("week", week);
-        form_data.append("event", event);
 
-
-        for (var j = 0; j < linkList.length; j++) {
-            var link = linkList[j];
-            form_data.append("videos", link);
+        else {
+            alert("Du måste skapa ett event först!")
         }
-
-        Frack.Media.New(form_data).then((res) => {
-            console.log(res)
-            alert("Media was successfully uploaded")
-        })
-
-        console.log("Uppladdning klart!")
-
+        
     };
 
 
@@ -59,79 +72,97 @@ class HanteraMedia extends Component {
         let timestamp = new Date(Date.parse(date));
         timestamp = timestamp.toLocaleDateString('sv-SV', options)
 
-        console.log(timestamp)
         Frack.Event.New({ name: name, datetime: timestamp }).then((res) => {
             alert("Skapade nytt event " + name)
-
-            var id = res.data.event_id;
+            Frack.Event.GetAll().then(res => {
+                this.setState({ events: res.data, status: "LOADED" });
+            });
 
         });
     }
+
     saveType = (event) => {
         event.preventDefault()
+        this.setState({ status: "LOADING" });
         var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }
-        
-        
+
+
         var name = event.target.name.value
         var date = event.target.date.value
         var id = event.target.id;
 
         let timestamp = new Date(Date.parse(date));
         timestamp = timestamp.toLocaleDateString('sv-SV', options)
-        console.log("Timestamp: ", timestamp)
-        console.log("Date: ", date)
 
         var data = {
             name: name,
-            datetime: timestamp
+            datetime: date
         };
 
-       Frack.Event.Update(id, data).then((res) => {
-           console.log(res)
-           alert("Ändringar sparade!")
+        Frack.Event.Update(id, data).then((res) => {
+            Frack.Event.GetAll().then(res => {
+                this.setState({ events: res.data, status: "LOADED" });
+                alert("Ändringar sparade!")
+            });
         });
     }
-    /*
-        function removeType(id) {
-            if (confirm("Är du säker på att du vill ta bort eventet? Ifall det finns bilder/videor kvar på detta event så kan saker gå sönder."))
-            {
-                Frack.Event.Delete(id).then(function(res) {
-                    $("#type_" + id).remove();
+
+    removeType(id) {
+        this.setState({ status: "LOADING" });
+        if (window.confirm('Are you sure you wish to delete this item?')) {
+            Frack.Event.Delete(id).then((res) => {
+                
+                Frack.Event.GetAll().then(res => {
+                    this.setState({ events: res.data, status: "LOADED" });
+                    alert("Tog bort event!")
                 });
-            }
+            });
         }
-    */
+    }
+
+    update_events = () => {
+
+        switch (this.state.status) {
+            case "LOADING":
+                this.events = <div><img src='https://media3.giphy.com/media/pK4av7uBK3I4M/giphy.gif' alt="boohoo" className="img-responsive"/></div>;
+                break;
+            case "LOADED":
+                this.events = <div>
+                        {this.state.events.map((event) => {
+
+                            var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+                            var date = event.datetime
+                            let timestamp = new Date(Date.parse(date));
+                            timestamp = timestamp.toLocaleDateString('sv-SV', options)
+
+                            return (
+                                <form onSubmit={this.saveType} key={event.id} id={event.id}>
+
+                                    <label className="form_label" >Namn: </label>
+                                    <input type="text" name="name" defaultValue={event.name} />
+
+                                    <label className="form_label">Datum/tid: </label>
+                                    <input type="text" name="date" defaultValue={timestamp} />
+
+                                    <input type="submit" value="Spara" />
+                                    <button type="button" onClick={() => this.removeType(event.id)}>Ta bort</button>
+
+                                </form>
+                            )
+                        })}
+                </div>
+                break;
+            default:
+                this.events = <b>Failed to load data, please try again.</b>;
+                break;
+        }
+
+    }
+
 
     render() {
-
-        var events = <div>
-            <ul class="list-group" id="type_list">
-                {this.state.events.map((event) => {
-                    console.log("event id: ", event.id)
-
-                    var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }
-                    var date = event.datetime
-                    console.log(event.datetime)
-                    let timestamp = new Date(Date.parse(date));
-                    timestamp = timestamp.toLocaleDateString('sv-SV', options)
-                    console.log(timestamp)
-
-                    return (
-                        <form onSubmit={this.saveType} key={event.id} id={event.id}>
-
-                            <label className="form_label" >Namn: </label>
-                            <input type="text" name="name" defaultValue={event.name} />
-
-                            <label className="form_label">Datum/tid: </label>
-                            <input type="text" name="date" defaultValue={timestamp} />
-
-                            <input type="submit" value="Spara" />
-                            <button type="button" onClick="removeType({{id}});">Ta bort</button>
-
-                        </form>
-                    )
-                })}
-            </ul>
+        this.update_events()
+        var new_event = <div>
             <h2 className="view_header" >Nytt event</h2>
             <form className="form-control" onSubmit={this.newType}>
                 <label className="form_label">Namn: </label>
@@ -173,7 +204,9 @@ class HanteraMedia extends Component {
                 <h1 className="view_header">Ladda upp bild/video</h1>
                 {media}
                 <h1 className="view_header">Hantera event</h1>
-                {events}
+                {this.events}
+
+                {new_event}
 
 
             </div>

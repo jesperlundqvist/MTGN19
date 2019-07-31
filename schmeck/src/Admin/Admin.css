@@ -59,3 +59,11 @@
 .prof_pic_admin {
     height: 80%
 }
+
+.btn {
+    padding: 4px;
+    font-size: 11px;
+    border-radius: 4px;
+    border: none;
+    margin: 5px
+}
