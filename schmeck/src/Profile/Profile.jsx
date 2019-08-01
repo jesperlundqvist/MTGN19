@@ -164,7 +164,7 @@ class Profile extends Component {
             {/* top imgs */}
             <div className='profile-top-img profile-text-divider'>
               <TopSecret></TopSecret>
-              <ProfileImg></ProfileImg>
+              <ProfileImg image={profile.profile_picture} user={profile.username}></ProfileImg>
                 {/*<img src="https://media.istockphoto.com/vectors/top-secret-rubber-stamp-vector-id503618658" alt=""/>
                 <img className='profile-img' src={profile.profile_picture} alt=""/>*/}
             </div>

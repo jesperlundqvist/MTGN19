@@ -20,6 +20,7 @@ import HanteraBlandaren from './Admin/hantera_blandaren'
 import HanteraMedia from './Admin/hantera_media'
 import Inlagg from './Admin/inlagg'
 import HanteraNollegrupp from './Admin/hantera_nollegrupper'
+import HanteraInlagg from './Admin/hantera_inlagg';
 
 function App() {
   console.log("hej")
@@ -43,6 +44,8 @@ function App() {
           <ProtectedRoute path="/admin/blandaren" exact component={HanteraBlandaren} />
           <ProtectedRoute path="/admin/media" exact component={HanteraMedia} />
           <ProtectedRoute path="/admin/inlagg" exact component={Inlagg} />
+          <ProtectedRoute path="/admin/inlagg/update/:id" exact component={Inlagg} />
+          <ProtectedRoute path="/admin/inlagg/hantera" exact component={HanteraInlagg} />
           <ProtectedRoute path="/admin/n0llegrupper" exact component={HanteraNollegrupp} />
 
           <Route path="/login" component={Login} />

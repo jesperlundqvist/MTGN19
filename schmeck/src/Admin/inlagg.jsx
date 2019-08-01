@@ -11,22 +11,17 @@ class Inlagg extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = { editorHtml: "", theme: "snow", header: "" };
+    this.state = { editorHtml: "", theme: "snow", header: "", updating: false };
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    if (this.props.location.state) {
-      this.setState({
-        editorHtml: this.props.location.state.text,
-        header: this.props.location.state.header
-      });
+    if (this.props.match.params.id) {
+      Frack.News.GetByFilter(`id=${this.props.match.params.id}`).then((res) => {
+        this.setState({editorHtml: res.data.text, header: res.data.headline, updating: true})
+        console.log(res.data)
+      })
     }
-    /*var range = this.getSelection();
-    var value = prompt('What is the image URL');
-    if(value){
-        this.quill.insertEmbed(range.index, 'image', value, this.sources.USER);
-    }*/
   }
 
   handleChange(html) {
@@ -38,6 +33,20 @@ class Inlagg extends Component {
     this.setState({ theme: newTheme });
   }
 
+  handleUpdate = (event) => {
+    event.preventDefault();
+    console.log(this.state.header);
+    let data = {
+      author: Frack.CurrentUser,
+      headline: event.target.header.value,
+      tags: "",
+      text: this.state.editorHtml
+    };
+
+    Frack.News.Update(this.props.match.params.id, data).then(res => {
+      this.props.history.push("/nyheter");
+    });
+  }
 
   handleSubmit = event => {
     event.preventDefault();
@@ -61,8 +70,8 @@ class Inlagg extends Component {
   render() {
     return (
       <div className='page'>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' name='header' placeholder='Rubrik' />
+        <form onSubmit={(this.state.updating) ? this.handleUpdate : this.handleSubmit}>
+          <input type='text' name='header' placeholder='Rubrik' defaultValue={this.state.header}/>
           <CustomToolbar />
           <ReactQuill
             style={{ background: "#fff" }}
@@ -75,7 +84,7 @@ class Inlagg extends Component {
             placeholder={"text..."}
           />
 
-          <input type='submit' />
+          <input type='submit' value={(this.state.updating) ? 'Update' : 'Submit'}/>
         </form>
       </div>
     );
@@ -84,18 +93,18 @@ class Inlagg extends Component {
 
 const CustomToolbar = () => (
   <div id="toolbar" style={{background: "#b98d44"}}>
-    <select className="ql-size">
-      <option value="small">S</option>
-      <option value="medium">M</option>
-      <option value="large">L</option>
-    </select>
-    <select className="ql-align" />
+    <select className="ql-size" />
     <select className="ql-color" />
     <select className="ql-background" />
+    <button class="ql-script" value="sub"></button>
+    <button class="ql-script" value="super"></button>
+    <button className="ql-list" value="bullet"></button>
+    <button className="ql-list" value='ordered'></button>
+    <select className="ql-align" />
     <button className="ql-link"></button>
     <button className="ql-image"></button>
     <button className="ql-video"></button>
-    <button className="ql-insertHeart">
+    <button className="ql-insertNull">
         <span>Ø</span>
     </button>
   </div>
@@ -106,79 +115,9 @@ const CustomToolbar = () => (
  */
 Inlagg.modules = {
   toolbar: {
-    container: /*[
-    // [{ font: [] }],
-    [{ size: [] }],
-    ["bold", "italic", "underline", "strike"],
-    [
-      {
-        color: [
-          "#000000",
-          "#ffffff",
-          "#ff0000",
-          "#ffff00",
-          "#00ff00",
-          "#00ffff",
-          "#0000ff",
-          "#bbbbbb",
-          "#bb0000",
-          "#bbbb00",
-          "#00bb00",
-          "#00bbbb",
-          "#0000bb",
-          "#888888",
-          "#880000",
-          "#888800",
-          "#008800",
-          "#008888",
-          "#000088",
-          "#444444",
-          "#440000",
-          "#444400",
-          "#004400",
-          "#004444",
-          "#000044"
-        ]
-      },
-      {
-        background: [
-          "#000000",
-          "#ffffff",
-          "#ff0000",
-          "#ffff00",
-          "#00ff00",
-          "#00ffff",
-          "#0000ff",
-          "#bbbbbb",
-          "#bb0000",
-          "#bbbb00",
-          "#00bb00",
-          "#00bbbb",
-          "#0000bb",
-          "#888888",
-          "#880000",
-          "#888800",
-          "#008800",
-          "#008888",
-          "#000088",
-          "#444444",
-          "#440000",
-          "#444400",
-          "#004400",
-          "#004444",
-          "#000044"
-        ]
-      }
-    ], [
-      { list: "ordered" },
-      { list: "bullet" }
-    ],
-    [{ 'align': [] }],
-    ["link", "image", "video"],
-    
-  ]*/"#toolbar",
+    container: "#toolbar",
   handlers: {
-    insertHeart: insertHeart,
+    insertNull: insertNull,
     image: imageHandler
   }
 },
@@ -196,7 +135,7 @@ function imageHandler() {
   }
 }
 
-function insertHeart() {
+function insertNull() {
   console.log("hej <3")
   const cursorPosition = this.quill.getSelection().index;
   this.quill.insertText(cursorPosition, "Ø");
@@ -222,7 +161,8 @@ Inlagg.formats = [
   "video",
   "color",
   "align",
-  "background"
+  "background",
+  'script'
 ];
 
 
