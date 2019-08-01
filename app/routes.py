@@ -63,8 +63,9 @@ if app.config["DEBUG"]:
     def get_uploads(file_path):
         return send_from_directory(os.path.join(STATIC_DIR, "uploads"), file_path)
 
-@app.route("/api/blandaren", methods = ["GET", "POST"])
+@app.route("/api/blandaren", methods = ["GET", "POST", "DELETE"])
 def blandar_route():
+    id = request.args.get("id")
     if request.method == "POST":
         document_functions.upload_document(request)
         return jsonify({"message":"fil(er) laddades upp!"}), 200
@@ -72,6 +73,10 @@ def blandar_route():
         document_response = document_functions.get_documents()
         print(document_response)
         return jsonify(document_response), 200
+    if request.method == "DELETE":
+        document_functions.delete_document(id)
+        return jsonify({"Message":"Bländaren raderades!"}), 200
+
 
 @app.route("/api/media/", methods = ["GET", "POST", "DELETE"]) #Hämta media eller ladda upp media
 def media_path():

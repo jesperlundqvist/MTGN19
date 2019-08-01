@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import Frack from "./../Frack";
 import axios from "axios";
-import "./Admin.css"
+import "./Admin.css";
+import Loader from "../loader"
+
 class Anvandare extends Component {
     state = {
         types: [],
         n0llegroup: [],
         users: [],
         currentUser: "",
+        loading: true
     };
 
     update_user = "";
@@ -23,7 +26,7 @@ class Anvandare extends Component {
         });
 
         Frack.User.GetAll().then(res => {
-            this.setState({ users: res.data });
+            this.setState({ users: res.data, loading: false });
         });
 
 
@@ -42,6 +45,7 @@ class Anvandare extends Component {
             alert("n0llan tillhör ingen n0llegrupp och n0llan är vilsen utan den!")
         }
         else {
+            this.setState({ loading: true })
             // eslint-disable-next-line
             if (e.target.usertype.value == "1") {
                 name += "-nØllan";
@@ -49,7 +53,7 @@ class Anvandare extends Component {
             }
             username = username.toLowerCase();
 
-            var Password = this.password; 
+            var Password = this.password;
             var data = {
                 name: name,
                 username: username,
@@ -64,7 +68,7 @@ class Anvandare extends Component {
             Frack.User.New(data).then((res) => {
                 alert("Skapat ny användare. ", res.data);
                 Frack.User.GetAll().then(res => {
-                    this.setState({ users: res.data });
+                    this.setState({ users: res.data, loading: false });
                 })
 
             })
@@ -73,6 +77,7 @@ class Anvandare extends Component {
 
     saveUser = (user) => {
         user.preventDefault();
+        this.setState({ loading: true })
         var id = user.target.username.id
         var data = {
             username: user.target.username.value,
@@ -118,10 +123,9 @@ class Anvandare extends Component {
             }
 
             Frack.User.Update(id, data).then((res) => {
-                alert("Ändringar sparade!")
-
                 Frack.User.GetAll().then(res => {
-                    this.setState({ users: res.data });
+                    this.setState({ users: res.data, loading: false });
+                    alert("Ändringar sparade!")
                 })
             });
         })
@@ -131,13 +135,14 @@ class Anvandare extends Component {
     removeUser = (user) => {
         var id = user.id
         if (window.confirm('Är du säker på att du vill ta bort användaren?')) {
+            this.setState({loading: true})
             //Uppdaterar backenden
             Frack.User.Delete(id).then((res) => {
                 //Uppdaterar frontenden
                 const new_users = this.state.users;
                 const i = new_users.indexOf(user)
                 new_users.splice(i, 1)
-                this.setState({ users: new_users })
+                this.setState({ users: new_users, loading: false })
             })
         }
     }
@@ -165,16 +170,16 @@ class Anvandare extends Component {
                             <div className="user_block" key={user.id}>
                                 <img className="prof_pic_admin" src={user.profile_picture} alt="" />
                                 <form onSubmit={this.saveUser} >
-                                    <div id={user.id}  className="user_grid">
+                                    <div id={user.id} className="user_grid">
 
                                         <label className="form_label">Användarnamn: </label>
-                                        <input type="text" name="username" id={`${user.id}`} defaultValue={user.username}/>
+                                        <input type="text" name="username" id={`${user.id}`} defaultValue={user.username} />
 
                                         <label className="form_label">Namn: </label>
-                                        <input type="text" name="name" defaultValue={user.name}/>
+                                        <input type="text" name="name" defaultValue={user.name} />
 
                                         <label className="form_label">Typ: </label>
-                                        <select name="type"  defaultValue={user.type.id}>
+                                        <select name="type" defaultValue={user.type.id}>
                                             {this.state.types.map((type) => {
                                                 return (<option key={type.id} value={type.id}>{type.name}</option>)
                                             })}
@@ -247,8 +252,11 @@ class Anvandare extends Component {
 
         return (
             <div className="page">
-                {create_user}
-                {this.update_user}
+                {(this.state.loading ? <Loader loading={true} /> :
+                    <div>
+                        {create_user}
+                        {this.update_user}
+                    </div>)}
             </div>
         );
     }

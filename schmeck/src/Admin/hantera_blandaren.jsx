@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import pdfjsLib from 'pdfjs-dist/build/pdf';
 import Frack from "./../Frack";
-import "./Admin.css"
+import "./Admin.css";
+import Loader from "../loader";
 
 class HanteraBlandaren extends Component {
     state = {
-        status: "LOADED"
+        loading: false
     };
 
     uploadDocument = (event) => {
         event.preventDefault()
-        this.setState({ status: "LOADING" })
+        this.setState({ loading: true })
 
         var files = event.target.file.files;
         var form_data = new FormData();
@@ -64,7 +65,7 @@ class HanteraBlandaren extends Component {
                             form_data.append("title", title)
                             console.log("Laddar upp..")
                             Frack.Blandaren.New(form_data).then((res) => {
-                                this.setState({ status: "LOADED" })
+                                this.setState({ loading: false })
                                 //alert("Bländaren was successfully uploaded")
                                 this.props.history.push('/blandaren')
                             })
@@ -80,39 +81,24 @@ class HanteraBlandaren extends Component {
 
     render() {
 
-        switch (this.state.status) {
-            case "LOADING":
-                //Loading bar
-                html = <div><img src='https://media3.giphy.com/media/pK4av7uBK3I4M/giphy.gif' alt="boohoo" className="img-responsive" /></div>;
-                break;
-            case "LOADED":
-                //What's seen when not loading
-                var html = <div>
-                    <h1 className="view_header">Ladda upp bländaren</h1>
-                    <h2 className="form_label">Filer:</h2>
-                    <br />
-                    <form onSubmit={this.uploadDocument}>
-                        <input type="file" name="file" />
-                        <br />
-                        <input type="text" name="blandar_title" defaultValue="Insert name..." />
-                        <br />
-
-                        <input type="submit" value="Ladda upp" />
-                    </form>
-                </div>
-                break;
-            default:
-                html = <b>Failed to load data, please try again.</b>;
-                break;
-        }
-
-
-
         return (
             <div className="page">
-                {this.loader}
-                {html}
+                {(this.state.loading ? 
+                <Loader loading={true} /> :
+                    <div>
+                        <h1 className="view_header">Ladda upp bländaren</h1>
+                        <h2 className="form_label">Filer:</h2>
+                        <br />
+                        <form onSubmit={this.uploadDocument}>
+                            <input type="file" name="file" />
+                            <br />
+                            <input type="text" name="blandar_title" defaultValue="Insert name..." />
+                            <br />
 
+                            <input type="submit" value="Ladda upp" />
+                        </form>
+                    </div>
+                )}
             </div>
         );
     }

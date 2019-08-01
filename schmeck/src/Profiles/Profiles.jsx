@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import ProfileButton from "./ProfileButton";
 import Frack from "./../Frack";
 import "./Profiles.css";
+import Loader from "../loader"
 
 class Profiles extends Component {
-  state = { profiles: [] };
+  state = { profiles: [] , loading: true};
 
   componentDidMount() {
     //window.scrollTo(0, 0);
@@ -12,7 +13,7 @@ class Profiles extends Component {
       console.log(res);
       const profiles = res.data;
       profiles.sort((a, b) => this.sortUsers(a,b))
-      this.setState({ profiles: profiles});
+      this.setState({ profiles: profiles, loading: false});
     }).catch((errer) => {
       Frack.Logout();
       this.props.history.push('/login');
@@ -50,7 +51,8 @@ class Profiles extends Component {
     console.log(profiles)
     return (
       <div className='page'>
-        <h1 className='view_header'>Profiles</h1>
+        {(this.state.loading ? <Loader loading={true} /> : <div>
+          <h1 className='view_header'>Profiles</h1>
         <div className='profiles-contaner'>
           {profiles.map((profile, i) => {
             if (!profile.hidden) {
@@ -78,6 +80,8 @@ class Profiles extends Component {
 
           })}
         </div>
+        </div>)}
+        
       </div>
     );
   }

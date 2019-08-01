@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import Frack from './../Frack';
 import './News.css';
+import Loader from "../loader"
 
 class News extends Component {
   //Check if the user is admin, if --> they can upload and delete
-  state = { news: []};
+  state = { news: [], loading: true };
 
   componentDidMount = () => {
     Frack.News.GetAll().then((res) => {
-      this.setState({news: res.data})
+      this.setState({ news: res.data, loading: false })
     }).catch((errer) => {
       Frack.Logout();
       this.props.history.push('/login');
@@ -23,12 +24,12 @@ class News extends Component {
       "August", "September", "October",
       "November", "December"
     ];
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:'numeric', minute:'numeric' };
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     //const timestamp = ;
     var timestamp = new Date(Date.parse(n.timestamp));
     timestamp = timestamp.toLocaleDateString('sv-SV', options);
     console.log(timestamp)
-    
+
     return (
       <div key={i} className="news-contaner">
         <h2 className="news-heder"> {n.headline} </h2>
@@ -41,14 +42,16 @@ class News extends Component {
 
   render() {
     console.log(this.state.news)
-    
+
 
     return (
       <div className="page">
-        <h1 className="view_header">News</h1>
-        {this.state.news.map((n, i) => (
-          this.createNews(n,i)
-        ))}
+        {(this.state.loading ? <Loader loading={true} /> : <div>
+          <h1 className="view_header">News</h1>
+          {this.state.news.map((n, i) => (
+            this.createNews(n, i)
+          ))}
+        </div>)}
       </div>
     );
   }

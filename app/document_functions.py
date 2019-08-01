@@ -2,6 +2,7 @@ import os
 from sqlalchemy import desc, asc
 from app.models.blandaren import Document
 from app import db
+from flask import jsonify, g
 import sys
 import base64
 
@@ -37,3 +38,12 @@ def get_documents():
         output.append(doc_dict)
     
     return output
+
+
+def delete_document(id):
+    print("Inne i delete funktionen")
+    print("id: ", id)
+    Document.query.filter(Document.id == id).delete()
+    db.session.commit()
+    return jsonify({"message": "Bländaren med ID: " + id +" raderades!"})
+    

@@ -4,7 +4,7 @@ import Frack from "./../Frack";
 import "./Media.css";
 import MediaImg from "./MediaImg";
 import axios from "axios";
-
+import Loader from "../loader"
 import Lightbox from "lightbox-react";
 import "lightbox-react/style.css";
 
@@ -31,7 +31,8 @@ class Media extends Component {
     isDeleting: false,
     deleteImage: [],
     deleteVideo: [],
-    admin: false
+    admin: false,
+    loading: true
   };
 
   images = [];
@@ -60,13 +61,13 @@ class Media extends Component {
       });
     Frack.Media.GetAll().then(res => {
       //console.log(res);
-      this.setState({ medias: res.data, admin: Frack.CurrentUser.admin });
+      this.setState({ medias: res.data, admin: Frack.CurrentUser.admin, loading: false });
     });
   }
 
   deleteHandeler = () => {
     const { medias, deleteImage, deleteVideo } = this.state;
-    
+
     if (this.state.isDeleting && deleteImage.length + deleteVideo.length > 0) {
       if (window.confirm(`DELETE:\nvideos: ${deleteVideo.length}\nimages: ${deleteImage.length}`)) {
         axios({
@@ -268,6 +269,7 @@ class Media extends Component {
     }
     return (
       <MediaImg
+        key={media.id}
         deleteClass={deleteClass}
         index={i}
         media={media}
@@ -285,93 +287,96 @@ class Media extends Component {
 
     return (
       <div className='page'>
-        {/*checkbox*/}
-        <div className='checkbox-contaner'>
-          <h1 className='view_header'>Media</h1>
-          <div
-            className={
-              !this.state.isOpen
-                ? "checkbox-type-contaner"
-                : "checkbox-type-contaner checkbox-type-contaner-open"
-            }>
-            {this.state.isOpen ? (
-              <React.Fragment>
-                {this.createCheckType(0, "Vecka:")}
-                {this.createCheckType(1, "Event:")}
-                {this.createCheckType(2, "Mediatyp:")}
-              </React.Fragment>
-            ) : null}
-          </div>
-          <div className='media-button-contaner'>
-            <button
-              className='media-button'
-              onClick={this.filterButtonHandeler}>
-              {!this.state.isOpen ? <h2>▼ Filter</h2> : <h2>▲ Filter</h2>}
-            </button>
-            {this.state.admin ? (
-              <button onClick={this.deleteHandeler}>
-                {this.state.isDeleting ? (
-                  <h2>{`filer valda (${this.state.deleteImage.length +
-                    this.state.deleteVideo.length})`}</h2>
-                ) : (
-                  <h2>Delete</h2>
-                )}
+        {(this.state.loading ? <Loader loading={true} /> : <div>
+          {/*checkbox*/}
+          <div className='checkbox-contaner'>
+            <h1 className='view_header'>Media</h1>
+            <div
+              className={
+                !this.state.isOpen
+                  ? "checkbox-type-contaner"
+                  : "checkbox-type-contaner checkbox-type-contaner-open"
+              }>
+              {this.state.isOpen ? (
+                <React.Fragment>
+                  {this.createCheckType(0, "Vecka:")}
+                  {this.createCheckType(1, "Event:")}
+                  {this.createCheckType(2, "Mediatyp:")}
+                </React.Fragment>
+              ) : null}
+            </div>
+            <div className='media-button-contaner'>
+              <button
+                className='media-button'
+                onClick={this.filterButtonHandeler}>
+                {!this.state.isOpen ? <h2>▼ Filter</h2> : <h2>▲ Filter</h2>}
               </button>
-            ) : null}
+              {this.state.admin ? (
+                <button onClick={this.deleteHandeler}>
+                  {this.state.isDeleting ? (
+                    <h2>{`filer valda (${this.state.deleteImage.length +
+                      this.state.deleteVideo.length})`}</h2>
+                  ) : (
+                      <h2>Delete</h2>
+                    )}
+                </button>
+              ) : null}
+            </div>
           </div>
-        </div>
-        {/*media*/}
-        <div className='media-grid'>
-          {medias.map((media, i) => {
-            if (this.showImg(media)) {
-              this.createImages(media);
-              if (i === 0) {
-                return (
-                  <React.Fragment key={i}>
-                    <h2 className='media-divider'>{`v.${media.week}`}</h2>
-                    {this.createImageTag(i, media)}
-                  </React.Fragment>
-                );
+          {/*media*/}
+          <div className='media-grid'>
+            {medias.map((media, i) => {
+              if (this.showImg(media)) {
+                this.createImages(media);
+                if (i === 0) {
+                  return (
+                    <React.Fragment key={i}>
+                      <h2 className='media-divider'>{`v.${media.week}`}</h2>
+                      {this.createImageTag(i, media)}
+                    </React.Fragment>
+                  );
+                }
+                if (medias[i - 1].week !== media.week) {
+                  return (
+                    <React.Fragment key={i}>
+                      <h2 className='media-divider'>{`v.${media.week}`}</h2>
+                      {this.createImageTag(i, media)}
+                    </React.Fragment>
+                  );
+                }
+                return this.createImageTag(i, media);
               }
-              if (medias[i - 1].week !== media.week) {
-                return (
-                  <React.Fragment key={i}>
-                    <h2 className='media-divider'>{`v.${media.week}`}</h2>
-                    {this.createImageTag(i, media)}
-                  </React.Fragment>
-                );
-              }
-              return this.createImageTag(i, media);
-            }
-            return null;
-          })}
-        </div>
-        {/*Lightbox*/}
-        <div>
-          {isOpenLite && (
-            <Lightbox
-              mainSrc={this.images[photoIndex]}
-              nextSrc={this.images[(photoIndex + 1) % this.images.length]}
-              prevSrc={
-                this.images[
+              return null;
+            })}
+          </div>
+          {/*Lightbox*/}
+          <div>
+            {isOpenLite && (
+              <Lightbox
+                mainSrc={this.images[photoIndex]}
+                nextSrc={this.images[(photoIndex + 1) % this.images.length]}
+                prevSrc={
+                  this.images[
                   (photoIndex + this.images.length - 1) % this.images.length
-                ]
-              }
-              onCloseRequest={() => this.setState({ isOpenLite: false })}
-              onMovePrevRequest={() =>
-                this.setState({
-                  photoIndex:
-                    (photoIndex + this.images.length - 1) % this.images.length
-                })
-              }
-              onMoveNextRequest={() =>
-                this.setState({
-                  photoIndex: (photoIndex + 1) % this.images.length
-                })
-              }
-            />
-          )}
-        </div>
+                  ]
+                }
+                onCloseRequest={() => this.setState({ isOpenLite: false })}
+                onMovePrevRequest={() =>
+                  this.setState({
+                    photoIndex:
+                      (photoIndex + this.images.length - 1) % this.images.length
+                  })
+                }
+                onMoveNextRequest={() =>
+                  this.setState({
+                    photoIndex: (photoIndex + 1) % this.images.length
+                  })
+                }
+              />
+            )}
+          </div>
+        </div>)}
+
       </div>
     );
   }

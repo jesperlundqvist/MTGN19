@@ -9,7 +9,7 @@ class Login extends Component {
   clickHndeler = event => {
     event.preventDefault();
     this.setState({ loginFail: false });
-    Frack.Login(event.target.username.value, event.target.password.value)
+    Frack.Login(event.target.username.value.toLowerCase(), event.target.password.value)
       .then(res => {
         sessionStorage.authToken = res.data.token;
         if (Frack.HasToken()) {
