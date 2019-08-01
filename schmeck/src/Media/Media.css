@@ -12,7 +12,8 @@
 }
 
 .delete-media {
-    background: red;
+    transform: rotate(20deg);
+    border: red solid 10px;
 }
 
 .checkbox-type-contaner {

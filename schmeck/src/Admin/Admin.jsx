@@ -10,7 +10,8 @@ class Admin extends Component {
         <h1 className="view_header">Admin</h1>
         <div className="admin_container">
 
-          <Link className="links long_link" to="/admin/inlagg">Hantera inlägg</Link>
+          <Link className="links" to="/admin/inlagg">Skapa inlägg</Link>
+          <Link className="links" to="/admin/inlagg/hantera">Hantera inlägg</Link>
 
           <Link className="links long_link" to="/admin/media">Hantera media</Link>
 

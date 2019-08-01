@@ -9,7 +9,51 @@
     margin-bottom: 2%;
 }
 
+.ql-align-center {
+    text-align: center;
+}
+
+.ql-size-huge{
+    font-size: 40px
+}
+
+.ql-size-large{
+    font-size: 30px
+}
+
+.ql-size-small{
+    font-size: 10px
+}
+
+.ql-align-right {
+    text-align: right;
+}
+
+.news-text ol {
+    display: block;
+    list-style-type: decimal;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+
+
+.news-text ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+
 .news-text {
+    text-align: left;
     background: white;
     padding: 2%
 }
