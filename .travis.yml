@@ -1,0 +1,35 @@
+dist: xenial
+language: python
+python:
+  - "3.7"
+install:
+    - pip install -r requirements.txt
+before_deploy:
+    - rm -rf build
+    - mkdir build
+    - pip install -r requirements.txt -t build
+    - cp -R api build/
+    - cd build
+    - zip -r ../lambda.zip .
+    - cd ..
+    - cd schmeck
+    - npm install
+    - npm run build
+script: pytest
+deploy:
+  - provider: lambda
+    function_name: "mtgn19"
+    region: "eu-north-1"
+    role: $ROLE
+    runtime: "python3.7"
+    zip: "lambda.zip"
+    module_name: app
+    handler_name: lambda_handler
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "mtgn19"
+    skip_cleanup: true
+    region: "eu-north-1"
+    local_dir: schmeck/build
+    acl: public_read
