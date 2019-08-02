@@ -48,11 +48,8 @@ class Home extends Component {
           <div>
             <div className="hjarta_lada">
             <a className='footer-linck' href={this.state.hjarta_link} >
-
-              <img src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" />
-              <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat?</p>
-
-            </a>
+              <img className="bubbel" src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" /></a>
+            <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat lådan</p>
           </div>
 
 
