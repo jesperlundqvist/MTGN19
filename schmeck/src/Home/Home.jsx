@@ -6,9 +6,11 @@ import Loader from "../loader"
 
 class Home extends Component {
   //Check if the user is admin, if --> they can upload and delete??? should this be here?
-  state = { newNews: [], newImg: [], hjarta_link: "https://forms.gle/oxUD276qkeENk3gr7", loading: true };
+  state = { newNews: [], newImg: [], hjarta_link: "https://forms.gle/oxUD276qkeENk3gr7", loading: true, bubbolJump: true };
 
   componentDidMount() {
+
+    this.accessGranted()
     Frack.News.GetAll().then((res) => {
       this.setState({ newNews: res.data })
       Frack.Media.GetAll().then((res) => {
@@ -29,6 +31,13 @@ class Home extends Component {
 
   }
 
+  accessGranted = async url => {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    this.setState({
+      bubbolJump: false
+    })
+  };
+
   mediaClick = () => {
     this.props.history.push('/media/');
   }
@@ -48,8 +57,8 @@ class Home extends Component {
           <div>
             <div className="hjarta_lada">
             <a className='footer-linck' href={this.state.hjarta_link} >
-              <img className="bubbel" src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" /></a>
-            <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat?</p>
+              <img className={(this.state.bubbolJump) ? "bubbel bubbel-jump" : "bubbel"} src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" /></a>
+            <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat lådan</p>
           </div>
 
 
