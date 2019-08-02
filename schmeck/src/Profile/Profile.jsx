@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Frack from "./../Frack";
 import "./Profile.css";
-import TopSecret from "./TopSecret";
+//import TopSecret from "./TopSecret";
 import ProfileImg from "./ProfileImg";
 import Loader from "../loader";
 
@@ -185,7 +185,7 @@ class Profile extends Component {
   }
 
   render() {
-    const CurrentUser = Frack.CurrentUser;
+    const CurrentUser = this.props.currentUser;
     if (this.state.index === -1) {
       return null;
     }

@@ -4,7 +4,7 @@ import "./Admin.css"
 class Admin extends Component {
   state = {};
   render() {
-    console.log(this.props.adminOnly)
+    console.log(this.props.currentUser)
     return (
       <div className="page">
         <h1 className="view_header">Admin</h1>

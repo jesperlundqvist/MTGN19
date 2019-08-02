@@ -14,6 +14,7 @@ class Login extends Component {
         sessionStorage.authToken = res.data.token;
         if (Frack.HasToken()) {
           console.log(this.props.location.url)
+          this.props.login()
           if (this.props.location.url) {
             this.accessGranted(this.props.location.url);
           } else {

@@ -14,13 +14,13 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
         if (rest.adminOnly) {
           if (Frack.CurrentUser) {
             if (Frack.CurrentUser.admin === true) {
-              return <Component {...props} />;
+              return <Component {...props} currentUser={rest.currentUser}/>;
             }
           }
           return <Redirect to='/' />;
         } else {
           if (Frack.HasToken()) {
-            return <Component {...props} />;
+            return <Component {...props} currentUser={rest.currentUser}/>;
           } else {
             console.log(rest.path)
             //return <Redirect to='/Login'/>
