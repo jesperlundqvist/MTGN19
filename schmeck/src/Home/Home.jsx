@@ -18,7 +18,7 @@ class Home extends Component {
       Frack.Logout();
       this.props.history.push('/login');
     });
-    
+
     Frack.UpdateCurrentUser().then(() => {
       console.log(Frack.CurrentUser.type.name)
       if (Frack.CurrentUser.type.name != "nØllan") {
@@ -45,30 +45,36 @@ class Home extends Component {
       <div className="page">
 
         {(this.state.loading ? <Loader loading={true} /> :
-          <div><div className="hjarta_lada">
+          <div>
+            <div className="hjarta_lada">
             <a className='footer-linck' href={this.state.hjarta_link} >
-              <img src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" /></a>
-            <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat lådan</p>
+
+              <img src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" />
+              <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat?</p>
+
+            </a>
           </div>
 
-            <div>
 
-              {/*Senaste nyheten som lagts upp*/}
-              {(this.state.newNews.length !== 0) ?
-                <div >
-                  <h3 className="subtitle">Nyheter</h3>
-                  <div className="news-contaner">
-                    <h2 className="news-heder"> {news.headline} </h2>
-                    <div className="news-text" dangerouslySetInnerHTML={{ __html: news.text }} />
-                  </div></div> : null}
-              {(this.state.newImg.length !== 0) ?
-                <h3 className="subtitle">Nya bilder</h3> : null}
-              <div className='media-grid'>
-                {newImg.map((media, i) => {
-                  return (<Media key={i} media={media} index={i} onClickHandeler={this.mediaClick}></Media>)
-                })}
-              </div>
-            </div></div>)}
+
+          <div>
+
+            {/*Senaste nyheten som lagts upp*/}
+            {(this.state.newNews.length !== 0) ?
+              <div >
+                <h3 className="subtitle">Nyheter</h3>
+                <div className="news-contaner">
+                  <h2 className="news-heder"> {news.headline} </h2>
+                  <div className="news-text" dangerouslySetInnerHTML={{ __html: news.text }} />
+                </div></div> : null}
+            {(this.state.newImg.length !== 0) ?
+              <h3 className="subtitle">Nya bilder</h3> : null}
+            <div className='media-grid'>
+              {newImg.map((media, i) => {
+                return (<Media key={i} media={media} index={i} onClickHandeler={this.mediaClick}></Media>)
+              })}
+            </div>
+          </div></div>)}
 
       </div>
     );

@@ -5,5 +5,11 @@
 }
 
 .hjarta_lada {
-    
+    width: fit-content;
+    margin: auto;
+    transition: transform .2s; /* Animation */
+}
+
+.hjarta_lada:hover {
+    transform: scale(1.2);
 }

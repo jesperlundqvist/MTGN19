@@ -60,7 +60,7 @@ class Profile extends Component {
         profiles.sort((a, b) => this.sortUsers(a, b))
         const index = profiles.findIndex((user) => this.findUsre(user));
         console.log(index)
-        this.setState({ profiles: profiles, index: index });
+        this.setState({ profiles: profiles, index: index, loading: false });
       }).catch((errer) => {
         Frack.Logout();
         this.props.history.push('/login');
