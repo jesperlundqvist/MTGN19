@@ -5,5 +5,58 @@
 }
 
 .hjarta_lada {
+    transition: all 0.5s; 
+    width: fit-content;  
+    margin: auto;
+}
+
+.hjarta_lada:hover {
+    transform: scale(1.2); 
+}
+
+.bubbel {
+    transform-origin: bottom;
     
+}
+
+.hjarta_lada:hover .bubbel {
+    animation: bubbel 1s infinite;
+}
+
+
+/*@keyframes bubbel {
+    0% {
+        transform: scaleY(1) rotate(0deg);
+
+    }
+    50% {
+        transform: scaleY(1.3) rotate(5deg);
+    }
+    60% {
+        transform: scaleY(1.2) rotate(0);
+    }
+    65% {
+        transform: scaleY(1.2) rotate(-5deg);
+    }
+    100% {
+        transform: scaleY(1) rotate(0deg);
+    }
+}*/
+
+@keyframes bubbel {
+    0% {
+        transform: scaleY(1) rotate(0deg);
+    }
+    10% {
+        transform: scaleY(0.8) scaleX(1.4) rotate(0deg);
+    }
+    50% {
+        transform: scaleY(1.2) scaleX(0.7) rotate(0) translatey(-20px);
+    }
+    80% {
+        transform: scaleY(0.9) scaleX(1.2) rotate(0deg);
+    }
+    100% {
+        transform: scaleY(1) rotate(0deg);
+    }
 }
