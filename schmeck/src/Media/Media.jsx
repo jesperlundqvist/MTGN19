@@ -31,7 +31,6 @@ class Media extends Component {
     isDeleting: false,
     deleteImage: [],
     deleteVideo: [],
-    admin: false,
     loading: true
   };
 
@@ -311,7 +310,7 @@ class Media extends Component {
                 onClick={this.filterButtonHandeler}>
                 {!this.state.isOpen ? <h2>▼ Filter</h2> : <h2>▲ Filter</h2>}
               </button>
-              {this.state.admin ? (
+              {this.props.currentUser.admin ? (
                 <button onClick={this.deleteHandeler}>
                   {this.state.isDeleting ? (
                     <h2>{`filer valda (${this.state.deleteImage.length +

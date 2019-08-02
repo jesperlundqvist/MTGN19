@@ -45,34 +45,43 @@ class Navigation extends Component {
   };
 
   getOrganisation = () => {
-    if (Frack.CurrentUser.n0llegroup) {
-      return ( Frack.CurrentUser.n0llegroup.name)
+    if (this.props.currentUser.n0llegroup) {
+      return ( this.props.currentUser.n0llegroup.name)
     }
-    return ( Frack.CurrentUser.type.name)
+    return ( this.props.currentUser.type.name)
+  }
+
+  createProfileCard = () => {
+    return(  
+      <div onClick={this.onClickProfile} className='navigation-profil'>
+        <h3 className="agent-title">SECRET AGENT</h3>
+        <div className='navigation-profil-text'>
+        <h6>Subject: </h6>
+        <p>{this.props.currentUser.name}</p>
+        <h6>Organisation: </h6>
+        <p> {this.getOrganisation()}</p>
+        </div>
+        <img src={this.props.currentUser.profile_picture} alt=""/>
+    </div>)
   }
 
   createNavigation = () => {
     if (this.state.navOpen === true) {
       return (
         <div className='navigationBar'>
-          <div onClick={this.onClickProfile} className='navigation-profil'>
-            {//Här ska "id kortet" vara med den inloggades profil
-            }
-            <h3 className="agent-title">SECRET AGENT</h3>
-            <div className='navigation-profil-text'>
-            <h6>Subject: </h6>
-            <p>{Frack.CurrentUser.name}</p>
-            <h6>Organisation: </h6>
-            <p> {this.getOrganisation()}</p>
-            </div>
-            <img src={Frack.CurrentUser.profile_picture} alt=""/>
-          </div>
+          {(this.props.currentUser) ? this.createProfileCard(): null}
           {this.Links.map((l, i) => {
             let linkClass = "linkClosed link typewriter_font";
             if (l.url === this.props.location.pathname)
               linkClass = "linkOpen link typewriter_font";
-            if (Frack.CurrentUser.admin !== true && l.text === this.Links[this.Links.length-1].text) {
-              return null;
+
+            if (l.text === this.Links[this.Links.length-1].text) {
+              if (!this.props.currentUser) {
+                return null
+              }
+              if (!this.props.currentUser.admin) {
+                return null;
+              }  
             }
             return (
               <button

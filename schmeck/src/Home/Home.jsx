@@ -6,7 +6,7 @@ import Loader from "../loader"
 
 class Home extends Component {
   //Check if the user is admin, if --> they can upload and delete??? should this be here?
-  state = { newNews: [], newImg: [], hjarta_link: "https://forms.gle/oxUD276qkeENk3gr7", loading: true, bubbolJump: true };
+  state = { newNews: [], newImg: [], loading: true, bubbolJump: true };
 
   componentDidMount() {
 
@@ -20,15 +20,17 @@ class Home extends Component {
       Frack.Logout();
       this.props.history.push('/login');
     });
+  }
 
-    Frack.UpdateCurrentUser().then(() => {
-      console.log(Frack.CurrentUser.type.name)
-      if (Frack.CurrentUser.type.name != "nØllan") {
-        this.setState({ hjarta_link: "https://docs.google.com/forms/d/e/1FAIpQLSeSi5hqEQuxtJ-3cn2sfTC0aQVcNXEMsG-NppbNswRPsMQwMQ/viewform" })
+  getLink = () => {
+    if (this.props.currentUser) {
+      if (this.props.currentUser.type.name != "nØllan") {
+        return "https://docs.google.com/forms/d/e/1FAIpQLSeSi5hqEQuxtJ-3cn2sfTC0aQVcNXEMsG-NppbNswRPsMQwMQ/viewform"
+      } else {
+        return "https://forms.gle/oxUD276qkeENk3gr7"
       }
-    })
-
-
+    }
+    return null;
   }
 
   accessGranted = async url => {
@@ -43,6 +45,8 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.props.currentUser)
+
     let news = this.state.newNews[0];
     let newImg = this.state.newImg;
     if (newImg.length > 4) {

@@ -18,12 +18,6 @@ class News extends Component {
 
 
   createNews(n, i) {
-    const monthNames = [
-      "January", "February", "March",
-      "April", "May", "June", "July",
-      "August", "September", "October",
-      "November", "December"
-    ];
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     //const timestamp = ;
     var timestamp = new Date(Date.parse(n.timestamp));
@@ -41,9 +35,6 @@ class News extends Component {
   }
 
   render() {
-    console.log(this.state.news)
-
-
     return (
       <div className="page">
         {(this.state.loading ? <Loader loading={true} /> : <div>
