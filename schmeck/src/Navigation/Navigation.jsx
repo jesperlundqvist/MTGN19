@@ -68,9 +68,9 @@ class Navigation extends Component {
             <img src={Frack.CurrentUser.profile_picture} alt=""/>
           </div>
           {this.Links.map((l, i) => {
-            let linkClass = "linkClosed link typewriter-font";
+            let linkClass = "linkClosed link typewriter_font";
             if (l.url === this.props.location.pathname)
-              linkClass = "linkOpen link typewriter-font";
+              linkClass = "linkOpen link typewriter_font";
             if (Frack.CurrentUser.admin !== true && l.text === this.Links[this.Links.length-1].text) {
               return null;
             }
@@ -84,7 +84,7 @@ class Navigation extends Component {
             );
           })}
           <button
-                className="linkClosed link typewriter-font"
+                className="linkClosed link typewriter_font"
                 onClick={() => this.LogoutHndler()}>
                 <p className='link-text'>logga ut</p>
               </button>

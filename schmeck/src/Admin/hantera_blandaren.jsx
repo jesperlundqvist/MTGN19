@@ -68,6 +68,9 @@ class HanteraBlandaren extends Component {
                                 this.setState({ loading: false })
                                 //alert("Bländaren was successfully uploaded")
                                 this.props.history.push('/blandaren')
+                            }).catch((error) => {
+                                console.error(error)
+                                this.setState({loading: false})
                             })
 
                         })

@@ -32,10 +32,10 @@ class News extends Component {
 
     return (
       <div key={i} className="news-contaner">
-        <h2 className="news-heder typewriter-font"> {n.headline} </h2>
-        <h5 className="typewriter-font">{timestamp}</h5>
-        <h5 className="typewriter-font">Av: {n.author.type.name}-{n.author.name}</h5>
-        <div className="news-text typewriter-font" dangerouslySetInnerHTML={{ __html: n.text }} />
+        <h2 className="news-heder typewriter_font"> {n.headline} </h2>
+        <h5 className="typewriter_font">{timestamp}</h5>
+        <h5 className="typewriter_font">Av: {n.author.type.name}-{n.author.name}</h5>
+        <div className="news-text typewriter_font" dangerouslySetInnerHTML={{ __html: n.text }} />
       </div>
     )
   }

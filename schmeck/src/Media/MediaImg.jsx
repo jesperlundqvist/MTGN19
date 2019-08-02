@@ -23,7 +23,7 @@ class MediaImg extends Component {
 
     return (
       <div
-        className= {this.props.deleteClass + ' media-img typewriter-font'}
+        className= {this.props.deleteClass + ' media-img typewriter_font'}
         onMouseEnter={this.togelHover}
         onMouseLeave={this.togelHover}
         onClick={() => this.props.onClickHandeler(this.props.index)}
@@ -116,7 +116,7 @@ class MediaImg extends Component {
           </svg>
         ) : (
           <svg
-            className= {this.props.deleteClass +'the-media typewriter-font'}
+            className= {this.props.deleteClass +'the-media typewriter_font'}
             width='100%'
             height='100%'
             viewBox='0 0 472 472'

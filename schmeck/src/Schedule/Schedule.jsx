@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./Schedule.css";
+import Loader from "../loader";
 
 class Schedule extends Component {
   //Check if the user is admin, if --> they can upload and delete, should this be here??
   state = {
-    mode: "AGENDA"
+    mode: "AGENDA",
   };
 
   modeHandler = (event) => {
@@ -23,10 +24,10 @@ class Schedule extends Component {
 
     var calendar = "";
     if (this.state.mode === "DAY") {
-      calendar = <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23330707&amp;ctz=Europe%2FStockholm&amp;src=h5paai5k40udcu5elq8tj1ks78%40group.calendar.google.com&amp;color=%237CB342&amp;showDate=0&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=DAY" width="100%" height="600" frameBorder="0" scrolling="yes"></iframe>
+      calendar = <iframe  src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23330707&amp;ctz=Europe%2FStockholm&amp;src=h5paai5k40udcu5elq8tj1ks78%40group.calendar.google.com&amp;color=%237CB342&amp;showDate=0&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=DAY" width="100%" height="600" frameBorder="0" scrolling="yes"></iframe>
     }
     if (this.state.mode === "WEEK") {
-      calendar = <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23330707&amp;ctz=Europe%2FStockholm&amp;src=h5paai5k40udcu5elq8tj1ks78%40group.calendar.google.com&amp;color=%237CB342&amp;showDate=0&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK" width="100%" height="600" frameBorder="0" scrolling="yes"></iframe>
+      calendar = <iframe  src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23330707&amp;ctz=Europe%2FStockholm&amp;src=h5paai5k40udcu5elq8tj1ks78%40group.calendar.google.com&amp;color=%237CB342&amp;showDate=0&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK" width="100%" height="600" frameBorder="0" scrolling="yes"></iframe>
     }
     if (this.state.mode === "AGENDA") {
       calendar = <iframe  src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23330707&amp;ctz=Europe%2FStockholm&amp;src=h5paai5k40udcu5elq8tj1ks78%40group.calendar.google.com&amp;color=%237CB342&amp;showDate=0&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA" width="100%" height="600" frameBorder="0" scrolling="yes"></iframe>
@@ -37,7 +38,9 @@ class Schedule extends Component {
         <button onClick={this.modeHandler} value="DAY" className={this.btn_class("DAY")} >Day</button>
         <button onClick={this.modeHandler} value="WEEK" className={this.btn_class("WEEK")}>Week</button>
         <button onClick={this.modeHandler} value="AGENDA" className={this.btn_class("AGENDA")}>Program</button>
-        {calendar}
+        <div style={{zIndex:2}}>{calendar}</div>
+        {//<div style={{zIndex:1, position: 'fixed', top: "0px"}}><Loader loading={true}/></div>
+        }
       </div>);
   }
 }

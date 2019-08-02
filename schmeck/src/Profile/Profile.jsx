@@ -146,6 +146,10 @@ class Profile extends Component {
     })
   }
 
+  foppesKnapp = () => {
+    return [document.body.style.setProperty("font-family", "comicsans", "important"), document.body.style.setProperty("color", "rgb(255, 51, 136)", "important")]
+  }
+
   render() {
     if (this.state.index === -1) {
       return null;
@@ -160,7 +164,7 @@ class Profile extends Component {
     let prev = this.findPrev();
     console.log(Frack.CurrentUser)
     return (
-      <div className='profile-page page typewriter-font'>
+      <div className='profile-page page typewriter_font'>
         {(this.state.loading ? <Loader loading={true} /> :
           <div>
             <div className='profile-contaner'>
@@ -173,6 +177,7 @@ class Profile extends Component {
                 <img className='profile-img' src={profile.profile_picture} alt=""/>*/}
                 </div>
                 {/* buttons */}
+                {(profile.username == "foppe") ?  <button onClick={this.foppesKnapp} style={{fontFamily: "comicsans", color: "rgb(255, 51, 136)"}}>Comic sans?</button> : null}
                 <div className="profile-button-contaner">
                   {(prev !== -1) ? <button className="profile-button profile-button-1" onClick={() => this.swopUesr(prev)}> ◀ Förra </button> : null}
                   <div className="profile-button-2">
