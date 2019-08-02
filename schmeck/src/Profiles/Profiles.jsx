@@ -52,7 +52,7 @@ class Profiles extends Component {
     return (
       <div className='page'>
         {(this.state.loading ? <Loader loading={true} /> : <div>
-          <h1 className='view_header'>Profiles</h1>
+          
         <div className='profiles-contaner'>
           {profiles.map((profile, i) => {
             if (!profile.hidden) {

@@ -55,10 +55,10 @@ class Home extends Component {
 
         {(this.state.loading ? <Loader loading={true} /> :
           <div>
-            <div className="hjarta_lada">
-            <a className='footer-linck' href={this.state.hjarta_link} >
-              <img className={(this.state.bubbolJump) ? "bubbel bubbel-jump" : "bubbel"} src="https://cdn1.iconfinder.com/data/icons/glyph-communication-responsive-icons/128/5.Filled_128px_Love-512.png" height="70px" alt="Hjartat_lada" /></a>
-            <p style={{ color: "white", textAlign: "center" }}>Vad har du på hjärtat lådan</p>
+            <div className={(this.state.bubbolJump) ? "hjarta_lada big_lada" : "hjarta_lada small_lada"}>
+            <a className='footer-linck'  href={this.state.hjarta_link} >
+              <img className={(this.state.bubbolJump) ? "bubbel bubbel-jump" : "bubbel"} src="https://cdn4.iconfinder.com/data/icons/iconsimple-communication/512/talk_bubble_heart-512.png" alt="Hjartat_lada" />
+            <p style={{ color: "white", textAlign: "center"}} >Vad har du<br/>på hjärtat?</p></a>
           </div>
 
 
@@ -68,13 +68,13 @@ class Home extends Component {
             {/*Senaste nyheten som lagts upp*/}
             {(this.state.newNews.length !== 0) ?
               <div >
-                <h3 className="subtitle">Nyheter</h3>
+                <h3 className="subtitle">Senaste nyheten</h3>
                 <div className="news-contaner">
                   <h2 className="news-heder"> {news.headline} </h2>
                   <div className="news-text" dangerouslySetInnerHTML={{ __html: news.text }} />
                 </div></div> : null}
             {(this.state.newImg.length !== 0) ?
-              <h3 className="subtitle">Nya bilder</h3> : null}
+              <h3 className="subtitle">Senaste bilderna</h3> : null}
             <div className='media-grid'>
               {newImg.map((media, i) => {
                 return (<Media key={i} media={media} index={i} onClickHandeler={this.mediaClick}></Media>)

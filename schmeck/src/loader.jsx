@@ -13,7 +13,8 @@ constructor(props) {
       const override = css`
       display: block;
       margin: 0 auto;
-      border-color: red;
+      border-color: goldenrod;
+      margin-top: 10%;
   `;
   
       return (

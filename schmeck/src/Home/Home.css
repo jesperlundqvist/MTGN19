@@ -1,6 +1,6 @@
 .subtitle {
     color: aliceblue;
-    font-size: 150%;
+    font-size: 170%;
     margin: 3%;
 }
 
@@ -8,6 +8,43 @@
     transition: all 0.5s; 
     width: fit-content;  
     margin: auto;
+    position: fixed;
+    background-color: #179167;
+    border-radius: 6px;
+    border: none;
+    z-index: 100;
+
+}
+
+.hjarta_lada:hover, .big_lada {
+    right: 10px;
+    padding: 15px;
+    padding-top: 20px;
+    top: 15px;
+}
+
+.small_lada p{
+    display: none;
+}
+
+.big_lada p{
+    display: block;
+}
+
+.hjarta_lada:hover p {
+    display: block; 
+}
+
+.small_lada {
+    right: 0px;
+    padding: 2px;
+    padding-top: 5px;
+    top: 5px;
+    width: fit-content;
+}
+
+.small_lada .bubbel {
+    height: 40px;
 }
 
 .hjarta_lada:hover {
@@ -16,7 +53,41 @@
 
 .bubbel {
     transform-origin: bottom;
+    height: 65px;
     
+}
+
+@media (max-width: 1100px) {
+    .bubbel {
+        height: 50px;
+    }
+    .hjarta_lada {
+        font-size: 13px;
+        padding: 8px;
+        padding-bottom: 0px;
+        padding-top: 20px;
+        right: 0
+    
+    }
+    .subtitle {
+        width: 50%;
+        margin-left: 25%
+    }
+
+    .small_lada .bubbel {
+        height: 30px;
+        margin: auto;
+    }
+
+    .small_lada {
+        right: 0px;
+        padding:0px;
+        padding-right: 9px;
+        padding-top: 5px;
+        top: 0px;
+        width: 35px;
+        height: 35px;
+    }
 }
 
 .hjarta_lada:hover .bubbel {
@@ -55,7 +126,7 @@
         transform: scaleY(0.6) scaleX(1.4) rotate(0deg);
     }
     50% {
-        transform: scaleY(1) scaleX(0.7) rotate(0) translatey(-20px);
+        transform: scaleY(1) scaleX(0.7) rotate(0) translatey(-10px);
     }
     80% {
         transform: scaleY(0.7) scaleX(1) rotate(0deg);
@@ -63,4 +134,8 @@
     100% {
         transform: scaleY(0.8) rotate(0deg);
     }
+}
+
+.footer-linck {
+    text-decoration: none;
 }
