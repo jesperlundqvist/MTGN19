@@ -71,27 +71,22 @@ class Profile extends Component {
         profiles: this.props.location.state.profiles,
         index: this.props.location.state.index,
         loading: false
-      });
+      })
     } else {
-      console.log("not found");
-      Frack.User.GetAll()
-        .then(res => {
-          console.log(res);
-          const profiles = res.data;
-          profiles.sort((a, b) => this.sortUsers(a, b));
-          const index = profiles.findIndex(user => this.findUsre(user));
-          console.log(index);
-          this.setState({
-            profiles: profiles,
-            index: index,
-            loading: false
-          });
-        })
-        .catch(errer => {
-          Frack.Logout();
-          this.props.history.push("/login");
-        });
-    }
+      console.log("not found")
+      Frack.User.GetAll().then(res => {
+        console.log(res);
+        const profiles = res.data;
+        profiles.sort((a, b) => this.sortUsers(a, b))
+        const index = profiles.findIndex((user) => this.findUsre(user));
+        console.log(index)
+        this.setState({ profiles: profiles, index: index, loading: false });
+      }).catch((errer) => {
+        Frack.Logout();
+        this.props.history.push('/login');
+      });
+    } 
+    
   };
 
   swopUesr = indexTo => {
