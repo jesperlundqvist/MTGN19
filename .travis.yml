@@ -23,7 +23,7 @@ deploy:
     role: $ROLE
     runtime: "python3.7"
     zip: "lambda.zip"
-    module_name: app
+    module_name: .
     handler_name: lambda_handler
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY_ID
