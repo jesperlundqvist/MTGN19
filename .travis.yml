@@ -9,7 +9,9 @@ before_deploy:
     - mkdir build
     - sudo pip install -r requirements.txt -t build
     - cp -R app build/
-    - zip -r lambda.zip build/
+    - cd build
+    - zip -r ../lambda.zip .
+    - cd ..
     - cd schmeck
     - npm install
     - npm run build
