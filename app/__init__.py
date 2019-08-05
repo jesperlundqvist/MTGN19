@@ -1,18 +1,16 @@
 from flask import Flask
 import os
 from flask_sqlalchemy import SQLAlchemy
-import awsgi
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_pyfile('flask.cfg')
-db = SQLAlchemy(app)
+application = Flask(__name__, instance_relative_config=True)
+application.config.from_pyfile('flask.cfg')
+db = SQLAlchemy(application)
 
 from app import routes
 
-def lambda_handler(event, context):
-    return awsgi.response(app, event, context)
-
-if app.config["DEBUG"]:
+"""
+@application.route("/create_all")
+def route_create_all():
     from app.models.news import News
     from app.models.user import User, UserType, N0lleGroup
     from app.models.event import Event
@@ -42,7 +40,7 @@ if app.config["DEBUG"]:
     adminUser = User("admin", "Admin", "hamburgare23", userTypeInpho)
     adminUser.admin = True
     adminUser.hidden = True
-    """
+
     magikarparna = N0lleGroup(name="Magi-Karparna")
     krangligaKrabban = N0lleGroup(name="Krångliga Krabban")
     hasten = N0lleGroup(name="Trojanska Häztääen")
@@ -58,12 +56,14 @@ if app.config["DEBUG"]:
 
     testNews = News(headline="Första inlägget", author=joppe, tags="", text="Här är det lite text!")
     dag1News = News(headline="Välkommen nØllan!", author=adminUser, tags="", text="Dag 1 är redan slut och vi hoppas att ni har haft en toppenstart tillsammans med oss!<br><br>Vi hoppas att ni ska trivas här hos oss på Medieteknik och att ni ser fram emot Mottagningen.<br><br>Under morgondagen vankas det gasque så passa på att komma till Gasquevettet där VRAQUE kommer lära er allt om hur man gasquear.<br><br>Tagga Välkomstgasque i morgon!")
-    """
-    """
+
     db.session.add(adminUser)
 
     db.session.add(joppe)
     db.session.add(testNews)
     db.session.add(dag1News)
-    """
+
     db.session.commit()
+
+    return "Klar!"
+"""
