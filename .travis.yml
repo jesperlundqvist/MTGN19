@@ -17,14 +17,6 @@ before_deploy:
     - npm run build
 script: pytest
 deploy:
-  - provider: lambda
-    function_name: "mtgn19"
-    region: "eu-north-1"
-    role: $ROLE
-    runtime: "python3.7"
-    zip: "lambda.zip"
-    module_name: .
-    handler_name: lambda_handler
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY_ID
     secret_access_key: $AWS_SECRET_ACCESS_KEY
