@@ -9,9 +9,7 @@ before_deploy:
     - mkdir build
     - sudo pip install -r requirements.txt -t build
     - cp -R app build/
-    - cd build
-    - zip -r ../lambda.zip .
-    - cd ..
+    - zip -r lambda.zip build/
     - cd schmeck
     - npm install
     - npm run build
@@ -23,7 +21,7 @@ deploy:
     role: $ROLE
     runtime: "python3.7"
     zip: "lambda.zip"
-    module_name: .
+    module_name: app
     handler_name: lambda_handler
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY_ID
